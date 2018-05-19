@@ -1,0 +1,186 @@
+<?php
+
+class Integrante_familia extends Validator
+{
+    private $id_integrante = null;
+    private $nombres = null;
+    private $apellidos = null;
+    private $paretesco = null;
+    private $fecha_nacimiento = null;
+    private $profesion_ocupacion = null;
+    private $lugar_trabajo = null;
+    private $tel_trabajo = null;
+    private $salario = null;
+    private $id_solicitud = null;
+
+    public function setIdIntegrante($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->id_integrante = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIdIntegrante()
+    {
+        return $this->id_integrante;
+    }
+
+    public function setNombres($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 50))
+        {
+            $this->nombres = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getNombres()
+    {
+        return $this->nombres;
+    }
+
+    public function setApellidos($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 50))
+        {
+            $this->apellidos = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    public function setParentesco($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 30))
+        {
+            $this->parentesco = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getParentesco()
+    {
+        return $this->parentesco;
+    }
+
+    public function setFechaNacimiento($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 10))
+        {
+            $this->fecha_nacimiento = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getFechaNacimiento()
+    {
+        return $this->fecha_nacimiento;
+    }
+
+    public function setProfesionOcupacion($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 40))
+        {
+            $this->profesion_ocupacion = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getProfesionOcupacion()
+    {
+        return $this->profesion_ocupacion;
+    }
+
+    public function setLugarTrabajo($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 50))
+        {
+            $this->lugar_trabajo = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getLugarTrabajo()
+    {
+        return $this->lugar_trabajo;
+    }
+
+    public function setTelTrabajo($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->tel_trabajo = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getTelTrabajo()
+    {
+        return $this->tel_trabajo;
+    }
+
+    public function setSalario($value)
+    {
+        if($this->validateMoney($value))
+        {
+            $this->salario = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getSalario()
+    {
+        return $this->salario;
+    }
+
+    public function setIdSolicitud($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->id_solicitud = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIdSolicitud()
+    {
+        return $this->id_solicitud;
+    }
+}
+?>

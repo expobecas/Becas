@@ -10,9 +10,9 @@ class Solicitud extends Validator
     private $direccion = null;
     private $correo = null;
     private $tel_fijo = null;
-    private $tel_papa = null;
-    private $tel_mama = null;
-    private $tel_hijo = null;
+    private $cel_papa = null;
+    private $cel_mama = null;
+    private $cel_hijo = null;
     private $fecha_nacimiento = null;
     private $estudios_finan = null;
     private $id_institucion_proveniente = null;
@@ -260,7 +260,23 @@ class Solicitud extends Validator
     {
         $sql = "SELECT id_genero, genero FROM genero";
         $params = array(null);
-        return database::getRows($sql, $params);
+        return Database::getRows($sql, $params);
+    }
+
+    //Metodos para el manejo del SCRUD
+
+    public function getInstitucion()
+    {
+        $sql = "SELECT id_institucion_proveniente FROM institucion_proveniente ORDER BY id_institucion_proveniente DESC LIMIT 1";
+        $params = array(null);
+        return Database::getRow($sql, $params);
+    }
+
+    public function createSolicitud()
+    {
+        $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, estudios_finan, id_institucion_proveniente) VALUES(1, ?, ?, ?, ?, 'dddd@gmial.com', ?, ?, ?, ?, ?, ?, ?, ?) ";
+        $params = array($this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->estudios_finan, $this->getInstitucion());
+        return Database::executeRow($sql, $params);
     }
 }
 ?>

@@ -30,6 +30,12 @@
   margin-bottom: 13px;
 }
 
+.picker__holder
+{
+  width: 34%;
+  height: 221%;
+  top: 300%;
+}
 
 /*css para el progress*/
 *, *:after, *:before {

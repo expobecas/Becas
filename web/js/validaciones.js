@@ -3,8 +3,12 @@ $(document).ready(function(){
     $('#salario').mask("#.##0,00", {reverse: true});
     $('#cuota_inte').mask("#.##0,00", {reverse: true});
     $('.gastos').mask("#.##0,00", {reverse: true});
+    $('#fijo').mask('00000000');
+    $('#padre').mask('00000000');
+    $('#madre').mask('00000000');
+    $('#hijo').mask('00000000');
 });
-
+//Para solo numeros telefonico
 function numeros(e){
         tecla = (document.all) ? e.keycode : e.which;
 

@@ -96,7 +96,9 @@ class Institucion_Proveniente extends Validator
     //Metodos para el manejo de SCRUD
     public function createInstitucion()
     {
-        $sql = "";
+        $sql = "INSERT INTO institucion_proveniente(nombre_institucion, lugar_institucion, cuota_pagada, año) VALUES(?, ?, ?, ?)";
+        $params = array($this->nombre_institucion, $this->lugar_institucion, $this->cuota_pagaba, $this->anio);
+        return Database::executeRow($sql, $params);
     }
 }
 ?>

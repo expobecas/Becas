@@ -1,7 +1,7 @@
 <?php
 class Component{
     public static function showSelect($label, $name, $value, $data){
-		print("<select name='$name' required>");
+		print("<select name='$name' >");
 		if($data){
 			if(!$value){
 				print("<option value='' disabled selected>Seleccione una opción</option>");

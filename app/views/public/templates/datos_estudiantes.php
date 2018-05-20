@@ -15,18 +15,18 @@
     </div>
 
     <div class="input-field col s12 m6 l3">
-        <select name="genero">
+        <!--<select name="genero">
             <option value="" disabled selected>Genero</option>
             <option value="1">Masculino</option>
             <option value="2">Femenino</option>
-        </select>
+        </select>-->
         <?php
-        Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
+            Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
         ?>
     </div>
 
     <div class="input-field col s12 m6 l3">   
-        <input id="religion" type="text" name="religion" class="validate">
+        <input id="religion" type="text" name="religion" class="validate" value='<?php print($solicitud->getReligion())?>' required/>
         <label for="religion">Religión</label>
     </div>
 
@@ -41,48 +41,48 @@
     </div>
 
     <div class="input-field col s12 m6 l3 ocultar" id="especificar_familia"> 
-        <input id="especificar_fam" type="text" name="especificar_fam" class="validate">
+        <input id="especificar_fam" type="text" name="especificar_fam" class="validate"/>
         <label for="especificar_fam">Especificar</label>
     </div>
 
     <div class="input-field col s12 m6 l6">   
-        <input id="direccion" type="text" name="direccion" class="validate">
+        <input id="direccion" type="text" name="direccion" class="validate" value='<?php print($solicitud->getDireccion())?>' required/>
         <label for="direccion">Dirección</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="fijo" type="text" name="fijo" class="validate" pattern="^[0-9]\d{7}$" maxlength="8" onKeypress="return numeros(event)"/>
+        <input id="fijo" type="text" name="fijo" class="validate" value='<?php print($solicitud->getTelFijo())?>' required/>
         <label for="fijo">Telefono fijo</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="padre" type="text" name="padre" class="validate "pattern="^[0-9]\d{7}$" maxlength="8" onKeypress="return numeros(event)"/>
+        <input id="padre" type="text" name="padre" class="validate" value='<?php print($solicitud->getCelPapa())?>'/>
         <label for="padre">Celular(padre)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="madre" type="text" name="madre" class="validate "pattern="^[0-9]\d{7}$" maxlength="8" onKeypress="return numeros(event)"/>
+        <input id="madre" type="text" name="madre" class="validate" value='<?php print($solicitud->getCelMama())?>'/>
         <label for="madre">Celular(madre)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="hijo" type="text" name="hijo" class="validate" pattern="^[0-9]\d{7}$" maxlength="8" onKeypress="return numeros(event)"/>
+        <input id="hijo" type="text" name="hijo" class="validate" value='<?php print($solicitud->getCelHijo())?>'/>
         <label for="hijo">Celular(hijo/a)</label>
     </div>
 
-    <div class="input-field col s12 m6 l6"> 
-        <input id="lugar" type="text" name="lugar" class="validate">
+    <!--<div class="input-field col s12 m6 l6"> 
+        <input id="lugar" type="text" name="lugar" class="validate" required/>
         <label for="lugar">Lugar de nacimiento</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pais" type="text" name="pais" class="validate">
+        <input id="pais" type="text" name="pais" class="validate" required/>
         <label for="pais">Pais de nacimiento</label>
-    </div>
+    </div>-->
 
     <div class="input-field col s12 m6 l3">
-        <input id="fecha_naci" type="date" name="fecha_naci" >
-        <label class="active" for="fecha_naci">Fecha de nacimiento</label>
+        <input id="fecha_naci" type="text" name="fecha_naci" class="datepicker" value='<?php print($solicitud->getFechaNacimiento())?>' required/>
+        <label class="" for="fecha_naci">Fecha de nacimiento</label>
     </div>
 
     <div class="input-field col s12 m6 l3">
@@ -101,31 +101,31 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="institucion_prov" type="text" name="institucion_prov" class="validate">
+        <input id="institucion_prov" type="text" name="institucion_prov" class="validate" value='<?php /*print($institucion_proveniente->getNombre())*/?>' required/>
         <label for="institucion_prov">Nombre de la institucion proveniente</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="departamento" type="text" name="departamento" class="validate">
+        <input id="departamento" type="text" name="departamento" class="validate" value='<?php /*print($institucion_proveniente->getLugar())*/?>' required/>
         <label for="departamento">Departamento</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pais" type="text" name="pais" class="validate">
+        <input id="pais" type="text" name="pais" class="validate" value='<?php /*print($institucion_proveniente->getLugar())*/?>' />
         <label for="pais">Pais</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="cuota" type="text" name="cuota" class="validate">
+        <input id="cuota" type="text" name="cuota" class="validate" value='<?php /*print($institucion_proveniente->getCuotaPagaba())*/?>' required/>
         <label for="cuota">Cuota que pagaba</label>
     </div>
 
     <div class="input-field col s12 m6 l3">
         <select id="año" name="año_realizaba">
             <option value="" disabled selected>Año que realizaba</option>
-            <option value="Noveno grado">Noveno</option>
-            <option value="Primero año">Primer año</option>
-            <option value="Segundo año">Segundo año</option>
+            <option value='Noveno grado'>Noveno</option>
+            <option value='Primero año'>Primer año</option>
+            <option value='Segundo año'>Segundo año</option>
         </select>
     </div>
 </div>

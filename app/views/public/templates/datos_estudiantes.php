@@ -56,14 +56,14 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="padre" type="text" name="padre" class="validate" value='<?php print($solicitud->getCelPapa())?>'/>
-        <label for="padre">Celular(padre)</label>
-    </div>
-
-    <div class="input-field col s12 m6 l3"> 
         <input id="madre" type="text" name="madre" class="validate" value='<?php print($solicitud->getCelMama())?>'/>
         <label for="madre">Celular(madre)</label>
     </div>
+
+    <div class="input-field col s12 m6 l3"> 
+        <input id="padre" type="text" name="padre" class="validate" value='<?php print($solicitud->getCelPapa())?>'/>
+        <label for="padre">Celular(padre)</label>
+    </div>    
 
     <div class="input-field col s12 m6 l3"> 
         <input id="hijo" type="text" name="hijo" class="validate" value='<?php print($solicitud->getCelHijo())?>'/>
@@ -82,7 +82,7 @@
 
     <div class="input-field col s12 m6 l3">
         <input id="fecha_naci" type="text" name="fecha_naci" class="datepicker" value='<?php print($solicitud->getFechaNacimiento())?>' required/>
-        <label class="" for="fecha_naci">Fecha de nacimiento</label>
+        <label for="fecha_naci">Fecha de nacimiento</label>
     </div>
 
     <div class="input-field col s12 m6 l3">

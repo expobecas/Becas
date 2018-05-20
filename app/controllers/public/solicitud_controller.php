@@ -72,24 +72,37 @@ try
 					{
 						if($solicitud->setTelFijo($_POST['fijo']))
 						{
-							if($solicitud->setCelMama($_POST['madre'])== null)
+							if($solicitud->setCelMama($_POST['madre']))
 							{
-								if($solicitud->setCelPapa($_POST['padre'])== null)
+								if($solicitud->setCelPapa($_POST['padre']))
 								{
-									if($solicitud->setCelHijo($_POST['hijo'])== null)
+									if($solicitud->setCelHijo($_POST['hijo']))
 									{
-										echo $_POST['fecha_naci'];
 										if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
 										{
 											if($solicitud->setEstudiosFinan($_POST['financiados']))
 											{
-												if($solicitud->createSolicitud())
+												$data = $solicitud->getInstitucion();
+												foreach($data as $row)
 												{
-													Page::showMessage(1, "solicitud agregada", "");
+													$Id = $row;
+													echo $Id;
+												}
+												
+												if($solicitud->setIdInstitucion($Id))
+												{
+													if($solicitud->createSolicitud())
+													{
+														Page::showMessage(1, "solicitud agregada", "");
+													}
+													else
+													{
+														throw new Exception(Database::getException());
+													}
 												}
 												else
 												{
-													throw new Exception(Database::getException());
+													throw new Exception("No hay institucion");
 												}
 											}
 											else
@@ -99,7 +112,7 @@ try
 										}
 										else
 										{
-											throw new Exception("Seleccion la fecha de nacimiento");
+											throw new Exception("Seleccione la fecha de nacimiento");
 										}
 									}
 									else

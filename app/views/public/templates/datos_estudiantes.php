@@ -15,11 +15,6 @@
     </div>
 
     <div class="input-field col s12 m6 l3">
-        <!--<select name="genero">
-            <option value="" disabled selected>Genero</option>
-            <option value="1">Masculino</option>
-            <option value="2">Femenino</option>
-        </select>-->
         <?php
             Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
         ?>
@@ -51,7 +46,7 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="fijo" type="text" name="fijo" class="validate" value='<?php print($solicitud->getTelFijo())?>' required/>
+        <input id="fijo" type="text" name="fijo" class="validate" value='<?php print($solicitud->getTelFijo())?>'/>
         <label for="fijo">Telefono fijo</label>
     </div>
 
@@ -70,15 +65,15 @@
         <label for="hijo">Celular(hijo/a)</label>
     </div>
 
-    <!--<div class="input-field col s12 m6 l6"> 
-        <input id="lugar" type="text" name="lugar" class="validate" required/>
+    <div class="input-field col s12 m6 l6"> 
+        <input id="lugar" type="text" name="lugar" class="validate" value='<?php print($solicitud->getLugarNacimiento())?>' required/>
         <label for="lugar">Lugar de nacimiento</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pais" type="text" name="pais" class="validate" required/>
-        <label for="pais">Pais de nacimiento</label>
-    </div>-->
+        <input id="pais_naci" type="text" name="pais_naci" class="validate" value='<?php print($solicitud->getPaisNacimiento())?>' required/>
+        <label for="pais_naci">Pais de nacimiento</label>
+    </div>
 
     <div class="input-field col s12 m6 l3">
         <input id="fecha_naci" type="text" name="fecha_naci" class="datepicker" value='<?php print($solicitud->getFechaNacimiento())?>' required/>

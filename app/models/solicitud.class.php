@@ -14,6 +14,8 @@ class Solicitud extends Validator
     private $cel_mama = null;
     private $cel_hijo = null;
     private $fecha_nacimiento = null;
+    private $lugar_nacimiento = null;
+    private $pais_nacimiento = null;
     private $estudios_finan = null;
     private $id_institucion_proveniente = null;
 
@@ -221,6 +223,40 @@ class Solicitud extends Validator
         return $this->fecha_nacimiento;
     }
 
+    public function setLugarNacimiento($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 25))
+        {
+            $this->lugar_nacimiento = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getLugarNacimiento()
+    {
+        return $this->lugar_nacimiento;
+    }
+
+    public function setPaisNacimiento($value)
+    {
+        if($this->validateAlphanumeric($value, 1, 25))
+        {
+            $this->pais_nacimiento = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getPaisNacimiento()
+    {
+        return $this->pais_nacimiento;
+    }
+
     public function setEstudiosFinan($value)
     {
         if($this->validateAlphanumeric($value, 1, 30))
@@ -274,8 +310,8 @@ class Solicitud extends Validator
 
     public function createSolicitud()
     {
-        $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, estudios_finan, id_institucion_proveniente) VALUES(1, ?, ?, ?, ?, 'dddd@gmial.com', ?, ?, ?, ?, ?, ?, ?) ";
-        $params = array($this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->estudios_finan, $this->id_institucion_proveniente);
+        $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, lugar_nacimiento, pais_nacimiento, estudios_finan, id_institucion_proveniente) VALUES(1, ?, ?, ?, ?, 'dddd@gmial.com', ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+        $params = array($this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->lugar_nacimiento, $this->pais_nacimiento, $this->estudios_finan, $this->id_institucion_proveniente);
         return Database::executeRow($sql, $params);
     }
 }

@@ -1,0 +1,103 @@
+/*CSS INGRESAR*/
+.ingresar_fondo{
+    position: absolute;
+    background-image: url("../../web/img/login/fondo.png");
+    width: 100%;
+    height: 100%;
+    
+}
+.ingresar_form{
+  text-align: center;
+}
+.ingresar{
+    background-color: #FF847C;
+    
+}
+.ingresar:hover{
+    background-color: rgb(255, 119, 109);
+}
+.cuadrado{
+    background-color: #ffffff;
+    height: 450px;
+    top: 90px;
+    border-radius: 3%;
+}
+.logo
+{
+    margin-top: 5%;
+}
+/*INDEX ALUMNO*/
+.side-nav{
+    background-color: #2A363B;
+}
+.user-view{
+    background-color: #E84A5F; 
+    height: 160px;
+}
+#barra{
+    position: relative;
+    background-color: #ffffff;
+
+}
+.fondo-general{
+    background-color: rgb(231, 238, 236);
+}
+.avisos{
+    background-color: #ffffff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+}
+.avisos:hover{
+    background-color: #ffffff;
+}
+.cajita1{
+    background-color: #ffffff;
+    height: 70px;
+    top: 90px;
+    width: 240px;
+    border-radius: 3%;
+    margin-left: 320px;
+}
+.cajita2{
+    background-color: #ffffff;
+    height: 70px;
+    width: 240px;
+    border-radius: 3%;
+    margin-left: 20px;
+}
+.cajita3{
+    background-color: #ffffff;
+    height: 70px;
+    width: 240px;
+    border-radius: 3%;
+    margin-left: 20px;
+}
+.cajita4{
+    background-color: #ffffff;
+    height: 70px;
+    width: 240px;
+    border-radius: 3%;
+    margin-left: 20px;
+}
+.date-1{
+    font-size: 45px;
+    margin-top: 10px;
+    color: #99B898;
+}
+.date-2{
+    font-size: 45px;
+    margin-top: 10px;
+    color: #FF847C;
+}
+.date-3{
+    font-size: 45px;
+    margin-top: 10px;
+    color: #FECEAB;
+}
+.date-4{
+    font-size: 45px;
+    margin-top: 10px;
+    color: #E84A5F;
+    
+}

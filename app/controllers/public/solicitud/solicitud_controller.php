@@ -70,117 +70,68 @@ try
 				{
 					if($solicitud->setDireccion($_POST['direccion']))
 					{
-						if($solicitud->setTelFijo($_POST['fijo']) || $solicitud->setTelFijo($_POST['fijo'] == NULL))
+						if($solicitud->setCorreo($_POST['correo']))
 						{
-							if($solicitud->setCelMama($_POST['madre']) || $solicitud->setCelMama($_POST['madre']) == NULL)
+							if($solicitud->setTelFijo($_POST['fijo']) || $solicitud->setCelMama($_POST['madre']) || $solicitud->setCelPapa($_POST['padre']) || $solicitud->setCelHijo($_POST['hijo']))
 							{
-								if($solicitud->setCelPapa($_POST['padre']) || $solicitud->setCelPapa($_POST['padre']) == NULL)
+								if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
 								{
-									if($solicitud->setCelHijo($_POST['hijo']) || $solicitud->setCelHijo($_POST['hijo']) == NULL)
+									if($solicitud->setLugarNacimiento($_POST['lugar']))
 									{
-										if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
+										if($solicitud->setPaisNacimiento($_POST['pais_naci']))
 										{
-											if($solicitud->setLugarNacimiento($_POST['lugar']))
+											if($solicitud->setEstudiosFinan($_POST['financiados']))
 											{
-												if($solicitud->setPaisNacimiento($_POST['pais_naci']))
+												$data = $solicitud->getInstitucion();
+												foreach($data as $row)
 												{
-													if($solicitud->setEstudiosFinan($_POST['financiados']))
+													$Id = $row;
+													echo $Id;
+												}														
+												if($solicitud->setIdInstitucion($Id))
+												{
+													if($solicitud->createSolicitud())
 													{
-														$data = $solicitud->getInstitucion();
-														foreach($data as $row)
-														{
-															$Id = $row;
-															echo $Id;
-														}														
-														if($solicitud->setIdInstitucion($Id))
-														{
-															if($_POST['fijo'] == NULL && $_POST['madre'] == NULL && $_POST['padre'] == NULL && $_POST['hijo'] == NULL)
-															{
-																throw new Exception("Ingresar por lo menos un número de telefono");
-															}
-															elseif($_POST['fijo'] != NULL)
-															{
-																if($_POST['fijo'] == $_POST['madre'] || $_POST['fijo'] == $_POST['padre'] || $_POST['fijo'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															elseif($_POST['madre'] != NULL)
-															{
-																if($_POST['madre'] == $_POST['fijo'] || $_POST['madre'] == $_POST['padre'] || $_POST['madre'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															/*elseif($_POST['padre'] != NULL)
-															{
-																if($_POST['padre'] == $_POST['fijo'] || $_POST['padre'] == $_POST['madre'] || $_POST['padre'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															elseif($_POST['hijo'] != NULL)
-															{
-																if($_POST['hijo'] == $_POST['fijo'] || $_POST['hijo'] == $_POST['padre'] || $_POST['hijo'] == $_POST['madre'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}*/
-															else
-															{
-																if($solicitud->createSolicitud())
-																{
-																	Page::showMessage(1, "solicitud agregada", "");
-																}
-																else
-																{
-																	throw new Exception(Database::getException());
-																}
-															}
-														}
-														else
-														{
-															throw new Exception("No hay institucion");
-														}
+														Page::showMessage(1, "solicitud agregada", "");
 													}
 													else
 													{
-														throw new Exception("Seleccione quien financia sus estudios");
+														throw new Exception(Database::getException());
 													}
 												}
 												else
 												{
-													throw new Exception("Ingrese el pais de nacimiento");
+													throw new Exception("No hay institucion");
 												}
 											}
 											else
 											{
-												throw new Exception("Ingrese el lugar de nacimiento");
-											}											
+												throw new Exception("Seleccione quien financia sus estudios");
+											}
 										}
 										else
 										{
-											throw new Exception("Seleccione la fecha de nacimiento");
+											throw new Exception("Ingrese el pais de nacimiento");
 										}
 									}
 									else
 									{
-										throw new Exception("Ingrese numero de telefono hijo");
-									}
+										throw new Exception("Ingrese el lugar de nacimiento");
+									}											
 								}
 								else
 								{
-									throw new Exception("Ingrese numero de telefono papa");
+									throw new Exception("Seleccione la fecha de nacimiento");
 								}
 							}
 							else
 							{
-								throw new Exception("Ingrese numero de telefono mama");
+								throw new Exception("Debe ingresar al menos un telefono");
 							}
 						}
 						else
 						{
-							throw new Exception("Ingrese numero de telefono fijo");
+							throw new Exception("Ingrese un correo electrónico");
 						}
 					}
 					else

@@ -120,7 +120,7 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="rentarenta" type="text" name="renta" class="gastos validate">
+        <input id="renta" type="text" name="renta" class="gastos validate">
         <label for="renta">Impuesto sobre la renta</label>
     </div>
 

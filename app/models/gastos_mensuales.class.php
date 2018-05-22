@@ -470,6 +470,15 @@ class Gastos_mensuales extends Validator
     {
         return $this->otros;
     }
+
+    //Metodos para el control del SCRUD
+    public function createGastos()
+    {
+        $sql = "INSERT INTO gastos_mensuales(alimentacion, pago_vivienda, energia electrica, agua, telefono, vigilancia, servicio_domestico, alcadia, pago_deudas, cotizacion, seguro_personal, seguro_vehiculo, seguro_inmuebles, transporte, gastos_man_vehiculo, salud, pagos_asociasiones, pago_colegiatura, pago_universidad, gastos_material_estudios, impuesto_renta, iva, tarjeta_credito, otros) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = array($this->alimentacion, $this->pago_vivienda, $this->energia_electrica, $this->agua, $this->telefono, $this->vigilancia, $this->servicio_domestico, $this->alcaldia, $this->pago_deudas, $this->cotizacion, $this->seguro_personal, $this->seguro_vehiculo, $this->seguro_inmuebles, $this->transporte, $this->gastos_man_vehiculo, $this->salud, $this->pago_colegiatura, $this->pago_universidad, $this->gastos_material_estudios, $this->impuesto_renta, $this->iva, $this->tarjeta_credito, $this->otros);
+        return Database::executeRow($sql, $params);
+    }
 }
 
 ?>

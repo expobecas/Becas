@@ -1,46 +1,46 @@
 <div class="row">
     <div class="input-field col s12 m6 l3"> 
-        <input id="alimentacion" type="text" name="alimentacion" class="gastos validate">
+        <input id="alimentacion" type="text" name="alimentacion" class="gastos validate" value='<?php print($gastos_mensuales->getAlimentacion())?>'>
         <label for="alimentacion">Alimentacion (Promedio)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="casa" type="text" name="casa" class="gastos validate">
+        <input id="casa" type="text" name="casa" class="gastos validate" value='<?php print($gastos_mensuales->getPagoVivienda())?>'>
         <label for="casa">Alquiler de casa o pago al Banco o el FSV</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="servicios" type="text" name="servicios" class="gastos validate">
+        <input id="servicios" type="text" name="servicios" class="gastos validate"//>
         <label for="servicios">Servicios generales(Total)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="energia_electrica" type="text" name="energia_electrica" class="gastos validate">
+        <input id="energia_electrica" type="text" name="energia_electrica" class="gastos validate" value='<?php print($gastos_mensuales->getEnergiaElectrica())?>'/>
         <label for="energia_electrica">Energia electrica</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="agua" type="text" name="agua" class="gastos validate">
+        <input id="agua" type="text" name="agua" class="gastos validate" value='<?php print($gastos_mensuales->getAgua())?>'/>
         <label for="agua">Agua</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="telefono" type="text" name="telefono" class="gastos validate">
+        <input id="telefono" type="text" name="telefono" class="gastos validate" value='<?php print($gastos_mensuales->getTelefono())?>'/>
         <label for="telefono">Teléfono</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="vigilancia" type="text" name="vigilancia" class="gastos validate">
+        <input id="vigilancia" type="text" name="vigilancia" class="gastos validate" value='<?php print($gastos_mensuales->getVigilancia())?>'/>
         <label for="vigilancia">Vigilancia</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="domesticos" type="text" name="domesticos" class="gastos validate">
+        <input id="domesticos" type="text" name="domesticos" class="gastos validate" value='<?php print($gastos_mensuales->getServicioDomestico())?>'/>
         <label for="domesticos">Servicios domésticos</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="alcaldia" type="text" name="alcaldia" class="gastos validate">
+        <input id="alcaldia" type="text" name="alcaldia" class="gastos validate" value='<?php print($gastos_mensuales->getAlcaldia())?>'/>
         <label for="alcaldia">Alcaldia</label>
     </div>
 

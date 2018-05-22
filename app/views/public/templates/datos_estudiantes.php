@@ -16,7 +16,7 @@
 
     <div class="input-field col s12 m6 l3">
         <?php
-            Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
+           Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
         ?>
     </div>
 

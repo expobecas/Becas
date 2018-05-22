@@ -58,7 +58,7 @@ try
 	
 
 	//Para llenar la tabla solicitud
-	$solicitud = new Solicitud;
+	/*$solicitud = new Solicitud;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $solicitud->validateForm($_POST);
@@ -153,7 +153,8 @@ try
 		{
 			throw new Exception("Seleccione un genero");
 		}
-	}
+	}*/
+	
 
 /*
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
@@ -172,12 +173,76 @@ try
     //para llenar la intermedia propiedad
     $intermedia_propiedad = new Intermedia_propiedad;
 
-
+*/
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla gastos mensuales
-    $gastos_mensuales = new Gastos_mensuales;
+	$gastos_mensuales = new Gastos_mensuales;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $gastos_mensuales->validateForm($_POST);
+		if($gastos_mensuales->setAlimentacion($_POST['alimentacion']))
+		{
+			if($gastos_mensuales->setPagoVivienda($_POST['casa']))
+			{
+				if($gastos_mensuales->setEnergiaElectrica($_POST['energia_electrica']))
+				{
+					if($gastos_mensuales->setAgua($_POST['agua']))
+					{
+						if($gastos_mensuales->setTelefono($_POST['telefono']))
+						{
+							if($gastos_mensuales->setVigilancia($_POST['vigilancia']))
+							{
+								if($gastos_mensuales->setServicioDomestico($_POST['domesticos']))
+								{
+									if($gastos_mensuales->setAlcaldia($_POST['alcaldia']))
+									{
+										$agua = $_POST['agua'];
+										$energia = $_POST['energia_electrica'];
+										$telefono = $_POST['telefono'];
+										$vigilancia = $_POST['vigilancia'];
+										$domesticos = $_POST['domesticos'];
+										$alcaldia = $_POST['alcaldia'];
+										$suma = (float)$agua + (float)$energia + (float)$telefono + (float)$vigilancia + (float)$domesticos + (float)$alcaldia;
+										echo $suma;
+										if($gastos_mensuales->setServicioDomestico($suma))
+										{
 
-    //Para llenar la tabla grupo familiar
+										}
+									}
+									else
+									{
+										throw new Exception("Ingrese el gasto mensual que paga a la alcaldia");
+									}
+								}
+							}							
+						}
+						else
+						{
+							throw new Exception("Ingrese el gasto de telefono(ultimo recibo)");
+						}
+					}
+					else
+					{
+						throw new Exception("Ingrese el gasto del servicio de agua(ultimo recibo)");
+					}
+				}
+				else
+				{
+					throw new Exception("Ingrese el gasto del servicio de energia electrica(ultimo recibo)");
+				}
+			}
+			else
+			{
+				throw new Exception("Ingrese el gasto del alquiler de casa o pago al boanco mensual");
+			}
+		}
+		else
+		{
+			throw new Exception("Ingrese el gasto de alimentacion mensual");
+		}
+	}
+
+  /*  //Para llenar la tabla grupo familiar
     $grupo_familiar = new Grupo_familiar;
 
     //Para llenar la tabla remesa familiar

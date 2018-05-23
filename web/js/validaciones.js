@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#cuota').mask("#.##0,00", {reverse: true});
     $('#salario').mask("#.##0,00", {reverse: true});
     $('#cuota_inte').mask("#.##0,00", {reverse: true});
-    $('.gastos').mask("#.##0.00", {reverse: true});
+    $('.gastos').mask("#.##0,00", {reverse: true});
     $('#fijo').mask('00000000');
     $('#padre').mask('00000000');
     $('#madre').mask('00000000');

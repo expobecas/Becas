@@ -180,33 +180,126 @@ try
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
-		if($gastos_mensuales->setAlimentacion($_POST['alimentacion']))
+		$alimentacion = str_replace(',', '.', str_replace('.', '', $_POST['alimentacion']));
+		echo $alimentacion;
+		if($gastos_mensuales->setAlimentacion($alimentacion))
 		{
-			if($gastos_mensuales->setPagoVivienda($_POST['casa']))
+			$casa = str_replace(',', '.', str_replace('.', '', $_POST['casa']));
+			if($gastos_mensuales->setPagoVivienda($casa))
 			{
-				if($gastos_mensuales->setEnergiaElectrica($_POST['energia_electrica']))
+				$energia_electrica = str_replace(',', '.', str_replace('.', '', $_POST['energia_electrica']));
+				if($gastos_mensuales->setEnergiaElectrica($energia_electrica))
 				{
-					if($gastos_mensuales->setAgua($_POST['agua']))
+					$agua = str_replace(',', '.', str_replace('.', '', $_POST['agua']));
+					if($gastos_mensuales->setAgua($agua))
 					{
-						if($gastos_mensuales->setTelefono($_POST['telefono']))
+						$telefono = str_replace(',', '.', str_replace('.', '', $_POST['telefono']));
+						if($gastos_mensuales->setTelefono($telefono))
 						{
-							if($gastos_mensuales->setVigilancia($_POST['vigilancia']))
+							$vigilancia = str_replace(',', '.', str_replace('.', '', $_POST['vigilancia']));
+							if($gastos_mensuales->setVigilancia($vigilancia))
 							{
-								if($gastos_mensuales->setServicioDomestico($_POST['domesticos']))
+								$domesticos = str_replace(',', '.', str_replace('.', '', $_POST['domesticos']));
+								if($gastos_mensuales->setServicioDomestico($domesticos))
 								{
-									if($gastos_mensuales->setAlcaldia($_POST['alcaldia']))
+									$alcaldia = str_replace(',', '.', str_replace('.', '', $_POST['alcaldia']));
+									if($gastos_mensuales->setAlcaldia($alcaldia))
 									{
-										$agua = $_POST['agua'];
-										$energia = $_POST['energia_electrica'];
-										$telefono = $_POST['telefono'];
-										$vigilancia = $_POST['vigilancia'];
-										$domesticos = $_POST['domesticos'];
-										$alcaldia = $_POST['alcaldia'];
-										$suma = (float)$agua + (float)$energia + (float)$telefono + (float)$vigilancia + (float)$domesticos + (float)$alcaldia;
-										echo $suma;
-										if($gastos_mensuales->setServicioDomestico($suma))
+										$pago_deudas = str_replace(',', '.', str_replace('.', '', $_POST['pago_deudas']));
+										if($gastos_mensuales->setPagoDeudas($pago_deudas))
 										{
-
+											$cotizaciones = str_replace(',', '.', str_replace('.', '', $_POST['cotizaciones']));
+											if($gastos_mensuales->setCotizacion($cotizaciones))
+											{
+												$seguro_personal = str_replace(',', '.', str_replace('.', '', $_POST['seguro_personal']));
+												if($gastos_mensuales->setSeguroPersonal($seguro_personal))
+												{
+													$seguro_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['seguro_vehiculo']));
+													if($gastos_mensuales->setSeguroVehiculo($seguro_vehiculo))
+													{
+														$seguro_inmuebles = str_replace(',', '.', str_replace('.', '', $_POST['seguro_inmuebles']));
+														if($gastos_mensuales->setSeguroInmuebles($seguro_inmuebles))
+														{
+															$transporte = str_replace(',', '.', str_replace('.', '', $_POST['transporte']));
+															if($gastos_mensuales->setTransporte($transporte))
+															{
+																$mant_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['mant_vehiculo']));
+																if($gastos_mensuales->setGastosManteVehiculo($mant_vehiculo))
+																{
+																	$salud = str_replace(',', '.', str_replace('.', '', $_POST['salud']));
+																	if($gastos_mensuales->setSalud($salud))
+																	{
+																		$pago_asociaciones = str_replace(',', '.', str_replace('.', '', $_POST['pago_asociaciones']));
+																		if($gastos_mensuales->setPagosAsociasiones($pago_asociaciones))
+																		{
+																			$pago_colegiatura = str_replace(',', '.', str_replace('.', '', $_POST['pago_colegiatura']));
+																			if($gastos_mensuales->setPagoColegiatura($pago_colegiatura))
+																			{
+																				$pago_universitarios = str_replace(',', '.', str_replace('.', '', $_POST['pago_universitarios']));
+																				if($gastos_mensuales->setPagoUniversidad($pago_universitarios))
+																				{
+																					$materiales = str_replace(',', '.', str_replace('.', '', $_POST['materiales']));
+																					if($gastos_mensuales->setGastosMaterialEstudios($materiales))
+																					{
+																						$renta = str_replace(',', '.', str_replace('.', '', $_POST['renta']));
+																						if($gastos_mensuales->setImpuestoRenta($renta))
+																						{
+																							$iva = str_replace(',', '.', str_replace('.', '', $_POST['iva']));
+																							if($gastos_mensuales->setIva($iva))
+																							{
+																								$tarjetas_credito = str_replace(',', '.', str_replace('.', '', $_POST['tarjetas_credito']));
+																								if($gastos_mensuales->setTarjetaCredito($tarjetas_credito))
+																								{
+																									$otros_gastos = str_replace(',', '.', str_replace('.', '', $_POST['otros_gastos']));
+																									if($gastos_mensuales->setOtros($otros_gastos))
+																									{
+																										if($gastos_mensuales->createGastos())
+																										{
+																											Page::showMessage(1, "Los gastos se han guardado", "");
+																										}
+																										else
+																										{
+																											throw new Exception(Database::getException());
+																										}
+																									}
+																								}
+																							}
+																							else
+																							{
+																								throw new Exception("Ingrese El iva");
+																							}
+																						}
+																						else
+																						{
+																							throw new Exception("Ingrese la cantidad del impuesto sobre la renta");
+																						}
+																					}
+																					else
+																					{
+																						throw new Exception("Ingrese el gasto de materiales de los estudios");
+																					}
+																				}
+																			}
+																		}
+																	}
+																	else
+																	{
+																		throw new Exception("Ingrese el gasto mensual de salud e higiene");
+																	}
+																}
+															}
+															else
+															{
+																throw new Exception("Ingrese el gasto de bus/taxi en el caso que obtenga vehiculo el gasto de la gasolina");
+															}
+														}
+													}
+												}
+											}
+											else
+											{
+												throw new Exception("Ingrese las cotizaciones que tiene ya sea hacia el ISSS o la AFP");
+											}
 										}
 									}
 									else

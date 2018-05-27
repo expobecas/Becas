@@ -2,6 +2,7 @@ $(document).ready(function() {
     $('select').material_select();
   });
 
+
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -16,21 +17,21 @@ $(document).ready(function() {
 
   /*Para ingresar datos a una tabla  */
   function agregar(){
-    var nombre = document.getElementById("nombres_inte").value;
-    var apellido = document.getElementById("apellidos_inte").value;
-    var parentesco = document.getElementById("parentesco").value;
-    var fecha_naci = document.getElementById("fecha_naci_inte").value;
-    var profesion = document.getElementById("profesion").value;
-    var lugar_trab = document.getElementById("lugar_trabajo").value;
-    var tel_trab = document.getElementById("tel_trabajo").value;
-    var salario = document.getElementById("salario").value;
-    var depende = document.getElementById("depende").value;
-    var grado = document.getElementById("grado").value;
-    var institucion = document.getElementById("institucion").value;
-    var cuota = document.getElementById("cuota_inte").value;
+    var $nombre = document.getElementById("nombres_inte").value;
+    var $apellido = document.getElementById("apellidos_inte").value;
+    var $parentesco = document.getElementById("parentesco").value;
+    var $fecha_naci = document.getElementById("fecha_naci_inte").value;
+    var $profesion = document.getElementById("profesion").value;
+    var $lugar_trab = document.getElementById("lugar_trabajo").value;
+    var $tel_trab = document.getElementById("tel_trabajo").value;
+    var $salario = document.getElementById("salario").value;
+    var $depende = document.getElementById("depende").value;
+    var $grado = document.getElementById("grado").value;
+    var $institucion = document.getElementById("institucion").value;
+    var $cuota = document.getElementById("cuota_inte").value;
 
-    var fila = "<tr><td>"+nombre+"</td><td>"+apellido+"</td><td>"+parentesco+"</td><td>"+fecha_naci+"</td><td>"+profesion+"</td><td>"
-    +lugar_trab+"</td><td>"+tel_trab+"</td><td>"+salario+"</td><td>"+grado+"</td><td>"+institucion+"</td><td>"+cuota+"</td></tr>";
+    var fila = "<tr><td name='nombre'>"+$nombre+"</td><td name='apellido'>"+$apellido+"</td><td name='parentesco'>"+$parentesco+"</td><td name='fecha_nacimiento'>"+$fecha_naci+"</td><td name='profesion'>"+$profesion+"</td><td name='lugar_trabajo'>"
+    +$lugar_trab+"</td><td name='tel_trab'>"+$tel_trab+"</td><td name='salario'>"+$salario+"</td><td name='grado'>"+$grado+"</td><td name='institucion'>"+$institucion+"</td><td name='cuota'>"+$cuota+"</td></tr>";
 
     var btn = document.createElement("TR");
     btn.innerHTML=fila;
@@ -269,6 +270,7 @@ $secondButton.on('click', function(e){
 
 
 
+
 /*Ayuda para el progress circle y slider forms */
 
 /*$firstButton.on("click", function(e){
@@ -326,4 +328,3 @@ $secondButton.on("click", function(e){
   //}
   //clearInterval(time);
 //};
-

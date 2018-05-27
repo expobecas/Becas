@@ -148,6 +148,14 @@ class Propiedad extends Validator
 		}else{
 			return false;
 		}
-	}
+    }
+    
+    //Metodos para el mantenimiento SCRUD
+    public function createPropiedad()
+    {
+        $sql = "INSERT INTO propiedad()";
+        $params = array();
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>

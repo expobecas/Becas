@@ -7,7 +7,6 @@ class Grupo_Familiar extends Validator
     private $id_gastos = null;
     private $total_gastos = null;
     private $id_solicitud = null;
-    private $id_remesa = null;
     private $monto_deuda = null;
 
     public function setIdFamilia($value)
@@ -95,23 +94,6 @@ class Grupo_Familiar extends Validator
         return $this->id_solicitud;
     }
 
-    public function setIdRemesa($value)
-    {
-        if($this->validateId($value))
-        {
-            $this->id_remesa = $value;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public function getIdRemesa()
-    {
-        return $this->id_remesa;
-    }
-
     public function setMontoDeuda($value)
     {
         if($this->validateMoney($value))
@@ -127,6 +109,29 @@ class Grupo_Familiar extends Validator
     public function getMontoDeuda()
     {
         return $this->monto_deuda;
+    }
+
+
+    public function getIngreso()
+    {
+        $sql = "";
+        $params = array(null);
+        return Database::getRow($sql, $params);
+    }
+    public function getGastos()
+    {
+        $sql = "SELECT SUM(alimentacion + pago_vivienda + energia_electrica + agua + telefono + COALESCE(vigilancia, 0) + COALESCE( servicio_domestico, 0) + alcadia + pago_deudas + cotizacion + seguro_personal + COALESCE(seguro_vehiculo, 0) + COALESCE(seguro_inmuebles, 0) + transporte + COALESCE(gastos_man_vehiculo, 0) + salud + COALESCE(pagos_asociasiones, 0) + pago_colegiatura + COALESCE(pago_universidad, 0) + gastos_material_estudios + impuesto_renta + iva + tarjeta_credito + COALESCE(otros, 0)) AS Total FROM gastos_mensuales WHERE id_gastos = 1";
+        $params = array();
+        return Database::getRow($sql, $params);
+    }
+
+    //Metodos para el SCRUD
+    
+    public function createFamilia()
+    {
+        $sql = "";
+        $params = array();
+        return Database::executeRow($sql, $params);
     }
 }
 ?>

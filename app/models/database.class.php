@@ -11,7 +11,7 @@ class Database
         $server = "localhost";
         $database = "dbecas";
         $username = "Expo_becas";
-        $password = "becasricaldone";
+        $password = "becasricaldone" ;
         try
         {
             @self::$connection = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $username, $password);

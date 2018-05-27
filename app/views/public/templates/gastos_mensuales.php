@@ -1,4 +1,27 @@
 <div class="row">
+    
+    <div class="col s12 m12 l12">
+        <h6>En el caso que reciba remesas familiares, llenar los siguientes campos</h6>
+    </div>
+
+    <div class="input-field col s12 m4 l4"> 
+        <input id="monto" type="text" name="monto" class="validate">
+        <label for="monto">Monto de remesa</label>
+    </div>
+
+     <div class="input-field col s12 m4 l4"> 
+        <input id="periodo" type="text" name="periodo" class="validate">
+        <label for="periodo">Periodo en el que lo recibe</label>
+    </div>
+
+    <div class="input-field col s12 m4 l4"> 
+        <input id="benecfactor" type="text" name="benecfactor" class="validate">
+        <label for="benecfactor">Quien lo envia(parentesco)</label>
+    </div>
+
+</div>
+
+<div class="row">
     <div class="input-field col s12 m6 l3"> 
         <input id="alimentacion" type="text" name="alimentacion" class="gastos validate" value='<?php print($gastos_mensuales->getAlimentacion())?>'>
         <label for="alimentacion">Alimentacion (Promedio)</label>

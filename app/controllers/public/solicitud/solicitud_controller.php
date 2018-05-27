@@ -58,8 +58,8 @@ try
 	
 
 	//Para llenar la tabla solicitud
-	/*$solicitud = new Solicitud;
-	if(isset($_POST['enviar']))
+	$solicitud = new Solicitud;
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $solicitud->validateForm($_POST);
 		if($solicitud->setIdGenero($_POST['genero']))
@@ -72,7 +72,24 @@ try
 					{
 						if($solicitud->setCorreo($_POST['correo']))
 						{
-							if($solicitud->setTelFijo($_POST['fijo']) || $solicitud->setCelMama($_POST['madre']) || $solicitud->setCelPapa($_POST['padre']) || $solicitud->setCelHijo($_POST['hijo']))
+							$errorTelefono = false;
+							if($solicitud->setTelFijo($_POST['fijo']))
+							{
+								$errorTelefono = true;
+							}
+							if($solicitud->setCelMama($_POST['madre']))
+							{
+								$errorTelefono = true;
+							}
+							if($solicitud->setCelPapa($_POST['padre']))
+							{
+								$errorTelefono = true;
+							}
+							if($solicitud->setCelHijo($_POST['hijo']))
+							{
+								$errorTelefono = true;
+							}
+							if($errorTelefono)
 							{
 								if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
 								{
@@ -126,7 +143,7 @@ try
 							}
 							else
 							{
-								throw new Exception("Debe ingresar al menos un telefono");
+								throw new Exception("Ingrese al menos un número telefónico");
 							}
 						}
 						else
@@ -153,35 +170,64 @@ try
 		{
 			throw new Exception("Seleccione un genero");
 		}
-	}*/
+	}
 	
 
-/*
-    //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
-    //Para llenar la tabla integrantes
-    $integrante = new Integrante_familia;
 
-    //Para llenar la tabla familiares estudiante
+    //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
+    //Para llenar la tabla integrantes*/
+	
+	if(isset($_POST['enviar']))
+	{
+		
+	}
+	
+
+   /* //Para llenar la tabla familiares estudiante
     $familiares_estudiante = new Familiares_estudiante;
 
     //Para llenar la tabla imagenes_vehiculo
-    $imagenes_vehiculo = new Imagenes_vehiculo;
+	$imagenes_vehiculo = new Imagenes_vehiculo;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $imagenes_vehiculo->validateForm($_POST['']);
+		if($imagenes_vehiculo->setImagenVehiculo())
+		{
+			if($imagenes_vehiculo->setIdPropiedad($_POST['']))
+			{
+				if($imagenes_vehiculo->createImagenVehiculo())
+				{
+					Page::showMessage(1, "Imagen agregada", "");
+				}
+				else
+				{
+					throw new Exception(Database::getException());
+				}
+			}
+		}
+		else
+		{
+			throw new Exception("Agrege una imagen de su vehiculo");
+		}
+	}
 
     //Para llenar la tabla propiedad
-    $propiedad = new Propiedad;
+	$propiedad = new Propiedad;
+	
 
     //para llenar la intermedia propiedad
     $intermedia_propiedad = new Intermedia_propiedad;
 
-*/
+
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
-    //Para llenar la tabla gastos mensuales
+	//Para llenar la tabla gastos mensuales
+	*/
 	$gastos_mensuales = new Gastos_mensuales;
+	/*
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
 		$alimentacion = str_replace(',', '.', str_replace('.', '', $_POST['alimentacion']));
-		echo $alimentacion;
 		if($gastos_mensuales->setAlimentacion($alimentacion))
 		{
 			$casa = str_replace(',', '.', str_replace('.', '', $_POST['casa']));
@@ -335,8 +381,13 @@ try
 		}
 	}
 
-  /*  //Para llenar la tabla grupo familiar
-    $grupo_familiar = new Grupo_familiar;
+    /* //Para llenar la tabla grupo familiar
+	$grupo_familiar = new Grupo_familiar;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $grupo_familiar->validateForm($_POST);
+		if($grupo_familiar->setIngresoFamiliar()){}
+	}
 
     //Para llenar la tabla remesa familiar
     $remesa_familiar = new Remesa_familiar;*/

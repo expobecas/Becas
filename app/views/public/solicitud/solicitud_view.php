@@ -24,9 +24,9 @@
                 <div class="slider-form slider-one">
                     <h2>Datos del estudiante</h2>
                     <?php
-                    //include_once("../../app/views/public/templates/datos_estudiantes.php");
+                    include_once("../../app/views/public/templates/datos_estudiantes.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue first" id="margen_one">Siguiente</a>
+                    <a class="waves-effect waves-light btn blue first margen_one">Siguiente</a>
                 </div>
 
                 <!--Formulario 2, slider 2, Datos de la familia -->
@@ -35,18 +35,18 @@
                     <?php
                     include_once("../../app/views/public/templates/datos_familia.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue regresaruno" id="margen_second">Regresar</a>
-                    <a class="waves-effect waves-light btn blue second" id="margen_second">Siguiente</a>
+                    <a class="waves-effect waves-light btn blue regresaruno margen_second">Regresar</a>
+                    <a class="waves-effect waves-light btn blue second margen_second">Siguiente</a>
                 </div>
 
                 <!--Formulario 3, slider 3, Gastos mensuales-->
                 <div class="slider-form slider-three ">
-                    <h2>Gastos mensuales</h2>
+                    <h2>Gastos mensuales y remesas</h2>
                     <?php
                     include_once("../../app/views/public/templates/gastos_mensuales.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue regresardos" id="margen_three">Regresar</a>
-                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue three next" id="margen_three">Finalizar</button>
+                    <a class="waves-effect waves-light btn blue regresardos margen_three">Regresar</a>
+                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue three next margen_three">Finalizar</button>
                 </div>
             </form>
         </div>

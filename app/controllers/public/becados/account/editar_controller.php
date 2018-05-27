@@ -15,7 +15,7 @@ try{
                                         if($estudiantes->updatePerfil()){
                                             Page::showMessage(1, "Perfil modificado", "../../../public/becados/index/becado.php");
                                         }else{
-                                            throw new Exception("MATATE :)");
+                                            throw new Exception(Database::getException());
                                         }
                                     }else{
                                         throw new Exception("Usuario invalido");

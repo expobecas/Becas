@@ -156,20 +156,23 @@ class Estudiantes extends Validator{
         return Database::getRows($sql, $params);
     }
     public function updatePerfil(){
-        $sql = "UPDATE estudiantes SET primer_nombre = ?, segundo_nombre = ?, primer_apellido = ?, segundo_apellido = ?, usuario = ? WHERE id_estudiante = ?";
-        $params = array($this->nombre1, $this->nombre2, $this->apellido1. $this->apellido2, $this->usuario, $this->id);
+        $sql = "UPDATE estudiantes SET usuario = ? WHERE id_estudiante = ?";
+        $params = array($this->usuario, $this->id);
         return Database::executeRow($sql, $params);
     }
     public function readPerfil(){
-        $sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario FROM estudiantes WHERE id_estudiante = ?";
+        $sql = "SELECT id_estudiante, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
         $params = array($this->id);
-        $perfil = Database::getRow($sql, $params);
-        if($perfil){
-            $this->nombre1 = $perfil['primer_nombre'];
-            $this->nombre2 = $perfil['segundo_nombre'];
-            $this->apellido1 = $perfil['primer_apellido'];
-            $this->apellido2 = $perfil['segundo_apellido'];
-            $this->usuario = $perfil['usuario'];
+        $estudiantes = Database::getRow($sql, $params);
+        if($estudiantes){
+            $this->nombre1 = $estudiantes['primer_nombre'];
+            $this->nombre2 = $estudiantes['segundo_nombre'];
+            $this->apellido1 = $estudiantes['primer_apellido'];
+            $this->apellido2 = $estudiantes['segundo_apellido'];
+            $this->usuario = $estudiantes['usuario'];
+            $this->num_carnet = $estudiantes['n_carnet'];
+            $this->grado = $estudiantes['grado'];
+            $this->especialidad = $estudiantes['especialidad'];
             return true;
         }else{
             return false;

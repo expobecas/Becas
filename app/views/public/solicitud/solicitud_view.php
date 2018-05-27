@@ -24,7 +24,7 @@
                 <div class="slider-form slider-one">
                     <h2>Datos del estudiante</h2>
                     <?php
-                    include_once("../../app/views/public/templates/datos_estudiantes.php");
+                    //include_once("../../app/views/public/templates/datos_estudiantes.php");
                     ?>
                     <a class="waves-effect waves-light btn blue first" id="margen_one">Siguiente</a>
                 </div>

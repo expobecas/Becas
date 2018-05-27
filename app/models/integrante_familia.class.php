@@ -182,5 +182,13 @@ class Integrante_familia extends Validator
     {
         return $this->id_solicitud;
     }
+
+    //Metodos para el control del SCRUD
+    public function createIntegrante()
+    {
+        $sql = "";
+        $params = array();
+        return Database::executeRow($sql, $params );
+    }
 }
 ?>

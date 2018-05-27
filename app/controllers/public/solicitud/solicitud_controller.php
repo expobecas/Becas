@@ -58,7 +58,7 @@ try
 	
 
 	//Para llenar la tabla solicitud
-	$solicitud = new Solicitud;
+	/*$solicitud = new Solicitud;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $solicitud->validateForm($_POST);
@@ -70,117 +70,68 @@ try
 				{
 					if($solicitud->setDireccion($_POST['direccion']))
 					{
-						if($solicitud->setTelFijo($_POST['fijo']) || $solicitud->setTelFijo($_POST['fijo'] == NULL))
+						if($solicitud->setCorreo($_POST['correo']))
 						{
-							if($solicitud->setCelMama($_POST['madre']) || $solicitud->setCelMama($_POST['madre']) == NULL)
+							if($solicitud->setTelFijo($_POST['fijo']) || $solicitud->setCelMama($_POST['madre']) || $solicitud->setCelPapa($_POST['padre']) || $solicitud->setCelHijo($_POST['hijo']))
 							{
-								if($solicitud->setCelPapa($_POST['padre']) || $solicitud->setCelPapa($_POST['padre']) == NULL)
+								if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
 								{
-									if($solicitud->setCelHijo($_POST['hijo']) || $solicitud->setCelHijo($_POST['hijo']) == NULL)
+									if($solicitud->setLugarNacimiento($_POST['lugar']))
 									{
-										if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
+										if($solicitud->setPaisNacimiento($_POST['pais_naci']))
 										{
-											if($solicitud->setLugarNacimiento($_POST['lugar']))
+											if($solicitud->setEstudiosFinan($_POST['financiados']))
 											{
-												if($solicitud->setPaisNacimiento($_POST['pais_naci']))
+												$data = $solicitud->getInstitucion();
+												foreach($data as $row)
 												{
-													if($solicitud->setEstudiosFinan($_POST['financiados']))
+													$Id = $row;
+													echo $Id;
+												}														
+												if($solicitud->setIdInstitucion($Id))
+												{
+													if($solicitud->createSolicitud())
 													{
-														$data = $solicitud->getInstitucion();
-														foreach($data as $row)
-														{
-															$Id = $row;
-															echo $Id;
-														}														
-														if($solicitud->setIdInstitucion($Id))
-														{
-															if($_POST['fijo'] == NULL && $_POST['madre'] == NULL && $_POST['padre'] == NULL && $_POST['hijo'] == NULL)
-															{
-																throw new Exception("Ingresar por lo menos un número de telefono");
-															}
-															elseif($_POST['fijo'] != NULL)
-															{
-																if($_POST['fijo'] == $_POST['madre'] || $_POST['fijo'] == $_POST['padre'] || $_POST['fijo'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															elseif($_POST['madre'] != NULL)
-															{
-																if($_POST['madre'] == $_POST['fijo'] || $_POST['madre'] == $_POST['padre'] || $_POST['madre'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															/*elseif($_POST['padre'] != NULL)
-															{
-																if($_POST['padre'] == $_POST['fijo'] || $_POST['padre'] == $_POST['madre'] || $_POST['padre'] == $_POST['hijo'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}
-															elseif($_POST['hijo'] != NULL)
-															{
-																if($_POST['hijo'] == $_POST['fijo'] || $_POST['hijo'] == $_POST['padre'] || $_POST['hijo'] == $_POST['madre'])
-																{
-																	throw new Exception("Los números de telefono no deben de ser iguales");
-																}
-															}*/
-															else
-															{
-																if($solicitud->createSolicitud())
-																{
-																	Page::showMessage(1, "solicitud agregada", "");
-																}
-																else
-																{
-																	throw new Exception(Database::getException());
-																}
-															}
-														}
-														else
-														{
-															throw new Exception("No hay institucion");
-														}
+														Page::showMessage(1, "solicitud agregada", "");
 													}
 													else
 													{
-														throw new Exception("Seleccione quien financia sus estudios");
+														throw new Exception(Database::getException());
 													}
 												}
 												else
 												{
-													throw new Exception("Ingrese el pais de nacimiento");
+													throw new Exception("No hay institucion");
 												}
 											}
 											else
 											{
-												throw new Exception("Ingrese el lugar de nacimiento");
-											}											
+												throw new Exception("Seleccione quien financia sus estudios");
+											}
 										}
 										else
 										{
-											throw new Exception("Seleccione la fecha de nacimiento");
+											throw new Exception("Ingrese el pais de nacimiento");
 										}
 									}
 									else
 									{
-										throw new Exception("Ingrese numero de telefono hijo");
-									}
+										throw new Exception("Ingrese el lugar de nacimiento");
+									}											
 								}
 								else
 								{
-									throw new Exception("Ingrese numero de telefono papa");
+									throw new Exception("Seleccione la fecha de nacimiento");
 								}
 							}
 							else
 							{
-								throw new Exception("Ingrese numero de telefono mama");
+								throw new Exception("Debe ingresar al menos un telefono");
 							}
 						}
 						else
 						{
-							throw new Exception("Ingrese numero de telefono fijo");
+							throw new Exception("Ingrese un correo electrónico");
 						}
 					}
 					else
@@ -202,7 +153,8 @@ try
 		{
 			throw new Exception("Seleccione un genero");
 		}
-	}
+	}*/
+	
 
 /*
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
@@ -221,12 +173,169 @@ try
     //para llenar la intermedia propiedad
     $intermedia_propiedad = new Intermedia_propiedad;
 
-
+*/
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla gastos mensuales
-    $gastos_mensuales = new Gastos_mensuales;
+	$gastos_mensuales = new Gastos_mensuales;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $gastos_mensuales->validateForm($_POST);
+		$alimentacion = str_replace(',', '.', str_replace('.', '', $_POST['alimentacion']));
+		echo $alimentacion;
+		if($gastos_mensuales->setAlimentacion($alimentacion))
+		{
+			$casa = str_replace(',', '.', str_replace('.', '', $_POST['casa']));
+			if($gastos_mensuales->setPagoVivienda($casa))
+			{
+				$energia_electrica = str_replace(',', '.', str_replace('.', '', $_POST['energia_electrica']));
+				if($gastos_mensuales->setEnergiaElectrica($energia_electrica))
+				{
+					$agua = str_replace(',', '.', str_replace('.', '', $_POST['agua']));
+					if($gastos_mensuales->setAgua($agua))
+					{
+						$telefono = str_replace(',', '.', str_replace('.', '', $_POST['telefono']));
+						if($gastos_mensuales->setTelefono($telefono))
+						{
+							$vigilancia = str_replace(',', '.', str_replace('.', '', $_POST['vigilancia']));
+							if($gastos_mensuales->setVigilancia($vigilancia))
+							{
+								$domesticos = str_replace(',', '.', str_replace('.', '', $_POST['domesticos']));
+								if($gastos_mensuales->setServicioDomestico($domesticos))
+								{
+									$alcaldia = str_replace(',', '.', str_replace('.', '', $_POST['alcaldia']));
+									if($gastos_mensuales->setAlcaldia($alcaldia))
+									{
+										$pago_deudas = str_replace(',', '.', str_replace('.', '', $_POST['pago_deudas']));
+										if($gastos_mensuales->setPagoDeudas($pago_deudas))
+										{
+											$cotizaciones = str_replace(',', '.', str_replace('.', '', $_POST['cotizaciones']));
+											if($gastos_mensuales->setCotizacion($cotizaciones))
+											{
+												$seguro_personal = str_replace(',', '.', str_replace('.', '', $_POST['seguro_personal']));
+												if($gastos_mensuales->setSeguroPersonal($seguro_personal))
+												{
+													$seguro_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['seguro_vehiculo']));
+													if($gastos_mensuales->setSeguroVehiculo($seguro_vehiculo))
+													{
+														$seguro_inmuebles = str_replace(',', '.', str_replace('.', '', $_POST['seguro_inmuebles']));
+														if($gastos_mensuales->setSeguroInmuebles($seguro_inmuebles))
+														{
+															$transporte = str_replace(',', '.', str_replace('.', '', $_POST['transporte']));
+															if($gastos_mensuales->setTransporte($transporte))
+															{
+																$mant_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['mant_vehiculo']));
+																if($gastos_mensuales->setGastosManteVehiculo($mant_vehiculo))
+																{
+																	$salud = str_replace(',', '.', str_replace('.', '', $_POST['salud']));
+																	if($gastos_mensuales->setSalud($salud))
+																	{
+																		$pago_asociaciones = str_replace(',', '.', str_replace('.', '', $_POST['pago_asociaciones']));
+																		if($gastos_mensuales->setPagosAsociasiones($pago_asociaciones))
+																		{
+																			$pago_colegiatura = str_replace(',', '.', str_replace('.', '', $_POST['pago_colegiatura']));
+																			if($gastos_mensuales->setPagoColegiatura($pago_colegiatura))
+																			{
+																				$pago_universitarios = str_replace(',', '.', str_replace('.', '', $_POST['pago_universitarios']));
+																				if($gastos_mensuales->setPagoUniversidad($pago_universitarios))
+																				{
+																					$materiales = str_replace(',', '.', str_replace('.', '', $_POST['materiales']));
+																					if($gastos_mensuales->setGastosMaterialEstudios($materiales))
+																					{
+																						$renta = str_replace(',', '.', str_replace('.', '', $_POST['renta']));
+																						if($gastos_mensuales->setImpuestoRenta($renta))
+																						{
+																							$iva = str_replace(',', '.', str_replace('.', '', $_POST['iva']));
+																							if($gastos_mensuales->setIva($iva))
+																							{
+																								$tarjetas_credito = str_replace(',', '.', str_replace('.', '', $_POST['tarjetas_credito']));
+																								if($gastos_mensuales->setTarjetaCredito($tarjetas_credito))
+																								{
+																									$otros_gastos = str_replace(',', '.', str_replace('.', '', $_POST['otros_gastos']));
+																									if($gastos_mensuales->setOtros($otros_gastos))
+																									{
+																										if($gastos_mensuales->createGastos())
+																										{
+																											Page::showMessage(1, "Los gastos se han guardado", "");
+																										}
+																										else
+																										{
+																											throw new Exception(Database::getException());
+																										}
+																									}
+																								}
+																							}
+																							else
+																							{
+																								throw new Exception("Ingrese El iva");
+																							}
+																						}
+																						else
+																						{
+																							throw new Exception("Ingrese la cantidad del impuesto sobre la renta");
+																						}
+																					}
+																					else
+																					{
+																						throw new Exception("Ingrese el gasto de materiales de los estudios");
+																					}
+																				}
+																			}
+																		}
+																	}
+																	else
+																	{
+																		throw new Exception("Ingrese el gasto mensual de salud e higiene");
+																	}
+																}
+															}
+															else
+															{
+																throw new Exception("Ingrese el gasto de bus/taxi en el caso que obtenga vehiculo el gasto de la gasolina");
+															}
+														}
+													}
+												}
+											}
+											else
+											{
+												throw new Exception("Ingrese las cotizaciones que tiene ya sea hacia el ISSS o la AFP");
+											}
+										}
+									}
+									else
+									{
+										throw new Exception("Ingrese el gasto mensual que paga a la alcaldia");
+									}
+								}
+							}							
+						}
+						else
+						{
+							throw new Exception("Ingrese el gasto de telefono(ultimo recibo)");
+						}
+					}
+					else
+					{
+						throw new Exception("Ingrese el gasto del servicio de agua(ultimo recibo)");
+					}
+				}
+				else
+				{
+					throw new Exception("Ingrese el gasto del servicio de energia electrica(ultimo recibo)");
+				}
+			}
+			else
+			{
+				throw new Exception("Ingrese el gasto del alquiler de casa o pago al boanco mensual");
+			}
+		}
+		else
+		{
+			throw new Exception("Ingrese el gasto de alimentacion mensual");
+		}
+	}
 
-    //Para llenar la tabla grupo familiar
+  /*  //Para llenar la tabla grupo familiar
     $grupo_familiar = new Grupo_familiar;
 
     //Para llenar la tabla remesa familiar

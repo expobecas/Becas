@@ -16,7 +16,7 @@
 
     <div class="input-field col s12 m6 l3">
         <?php
-            Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
+           Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
         ?>
     </div>
 
@@ -40,9 +40,14 @@
         <label for="especificar_fam">Especificar</label>
     </div>
 
-    <div class="input-field col s12 m6 l6">   
+    <div class="input-field col s12 m6 l3">   
         <input id="direccion" type="text" name="direccion" class="validate" value='<?php print($solicitud->getDireccion())?>' required/>
         <label for="direccion">Dirección</label>
+    </div>
+
+    <div class="input-field col s12 m6 l3">   
+        <input id="correo" type="email" name="correo" class="validate" value='<?php print($solicitud->getCorreo())?>' required/>
+        <label for="correo">Correo Electrónico</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -65,7 +70,7 @@
         <label for="hijo">Celular(hijo/a)</label>
     </div>
 
-    <div class="input-field col s12 m6 l6"> 
+    <div class="input-field col s12 m6 l3"> 
         <input id="lugar" type="text" name="lugar" class="validate" value='<?php print($solicitud->getLugarNacimiento())?>' required/>
         <label for="lugar">Lugar de nacimiento</label>
     </div>

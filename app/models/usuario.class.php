@@ -5,6 +5,7 @@ class Usuario extends Validator{
     private $clave = null;
     private $nombres = null;
     private $apellidos = null;
+    private $tipo = null;
     
     public function setId($value){
         if($this->validateId($value)){
@@ -61,7 +62,17 @@ class Usuario extends Validator{
     public function getApellidos(){
         return $this->apellidos;
     }
-    
+    public function setTipo($value){
+        if($this->validateId($value)){
+            $this->tipo = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function getTipo(){
+        return $this->tipo;
+    }
     //VERIFICACIÓN
     public function checkUsuario(){
         $sql = "SELECT id_usuario FROM usuarios WHERE usuario = ?";
@@ -84,6 +95,9 @@ class Usuario extends Validator{
 		}else{
 			return false;
 		}
+    }
+    public function logOut(){
+		return session_destroy();
 	}
     //Metodos para manejar el CRUD
     public function getUsuarios(){

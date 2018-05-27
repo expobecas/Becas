@@ -5,6 +5,7 @@ class Remesa_familiar extends Validator
     private $monto = null;
     private $periodo_recibido = null;
     private $benefactor = null;
+    private $id_familia = null;
 
     public function setIdRemesa()
     {
@@ -72,6 +73,23 @@ class Remesa_familiar extends Validator
     public function getBenefactor()
     {
         return $this->benefactor;
+    }
+
+    public function setIdFamilia()
+    {
+        if($this->validateId($value))
+        {
+            $this->id_familia = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIdFamilia()
+    {
+        return $this->id_familia;
     }
 }
 ?>

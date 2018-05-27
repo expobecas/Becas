@@ -184,11 +184,19 @@ class Integrante_familia extends Validator
     }
 
     //Metodos para el control del SCRUD
-    public function createIntegrante()
+    public function getIntegrantes()
     {
-        $sql = "";
-        $params = array();
-        return Database::executeRow($sql, $params );
+        $sql = "SELECT nombres, apellidos, parentesco, fecha_nacimiento, profesion_ocupacion, lugar_trabajo, tel_trabajo, salario, depende, grado, institucion, cuota 
+        FROM  integrante_familia INNER JOIN familiares_estudiante ON integrante_familia.id_integrante = familiares_estudiante.id_integrante";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo)
+    {
+        $sql = "INSERT INTO integrante_familia(nombres, apellidos, parentesco, fecha_nacimiento, profesion_ocupacion, lugar_trabajo, tel_trabajo, salario, id_solicitud) VALUES(?, ?, ?, ?, ?, ?, ?, ?, 7)";
+        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo, $this->salario);
+        return Database::executeRow($sql, $params);
     }
 }
 ?>

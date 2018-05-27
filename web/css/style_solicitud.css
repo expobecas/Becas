@@ -6,17 +6,17 @@
   text-align: center;
 }
 
-#margen_one{
+.margen_one{
   margin-top: 35px;
   margin-bottom: 50px;
 }
 
-#margen_second{
+.margen_second{
   margin-top: 35px;
   margin-bottom: 50px;
 }
 
-#margen_three{
+.margen_three{
   margin-top: 35px;
   margin-bottom: 50px;
 }
@@ -267,8 +267,6 @@
 
 
 /*Style para el slider form*/
-/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
-@import url(https://fonts.googleapis.com/css?family=Pacifico);*/
 
 * {
 	font-size: 16px;
@@ -401,7 +399,7 @@ button:active,
 /*tamaño de slider individual*/
 .slider-form {
 	float: left;
-	width: 33%;
+  width: 33%;
   text-align: center;
 }
 

@@ -11,7 +11,7 @@ try{
                         if($estudiantes->setNombre2($_POST['nombre2'])){
                             if($estudiantes->setApellido1($_POST['apellido1'])){
                                 if($estudiantes->setApellido2($_POST['apellido2'])){
-                                    if($alumno->setUsuario($_POST['usuario'])){
+                                    if($estudiantes->setUsuario($_POST['usuario'])){
                                         if($estudiantes->updatePerfil()){
                                             Page::showMessage(1, "Perfil modificado", "../../../public/becados/index/becado.php");
                                         }else{

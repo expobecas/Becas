@@ -9,11 +9,11 @@
 .ingresar_form{
   text-align: center;
 }
-.ingresar{
+.ingresar, .mas_info, .boton-solicitud, .boton-editar2{
     background-color: #FF847C;
     
 }
-.ingresar:hover{
+.ingresar:hover, .mas_info:hover, .boton-solicitud:hover, .boton-editar2:hover{
     background-color: rgb(255, 119, 109);
 }
 .cuadrado{
@@ -26,6 +26,9 @@
 {
     margin-top: 5%;
 }
+.fondo-general{
+    background-color: rgb(231, 238, 236);
+}
 /*INDEX ALUMNO*/
 .side-nav{
     background-color: #2A363B;
@@ -34,13 +37,10 @@
     background-color: #E84A5F; 
     height: 160px;
 }
+/*INICIO ALUMNO*/
 #barra{
     position: relative;
     background-color: #ffffff;
-
-}
-.fondo-general{
-    background-color: rgb(231, 238, 236);
 }
 .avisos{
     background-color: #ffffff;
@@ -59,45 +59,59 @@
     border-radius: 3%;
     margin-left: 320px;
 }
-.cajita2{
+.cajita2, .cajita3, .cajita4{
     background-color: #ffffff;
     height: 70px;
     width: 240px;
     border-radius: 3%;
     margin-left: 20px;
 }
-.cajita3{
-    background-color: #ffffff;
-    height: 70px;
-    width: 240px;
-    border-radius: 3%;
-    margin-left: 20px;
-}
-.cajita4{
-    background-color: #ffffff;
-    height: 70px;
-    width: 240px;
-    border-radius: 3%;
-    margin-left: 20px;
-}
-.date-1{
+
+.date-1, .date-2, .date-3, .date-4{
     font-size: 45px;
     margin-top: 10px;
+}
+.date-1{
     color: #99B898;
 }
 .date-2{
-    font-size: 45px;
-    margin-top: 10px;
     color: #FF847C;
 }
 .date-3{
-    font-size: 45px;
-    margin-top: 10px;
     color: #FECEAB;
 }
 .date-4{
-    font-size: 45px;
-    margin-top: 10px;
     color: #E84A5F;
-    
 }
+.cajita_informacion{
+    height: 450px;
+    border-radius: 4px;
+}
+.cajita-solicitud, form{
+    border-radius: 4px;
+}
+.cajita_informacion2{
+    height: 450px;
+    border-radius: 4px;
+    margin-left: 40px;
+}
+/*INFORMACIÓN PARA SOLICITUD*/
+.titulo_ci3, .boton-editar, .titulo-EP{
+    text-align: center;
+}
+.nota-s, .requisitos{
+    font-size: 16px;
+    padding: 10px;
+}
+.cajita-solicitud{
+    height: 165px;
+}
+.mortarborad{
+    padding: 14px;
+}
+/*EDICION DE PERFIL*/
+.titulo-EP{
+    font-size: 20px;
+}
+
+

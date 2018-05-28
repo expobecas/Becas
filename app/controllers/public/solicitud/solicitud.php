@@ -10,15 +10,21 @@ try
 		function create()
 		{
             $integrante = new Integrante_familia;
+            $integrante->setNombres($_POST['nombres']);
+            $integrante->setApellidos($_POST['apellidos']);
+            $integrante->setParentesco($_POST['parentesco']);
+            $fecha = str_replace('-', '/', $_POST['fecha_nacimiento']);
+            $integrante->setFechaNacimiento($fecha);
+            $integrante->setProfesionOcupacion($_POST['profesion']);
+            $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
+            $integrante->setTelTrabajo($_POST['tel_trabajo']);
 			$nombres = $_POST['nombres'];
 			$apellidos = $_POST['apellidos'];
             $paretesco = $_POST['parentesco'];
-            $fecha = str_replace('-', '/', $_POST['fecha_nacimiento']);
 			$fecha_nacimiento = $fecha;
 			$profesion_ocupacion = $_POST['profesion'];
 			$lugar_trabajo = $_POST['lugar_trabajo'];
             $tel_trabajo = $_POST['tel_trabajo'];
-            echo($tel_trabajo);
             $integrante->setSalario($_POST['salario']);
             if($integrante->createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo))
             {

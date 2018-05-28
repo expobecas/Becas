@@ -91,5 +91,13 @@ class Remesa_familiar extends Validator
     {
         return $this->id_familia;
     }
+
+    //Metodos para el manejo del SCRUD
+    public function createRemesa()
+    {
+        $sql = "";
+        $params = array();
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>

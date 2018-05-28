@@ -135,11 +135,11 @@ class Estudiantes extends Validator{
         }
     }
     public function checkClave(){
-        $sql = "SELECT id_estudiante FROM estudiantes WHERE contraseña = ?";
-        $params = array($this->contraseña);
+        $sql = "SELECT contraseña FROM estudiantes WHERE id_estudiante = ?";
+        $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if($data){
-            $this->id = $data['id_estudiante'];
+        echo($data['contraseña']);
+        if(password_verify($this->contraseña, $data['contraseña'])){
             return true;
         }else{
             return false;

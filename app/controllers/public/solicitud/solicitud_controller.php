@@ -176,7 +176,7 @@ try
 
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla integrantes*/
-	
+	$integrante = new Integrante_familia;
 	if(isset($_POST['enviar']))
 	{
 		

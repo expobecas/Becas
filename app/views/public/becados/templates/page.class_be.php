@@ -27,7 +27,7 @@ class Page extends component{
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[id_estudiante]</span></a>
             </div></li>
             <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-            <li><a href='../../../public/becados/account/editar_perfil.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
+            <li><a href='../../../public/becados/account/editar_perfil.php' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
             <li><a href='#!' class='white-text'><i class='material-icons white-text'>question_answer</i>Mensajes</a></li>
             <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul> 

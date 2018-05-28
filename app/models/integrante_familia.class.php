@@ -192,10 +192,10 @@ class Integrante_familia extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo)
+    public function createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion)
     {
         $sql = "INSERT INTO integrante_familia(nombres, apellidos, parentesco, fecha_nacimiento, profesion_ocupacion, lugar_trabajo, tel_trabajo, salario, id_solicitud) VALUES(?, ?, ?, ?, ?, ?, ?, ?, 7)";
-        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo, $this->salario);
+        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario);
         return Database::executeRow($sql, $params);
     }
 }

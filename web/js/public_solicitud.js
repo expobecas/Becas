@@ -30,8 +30,8 @@ $(document).ready(function() {
     var $institucion = document.getElementById("institucion").value;
     var $cuota = document.getElementById("cuota_inte").value;
 
-    var fila = "<tr><td name='nombre'>"+$nombre+"</td><td name='apellido'>"+$apellido+"</td><td name='parentesco'>"+$parentesco+"</td><td name='fecha_nacimiento'>"+$fecha_naci+"</td><td name='profesion'>"+$profesion+"</td><td name='lugar_trabajo'>"
-    +$lugar_trab+"</td><td name='tel_trab'>"+$tel_trab+"</td><td name='salario'>"+$salario+"</td><td name='grado'>"+$grado+"</td><td name='institucion'>"+$institucion+"</td><td name='cuota'>"+$cuota+"</td></tr>";
+    var fila = "<tr><td>"+$nombre+"</td><td>"+$apellido+"</td><td>"+$parentesco+"</td><td>"+$fecha_naci+"</td><td>"+$profesion+"</td><td>" +$lugar_trab+"</td><td>"+$tel_trab+
+    "</td><td>"+$salario+"</td><td>"+$grado+"</td><td>"+$institucion+"</td><td>"+$cuota+"</td></tr>";
 
     var btn = document.createElement("TR");
     btn.innerHTML=fila;
@@ -267,8 +267,6 @@ $secondButton.on('click', function(e){
   }, 100);
   e.preventDefault();
 });
-
-
 
 
 /*Ayuda para el progress circle y slider forms */

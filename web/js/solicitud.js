@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $("#agregar").click(function(){
-
+      
       var nombres = $('#nombres_inte').val();
       var apellidos = $('#apellidos_inte').val();
       var parentesco = $('#parentesco').val();
@@ -10,6 +10,12 @@ $(document).ready(function() {
       var lugar_trabajo = $('#lugar_trabajo').val();
       var tel_trabajo = $('#tel_trabajo').val();
       var salario = $('#salario').val();
+
+      var estudiante = $('.estudiante:checked').val();
+      var depende = $('.depende:checked').val();
+      var grado = $('#grado').val();
+      var institucion = $('#institucion').val();
+      var cuota_inte = $('#cuota_inte').val();
 
       if($('#nombres_inte').val() != "")
       {
@@ -21,31 +27,137 @@ $(document).ready(function() {
             {
               if($('#profesion').val() != "")
               {
-                $.ajax({
-                  type: "POST",
-                  url: '../../app/controllers/public/solicitud/solicitud.php?action=create',
-                  data: {nombres:nombres, 
-                    apellidos:apellidos, 
-                    parentesco:parentesco, fecha_nacimiento:fecha_nacimiento, 
-                    profesion:profesion, 
-                    lugar_trabajo:lugar_trabajo, 
-                    tel_trabajo:tel_trabajo,
-                    salario:salario},
-                  success: function()
-                  {
-                    $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
-                    '</td><td>'+salario+'</td><td>'/**+grado+'</td><td>'+institucion+'</td><td>'+cuota+'</td></tr>'*/);
-                    
-                    $('#nombres_inte').val('');
-                    $('#apellidos_inte').val('');
-                    $('#parentesco').val('');
-                    $('#fecha_naci_inte').val('');
-                    $('#profesion').val('');
-                    $('#lugar_trabajo').val('');
-                    $('#tel_trabajo').val('');
-                    $('#salario').val('');
+                if(estudiante == null || estudiante === 'no')
+                {
+                  $.ajax({
+                    type: "POST",
+                    url: '../../app/controllers/public/solicitud/solicitud.php?action=create',
+                    data: {nombres:nombres, 
+                      apellidos:apellidos, 
+                      parentesco:parentesco, fecha_nacimiento:fecha_nacimiento, 
+                      profesion:profesion, 
+                      lugar_trabajo:lugar_trabajo, 
+                      tel_trabajo:tel_trabajo,
+                      salario:salario},
+                    success: function()
+                    {
+                      //Agrega los valores a la tabla
+                      $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
+                      '</td><td>'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+
+                      //Sirve para poner los campos vacios
+                      $('#nombres_inte').val('');
+                      $('#apellidos_inte').val('');
+                      $('#parentesco').val('');
+                      $('#fecha_naci_inte').val('');
+                      $('#profesion').val('');
+                      $('#lugar_trabajo').val('');
+                      $('#tel_trabajo').val('');
+                      $('#salario').val('');
                     }
-                });
+                  });
+                }
+                else
+                {
+                  if(depende == null)
+                  {
+                    swal({
+                      title: 'Aviso',
+                      text: 'Seleccione si depende de usted o no',
+                      icon: 'warning',
+                      button: 'aceptar'
+                    });
+                  }
+                  else if(depende === 'si' || depende === 'no')
+                  {
+                    if($('#grado').val() != "")
+                    {
+                      if($('#institucion').val() != "")
+                      {
+                        if($('#cuota_inte').val())
+                        {
+                          
+                        }
+                        $.ajax({
+                          type: "POST",
+                          url: '../../app/controllers/public/solicitud/solicitud.php?action=create',
+                          data: {nombres:nombres, 
+                            apellidos:apellidos, 
+                            parentesco:parentesco, fecha_nacimiento:fecha_nacimiento, 
+                            profesion:profesion, 
+                            lugar_trabajo:lugar_trabajo, 
+                            tel_trabajo:tel_trabajo,
+                            salario:salario},
+                          success: function()
+                          {
+                            $.ajax({
+                              type: "POST",
+                              url: '../../app/controllers/public/solicitud/create_familiar_estudiante.php?action=create',
+                              data: {depende:depende,
+                              grado:grado,
+                              institucion:institucion,
+                              cuota_inte:cuota_inte},
+                              success: function()
+                              {
+                                //Agrega los valores a la tabla
+                                $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
+                                '</td><td>'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+
+                                //Sirve para poner los campos vacios
+                                $('#nombres_inte').val('');
+                                $('#apellidos_inte').val('');
+                                $('#parentesco').val('');
+                                $('#fecha_naci_inte').val('');
+                                $('#profesion').val('');
+                                $('#lugar_trabajo').val('');
+                                $('#tel_trabajo').val('');
+                                $('#salario').val('');
+                                $('#grado').val('');
+                                $('#institucion').val('');
+                                $('#cuota_inte').val('');
+
+                                //Sirve para resetear los radio button
+                                $('.estudiante').prop('checked', false);
+                                $('.depende').prop('checked', false);
+                                
+                                //Para que se oculten los campos
+                                $("#depende").hide(1000);
+                                $("#Grado").hide(1000);
+                                $("#Institucion").hide(1000);
+                                $("#Cuota_inte").hide(1000);
+
+                                
+
+                              },
+                              error: function()
+                              {
+                                alert("Algo paso");
+                              }
+                            });
+                          }
+                        });
+                      }
+                      else
+                      {
+                        swal({
+                          title: 'Aviso',
+                          text: 'Ingrese la institucion o universidad',
+                          icon: 'warning',
+                          button: 'aceptar'
+                        });
+                      }
+                    }
+                    else
+                    {
+                      swal({
+                        title: 'Aviso',
+                        text: 'Ingrese el grado o año que está cursando',
+                        icon: 'warning',
+                        button: 'aceptar'
+                      });
+                    }
+                  }
+                }
               }
               else
               {

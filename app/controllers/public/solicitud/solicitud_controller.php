@@ -177,16 +177,11 @@ try
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla integrantes*/
 	$integrante = new Integrante_familia;
-	if(isset($_POST['enviar']))
-	{
-		
-	}
-	
 
-   /* //Para llenar la tabla familiares estudiante
+    //Para llenar la tabla familiares estudiante
     $familiares_estudiante = new Familiares_estudiante;
 
-    //Para llenar la tabla imagenes_vehiculo
+   /* //Para llenar la tabla imagenes_vehiculo
 	$imagenes_vehiculo = new Imagenes_vehiculo;
 	if(isset($_POST['enviar']))
 	{
@@ -387,10 +382,31 @@ try
 	{
 		$_POST = $grupo_familiar->validateForm($_POST);
 		if($grupo_familiar->setIngresoFamiliar()){}
-	}
+	}*/
 
     //Para llenar la tabla remesa familiar
-    $remesa_familiar = new Remesa_familiar;*/
+	$remesa_familiar = new Remesa_familiar;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $remesa_familiar->validateForm($_POST);
+		if($remesa_familiar->setMonto($_POST['monto']))
+		{
+			if($remesa_familiar->setPeriodoRecibido($_POST['periodo']))
+			{
+				if($remesa_familiar->setBenefactor($_POST['benecfactor']))
+				{
+					if($remesa_familiar->createRemesa())
+					{
+						Page::showMessage(1, "Remesa creada", "");
+					}
+					else
+					{
+						throw new Exception(Database::getException());
+					}
+				}
+			}
+		}
+	}
 
     
 }

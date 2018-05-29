@@ -2,11 +2,11 @@
     <div class="input-field col s12 m6 l3">
         <select id="casa">
             <option value="" disabled selected>La casa en la que vive es</option>
-            <option value="1">Propia</option>
-            <option value="2">Alquilada</option>
-            <option value="3">La está pagando al banco</option>
-            <option value="4">La está pagando al FSV</option>
-            <option value="5">Otro</option>
+            <option value="Propia">Propia</option>
+            <option value="Alquilada">Alquilada</option>
+            <option value="La está pagando al banco">La está pagando al banco</option>
+            <option value="La está pagando al FSV">La está pagando al FSV</option>
+            <option value="Otro">Otro</option>
         </select>
     </div>
 
@@ -129,11 +129,11 @@
         <div class="col s12 m6 l3">
             <h6>¿Este integrante está estudiando?</h6>
             <div>
-                <input name="group1" type="radio" id="si_integran"/>
+                <input name="group1" type="radio" class="estudiante" id="si_integran" value="si"/>
                 <label for="si_integran">Si</label>
                 &nbsp;
                 &nbsp;
-                <input name="group1" type="radio" id="no_integran"/>
+                <input name="group1" type="radio" class="estudiante" id="no_integran" value="no"/>
                 <label for="no_integran">No</label>
             </div>
         </div>
@@ -141,11 +141,11 @@
         <div class="col s12 m6 l3 ocultar" id="depende">
             <h6>¿Depende de usted?</h6>
             <div>
-                <input name="group2" type="radio" id="si2" />
+                <input name="group2" type="radio" class="depende" id="si2" value="si"/>
                 <label for="si2">Si</label>
                 &nbsp;
                 &nbsp;
-                <input name="group2" type="radio" id="no2" />
+                <input name="group2" type="radio" class="depende" id="no2" value="no"/>
                 <label for="no2">No</label>
             </div>
         </div>
@@ -168,7 +168,7 @@
         </div>
 
         <div class="col s12 m6 l3">
-            <button type="submit" id="agregar" onclick="Clear();" class="waves-effect waves-light btn blue">Agregar</button>
+            <button type="submit" id="agregar" class="waves-effect waves-light btn blue">Agregar</button>
         </div>
     </form>
     <div class="col s12 m12 l12">

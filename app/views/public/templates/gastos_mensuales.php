@@ -9,11 +9,6 @@
         <label for="casa">Alquiler de casa o pago al Banco o el FSV</label>
     </div>
 
-    <!--<div class="input-field col s12 m6 l3"> 
-        <input id="servicios" type="text" name="servicios" class="gastos validate"//>
-        <label for="servicios">Servicios generales(Total)</label>
-    </div>-->
-
     <div class="input-field col s12 m6 l3"> 
         <input id="energia_electrica" type="text" name="energia_electrica" class="gastos validate" value='<?php print($gastos_mensuales->getEnergiaElectrica())?>'/>
         <label for="energia_electrica">Energia electrica</label>
@@ -54,11 +49,6 @@
         <label for="cotizaciones">Cotizaciones a la AFP, al ISSS, etc</label>
     </div>
 
-    <!--<div class="input-field col s12 m6 l3"> 
-        <input id="pago_seguros" type="text" name="pago_seguros" class="gastos validate">
-        <label for="pago_seguros">Pago de seguros(Total)</label>
-    </div>-->
-
     <div class="input-field col s12 m6 l3"> 
         <input id="seguro_personal" type="text" name="seguro_personal" class="gastos validate" value = '<?php print($gastos_mensuales->getSeguroPersonal())?>'/>
         <label for="seguro_personal">Seguro personal</label>
@@ -94,11 +84,6 @@
         <label for="pago_asociaciones">Pagos de asociaciones o clubes sociales</label>
     </div>
 
-    <!--<div class="input-field col s12 m6 l3"> 
-        <input id="educacion" type="text" name="educacion" class="gastos validate">
-        <label for="educacion">Educación</label>
-    </div>-->
-
     <div class="input-field col s12 m6 l3"> 
         <input id="pago_colegiatura" type="text" name="pago_colegiatura" class="gastos validate" value = '<?php print($gastos_mensuales->getPagoColegiatura())?>'/>
         <label for="pago_colegiatura">Pago de colegiaturas</label>
@@ -113,11 +98,6 @@
         <input id="materiales" type="text" name="materiales" class="gastos validate" value = '<?php print($gastos_mensuales->getGastosMaterialEstudios())?>'/>
         <label for="materiales">Gastos en material de estudio</label>
     </div>
-
-    <!--<div class="input-field col s12 m6 l3"> 
-        <input id="otros_pagos" type="text" name="otros_pagos" class="gastos validate">
-        <label for="otros_pagos">Otros pagos o descuentos</label>
-    </div>-->
 
     <div class="input-field col s12 m6 l3"> 
         <input id="renta" type="text" name="renta" class="gastos validate" value = '<?php print($gastos_mensuales->getImpuestoRenta())?>'/>

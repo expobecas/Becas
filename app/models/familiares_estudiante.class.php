@@ -7,6 +7,7 @@ class Familiares_estudiante extends Validator
     private $grado = null;
     private $institucion = null;
     private $cuota = null;
+    private $id_integrante = null;
 
     public function setIdFamEstudiante($value)
     {
@@ -91,6 +92,39 @@ class Familiares_estudiante extends Validator
     public function getCuota()
     {
         return $this->cuota;
+    }
+
+    public function setIdIntegrante($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->id_integrante = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIdIntegrante()
+    {
+        return $this->id_integrante;
+    }
+
+    //Metodos para el major del SCRUD
+    public function getIdInte()
+    {
+        $sql = "SELECT id_integrante FROM integrante_familia ORDER BY id_integrante DESC LIMIT 1";
+        $params = array(null);
+        return Database::getRow($sql, $params);
+    }
+
+    public function createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante)
+    {
+        $sql = "INSERT INTO familiares_estudiante(depende, grado, institucion, cuota, id_integrante) VALUES (?, ?, ?, ?, ?)";
+        $params = array($depende, $grado, $institucion, $cuota, $id_integrante);
+        echo($id_integrante);
+        return Database::executeRow($sql, $params);
     }
 }
 

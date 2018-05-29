@@ -93,10 +93,17 @@ class Remesa_familiar extends Validator
     }
 
     //Metodos para el manejo del SCRUD
+    public function getFamilia()
+    {
+        $sql = "SELECT id_familia FROM grupo_familiar ORDER BY id_familia DESC LIMIT 1";
+        $params = array(null);
+        return Database::getRow($sql, $params);
+    }
+
     public function createRemesa()
     {
-        $sql = "";
-        $params = array();
+        $sql = "INSERT INTO remesas_familiar(monto, periodo_recibido, benefactor, id_familia) VALUES(?, ?, ?, ?)";
+        $params = array($this->monto, $this->periodo_recibido, $this->benefactor, $this->id_familia);
         return Database::executeRow($sql, $params);
     }
 }

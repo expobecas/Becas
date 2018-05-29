@@ -91,7 +91,7 @@ $(document).ready(function() {
 
   $(function(){
     $("#casa").change(function(){
-      if($(this).val() == "5")
+      if($(this).val() == "Otro")
       {
         $("#especificar_casa").show(1000);
       }

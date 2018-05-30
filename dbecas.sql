@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2018 a las 02:12:49
+-- Tiempo de generación: 30-05-2018 a las 03:21:14
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -129,7 +129,8 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id_estudiante`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `usuario`, `contraseña`, `n_carnet`, `grado`, `especialidad`) VALUES
-(1, 'Fernando', 'Xavier', 'Maldonado', 'Canjura', 'XaviCaM', '12345678', 20160250, '3° Año', 'Desarrollo de Software');
+(1, 'Fernando', 'Xavier', 'Maldonado', 'Canjura', 'XaviCaM', '12345678', 20160250, '3° Año', 'Desarrollo de Software'),
+(3, 'Fatima', 'Mercedez', 'Aguilar', 'Aguirre', 'Fatima6', '12345678', 20160296, '3° Año', 'Software');
 
 -- --------------------------------------------------------
 
@@ -156,15 +157,15 @@ CREATE TABLE `gastos_mensuales` (
   `id_gastos` int(11) NOT NULL,
   `alimentacion` double(6,2) NOT NULL,
   `pago_vivienda` double(6,2) NOT NULL,
-  `energia electrica` double(6,2) NOT NULL,
+  `energia_electrica` double(6,2) NOT NULL,
   `agua` double(6,2) NOT NULL,
   `telefono` double(6,2) NOT NULL,
   `vigilancia` double(6,2) DEFAULT NULL,
   `servicio_domestico` double(6,2) DEFAULT NULL,
   `alcadia` double(6,2) NOT NULL,
-  `pago_deudas` double(6,2) NOT NULL,
+  `pago_deudas` double(6,2) DEFAULT NULL,
   `cotizacion` double(6,2) NOT NULL,
-  `seguro_personal` double(6,2) NOT NULL,
+  `seguro_personal` double(6,2) DEFAULT NULL,
   `seguro_vehiculo` double(6,2) DEFAULT NULL,
   `seguro_inmuebles` double(6,2) DEFAULT NULL,
   `transporte` double(6,2) NOT NULL,
@@ -176,10 +177,22 @@ CREATE TABLE `gastos_mensuales` (
   `gastos_material_estudios` double(6,2) NOT NULL,
   `impuesto_renta` double(6,2) NOT NULL,
   `iva` double(6,2) NOT NULL,
-  `tarjeta_credito` double(6,2) NOT NULL,
-  `otros` double(6,2) DEFAULT NULL,
-  `total_gastos` double(7,2) NOT NULL
+  `tarjeta_credito` double(6,2) DEFAULT NULL,
+  `otros` double(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `gastos_mensuales`
+--
+
+INSERT INTO `gastos_mensuales` (`id_gastos`, `alimentacion`, `pago_vivienda`, `energia_electrica`, `agua`, `telefono`, `vigilancia`, `servicio_domestico`, `alcadia`, `pago_deudas`, `cotizacion`, `seguro_personal`, `seguro_vehiculo`, `seguro_inmuebles`, `transporte`, `gastos_man_vehiculo`, `salud`, `pagos_asociasiones`, `pago_colegiatura`, `pago_universidad`, `gastos_material_estudios`, `impuesto_renta`, `iva`, `tarjeta_credito`, `otros`) VALUES
+(1, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00),
+(2, 9999.99, 9999.99, 9999.99, 9999.99, 9999.99, NULL, NULL, 9999.99, NULL, 9999.99, NULL, NULL, NULL, 9999.99, NULL, 9999.99, NULL, 9999.99, NULL, 9999.99, 9999.99, 9999.99, NULL, NULL),
+(3, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
+(4, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
+(5, 1.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
+(6, 1.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
+(7, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00);
 
 -- --------------------------------------------------------
 
@@ -292,6 +305,16 @@ CREATE TABLE `integrante_familia` (
   `id_solicitud` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `integrante_familia`
+--
+
+INSERT INTO `integrante_familia` (`id_integrante`, `nombres`, `apellidos`, `parentesco`, `fecha_nacimiento`, `profesion_ocupacion`, `lugar_trabajo`, `tel_trabajo`, `salario`, `id_solicitud`) VALUES
+(1, 'dddddd', 'dddddd', 'dddd', '20/04/2000', 'ddd', NULL, NULL, NULL, 7),
+(2, 'Xavier', 'Maldonado', 'Primo', '2018/05/01', 'Estudiante', NULL, NULL, NULL, 7),
+(11, 'Fernando', 'Maldonado', 'Tio', '2018/05/01', 'Estudiante', NULL, NULL, NULL, 7),
+(12, 'christofer', 'goodman', 'ddd', '2018/05/01', 'dsdsd', NULL, NULL, NULL, 7);
+
 -- --------------------------------------------------------
 
 --
@@ -351,6 +374,13 @@ CREATE TABLE `propiedad` (
   `croquis` varchar(500) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `propiedad`
+--
+
+INSERT INTO `propiedad` (`id_propiedad`, `tipo_propiedad`, `cuota_mensual`, `valor_casa`, `tipo_vehiculo`, `año_vehiculo`, `valor_vehiculo`, `croquis`) VALUES
+(1, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -395,7 +425,7 @@ CREATE TABLE `solicitud` (
 --
 
 INSERT INTO `solicitud` (`id_solicitud`, `id_estudiante`, `id_genero`, `religion`, `encargado`, `direccion`, `correo`, `tel_fijo`, `cel_papa`, `cel_mama`, `cel_hijo`, `fecha_nacimiento`, `lugar_nacimiento`, `pais_nacimiento`, `estudios_finan`, `id_institucion_proveniente`) VALUES
-(4, 1, 1, 'ddd', 'Solo madre', 'dd', 'dddd@gmial.com', 11111111, 33333333, 22222222, 33344444, '06/05/2018', '', '', 'Sus padres', 17);
+(7, 1, 1, 'ddd', 'Solo madre', 'ddd', 'dd@gmial.com', 11111111, NULL, NULL, NULL, '07/05/2018', 'ddd', 'dd', 'Sus padres', 17);
 
 -- --------------------------------------------------------
 
@@ -443,37 +473,37 @@ CREATE TABLE `usuarios` (
 --
 ALTER TABLE `becas`
   ADD PRIMARY KEY (`id_becas`),
-  ADD UNIQUE KEY `id_detalle` (`id_detalle`),
-  ADD UNIQUE KEY `id_patrocinador` (`id_patrocinador`);
+  ADD KEY `id_detalle` (`id_detalle`) USING BTREE,
+  ADD KEY `id_patrocinador` (`id_patrocinador`) USING BTREE;
 
 --
 -- Indices de la tabla `casos`
 --
 ALTER TABLE `casos`
   ADD PRIMARY KEY (`id_caso`),
-  ADD UNIQUE KEY `id_cita` (`id_cita`);
+  ADD KEY `id_cita` (`id_cita`) USING BTREE;
 
 --
 -- Indices de la tabla `citas`
 --
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_detalle` (`id_detalle`);
+  ADD KEY `id_detalle` (`id_detalle`) USING BTREE;
 
 --
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD UNIQUE KEY `id_becas` (`id_becas`);
+  ADD KEY `id_becas` (`id_becas`) USING BTREE;
 
 --
 -- Indices de la tabla `detalle_solicitud`
 --
 ALTER TABLE `detalle_solicitud`
   ADD PRIMARY KEY (`id_detalle`),
-  ADD UNIQUE KEY `id_solicitud` (`id_solicitud`),
-  ADD UNIQUE KEY `id_estado` (`id_estado`);
+  ADD KEY `id_solicitud` (`id_solicitud`) USING BTREE,
+  ADD KEY `id_estado` (`id_estado`) USING BTREE;
 
 --
 -- Indices de la tabla `estado_solicitud`
@@ -511,8 +541,8 @@ ALTER TABLE `genero`
 --
 ALTER TABLE `grupo_familiar`
   ADD PRIMARY KEY (`id_familia`),
-  ADD UNIQUE KEY `id_solicitud` (`id_solicitud`),
-  ADD UNIQUE KEY `id_gastos` (`id_gastos`);
+  ADD KEY `id_solicitud` (`id_solicitud`) USING BTREE,
+  ADD KEY `id_gastos` (`id_gastos`) USING BTREE;
 
 --
 -- Indices de la tabla `historial`
@@ -526,14 +556,14 @@ ALTER TABLE `historial`
 --
 ALTER TABLE `imagenes_casos`
   ADD PRIMARY KEY (`id_img_caso`),
-  ADD UNIQUE KEY `id_caso` (`id_caso`);
+  ADD KEY `id_caso` (`id_caso`) USING BTREE;
 
 --
 -- Indices de la tabla `imagenes_vehiculo`
 --
 ALTER TABLE `imagenes_vehiculo`
   ADD PRIMARY KEY (`id_img_vehiculo`),
-  ADD UNIQUE KEY `id_propiedad` (`id_propiedad`);
+  ADD KEY `id_propiedad` (`id_propiedad`) USING BTREE;
 
 --
 -- Indices de la tabla `institucion_proveniente`
@@ -546,29 +576,29 @@ ALTER TABLE `institucion_proveniente`
 --
 ALTER TABLE `integrante_familia`
   ADD PRIMARY KEY (`id_integrante`),
-  ADD UNIQUE KEY `id_solicitud` (`id_solicitud`);
+  ADD KEY `id_solicitud` (`id_solicitud`) USING BTREE;
 
 --
 -- Indices de la tabla `intermedia_propiedad`
 --
 ALTER TABLE `intermedia_propiedad`
   ADD PRIMARY KEY (`id_inter`),
-  ADD UNIQUE KEY `id_integrante` (`id_integrante`),
-  ADD UNIQUE KEY `id_propiedad` (`id_propiedad`);
+  ADD KEY `id_integrante` (`id_integrante`) USING BTREE,
+  ADD KEY `id_propiedad` (`id_propiedad`) USING BTREE;
 
 --
 -- Indices de la tabla `pagos`
 --
 ALTER TABLE `pagos`
   ADD PRIMARY KEY (`id_recibo`),
-  ADD UNIQUE KEY `id_becas` (`id_becas`);
+  ADD KEY `id_becas` (`id_becas`) USING BTREE;
 
 --
 -- Indices de la tabla `patrocinadores`
 --
 ALTER TABLE `patrocinadores`
   ADD PRIMARY KEY (`id_patrocinador`),
-  ADD UNIQUE KEY `id_tipo_patro` (`id_tipo_patro`);
+  ADD KEY `id_tipo_patro` (`id_tipo_patro`) USING BTREE;
 
 --
 -- Indices de la tabla `propiedad`
@@ -609,7 +639,7 @@ ALTER TABLE `tipo_usuario`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `id_tipo` (`id_tipo`);
+  ADD KEY `id_tipo` (`id_tipo`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -649,7 +679,7 @@ ALTER TABLE `estado_solicitud`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `familiares_estudiante`
@@ -661,7 +691,7 @@ ALTER TABLE `familiares_estudiante`
 -- AUTO_INCREMENT de la tabla `gastos_mensuales`
 --
 ALTER TABLE `gastos_mensuales`
-  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -703,7 +733,7 @@ ALTER TABLE `institucion_proveniente`
 -- AUTO_INCREMENT de la tabla `integrante_familia`
 --
 ALTER TABLE `integrante_familia`
-  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `intermedia_propiedad`
@@ -727,7 +757,7 @@ ALTER TABLE `patrocinadores`
 -- AUTO_INCREMENT de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
-  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `remesas_familiar`
@@ -739,7 +769,7 @@ ALTER TABLE `remesas_familiar`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_patrocinador`

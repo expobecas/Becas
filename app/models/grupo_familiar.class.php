@@ -112,6 +112,8 @@ class Grupo_Familiar extends Validator
     }
 
 
+    //Metodos para el SCRUD
+    
     public function getIngreso()
     {
         $sql = "";
@@ -120,13 +122,11 @@ class Grupo_Familiar extends Validator
     }
     public function getGastos()
     {
-        $sql = "SELECT SUM(alimentacion + pago_vivienda + energia_electrica + agua + telefono + COALESCE(vigilancia, 0) + COALESCE( servicio_domestico, 0) + alcadia + pago_deudas + cotizacion + seguro_personal + COALESCE(seguro_vehiculo, 0) + COALESCE(seguro_inmuebles, 0) + transporte + COALESCE(gastos_man_vehiculo, 0) + salud + COALESCE(pagos_asociasiones, 0) + pago_colegiatura + COALESCE(pago_universidad, 0) + gastos_material_estudios + impuesto_renta + iva + tarjeta_credito + COALESCE(otros, 0)) AS Total FROM gastos_mensuales WHERE id_gastos = 1";
-        $params = array();
+        $sql = "SELECT SUM(alimentacion + pago_vivienda + energia_electrica + agua + telefono + COALESCE(vigilancia, 0) + COALESCE( servicio_domestico, 0) + alcadia + pago_deudas + cotizacion + seguro_personal + COALESCE(seguro_vehiculo, 0) + COALESCE(seguro_inmuebles, 0) + transporte + COALESCE(gastos_man_vehiculo, 0) + salud + COALESCE(pagos_asociasiones, 0) + pago_colegiatura + COALESCE(pago_universidad, 0) + gastos_material_estudios + impuesto_renta + iva + tarjeta_credito + COALESCE(otros, 0)) AS Total FROM gastos_mensuales WHERE id_gastos = ?";
+        $params = array($this->id_gastos);
         return Database::getRow($sql, $params);
     }
 
-    //Metodos para el SCRUD
-    
     public function createFamilia()
     {
         $sql = "";

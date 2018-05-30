@@ -428,11 +428,11 @@ try
 
     //Para llenar la tabla grupo familiar
 	$grupo_familiar = new Grupo_familiar;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
 		$_POST = $grupo_familiar->validateForm($_POST);
 		if($grupo_familiar->setIngresoFamiliar()){}
-	}*/
+	}
 
     //Para llenar la tabla remesa familiar
 	/*$remesa_familiar = new Remesa_familiar;

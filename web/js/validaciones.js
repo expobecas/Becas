@@ -3,10 +3,14 @@ $(document).ready(function(){
     $('#salario').mask("#.##0,00", {reverse: true});
     $('#cuota_inte').mask("#.##0,00", {reverse: true});
     $('.gastos').mask("#.##0,00", {reverse: true});
+    $('#cuota_mensual').mask("#.##0,00", {reverse: true});
+    $('#valor_actual').mask("#.##0,00", {reverse: true});
+    $('#valor_vehiculo').mask("#.##0,00", {reverse: true});
     $('#fijo').mask('00000000');
     $('#padre').mask('00000000');
     $('#madre').mask('00000000');
     $('#hijo').mask('00000000');
+    $('#año').mask('0000');
 });
 //Para solo numeros telefonico
 function numeros(e){

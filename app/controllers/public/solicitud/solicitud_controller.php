@@ -11,10 +11,10 @@ require_once("../../app/models/remesa_familiar.class.php");
 require_once("../../app/models/solicitud.class.php");
 try
 {
-	/*//PRIMERA PARTE DEL FOMULARIO SOLICITUD
+	//PRIMERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla institucion proveniente
 	$institucion_proveniente = new Institucion_proveniente;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $institucion_proveniente->validateForm($_POST);
 		if($institucion_proveniente->setNombre($_POST['institucion_prov']))
@@ -181,9 +181,9 @@ try
     //Para llenar la tabla familiares estudiante
     $familiares_estudiante = new Familiares_estudiante;
 
-   /* //Para llenar la tabla imagenes_vehiculo
+    //Para llenar la tabla imagenes_vehiculo
 	$imagenes_vehiculo = new Imagenes_vehiculo;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $imagenes_vehiculo->validateForm($_POST['']);
 		if($imagenes_vehiculo->setImagenVehiculo())
@@ -204,10 +204,61 @@ try
 		{
 			throw new Exception("Agrege una imagen de su vehiculo");
 		}
-	}
+	}*/
 
     //Para llenar la tabla propiedad
 	$propiedad = new Propiedad;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $propiedad->validateForm($_POST);
+		if($propiedad->setTipoPropiedad($_POST['tipocasa']))
+		{
+			if($propiedad->setCuotaMensual($_POST['cuota_mensual']))
+			{
+				if($propiedad->setValorCasa($_POST['valor_actual']))
+				{
+					if($propiedad->setTipoVehiculo($_POST['tipo']))
+					{
+						if($propiedad->setAñoVehiculo($_POST['año']))
+						{
+							if($propiedad->setValorVehiculo($_POST['valor_vehiculo']))
+							{
+								if(is_uploaded_file($_FILES['croquis']['tmp_name']))
+								{
+									if($propiedad->setCroquis($_FILES['croquis']))
+									{
+										if($propiedad->createPropiedad())
+										{
+											Page::showMessage(1, "Propiedad creada", "");
+										}
+										else
+										{
+											if($propiedad->unsetCroquis())
+											{
+												throw new Exception(Database::getException());
+											}
+											else
+											{
+												throw new Exception("Elimine la imagen manualmente");
+											}
+										}			
+									}
+									else
+									{
+										throw new Exception($propiedad->getImageError());
+									}
+								}
+								else
+								{
+									throw new Exception("Seleccione una imagen de su vivienda");
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	
 
     //para llenar la intermedia propiedad
@@ -216,7 +267,6 @@ try
 
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla gastos mensuales
-	*/
 	$gastos_mensuales = new Gastos_mensuales;
 	/*
 	if(isset($_POST['enviar']))
@@ -374,18 +424,18 @@ try
 		{
 			throw new Exception("Ingrese el gasto de alimentacion mensual");
 		}
-	}
+	}*/
 
-    /* //Para llenar la tabla grupo familiar
+    //Para llenar la tabla grupo familiar
 	$grupo_familiar = new Grupo_familiar;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $grupo_familiar->validateForm($_POST);
 		if($grupo_familiar->setIngresoFamiliar()){}
 	}*/
 
     //Para llenar la tabla remesa familiar
-	$remesa_familiar = new Remesa_familiar;
+	/*$remesa_familiar = new Remesa_familiar;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $remesa_familiar->validateForm($_POST);
@@ -406,7 +456,7 @@ try
 				}
 			}
 		}
-	}
+	}*/
 
     
 }

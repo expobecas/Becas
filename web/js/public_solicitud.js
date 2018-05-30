@@ -71,12 +71,12 @@ $(document).ready(function() {
     $("#si_vehiculo").on("click", function(){
       $("#tipo").show(1000);
       $("#año_vehiculo").show(1000);
-      $("#valor_vehiculo").show(1000);
+      $("#vehiculo").show(1000);
     });
     $("#no_vehiculo").on("click", function(){
       $("#tipo").hide(1000);
       $("#año_vehiculo").hide(1000);
-      $("#valor_vehiculo").hide(1000);
+      $("#vehiculo").hide(1000);
     });
   });
 

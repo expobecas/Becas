@@ -19,12 +19,12 @@
 <div class="containers slider-one-active ">
     <div class="slider-ctr z-depth-4">
         <div class="slider">
-            <form method="post">
+            <form method="post" enctype='multipart/form-data'>
                 <!--Formulario 1, slider 1, Datos del estudiante -->
                 <div class="slider-form slider-one">
                     <h2>Datos del estudiante</h2>
                     <?php
-                    include_once("../../app/views/public/templates/datos_estudiantes.php");
+                    //include_once("../../app/views/public/templates/datos_estudiantes.php");
                     ?>
                     <a class="waves-effect waves-light btn blue first margen_one">Siguiente</a>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="slider-form slider-three ">
                     <h2>Gastos mensuales y remesas</h2>
                     <?php
-                    include_once("../../app/views/public/templates/gastos_mensuales.php");
+                    //include_once("../../app/views/public/templates/gastos_mensuales.php");
                     ?>
                     <a class="waves-effect waves-light btn blue regresardos margen_three">Regresar</a>
                     <button type="submit" name="enviar" class="waves-effect waves-light btn blue three next margen_three">Finalizar</button>

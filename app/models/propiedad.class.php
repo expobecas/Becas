@@ -11,7 +11,7 @@ class Propiedad extends Validator
     private $valor_vehiculo = null;
     private $croquis = null;
 
-    public function getIdPropiedad($value)
+    public function setIdPropiedad($value)
     {
         if($this->validateId($value))
         {
@@ -23,12 +23,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setIdPropiedad()
+    public function getIdPropiedad()
     {
         return $this->id_propiedad;
     }
 
-    public function getTipoPropiedad($value)
+    public function setTipoPropiedad($value)
     {
         if($this->validateAlphanumeric($value, 1, 20))
         {
@@ -40,12 +40,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setTipoPropiedad()
+    public function getTipoPropiedad()
     {
         return $this->tipo_propiedad;
     }
 
-    public function getCuotaMensual($value)
+    public function setCuotaMensual($value)
     {
         if($this->validateMoney($value))
         {
@@ -57,12 +57,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setCuotaMensual()
+    public function getCuotaMensual()
     {
         return $this->cuota_mensual;
     }
     
-    public function getValorCasa($value)
+    public function setValorCasa($value)
     {
         if($this->validateMoney($value))
         {
@@ -74,12 +74,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setValorCasa()
+    public function getValorCasa()
     {
         return $this->cuota_mensual;
     }
 
-    public function getTipoVehiculo($value)
+    public function setTipoVehiculo($value)
     {
         if($this->validateAlphanumeric($value, 1, 30))
         {
@@ -91,12 +91,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setTipoVehiculo()
+    public function getTipoVehiculo()
     {
         return $this->tipo_vehiculo;
     }
 
-    public function getAñoVehiculo($value)
+    public function setAñoVehiculo($value)
     {
         if($this->validateAlphanumeric($value, 1, 4))
         {
@@ -108,12 +108,12 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setAñogetAñoVehiculo()
+    public function getAñoVehiculo()
     {
         return $this->anio_vehiculo;
     }
 
-    public function getValorVehiculo($value)
+    public function setValorVehiculo($value)
     {
         if($this->validateMoney($value))
         {
@@ -125,13 +125,13 @@ class Propiedad extends Validator
             return false;
         }
     }
-    public function setValorVehiculo()
+    public function getValorVehiculo()
     {
         return $this->valor_vehiculo;
     }
 
     public function setCroquis($file){
-		if($this->validateImage($file, $this->croquis, "../../web/img/", 500, 500)){
+		if($this->validateImage($file, $this->croquis, "../../web/img/", 5000, 5000)){
 			$this->croquis = $this->getImageName();
 			return true;
 		}else{
@@ -153,8 +153,8 @@ class Propiedad extends Validator
     //Metodos para el mantenimiento SCRUD
     public function createPropiedad()
     {
-        $sql = "INSERT INTO propiedad()";
-        $params = array();
+        $sql = "INSERT INTO propiedad(tipo_propiedad, cuota_mensual, valor_casa, tipo_vehiculo, año_vehiculo, valor_vehiculo, croquis) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $params = array($this->tipo_propiedad, $this->cuota_mensual, $this->valor_casa, $this->tipo_vehiculo, $this->año_vehiculo, $this->valor_vehiculo, $this->croquis);
         return Database::executeRow($sql, $params);
     }
 }

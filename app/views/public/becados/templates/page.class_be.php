@@ -24,7 +24,7 @@ class Page extends component{
             print("<ul id='slide-out' class='side-nav fixed content-menu'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
-              <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
+              <a href='#!name'><span class='white-text name user-name'>$_SESSION[id_tipo]</span></a>
             </div></li>
             <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
             <li><a href='../../../public/becados/account/editar_perfil.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>

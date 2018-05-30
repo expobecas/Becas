@@ -43,7 +43,7 @@ $(document).ready(function() {
                     {
                       //Agrega los valores a la tabla
                       $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
-                      '</td><td>'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+                      '</td><td class="suma">'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
 
                       //Sirve para poner los campos vacios
                       $('#nombres_inte').val('');
@@ -54,6 +54,14 @@ $(document).ready(function() {
                       $('#lugar_trabajo').val('');
                       $('#tel_trabajo').val('');
                       $('#salario').val('');
+
+                      var datos = [];
+                      $('td.suma').each(function(){
+                        datos.push(parseFloat($(this).text()));
+                      });
+                      var suma = datos.reduce(function(a,b){return a+b;},0);
+                      console.log(datos);
+                      console.log(suma);
                     }
                   });
                 }

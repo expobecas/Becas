@@ -12,13 +12,14 @@ try{
                             $_SESSION['id_usuario'] = $usuarios->getId();
                             $_SESSION['usuario'] = $usuarios-> getUsuario();
                             $_SESSION['id_tipo'] = $usuarios-> getTipo();
+                            echo $_SESSION['id_tipo'];
                             if($_SESSION['id_tipo'] == 1){
                                 Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
                             }
-                            elseif($_SESSION['id_tipo'] == 2){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
+                            if($_SESSION['id_tipo'] == 2){
+                                Page::showMessage(1, "Autenticación correcta", "../../public/becados/account/editar_perfil.php");
                             }
-                            elseif($_SESSION['id_tipo'] == 3){
+                            if($_SESSION['id_tipo'] == 3){
                                 Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
                             }
                         }else{

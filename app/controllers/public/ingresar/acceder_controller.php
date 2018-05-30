@@ -11,6 +11,7 @@ try{
                         if($usuarios->checkClave()){
                             $_SESSION['id_usuario'] = $usuarios->getId();
                             $_SESSION['usuario'] = $usuarios-> getUsuario();
+                            $_SESSION['id_tipo'] = $usuarios-> getTipo();
                             if($_SESSION['id_tipo'] == 1){
                                 Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
                             }

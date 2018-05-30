@@ -26,6 +26,7 @@
             <input id="apellido2" type="text" class="validate" name='apellido2' disabled value='<?php print($estudiantes->getApellido2())?>' required/>
             <label for="apellido2">Segundo apellido</label>
          </div>
+         
       </div>
       <!--TERCERA FILA-->
       <div class="row">

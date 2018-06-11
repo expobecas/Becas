@@ -1,5 +1,263 @@
 $(document).ready(function() {
+  var $firstButton = $(".first")
 
+
+    $("#estudiante").click(function(){
+      //Tabla solicitud
+      var genero = $('#genero').val();
+      var religion = $('#religion').val();
+      var familia;
+
+      if($('#familia').val() === 'Otros')
+      {
+        familia = $('#especificar_fam').val();
+        console.log(familia);
+      }
+      else
+      {
+        familia = $('#familia').val();
+        console.log(familia);
+      }
+
+      var direccion = $('#direccion').val();
+      var correo = $('#correo').val();
+      var fijo = $('#fijo').val();
+      var madre = $('#madre').val();
+      var padre = $('#padre').val();
+      var hijo = $('#hijo').val();
+      var lugar = $('#lugar').val();
+      var pais_naci = $('#pais_naci').val();
+      var fecha_naci = $('#fecha_naci').val();
+      var financiados;
+
+      if($('#financiados').val() === 'Otros')
+      {
+        financiados = $('#especificar_fin').val();
+      }
+      else
+      {
+        financiados = $('#financiados').val();
+      }
+
+      //Tabla institucion proveniente
+      var institucion_prov = $('#institucion_prov').val();
+      var departamento = $('#departamento').val();
+      var pais = $('#pais').val();
+      var cuota = $('#cuota').val();
+      var año_realizaba = $('#año_realizaba').val();
+      console.log(año_realizaba);
+
+      if($('#genero').val() != null )
+      {
+        if($('#religion').val() != "")
+        {
+          if(familia != null)
+          {
+            if($('#direccion').val() != "")
+            {
+              if($('#correo').val() != "")
+              {
+                if($('#lugar').val() != "")
+                {
+                  if($('#pais_naci').val() != "") 
+                  {
+                    if($('#fecha_naci').val() != "")
+                    {
+                      if($('#financiados').val() != null)
+                      {
+                        if ($('#institucion_prov').val() != "")
+                        {
+                          if ($('#departamento').val() != "")
+                          {
+                            if ($('#pais').val() != "")
+                            {
+                              if ($('#año_realizaba').val() != null)
+                              {
+                                $.ajax({
+                                  type: 'submit',
+                                  url: '../../app/controllers/public/solicitud/create_datos_estudiante.php?action=createDatos',
+                                  data:{genero:genero,
+                                  religion:religion,
+                                  familia:familia,
+                                  direccion:direccion,
+                                  correo:correo,
+                                  fijo:fijo,
+                                  madre:madre,
+                                  padre:padre,
+                                  hijo:hijo,
+                                  lugar:lugar,
+                                  pais_naci:pais_naci,
+                                  fecha_naci:fecha_naci,
+                                  financiados:financiados,
+                                  institucion_prov:institucion_prov,
+                                  departamento:departamento,
+                                  pais:pais,
+                                  cuota:cuota,
+                                  año_realizaba:año_realizaba},
+                                  success: function()
+                                  {
+                                    $firstButton.on('click', function(e){
+                                      $('body,html').animate({
+                                        scrollTop:0
+                                      }, 400)
+                                      $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
+                                      var n = setInterval(function(){
+                                        /*le da color verde*/
+                                      $('.progressc .circle1').removeClass('active').addClass('done');
+                                      
+                                      /*este pone el checke*/
+                                      $('.progressc .circle1 .label').html('&#10003;');
+
+                                      /*rellena la primera mitad de la barra*/
+                                      $('.progressc .bar1').addClass('active');
+
+                                      /*activamos el circulo 2 del progress*/
+                                      $('.progressc .circle2').addClass('active');
+
+                                      clearInterval(n);
+                                      }, 100);
+                                      e.preventDefault();
+                                    });
+                                  },
+                                  error: function()
+                                  {
+                                    alert('Ocurrio algo');
+                                  }
+                                });
+                              }
+                              else
+                              {
+                                swal({
+                                  title: 'Aviso',
+                                  text: 'Seleccione el año que cursaba',
+                                  icon: 'warning',
+                                  button: 'aceptar'
+                                });
+                              }
+                            }
+                            else
+                            {
+                              swal({
+                                title: 'Aviso',
+                                text: 'Ingrese el pais del la institucion proveniente',
+                                icon: 'warning',
+                                button: 'aceptar'
+                              });
+                            }
+                          }
+                          else
+                          {
+                            swal({
+                              title: 'Aviso',
+                              text: 'Ingrese el departamento del la institucion proveniente',
+                              icon: 'warning',
+                              button: 'aceptar'
+                            });
+                          }
+                        }
+                        else
+                        {
+                          swal({
+                            title: 'Aviso',
+                            text: 'Ingrese de la institucion proveniente',
+                            icon: 'warning',
+                            button: 'aceptar'
+                          });
+                        }
+                      }
+                      else
+                      {
+                        swal({
+                          title: 'Aviso',
+                          text: 'Seleccione quien financia sus estudios',
+                          icon: 'warning',
+                          button: 'aceptar'
+                        });
+                      }
+                    }
+                    else
+                    {
+                      swal({
+                        title: 'Aviso',
+                        text: 'Ingrese la fecha de nacimiento ',
+                        icon: 'warning',
+                        button: 'aceptar'
+                      });
+                    }
+                  }
+                  else 
+                  {
+                    swal({
+                      title: 'Aviso',
+                      text: 'Ingrese el pais de nacimiento',
+                      icon: 'warning',
+                      button: 'aceptar'
+                    });
+                  }
+                }
+                else {
+                  swal({
+                    title: 'Aviso',
+                    text: 'Ingrese el lugar de nacimiento ',
+                    icon: 'warning',
+                    button: 'aceptar'
+                  });
+                }
+              }
+              else
+              {
+                swal({
+                  title: 'Aviso',
+                  text: 'Ingrese un correo electrónico',
+                  icon: 'warning',
+                  button: 'aceptar'
+                });
+              }
+            }
+            else
+            {
+              swal({
+                title: 'Aviso',
+                text: 'Ingrese la direccion donde vive',
+                icon: 'warning',
+                button: 'aceptar'
+              });  
+            }
+          }
+          else
+          {
+            swal({
+              title: 'Aviso',
+              text: 'Seleccione con la persona con las que vive',
+              icon: 'warning',
+              button: 'aceptar'
+            });
+          }
+        }
+        else
+        {
+          swal({
+            title: 'Aviso',
+            text: 'Ingrese la religión',
+            icon: 'warning',
+            button: 'aceptar'
+          });
+        }
+      }
+      else
+      {
+        swal({
+          title: 'Aviso',
+          text: 'Seleccione un genero',
+          icon: 'warning',
+          button: 'aceptar'
+        });
+      }
+    });
+
+
+
+    //Para el slider 2
     $("#agregar").click(function(){
       
       var nombres = $('#nombres_inte').val();
@@ -39,11 +297,13 @@ $(document).ready(function() {
                       lugar_trabajo:lugar_trabajo, 
                       tel_trabajo:tel_trabajo,
                       salario:salario},
-                    success: function()
-                    {
+                      success: function()
+                      {
+                      var quitarpunto = salario.replace('.', '');
+                      var quitarcoma = quitarpunto.replace(',', '.');
                       //Agrega los valores a la tabla
                       $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
-                      '</td><td class="suma">'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+                      '</td><td class="suma">'+quitarcoma+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
 
                       //Sirve para poner los campos vacios
                       $('#nombres_inte').val('');
@@ -55,13 +315,17 @@ $(document).ready(function() {
                       $('#tel_trabajo').val('');
                       $('#salario').val('');
 
+                      //Para la suma de salarios
                       var datos = [];
-                      $('td.suma').each(function(){
+                      $('td.suma').each(function () {
                         datos.push(parseFloat($(this).text()));
                       });
-                      var suma = datos.reduce(function(a,b){return a+b;},0);
+                      var suma = datos.reduce(function (a, b) { return a + b; }, 0);
+
                       console.log(datos);
                       console.log(suma);
+
+                      $('#ingreso_familiar').val(suma);
                     }
                   });
                 }
@@ -96,8 +360,8 @@ $(document).ready(function() {
                             lugar_trabajo:lugar_trabajo, 
                             tel_trabajo:tel_trabajo,
                             salario:salario},
-                          success: function()
-                          {
+                            success: function()
+                            {
                             $.ajax({
                               type: "POST",
                               url: '../../app/controllers/public/solicitud/create_familiar_estudiante.php?action=create',
@@ -110,6 +374,18 @@ $(document).ready(function() {
                                 //Agrega los valores a la tabla
                                 $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
                                 '</td><td>'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+
+                                //Para sumar los salarios
+                                var datos = [];
+                                $('td.suma').each(function () {
+                                  datos.push(parseFloat($(this).text()));
+                                });
+                                var suma = datos.reduce(function (a, b) { return a + b; }, 0);
+
+                                console.log(datos);
+                                console.log(suma);
+
+                                $('#ingreso_familiar').val(suma);
 
                                 //Sirve para poner los campos vacios
                                 $('#nombres_inte').val('');
@@ -133,9 +409,6 @@ $(document).ready(function() {
                                 $("#Grado").hide(1000);
                                 $("#Institucion").hide(1000);
                                 $("#Cuota_inte").hide(1000);
-
-                                
-
                               },
                               error: function()
                               {

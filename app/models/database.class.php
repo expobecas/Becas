@@ -10,8 +10,8 @@ class Database
     {
         $server = "localhost";
         $database = "dbecas";
-        $username = /*"Expo_becas"*/ "root";
-        $password = /*"becasricaldone"*/ "" ;
+        $username = "root";
+        $password = "";
         try
         {
             @self::$connection = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $username, $password);

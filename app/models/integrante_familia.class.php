@@ -184,6 +184,14 @@ class Integrante_familia extends Validator
     }
 
     //Metodos para el control del SCRUD
+
+    public function getSolicitud()
+    {
+        $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1";
+        $params = array(null);
+        return Database::getRow($sql, $params);
+    }
+    
     public function getIntegrantes()
     {
         $sql = "SELECT nombres, apellidos, parentesco, fecha_nacimiento, profesion_ocupacion, lugar_trabajo, tel_trabajo, salario, depende, grado, institucion, cuota 

@@ -23,3 +23,93 @@ function numeros(e){
         tecla_fin = String.fromCharCode(tecla);
         return /[0-9]/.test(tecla_fin);
     }
+
+function espacios(e)
+{
+    if(e.target.value.trim() == "")
+    {
+        Materialize.toast('Este campo no puede estar vacio', 3000);
+        $(e.target).addClass('invalidad');
+    }
+    else
+    {
+        $(e.target).removeClass('invalidad');
+    }
+}
+
+function telefonos(e)
+{
+    fijo = $('#fijo').val();
+    madre = $('#madre').val();
+    padre = $('#padre').val();
+    hijo = $('#hijo').val();
+    if(fijo != "")
+    {
+        if(fijo == madre)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#madre').val("");
+        }
+        if(fijo == padre)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#padre').val("");
+        }
+        if(fijo == hijo)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#hijo').val("");
+        }
+    }
+    if(madre != "")
+    {
+        if(madre == padre)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#padre').val("");
+        }
+        if(madre == hijo)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#hijo').val("");
+        }
+    }
+    if(padre != "")
+    {
+        if(padre == hijo)
+        {
+            swal({
+                title: 'Aviso',
+                text: 'Ese número de telefóno ya fue agregado',
+                icon: 'warning',
+                button: 'aceptar'
+            });
+            $('#hijo').val("");
+        }
+    }
+}

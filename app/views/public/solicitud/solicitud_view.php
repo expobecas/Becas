@@ -26,7 +26,7 @@
                     <?php
                     include_once("../../app/views/public/templates/datos_estudiantes.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue first margen_one">Siguiente</a>
+                    <a type="submit" id="estudiante" class="waves-effect waves-light btn blue first margen_one">Siguiente</a>
                 </div>
             </form>
 

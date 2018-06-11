@@ -139,7 +139,7 @@ class Estudiantes extends Validator{
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         echo($data['contraseña']);
-        if(password_verify($this->contraseña, $data['contraseña'])){
+        if($this->contraseña == $data['contraseña']){
             return true;
         }else{
             return false;

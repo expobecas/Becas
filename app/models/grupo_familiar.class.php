@@ -129,7 +129,7 @@ class Grupo_Familiar extends Validator
 
     public function createFamilia()
     {
-        $sql = "";
+        $sql = "INSERT INTO grupo_familiar(ingreso_familiar, id_gastos, total_gastos, id_solicitud, monto_deuda) VALUES()";
         $params = array();
         return Database::executeRow($sql, $params);
     }

@@ -36,7 +36,7 @@ try{
             }
         }
     }else{
-        Page::showMessage(3, "No hay usuarios disponibles");
+        Page::showMessage(3, "No hay usuarios disponibles", "");
     }
 }catch(Exception $error){
     Page::showMessage(2,$error->getMessage(), null);

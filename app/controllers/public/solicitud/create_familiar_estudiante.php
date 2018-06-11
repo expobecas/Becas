@@ -10,11 +10,11 @@ try
 		function create()
 		{
             $familiares_estudiante = new Familiares_estudiante;
-            //$familiares_estudiante->setDepende($_POST['depende']);
-            //$familiares_estudiante->setGrado($_POST['grado']);
-            //$familiares_estudiante->setInstitucion($_POST['institucion']);
+            $familiares_estudiante->setDepende($_POST['depende']);
+            $familiares_estudiante->setGrado($_POST['grado']);
+            $familiares_estudiante->setInstitucion($_POST['institucion']);
             $cuota = str_replace(',', '.', str_replace('.', '', $_POST['cuota_inte']));
-            //$familiares_estudiante->setCuota($cuota);
+            $familiares_estudiante->setCuota($cuota);
 
             $depende = $_POST['depende'];
             $grado = $_POST['grado'];

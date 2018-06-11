@@ -14,7 +14,7 @@ try
 	//PRIMERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla institucion proveniente
 	$institucion_proveniente = new Institucion_proveniente;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
 		$_POST = $institucion_proveniente->validateForm($_POST);
 		if($institucion_proveniente->setNombre($_POST['institucion_prov']))
@@ -54,12 +54,12 @@ try
 		{
 			throw new Exception("Escriba el nombre de la institucion donde proviene");	
 		}
-	}*/
+	}
 	
 
 	//Para llenar la tabla solicitud
 	$solicitud = new Solicitud;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
 		$_POST = $solicitud->validateForm($_POST);
 		if($solicitud->setIdGenero($_POST['genero']))
@@ -182,8 +182,8 @@ try
     $familiares_estudiante = new Familiares_estudiante;
 
     //Para llenar la tabla imagenes_vehiculo
-	$imagenes_vehiculo = new Imagenes_vehiculo;
-	/*if(isset($_POST['enviar']))
+	/*$imagenes_vehiculo = new Imagenes_vehiculo;
+	if(isset($_POST['enviar']))
 	{
 		$_POST = $imagenes_vehiculo->validateForm($_POST['']);
 		if($imagenes_vehiculo->setImagenVehiculo())
@@ -268,7 +268,7 @@ try
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla gastos mensuales
 	$gastos_mensuales = new Gastos_mensuales;
-	/*
+	
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
@@ -424,7 +424,7 @@ try
 		{
 			throw new Exception("Ingrese el gasto de alimentacion mensual");
 		}
-	}*/
+	}
 
     //Para llenar la tabla grupo familiar
 	$grupo_familiar = new Grupo_familiar;
@@ -435,7 +435,7 @@ try
 	}
 
     //Para llenar la tabla remesa familiar
-	/*$remesa_familiar = new Remesa_familiar;
+	$remesa_familiar = new Remesa_familiar;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $remesa_familiar->validateForm($_POST);
@@ -456,7 +456,7 @@ try
 				}
 			}
 		}
-	}*/
+	}
 
     
 }

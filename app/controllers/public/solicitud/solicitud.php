@@ -18,6 +18,13 @@ try
             $integrante->setProfesionOcupacion($_POST['profesion']);
             $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
             $integrante->setTelTrabajo($_POST['tel_trabajo']);
+            $dato = $integrante->getSolicitud();
+            foreach($dato as $row)
+            {
+                $id = $row;
+                echo $id;
+            }
+
 			$nombres = $_POST['nombres'];
 			$apellidos = $_POST['apellidos'];
             $paretesco = $_POST['parentesco'];

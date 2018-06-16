@@ -18,22 +18,19 @@ class Page extends component{
             <script type='text/javascript' src='../../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
-        <body class='fondo-general'>
+        <body class='fondo-general font-web'>
         ");
         if(isset($_SESSION['id_estudiante'])){
-            print("<ul id='slide-out' class='side-nav fixed content-menu'>
+            print("<ul id='slide-out' class='side-nav fixed content-menu social-buttos'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
-              <a href='#!name'><span class='white-text name user-name'>$_SESSION[id_tipo]</span></a>
+              <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
             </div></li>
             <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
             <li><a href='../../../public/becados/account/editar_perfil.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
             <li><a href='../../../public/becados/account/mensajes.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>question_answer</i>Mensajes</a></li>
             <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
-          </ul> 
-          <div class='fixed-action-btn horizontal click-to-toggle'>
-          <a href='#' data-activates='slide-out' class='button-collapse btn-floating btn-large red show'><i class='material-icons'>menu</i></a>
-          </div> 
+          </ul>  
           <main>
           <div class='row white' id='barra'>
             <div class='col offset-l10'>   

@@ -1,11 +1,16 @@
 <div class="row">
+    <div class="col offset-l3 titulo-font">
+    <h4>Bandeja de entrada</h4>
+    </div>
+</div>
+<div class="row">
 <div class="col l8 offset-l3 white">
    <table class="bordered highlight">
       <thead>
          <tr>
             <th>Usuario</th>
             <th>Comentario </th>
-            <th>fecha</th>
+            <th>Fecha</th>
          </tr>
       </thead>
       <tbody>

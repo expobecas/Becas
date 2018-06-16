@@ -30,6 +30,13 @@
   margin-bottom: 13px;
 }
 
+.picker__holder
+{
+  width: 34%;
+  height: 221%;
+  top: 300%;
+}
+
 .invalidad
 {
   border-bottom: 1px solid #F44336 !important;

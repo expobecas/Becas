@@ -10,6 +10,7 @@ try
 		function create()
 		{
             $integrante = new Integrante_familia;
+
             $integrante->setNombres($_POST['nombres']);
             $integrante->setApellidos($_POST['apellidos']);
             $integrante->setParentesco($_POST['parentesco']);
@@ -22,7 +23,6 @@ try
             foreach($dato as $row)
             {
                 $id = $row;
-                echo $id;
             }
 
 			$nombres = $_POST['nombres'];
@@ -32,7 +32,7 @@ try
 			$profesion_ocupacion = $_POST['profesion'];
 			$lugar_trabajo = $_POST['lugar_trabajo'];
             $tel_trabajo = $_POST['tel_trabajo'];
-            $integrante->setSalario($_POST['salario']);
+            $integrante->setSalario($_POST['salariocoma']);
             if($integrante->createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo))
             {
                 Component::showMessage(1, "integrante agregada", "");

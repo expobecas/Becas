@@ -123,7 +123,6 @@ class Familiares_estudiante extends Validator
     {
         $sql = "INSERT INTO familiares_estudiante(depende, grado, institucion, cuota, id_integrante) VALUES (?, ?, ?, ?, ?)";
         $params = array($depende, $grado, $institucion, $cuota, $id_integrante);
-        echo($id_integrante);
         return Database::executeRow($sql, $params);
     }
 }

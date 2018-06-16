@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $('#cuota').mask("#.##0,00", {reverse: true});
     $('#salario').mask("#.##0,00", {reverse: true});
@@ -30,6 +31,7 @@ function espacios(e)
     {
         Materialize.toast('Este campo no puede estar vacio', 3000);
         $(e.target).addClass('invalidad');
+        $(e.target).val("");
     }
     else
     {

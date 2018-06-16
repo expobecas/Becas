@@ -19,7 +19,6 @@ try
             $depende = $_POST['depende'];
             $grado = $_POST['grado'];
             $institucion = $_POST['institucion'];
-            echo($institucion);
             
             $data = $familiares_estudiante->getIdInte();
             foreach($data as $row)

@@ -186,7 +186,7 @@
                 <th>Profesion</th>
                 <th>Lugar de trabajo</th>
                 <th>Teléfono de trabajo</th>
-                <th>Salario</th>
+                <th >Salario</th>
                 <th>Grado o Año</th>
                 <th>Institución</th>
                 <th>Cuota</th>

@@ -1,4 +1,19 @@
 <div class="row">
+    <div class="input-field col s12 m6 l3">   
+        <input id="carnet" type="text" name="carnet" class="validate">
+        <label for="carnet">N° de carnet</label>
+    </div>
+
+    <div class="input-field col s12 m6 l3">   
+        <input id="nombres" type="text" name="nombres" class="validate">
+        <label for="nombres">Nombres</label>
+    </div>
+
+    <div class="input-field col s12 m6 l3">   
+        <input id="apellidos" type="text" name="apellidos" class="validate">
+        <label for="apellidos">Apellidos</label>
+    </div>
+
     <div class="input-field col s12 m6 l3">
         <?php
            Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());
@@ -6,7 +21,7 @@
     </div>
 
     <div class="input-field col s12 m6 l3">   
-        <input id="religion" type="text" name="religion" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getReligion())?>' required/>
+        <input id="religion" type="text" name="religion" class="validate" value='<?php print($solicitud->getReligion())?>' required/>
         <label for="religion">Religión</label>
     </div>
 
@@ -26,42 +41,42 @@
     </div>
 
     <div class="input-field col s12 m6 l3">   
-        <input id="direccion" type="text" name="direccion" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
+        <input id="direccion" type="text" name="direccion" class="validate" value='<?php print($solicitud->getDireccion())?>' required/>
         <label for="direccion">Dirección</label>
     </div>
 
     <div class="input-field col s12 m6 l3">   
-        <input id="correo" type="email" name="correo" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getCorreo())?>' required/>
+        <input id="correo" type="email" name="correo" class="validate" value='<?php print($solicitud->getCorreo())?>' required/>
         <label for="correo">Correo Electrónico</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="fijo" type="text" name="fijo" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getTelFijo())?>'/>
+        <input id="fijo" type="text" name="fijo" class="validate" value='<?php print($solicitud->getTelFijo())?>'/>
         <label for="fijo">Telefono fijo</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="madre" type="text" name="madre" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelMama())?>'/>
+        <input id="madre" type="text" name="madre" class="validate" value='<?php print($solicitud->getCelMama())?>'/>
         <label for="madre">Celular(madre)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="padre" type="text" name="padre" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelPapa())?>'/>
+        <input id="padre" type="text" name="padre" class="validate" value='<?php print($solicitud->getCelPapa())?>'/>
         <label for="padre">Celular(padre)</label>
     </div>    
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="hijo" type="text" name="hijo" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelHijo())?>'/>
+        <input id="hijo" type="text" name="hijo" class="validate" value='<?php print($solicitud->getCelHijo())?>'/>
         <label for="hijo">Celular(hijo/a)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="lugar" type="text" name="lugar" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getLugarNacimiento())?>' required/>
+        <input id="lugar" type="text" name="lugar" class="validate" value='<?php print($solicitud->getLugarNacimiento())?>' required/>
         <label for="lugar">Lugar de nacimiento</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pais_naci" type="text" name="pais_naci" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getPaisNacimiento())?>' required/>
+        <input id="pais_naci" type="text" name="pais_naci" class="validate" value='<?php print($solicitud->getPaisNacimiento())?>' required/>
         <label for="pais_naci">Pais de nacimiento</label>
     </div>
 
@@ -86,31 +101,31 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="institucion_prov" type="text" name="institucion_prov" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getNombre())?>' required/>
+        <input id="institucion_prov" type="text" name="institucion_prov" class="validate" value='<?php /*print($institucion_proveniente->getNombre())*/?>' required/>
         <label for="institucion_prov">Nombre de la institucion proveniente</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="departamento" type="text" name="departamento" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getLugar())?>' required/>
+        <input id="departamento" type="text" name="departamento" class="validate" value='<?php /*print($institucion_proveniente->getLugar())*/?>' required/>
         <label for="departamento">Departamento</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pais" type="text" name="pais" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getLugar())?>' />
+        <input id="pais" type="text" name="pais" class="validate" value='<?php /*print($institucion_proveniente->getLugar())*/?>' />
         <label for="pais">Pais</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="cuota" type="text" name="cuota" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getCuotaPagaba())?>'/>
+        <input id="cuota" type="text" name="cuota" class="validate" value='<?php /*print($institucion_proveniente->getCuotaPagaba())*/?>' required/>
         <label for="cuota">Cuota que pagaba</label>
     </div>
 
     <div class="input-field col s12 m6 l3">
-        <select id="año_realizaba" name="año_realizaba">
+        <select id="año" name="año_realizaba">
             <option value="" disabled selected>Año que realizaba</option>
-            <option value="Noveno grado">Noveno</option>
-            <option value="Primero año">Primer año</option>
-            <option value="Segundo año">Segundo año</option>
+            <option value='Noveno grado'>Noveno</option>
+            <option value='Primero año'>Primer año</option>
+            <option value='Segundo año'>Segundo año</option>
         </select>
     </div>
 </div>

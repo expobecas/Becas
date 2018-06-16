@@ -1,4 +1,8 @@
-
+<div class="row">
+    <div class="col offset-l3 titulo-font">
+        <h4>Mi perfil</h4>
+    </div>
+</div>
 
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">

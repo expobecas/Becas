@@ -14,13 +14,13 @@ try{
                             $_SESSION['id_tipo'] = $usuarios-> getTipo();
                             echo $_SESSION['id_tipo'];
                             if($_SESSION['id_tipo'] == 1){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
+                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                             }
                             if($_SESSION['id_tipo'] == 2){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/becados/account/editar_perfil.php");
+                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/baccount/index.php");
                             }
                             if($_SESSION['id_tipo'] == 3){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/alumno/index/index.php");
+                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                             }
                         }else{
                             throw new Exception("Clave incorrecta");
@@ -36,10 +36,10 @@ try{
             }
         }
     }else{
-        Page::showMessage(3, "No hay usuarios disponibles", "");
+        Page::showMessage(3, "No hay usuarios disponibles");
     }
 }catch(Exception $error){
     Page::showMessage(2,$error->getMessage(), null);
 }
-require_once("../../app/views/public/ingresar/acceder_view.php");
+require_once("../../app/views/dashboard/ingresar/acceder_view.php");
 ?> 

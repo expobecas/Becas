@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('.button-collapse').sideNav({
-        menuWidth: 260,
+        menuWidth: 290,
         edge: 'left',
         closeOnClick: true,
         draggable: true,
@@ -8,4 +8,7 @@ $(document).ready(function(){
         onClose: function(el) { },
     }
   );
+  });
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
   });

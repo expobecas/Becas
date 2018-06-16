@@ -1,6 +1,6 @@
 <div class="row">
     <div class="cajita1 col">
-    <p class="fecha_cajita col offset-l2 push-l1">Hoy es: <br/> <strong><?php print(date('d/m/Y')); ?></strong></p>
+    <p class="fecha_cajita col offset-l2 push-l1">Hoy es: <br/> <strong class="titulo-font"><?php print(date('d/m/Y')); ?></strong></p>
     <i class="material-icons date-1 col pull-l8">date_range</i>
     </div>
     <div class="cajita2 col">

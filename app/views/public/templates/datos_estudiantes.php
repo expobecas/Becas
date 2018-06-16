@@ -36,22 +36,22 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="fijo" type="text" name="fijo" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getTelFijo())?>'/>
+        <input id="fijo" type="text" name="fijo" class="validate" pattern="^[0-9]\d{7}$" onchange="telefonos(event)" value='<?php print($solicitud->getTelFijo())?>'/>
         <label for="fijo">Telefono fijo</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="madre" type="text" name="madre" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelMama())?>'/>
+        <input id="madre" type="text" name="madre" class="validate" pattern="^[0-9]\d{7}$" onchange="telefonos(event)" value='<?php print($solicitud->getCelMama())?>'/>
         <label for="madre">Celular(madre)</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="padre" type="text" name="padre" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelPapa())?>'/>
+        <input id="padre" type="text" name="padre" class="validate" pattern="^[0-9]\d{7}$" onchange="telefonos(event)" value='<?php print($solicitud->getCelPapa())?>'/>
         <label for="padre">Celular(padre)</label>
     </div>    
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="hijo" type="text" name="hijo" class="validate" onchange="telefonos(event)" value='<?php print($solicitud->getCelHijo())?>'/>
+        <input id="hijo" type="text" name="hijo" class="validate" pattern="^[0-9]\d{7}$" onchange="telefonos(event)" value='<?php print($solicitud->getCelHijo())?>'/>
         <label for="hijo">Celular(hijo/a)</label>
     </div>
 

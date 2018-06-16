@@ -12,6 +12,7 @@ $(document).ready(function(){
     $('#madre').mask('00000000');
     $('#hijo').mask('00000000');
     $('#año').mask('0000');
+
 });
 //Para solo numeros telefonico
 function numeros(e){
@@ -41,6 +42,8 @@ function espacios(e)
 
 function telefonos(e)
 {
+
+    Expresion = /^[0-9]\d{7}$/;
     fijo = $('#fijo').val();
     madre = $('#madre').val();
     padre = $('#padre').val();

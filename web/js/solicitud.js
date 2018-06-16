@@ -1,6 +1,6 @@
 $(document).ready(function() {  
 
-    $("#estudiante").click(function(e){
+    /*$("#estudiante").click(function(e){
       //Tabla solicitud
       var genero = $('#genero').val();
       var religion = $('#religion').val();
@@ -106,16 +106,16 @@ $(document).ready(function() {
                                           }, 400)
                                           $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
                                           var n = setInterval(function(){
-                                            /*le da color verde*/
+                                            /*le da color verde*
                                           $('.progressc .circle1').removeClass('active').addClass('done');
                                           
-                                          /*este pone el checke*/
+                                          /*este pone el checke*
                                           $('.progressc .circle1 .label').html('&#10003;');
                                   
-                                          /*rellena la primera mitad de la barra*/
+                                          /*rellena la primera mitad de la barra*
                                           $('.progressc .bar1').addClass('active');
                                   
-                                          /*activamos el circulo 2 del progress*/
+                                          /*activamos el circulo 2 del progress*
                                           $('.progressc .circle2').addClass('active');
                                   
                                           clearInterval(n);
@@ -272,7 +272,7 @@ $(document).ready(function() {
           button: 'aceptar'
         });
       }
-    });
+    });*/
 
 
 

@@ -22,7 +22,7 @@ try
             $dato = $integrante->getSolicitud();
             foreach($dato as $row)
             {
-                $id = $row;
+                $id_solicitud = $row;
             }
 
 			$nombres = $_POST['nombres'];
@@ -33,6 +33,7 @@ try
 			$lugar_trabajo = $_POST['lugar_trabajo'];
             $tel_trabajo = $_POST['tel_trabajo'];
             $integrante->setSalario($_POST['salariocoma']);
+            $integrante->setIdSolicitud($id_solicitud);
             if($integrante->createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo))
             {
                 Component::showMessage(1, "integrante agregada", "");

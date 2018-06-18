@@ -14,165 +14,10 @@ try
 	//PRIMERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla institucion proveniente
 	$institucion_proveniente = new Institucion_proveniente;
-	if(isset($_POST['enviar']))
-	{
-		$_POST = $institucion_proveniente->validateForm($_POST);
-		if($institucion_proveniente->setNombre($_POST['institucion_prov']))
-		{
-			if($institucion_proveniente->setLugar($_POST['departamento'])) 
-			{
-				$Cuota = str_replace(',', '.', str_replace('.', '', $_POST['cuota']));
-				if($institucion_proveniente->setCuotaPagaba($Cuota))
-				{
-					if($institucion_proveniente->setAño($_POST['año_realizaba']))
-					{
-						if($institucion_proveniente->createInstitucion())
-						{
-							Page::showMessage(1, "institucion agregada", "");
-						}
-						else
-						{
-							throw new Exception(Database::getException());
-						}
-					}
-					else
-					{
-						throw new Exception("Seleccione grado o año que realizaba");
-					}
-				}
-				else
-				{
-					throw new Exception("Ingrese la cuota que pagaba");
-				}
-			}
-			else
-			{
-				throw new Exception("Escriba el departamento y el pais de la institución proveniente");
-			}
-		}
-		else
-		{
-			throw new Exception("Escriba el nombre de la institucion donde proviene");	
-		}
-	}
 	
 
 	//Para llenar la tabla solicitud
 	$solicitud = new Solicitud;
-	if(isset($_POST['enviar']))
-	{
-		$_POST = $solicitud->validateForm($_POST);
-		if($solicitud->setIdGenero($_POST['genero']))
-		{
-			if($solicitud->setReligion($_POST['religion']))
-			{
-				if($solicitud->setEncargado($_POST['familia']))
-				{
-					if($solicitud->setDireccion($_POST['direccion']))
-					{
-						if($solicitud->setCorreo($_POST['correo']))
-						{
-							$errorTelefono = false;
-							if($solicitud->setTelFijo($_POST['fijo']))
-							{
-								$errorTelefono = true;
-							}
-							if($solicitud->setCelMama($_POST['madre']))
-							{
-								$errorTelefono = true;
-							}
-							if($solicitud->setCelPapa($_POST['padre']))
-							{
-								$errorTelefono = true;
-							}
-							if($solicitud->setCelHijo($_POST['hijo']))
-							{
-								$errorTelefono = true;
-							}
-							if($errorTelefono)
-							{
-								if($solicitud->setFechaNacimiento($_POST['fecha_naci']))
-								{
-									if($solicitud->setLugarNacimiento($_POST['lugar']))
-									{
-										if($solicitud->setPaisNacimiento($_POST['pais_naci']))
-										{
-											if($solicitud->setEstudiosFinan($_POST['financiados']))
-											{
-												$data = $solicitud->getInstitucion();
-												foreach($data as $row)
-												{
-													$Id = $row;
-													echo $Id;
-												}														
-												if($solicitud->setIdInstitucion($Id))
-												{
-													if($solicitud->createSolicitud())
-													{
-														Page::showMessage(1, "solicitud agregada", "");
-													}
-													else
-													{
-														throw new Exception(Database::getException());
-													}
-												}
-												else
-												{
-													throw new Exception("No hay institucion");
-												}
-											}
-											else
-											{
-												throw new Exception("Seleccione quien financia sus estudios");
-											}
-										}
-										else
-										{
-											throw new Exception("Ingrese el pais de nacimiento");
-										}
-									}
-									else
-									{
-										throw new Exception("Ingrese el lugar de nacimiento");
-									}											
-								}
-								else
-								{
-									throw new Exception("Seleccione la fecha de nacimiento");
-								}
-							}
-							else
-							{
-								throw new Exception("Ingrese al menos un número telefónico");
-							}
-						}
-						else
-						{
-							throw new Exception("Ingrese un correo electrónico");
-						}
-					}
-					else
-					{
-						throw new Exception("Ingrese la direccion de su casa");
-					}
-				}
-				else
-				{
-					throw new Exception("Seleccione con quien vive");
-				}
-			}
-			else
-			{
-				throw new Exception("Ingrese la religion en la que pertenece");
-			}
-		}
-		else
-		{
-			throw new Exception("Seleccione un genero");
-		}
-	}
-	
-
 
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla integrantes*/
@@ -208,67 +53,62 @@ try
 
     //Para llenar la tabla propiedad
 	$propiedad = new Propiedad;
-	if(isset($_POST['enviar']))
-	{
-		$_POST = $propiedad->validateForm($_POST);
-		if($propiedad->setTipoPropiedad($_POST['tipocasa']))
-		{
-			if($propiedad->setCuotaMensual($_POST['cuota_mensual']))
-			{
-				if($propiedad->setValorCasa($_POST['valor_actual']))
-				{
-					if($propiedad->setTipoVehiculo($_POST['tipo']))
-					{
-						if($propiedad->setAñoVehiculo($_POST['año']))
-						{
-							if($propiedad->setValorVehiculo($_POST['valor_vehiculo']))
-							{
-								if(is_uploaded_file($_FILES['croquis']['tmp_name']))
-								{
-									if($propiedad->setCroquis($_FILES['croquis']))
-									{
-										if($propiedad->createPropiedad())
-										{
-											Page::showMessage(1, "Propiedad creada", "");
-										}
-										else
-										{
-											if($propiedad->unsetCroquis())
-											{
-												throw new Exception(Database::getException());
-											}
-											else
-											{
-												throw new Exception("Elimine la imagen manualmente");
-											}
-										}			
-									}
-									else
-									{
-										throw new Exception($propiedad->getImageError());
-									}
-								}
-								else
-								{
-									throw new Exception("Seleccione una imagen de su vivienda");
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	
 
     //para llenar la intermedia propiedad
-    $intermedia_propiedad = new Intermedia_propiedad;
+	$intermedia_propiedad = new Intermedia_propiedad;
+	/*if(isset($_POST['enviar']))
+	{
+		$data = $intermedia_propiedad->getSolicitud();
+		if($data)
+		{
+			foreach($data as $id)
+			{
+				$id_solicitud = $id;
+			}
+			$intermedia_propiedad->setIdSolicitud($id_solicitud);
+		}
+		else
+		{
+			throw new Exception(Database::getException());
+		}
+
+		$integrantes = $intermedia_propiedad->getIntegrantes();
+		$idpropiedad = $intermedia_propiedad->getPropiedad();
+		if($integrantes && $idpropiedad)
+		{
+			print($idpropiedad[0][0]);
+			$i = 0;
+			$j = 0;
+			$c=count($integrantes);
+
+			for($i ; $i<$c; $i++)
+			{
+				print($integrantes[$i][$j]);
+				$intermedia_propiedad->setIdIntegrante($integrantes[$i][$j]);
+				$intermedia_propiedad->setIdPropiedad($idpropiedad[0][0]);
+				if($intermedia_propiedad->createInterPropiedad())
+				{
+					print("simon");
+				}
+				else
+				{
+					throw new Exception(Database::getException());
+				}
+
+			}
+		}
+		else
+		{
+			throw new Exception(Database::getException());
+		}
+	}*/
 
 
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla gastos mensuales
 	$gastos_mensuales = new Gastos_mensuales;
-	
+	/*
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
@@ -424,41 +264,68 @@ try
 		{
 			throw new Exception("Ingrese el gasto de alimentacion mensual");
 		}
-	}
+	}*/
 
     //Para llenar la tabla grupo familiar
 	$grupo_familiar = new Grupo_familiar;
-	if(isset($_POST['enviar']))
-	{
-		$_POST = $grupo_familiar->validateForm($_POST);
-		if($grupo_familiar->setIngresoFamiliar()){}
-	}
 
     //Para llenar la tabla remesa familiar
 	$remesa_familiar = new Remesa_familiar;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $remesa_familiar->validateForm($_POST);
-		if($remesa_familiar->setMonto($_POST['monto']))
+		if($_POST['monto'] != null && $_POST['periodo'] != null)
 		{
-			if($remesa_familiar->setPeriodoRecibido($_POST['periodo']))
+			if($_POST['periodo'] != null && $_POST['benecfactor'] != null)
 			{
-				if($remesa_familiar->setBenefactor($_POST['benecfactor']))
+				if($remesa_familiar->setMonto($_POST['monto']))
 				{
-					if($remesa_familiar->createRemesa())
+					if($remesa_familiar->setPeriodoRecibido($_POST['periodo']))
 					{
-						Page::showMessage(1, "Remesa creada", "");
+						if($remesa_familiar->setBenefactor($_POST['benecfactor']))
+						{
+							$idfamilia = $remesa_familiar->getFamilia();
+							if($remesa_familiar->setIdFamilia($idfamilia[0][0]))
+							{
+								if($remesa_familiar->createRemesa())
+								{
+									Page::showMessage(1, "Remesa creada", "");
+								}
+								else
+								{
+									throw new Exception(Database::getException());
+								}
+							}
+							else
+							{
+								throw new Exception("Ocurrió un error al guardar los datos de la remesa");
+							}
+						}
+						else
+						{
+							throw new Exception("Ingrese el benefactor de la remesa");
+						}
 					}
 					else
 					{
-						throw new Exception(Database::getException());
+						throw new Exception("Ingrese el periodo que recibe la remesa");
 					}
 				}
+				else
+				{
+					throw new Exception("Ingrese el monto que recibe de la remesa");
+				}
+			}
+			else
+			{
+				throw new Exception("llene todos los campos si recibe una remesa");
 			}
 		}
+		else
+		{
+			throw new Exception("llene todos los campos si recibe una remesa");
+		}
 	}
-
-    
 }
 catch(Exception $error)
 {

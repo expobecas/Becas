@@ -24,7 +24,7 @@ class Remesa_familiar extends Validator
         return $this->id_remesa;
     }
 
-    public function setMonto()
+    public function setMonto($value)
     {
         if($this->validateMoney($value))
         {
@@ -41,9 +41,9 @@ class Remesa_familiar extends Validator
         return $this->monto;
     }
 
-    public function setPeriodoRecibido()
+    public function setPeriodoRecibido($value)
     {
-        if($this->validateId($value))
+        if($this->validateAlphanumeric($value, 0, 25))
         {
             $this->periodo_recibido = $value;
             return true;
@@ -58,9 +58,9 @@ class Remesa_familiar extends Validator
         return $this->periodo_recibido;
     }
 
-    public function setBenefactor()
+    public function setBenefactor($value)
     {
-        if($this->validateId($value))
+        if($this->validateAlphanumeric($value, 0, 50))
         {
             $this->benefactor = $value;
             return true;
@@ -75,7 +75,7 @@ class Remesa_familiar extends Validator
         return $this->benefactor;
     }
 
-    public function setIdFamilia()
+    public function setIdFamilia($value)
     {
         if($this->validateId($value))
         {

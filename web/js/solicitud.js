@@ -217,7 +217,7 @@ $(document).ready(function() {
                 {
                   swal({
                     title: 'Aviso',
-                    text: 'Ingrese al menos un número de telefóno',
+                    text: 'Ingrese al menos un número de teléfono',
                     icon: 'warning',
                     button: 'aceptar'
                   });

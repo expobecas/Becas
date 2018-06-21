@@ -1,4 +1,93 @@
-$(document).ready(function() {  
+$(document).ready(function() { 
+
+  function cargarTabla()
+  {
+    //Agrega los valores a la tabla
+    $.ajax({
+      type: 'GET',
+      url: '../../app/controllers/public/solicitud/table_integrantes.php',
+      dataType: 'json',
+      success: function(datos)
+      {
+        $('#datos').empty();
+        console.log(datos);
+        var i = 0;
+        datos = JSON.parse(JSON.stringify(datos).replace(/null/g, '""'));//todos los datos con valor null se convierten en vacios
+        for(i; i<datos.length; i++)
+        {
+          var fila = "";
+          fila = fila.concat(
+            '<tr class="integrante" id="'+datos[i].id_integrante+'">',
+            '<td>'+datos[i].nombres+'</td>',
+            '<td>'+datos[i].apellidos+'</td>',
+            '<td>'+datos[i].parentesco+'</td>',
+            '<td>'+datos[i].fecha_nacimiento+'</td>',
+            '<td>'+datos[i].profesion_ocupacion+'</td>',
+            '<td>'+datos[i].lugar_trabajo+'</td>',
+            '<td>'+datos[i].tel_trabajo+'</td>',
+            '<td class="suma">'+datos[i].salario+'</td>',
+            '<td>'+datos[i].grado+'</td>',
+            '<td>'+datos[i].institucion+'</td>',
+            '<td>'+datos[i].cuota+'</td>',
+            '<td><a type="button" class="waves-effect waves-light btn green tooltipped boton_table editar" data-position="bottom" data-tooltip="Editar"><i class="material-icons">edit</i></a> <a type="button" class="waves-effect waves-light btn red tooltipped boton_table eliminar" data-position="bottom" data-tooltip="Eliminar"><i class="material-icons">delete</i></a> </td>',
+            '</tr>'
+          );
+          $('#datos').append(fila);
+        }
+
+        //Para la suma de salarios
+        var totalsalario = 0;
+        $('td.suma').each(function(){
+          totalsalario += parseFloat($(this).html()) || 0;
+        });
+        console.log(totalsalario);
+        $('#ingreso_familiar').val(totalsalario);
+
+        $('.tooltipped').tooltip({delay: 50});
+        
+        obtenerDatos();
+      },
+      error: function()
+      {
+        $('#datos').append("<tr>"+'Ocurrio un error al cargar los datos'+"</tr>");
+      }
+    });
+  }
+
+  //funcion para obtener los datos de la fila cuando da click en el boton de editar
+  function obtenerDatos()
+  {
+    $('#integrantes').on('click', '#datos .editar', function(e){
+      e.preventDefault();
+      id = $(this).parent().parent().attr('id');
+      nombres = $(this).parent().parent().children('td:eq(0)').text();
+      apellidos = $(this).parent().parent().children('td:eq(1)').text();
+      parentesco = $(this).parent().parent().children('td:eq(2)').text();
+      fecha_nacimiento = $(this).parent().parent().children('td:eq(3)').text();
+      profesion = $(this).parent().parent().children('td:eq(4)').text();
+      lugar_trabajo = $(this).parent().parent().children('td:eq(5)').text();
+      tel_trabajo = $(this).parent().parent().children('td:eq(6)').text();
+      salario = $(this).parent().parent().children('td:eq(7)').text();
+      grado = $(this).parent().parent().children('td:eq(8)').text();
+      institucion = $(this).parent().parent().children('td:eq(9)').text();
+      cuota = $(this).parent().parent().children('td:eq(10)').text();
+
+      fechaconvert = fecha_nacimiento.replace('/', '-');
+      fecha_nacimiento = fechaconvert.replace('/', '-')
+      $('#nombres_inte').val(nombres);
+      $('#apellidos_inte').val(apellidos);
+      $('#parentesco').val(parentesco);
+      $('#fecha_naci_inte').val(fecha_nacimiento);
+      $('#profesion').val(profesion);
+      $('#lugar_trabajo').val(lugar_trabajo);
+      $('#tel_trabajo').val(tel_trabajo);
+      $('#salario').val(salario);
+      $('#grado').val(grado);
+      $('#institucion').val(institucion);
+      $('#cuota_inte').val(cuota);
+    });
+  }
+   
 
     /*$("#estudiante").click(function(e){
       //Tabla solicitud
@@ -274,10 +363,10 @@ $(document).ready(function() {
       }
     });*/
 
-
-
     //Para el slider 2
     $("#agregar").click(function(){
+
+      
       
       var nombres = $('#nombres_inte').val();
       var apellidos = $('#apellidos_inte').val();
@@ -313,38 +402,26 @@ $(document).ready(function() {
                     url: '../../app/controllers/public/solicitud/solicitud.php?action=create',
                     data: {nombres:nombres, 
                       apellidos:apellidos, 
-                      parentesco:parentesco, fecha_nacimiento:fecha_nacimiento, 
+                      parentesco:parentesco, 
+                      fecha_nacimiento:fecha_nacimiento, 
                       profesion:profesion, 
                       lugar_trabajo:lugar_trabajo, 
                       tel_trabajo:tel_trabajo,
                       salariocoma:salariocoma},
                       success: function()
                       {
-                      //Agrega los valores a la tabla
-                      $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
-                      '</td><td class="suma">'+salariocoma+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
+                        //funcion para cargar los datos en la tabla
+                        cargarTabla();
 
-                      //Sirve para poner los campos vacios
-                      $('#nombres_inte').val('');
-                      $('#apellidos_inte').val('');
-                      $('#parentesco').val('');
-                      $('#fecha_naci_inte').val('');
-                      $('#profesion').val('');
-                      $('#lugar_trabajo').val('');
-                      $('#tel_trabajo').val('');
-                      $('#salario').val('');
-
-                      //Para la suma de salarios
-                      var datos = [];
-                      $('td.suma').each(function () {
-                        datos.push(parseFloat($(this).text()));
-                      });
-                      var suma = datos.reduce(function (a, b) { return a + b; }, 0);
-
-                      console.log(datos);
-                      console.log(suma);
-
-                      $('#ingreso_familiar').val(suma);
+                        //Sirve para poner los campos vacios
+                        $('#nombres_inte').val('');
+                        $('#apellidos_inte').val('');
+                        $('#parentesco').val('');
+                        $('#fecha_naci_inte').val('');
+                        $('#profesion').val('');
+                        $('#lugar_trabajo').val('');
+                        $('#tel_trabajo').val('');
+                        $('#salario').val('');
                     }
                   });
                 }
@@ -372,11 +449,11 @@ $(document).ready(function() {
                         $.ajax({
                           type: "POST",
                           url: '../../app/controllers/public/solicitud/solicitud.php?action=create',
-                          data: {nombres:nombres, 
-                            apellidos:apellidos, 
-                            parentesco:parentesco, fecha_nacimiento:fecha_nacimiento, 
-                            profesion:profesion, 
-                            lugar_trabajo:lugar_trabajo, 
+                          data: {nombres:nombres,
+                            apellidos:apellidos,
+                            parentesco:parentesco, fecha_nacimiento:fecha_nacimiento,
+                            profesion:profesion,
+                            lugar_trabajo:lugar_trabajo,
                             tel_trabajo:tel_trabajo,
                             salario:salario},
                             success: function()
@@ -390,21 +467,8 @@ $(document).ready(function() {
                               cuota_inte:cuota_inte},
                               success: function()
                               {
-                                //Agrega los valores a la tabla
-                                $('#datos').append('<tr><td>'+nombres+'</td><td>'+apellidos+'</td><td>'+parentesco+'</td><td>'+fecha_nacimiento+'</td><td>'+profesion+'</td><td>' +lugar_trabajo+'</td><td>'+tel_trabajo+
-                                '</td><td>'+salario+'</td><td>'+grado+'</td><td>'+institucion+'</td><td>'+cuota_inte+'</td></tr>');
-
-                                //Para sumar los salarios
-                                var datos = [];
-                                $('td.suma').each(function () {
-                                  datos.push(parseFloat($(this).text()));
-                                });
-                                var suma = datos.reduce(function (a, b) { return a + b; }, 0);
-
-                                console.log(datos);
-                                console.log(suma);
-
-                                $('#ingreso_familiar').val(suma);
+                                //Función para cargar datos en la tabla
+                                cargarTabla();
 
                                 //Sirve para poner los campos vacios
                                 $('#nombres_inte').val('');

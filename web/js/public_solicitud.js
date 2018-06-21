@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('select').material_select();
+    //$('#ingreso_familiar').hide(0);
   });
 
 
@@ -14,32 +15,7 @@ $(document).ready(function() {
     container: undefined, // ex. 'body' will append picker to body
   });
 
-
-  /*Para ingresar datos a una tabla  */
-  function agregar(){
-    var $nombre = document.getElementById("nombres_inte").value;
-    var $apellido = document.getElementById("apellidos_inte").value;
-    var $parentesco = document.getElementById("parentesco").value;
-    var $fecha_naci = document.getElementById("fecha_naci_inte").value;
-    var $profesion = document.getElementById("profesion").value;
-    var $lugar_trab = document.getElementById("lugar_trabajo").value;
-    var $tel_trab = document.getElementById("tel_trabajo").value;
-    var $salario = document.getElementById("salario").value;
-    var $depende = document.getElementById("depende").value;
-    var $grado = document.getElementById("grado").value;
-    var $institucion = document.getElementById("institucion").value;
-    var $cuota = document.getElementById("cuota_inte").value;
-
-    var fila = "<tr><td>"+$nombre+"</td><td>"+$apellido+"</td><td>"+$parentesco+"</td><td>"+$fecha_naci+"</td><td>"+$profesion+"</td><td>" +$lugar_trab+"</td><td>"+$tel_trab+
-    "</td><td>"+$salario+"</td><td>"+$grado+"</td><td>"+$institucion+"</td><td>"+$cuota+"</td></tr>";
-
-    var btn = document.createElement("TR");
-    btn.innerHTML=fila;
-    document.getElementById("datos").appendChild(btn);
-  }
-
-
-    /*Ejemplo*/
+  //Ejemplo
   /*Mostrar u ocultar los campos que estan ocultos o que se quieran ocultar con radiobutton */
   $(document).ready(function(){
     $("#si4").on("click", function(){

@@ -113,24 +113,17 @@ class Grupo_Familiar extends Validator
 
 
     //Metodos para el SCRUD
-    
-    public function getIngreso()
-    {
-        $sql = "";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
     public function getGastos()
     {
-        $sql = "SELECT SUM(alimentacion + pago_vivienda + energia_electrica + agua + telefono + COALESCE(vigilancia, 0) + COALESCE( servicio_domestico, 0) + alcadia + pago_deudas + cotizacion + seguro_personal + COALESCE(seguro_vehiculo, 0) + COALESCE(seguro_inmuebles, 0) + transporte + COALESCE(gastos_man_vehiculo, 0) + salud + COALESCE(pagos_asociasiones, 0) + pago_colegiatura + COALESCE(pago_universidad, 0) + gastos_material_estudios + impuesto_renta + iva + tarjeta_credito + COALESCE(otros, 0)) AS Total FROM gastos_mensuales WHERE id_gastos = ?";
-        $params = array($this->id_gastos);
+        $sql = "SELECT SUM(alimentacion + pago_vivienda + energia_electrica + agua + telefono + COALESCE(vigilancia, 0) + COALESCE(servicio_domestico, 0) + alcadia + COALESCE(pago_deudas, 0) + cotizacion + COALESCE(seguro_personal, 0) + COALESCE(seguro_vehiculo, 0) + COALESCE(seguro_inmuebles, 0) + transporte + COALESCE(gastos_man_vehiculo, 0) + salud + COALESCE(pagos_asociasiones, 0) + pago_colegiatura + COALESCE(pago_universidad, 0) + gastos_material_estudios + impuesto_renta + iva + COALESCE(tarjeta_credito, 0) + COALESCE(otros, 0)) AS Total FROM gastos_mensuales WHERE id_gastos = (SELECT id_gastos FROM gastos_mensuales ORDER BY id_gastos DESC LIMIT 1)";
+        $params = array(null);
         return Database::getRow($sql, $params);
     }
 
     public function createFamilia()
     {
-        $sql = "INSERT INTO grupo_familiar(ingreso_familiar, id_gastos, total_gastos, id_solicitud, monto_deuda) VALUES()";
-        $params = array();
+        $sql = "INSERT INTO grupo_familiar(ingreso_familiar, id_gastos, total_gastos, id_solicitud, monto_deuda) VALUES(?, ?, ?, ?, ?)";
+        $params = array($this->ingreso_familiar, $this->id_gastos, $this->total_gastos, $this->id_solicitud, $this->monto_deuda);
         return Database::executeRow($sql, $params);
     }
 }

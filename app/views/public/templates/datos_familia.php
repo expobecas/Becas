@@ -174,32 +174,31 @@
         <div class="col s12 m6 l3">
             <a type="submit" id="agregar" class="waves-effect waves-light btn blue">Agregar</a>
         </div>
-    </form>
-    <div class="col s12 m12 l12">
-        <table class="responsive-table highlight centered margen_top" id="integrantes">
-            <thead>
-            <tr>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Parentesco</th>
-                <th>Fecha de nacimiento</th>
-                <th>Profesion</th>
-                <th>Lugar de trabajo</th>
-                <th>Teléfono de trabajo</th>
-                <th>Salario</th>
-                <th>Grado o Año</th>
-                <th>Institución</th>
-                <th>Cuota</th>
-            </tr>
-            </thead>
-            <tbody id="datos">
+    
+        <div class="col s12 m12 l12">
+            <table class="responsive-table highlight centered margen_top" id="integrantes">
+                <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Parentesco</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Profesion</th>
+                    <th>Lugar de trabajo</th>
+                    <th>Teléfono de trabajo</th>
+                    <th>Salario</th>
+                    <th>Grado o Año</th>
+                    <th>Institución</th>
+                    <th>Cuota</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="datos">
 
-            </tbody>
-        </table>
-    </div>
-
-    <div class="input-field col s12 m6 l3"> 
-            <input id="ingreso_familiar" type="text" name="ingreso_familiar" class="validate"/>
-            <label for="ingreso_familiar">Ingreso familiar</label>
+                </tbody>
+            </table>
         </div>
+
+        
+    </form>
 </div>

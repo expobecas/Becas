@@ -90,6 +90,10 @@
     </div>
 
     <form id="frmIntegrante" method="POST">
+        <div class="input-field col s12 m6 l3" id="idintegrante"> 
+            <input id="id_integrante" type="text" name="id_integrante" class="validate"/>
+        </div>
+
         <div class="input-field col s12 m6 l3"> 
             <input id="nombres_inte" type="text" name="nombres_inte" class="validate"/>
             <label for="nombres_inte">Nombres</label>
@@ -172,13 +176,16 @@
         </div>
 
         <div class="col s12 m6 l3">
-            <a type="submit" id="agregar" class="waves-effect waves-light btn blue">Agregar</a>
+            <a type="submit" id="agregar" class="waves-effect waves-light btn blue botones_integrante">Agregar</a>
+            <a type="submit" id="modificar" class="waves-effect waves-light btn blue botones_integrante">Modificar</a>
+            <a type="button" id="cancelar" class="waves-effect waves-light btn blue botones_integrante">Cancelar</a>
         </div>
     
         <div class="col s12 m12 l12">
-            <table class="responsive-table highlight centered margen_top" id="integrantes">
+            <table class="responsive-table centered striped margen_top" id="integrantes">
                 <thead>
                 <tr>
+                    <th class="ocultar">Id</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Parentesco</th>

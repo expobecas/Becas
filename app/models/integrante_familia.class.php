@@ -215,5 +215,19 @@ class Integrante_familia extends Validator
         $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_solicitud);
         return Database::executeRow($sql, $params);
     }
+
+    public function updateIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion)
+    {
+        $sql = "UPDATE integrante_familia SET nombres = ?, apellidos = ? ,parentesco = ?, fecha_nacimiento = ?, profesion_ocupacion = ?, lugar_trabajo = ?, tel_trabajo = ?, salario = ? WHERE id_integrante = ? AND id_solicitud = ?";
+        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_integrante, $this->id_solicitud);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deleteIntegrante()
+    {
+        $sql = "DELETE FROM integrante_familia WHERE id_integrante = ?";
+        $params = array($this->id_integrante);
+        return Database::executeRow($sql, $params);
+    }
 }
 ?>

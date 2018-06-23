@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $('select').material_select();
     //$('#ingreso_familiar').hide(0);
+    $('#cancelar').hide(0);
+    $('#modificar').hide(0);
+    $('#idintegrante').hide(0);
   });
 
 

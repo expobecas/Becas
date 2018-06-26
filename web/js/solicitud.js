@@ -1,7 +1,4 @@
-$(document).ready(function() { 
-
-  
-   
+$(document).ready(function() {
     //PARA EL SLIDER 1
     /*$("#estudiante").click(function(e){
       //Tabla solicitud
@@ -306,6 +303,7 @@ $(document).ready(function() {
               '<td>'+datos[i].lugar_trabajo+'</td>',
               '<td>'+datos[i].tel_trabajo+'</td>',
               '<td class="suma">'+datos[i].salario+'</td>',
+              '<td>'+datos[i].depende+'</td>',
               '<td>'+datos[i].grado+'</td>',
               '<td>'+datos[i].institucion+'</td>',
               '<td>'+datos[i].cuota+'</td>',
@@ -314,7 +312,6 @@ $(document).ready(function() {
             );
             $('#datos').append(fila);
           }
-
           //Para la suma de salarios
           var totalsalario = 0;
           $('td.suma').each(function(){
@@ -322,7 +319,7 @@ $(document).ready(function() {
           });
           console.log(totalsalario);
           $('#ingreso_familiar').val(totalsalario);
-
+          
           $('.tooltipped').tooltip({delay: 50});
           
           obtenerDatosEditar();
@@ -330,7 +327,7 @@ $(document).ready(function() {
         },
         error: function()
         {
-          $('#datos').append("<tr>"+'Ocurrio un error al cargar los datos'+"</tr>");
+          $('#datos').append('<tr>'+'Ocurrio un error al cargar los datos'+'</tr>');
         }
       });
     }
@@ -350,9 +347,10 @@ $(document).ready(function() {
       lugar_trabajo = $(this).parent().parent().children('td:eq(5)').text();
       tel_trabajo = $(this).parent().parent().children('td:eq(6)').text();
       salario = $(this).parent().parent().children('td:eq(7)').text();
-      grado = $(this).parent().parent().children('td:eq(8)').text();
-      institucion = $(this).parent().parent().children('td:eq(9)').text();
-      cuota = $(this).parent().parent().children('td:eq(10)').text();
+      depende = $(this).parent().parent().children('td:eq(8)').text();
+      grado = $(this).parent().parent().children('td:eq(9)').text();
+      institucion = $(this).parent().parent().children('td:eq(10)').text();
+      cuota = $(this).parent().parent().children('td:eq(11)').text();
 
       //CONVIERTE LA FECHA A FORMATO yyyy-MM-dd
       fechaconvert = fecha_nacimiento.replace('/', '-');
@@ -372,6 +370,37 @@ $(document).ready(function() {
       $('#institucion').val(institucion);
       $('#cuota_inte').val(cuota);
 
+      if(grado != "" || institucion != "")
+      {
+        $('#si_integran').prop('checked', true);
+        $("#depende").show(1000);
+        $("#Grado").show(1000);
+        $("#Institucion").show(1000);
+        $("#Cuota_inte").show(1000);
+      }
+      else
+      {
+        //Sirve para resetear los radio button
+        $('.estudiante').prop('checked', false);
+        $('.depende').prop('checked', false);
+        
+        //Para que se oculten los campos
+        $("#depende").hide(1000);
+        $("#Grado").hide(1000);
+        $("#Institucion").hide(1000);
+        $("#Cuota_inte").hide(1000);
+      }
+      if(depende != "")
+      {
+        if(depende == "si")
+        {
+          $('#si2').prop('checked', true);
+        }
+        else
+        {
+          $('#no2').prop('checked', true);
+        }
+      }
       $('#modificar').show(0);
       $('#agregar').hide(0);
       $('#cancelar').show(0);
@@ -381,6 +410,7 @@ $(document).ready(function() {
   function restablecer()
   {
     //Despues de guardar el integrante se vacian los inputs
+    $('#id_integrante').val('');
     $('#nombres_inte').val('');
     $('#apellidos_inte').val('');
     $('#parentesco').val('');
@@ -402,6 +432,10 @@ $(document).ready(function() {
     $("#Grado").hide(1000);
     $("#Institucion").hide(1000);
     $("#Cuota_inte").hide(1000);
+
+    $('#modificar').hide(0);
+    $('#agregar').show(0);
+    $('#cancelar').hide(0);
   }
 
   $('#cancelar').click(function(){
@@ -683,19 +717,22 @@ $(document).ready(function() {
                           $.ajax({
                             type: "POST",
                             url: '../../app/controllers/public/solicitud/update_integrante.php?action=update',
-                            data: {nombres:nombres,
-                              apellidos:apellidos,
-                              parentesco:parentesco, fecha_nacimiento:fecha_nacimiento,
-                              profesion:profesion,
-                              lugar_trabajo:lugar_trabajo,
+                            data: {id:id,
+                              nombres:nombres, 
+                              apellidos:apellidos, 
+                              parentesco:parentesco, 
+                              fecha_nacimiento:fecha_nacimiento, 
+                              profesion:profesion, 
+                              lugar_trabajo:lugar_trabajo, 
                               tel_trabajo:tel_trabajo,
-                              salario:salario},
+                              salariocoma:salariocoma},
                               success: function()
                               {
                               $.ajax({
                                 type: "POST",
-                                url: '../../app/controllers/public/solicitud/create_familiar_estudiante.php?action=create',
-                                data: {depende:depende,
+                                url: '../../app/controllers/public/solicitud/update_familiar_estudiante.php?action=update',
+                                data: {id:id,
+                                depende:depende,
                                 grado:grado,
                                 institucion:institucion,
                                 cuota_inte:cuota_inte},
@@ -815,8 +852,8 @@ $(document).ready(function() {
           title: 'Eliminar integrante',
           text: '¿Quiere eliminar este integrante?',
           icon: 'warning',
-          buttons: 
-          {
+          dangerMode: true,
+          buttons: {
             cancel: "No",
             danger: "Si"
           },
@@ -835,6 +872,7 @@ $(document).ready(function() {
                   cargarTabla()
                   console.log("Se envio");
                   //Esta funcion vacia los inputs y resetea los radio button
+                  restablecer()
                 }
               });
             }
@@ -851,4 +889,4 @@ $(document).ready(function() {
         });
       });
     }
-  });
+});

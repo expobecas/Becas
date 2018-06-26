@@ -1,6 +1,6 @@
 <?php
 
-class Detalle_slicitud Extends Validator
+class Detalle_solicitud Extends Validator
 {
     private $id_detalle = null;
     private $id_estado = null;
@@ -60,7 +60,7 @@ class Detalle_slicitud Extends Validator
     //Metodos para el matenimiento del SCRUD
     public function createDetalle()
     {
-        $sql = "";
+        $sql = "INSERT INTO detalle_solicitud(id_estado, id_solicitud) VALUES (2, ?)";
         $params = array();
         return Database::executeRow($sql, $params);
     }

@@ -9,6 +9,7 @@ require_once("../../app/models/intermedia_propiedad.class.php");
 require_once("../../app/models/propiedad.class.php");
 require_once("../../app/models/remesa_familiar.class.php");
 require_once("../../app/models/solicitud.class.php");
+require_once("../../app/models/detalle_solicitud.php");
 try
 {
 	//PRIMERA PARTE DEL FOMULARIO SOLICITUD
@@ -338,6 +339,13 @@ try
 			throw new Exception("llene todos los campos si recibe una remesa");
 		}
 	}*/
+
+	$detalle_solicitud = new Detalle_solicitud;
+	if(isset($_POST['enviar']))
+	{
+		$_POST = $detalle_solicitud->validateForm($_POST);
+		
+	}
 }
 catch(Exception $error)
 {

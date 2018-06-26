@@ -126,6 +126,13 @@ class Familiares_estudiante extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function updateFamiliarEstudiante($depende, $grado, $institucion, $cuota)
+    {
+        $sql = "UPDATE familiares_estudiante SET depende = ?, grado = ?, institucion = ?, cuota = ? WHERE id_integrante = ?";
+        $params = array($depende, $grado, $institucion, $cuota, $this->id_integrante);
+        return Database::executeRow($sql, $params);
+    }
+
     public function deleteFamiliarEstudiante()
     {
         $sql = "DELETE FROM familiares_estudiante WHERE id_integrante = ?";

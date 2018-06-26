@@ -182,7 +182,7 @@
         </div>
     
         <div class="col s12 m12 l12">
-            <table class="responsive-table centered striped margen_top" id="integrantes">
+            <table class="responsive-table centered striped bordered margen_top" id="integrantes">
                 <thead>
                 <tr>
                     <th class="ocultar">Id</th>
@@ -194,6 +194,7 @@
                     <th>Lugar de trabajo</th>
                     <th>Teléfono de trabajo</th>
                     <th>Salario</th>
+                    <th>Depende</th>
                     <th>Grado o Año</th>
                     <th>Institución</th>
                     <th>Cuota</th>

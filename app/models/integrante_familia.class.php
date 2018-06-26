@@ -194,7 +194,7 @@ class Integrante_familia extends Validator
 
     public function getIntegranteTable()
     {
-        $sql = "SELECT i.id_integrante, i.nombres, i.apellidos, i.parentesco, i.fecha_nacimiento, i.profesion_ocupacion, i.lugar_trabajo, i.tel_trabajo, i.salario, f.grado, f.institucion, f.cuota 
+        $sql = "SELECT i.id_integrante, i.nombres, i.apellidos, i.parentesco, i.fecha_nacimiento, i.profesion_ocupacion, i.lugar_trabajo, i.tel_trabajo, i.salario, f.depende, f.grado, f.institucion, f.cuota 
         FROM integrante_familia i LEFT JOIN familiares_estudiante f ON i.id_integrante = f.id_integrante 
         WHERE i.id_solicitud = (SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1) ORDER BY i.id_integrante ASC";
         $params = array(null);

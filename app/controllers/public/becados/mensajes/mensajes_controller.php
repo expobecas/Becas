@@ -8,7 +8,7 @@ try{
             if($data){
                 require_once("../../../app/views/public/becados/account/mensajes_view.php");
             }else{
-                throw new Exception("Problema al cargar");
+                throw new Exception("No se encontro ningun mensaje o comentario");
             }
         }else{
             throw new Exception("Problema con id");
@@ -17,6 +17,6 @@ try{
         throw new Exception("Problema con id x2");
     }
 }catch(Exception $error){
-    Page::showMessage(3, $error->getMessage());
+    Page::showMessage(2, $error->getMessage(), null);   
 }
 ?>

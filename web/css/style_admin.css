@@ -5,6 +5,12 @@ body{
 .content-menu, .collapsible-body{
     background-color: #2A363B;
 }
+form{
+    border-radius: 8px;
+}
+.menu-button{
+    position: absolute;
+}
 li:hover{
     background-color: #E84A5F;
     transition: 1.5s;    
@@ -20,8 +26,8 @@ ul#slide-out li a {
     font-family: 'Signika', sans-serif;
 }
 @font-face{
-    font-family: Signika;
-    src: url("../../web/fonts/Signika-Light.ttf");
+    font-family: Barlow;
+    src: url("../../web/fonts/BarlowCondensed-Light.ttf");
 }
 @font-face{
     font-family: Signika-Semibold;
@@ -30,6 +36,11 @@ ul#slide-out li a {
 .titulo-font{
     font-family: 'Signika-Semibold', sans-serif;
     color: rgb(62, 73, 78);
+}
+.titulos_integrante{
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    color: rgb(92, 92, 92);
 }
 .user-view{
     background-image: url("../../web/img/admin/imagen8.png");
@@ -72,5 +83,7 @@ ul#slide-out li a {
     position: relative;
     left: 35px;
 }
-
-
+/*DETALLE DE LA SOLICITUD*/
+.input{
+    color: rgb(5, 5, 5);
+}

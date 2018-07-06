@@ -6,6 +6,17 @@
     height: 100%;
     
 }
+li:hover{
+    background-color: #E84A5F;
+    transition: 1.5s;    
+}
+ul#slide-out li a {
+    transition: transform 0.2s linear;
+  }
+  
+  ul#slide-out li:hover a {
+    transform: translateY(-2px);
+  }
 .ingresar_form{
   text-align: center;
 }
@@ -27,15 +38,30 @@
     margin-top: 5%;
 }
 .fondo-general{
-    background-color: rgb(231, 238, 236);
+    background-color: rgb(226, 231, 229);
 }
-/*INDEX ALUMNO*/
+/*DISEÑO ALUMNO*/
 .side-nav{
     background-color: #2A363B;
+    font-size: 20px;
 }
 .user-view{
-    background-color: #E84A5F; 
+    background-image: url("../../web/img/login/fondo.png");
     height: 160px;
+}
+.font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Signika;
+    src: url("../../web/fonts/Signika-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/Signika-SemiBold.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
 }
 /*INICIO ALUMNO*/
 #barra{
@@ -110,8 +136,7 @@
     padding: 14px;
 }
 /*EDICION DE PERFIL*/
-.titulo-EP{
-    font-size: 20px;
-}
+/*MENSAJES*/
+
 
 

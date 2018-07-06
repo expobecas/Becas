@@ -14,9 +14,12 @@ ul#slide-out li a {
     transition: transform 0.2s linear;
   }
   
-  ul#slide-out li:hover a {
+ul#slide-out li:hover a {
     transform: translateY(-2px);
   }
+.menu-btn{
+    position: absolute;
+}
 .ingresar_form{
   text-align: center;
 }

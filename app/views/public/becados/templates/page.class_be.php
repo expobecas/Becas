@@ -14,14 +14,14 @@ class Page extends component{
             <title>$title</title>
             <link type='text/css' rel='stylesheet' href='../../../web/css/materialize.min.css'/>
             <link type='text/css' rel='stylesheet' href='../../../web/css/material_icons.css'/>
-            <link type='text/css' rel='stylesheet' href='../../../web/css/style_alumno.css'/>
+            <link type='text/css' rel='stylesheet' href='../../../web/css/style_becado.css'/>
             <script type='text/javascript' src='../../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
         <body class='fondo-general font-web'>
         ");
         if(isset($_SESSION['id_estudiante'])){
-            print("<ul id='slide-out' class='side-nav fixed content-menu social-buttos'>
+            print("<ul id='slide-out' class='side-nav fixed content-menu'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
@@ -33,7 +33,10 @@ class Page extends component{
           </ul>  
           <main>
           <div class='row white' id='barra'>
-            <div class='col offset-l10'>   
+          <div class='col'>
+          <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
+          </div>
+            <div class='col offset-l9 offset-s1'>   
             <ul id='dropdown2' class='dropdown-content'>
             <li><a href='#!'>Aqui iran las super notificaciones</a></li>
             </ul>
@@ -69,7 +72,7 @@ class Page extends component{
         </main>
         <script type='text/javascript' src='../../../web/js/jquery-3.2.1.min.js'></script>
         <script type='text/javascript' src='../../../web/js/materialize.min.js'></script>
-        <script type='text/javascript' src='../../../web/js/js_alumno.js'></script>
+        <script type='text/javascript' src='../../../web/js/js_becado.js'></script>
 		</body>
 		</html>
         ");

@@ -1,19 +1,23 @@
 <!--TRANSFERENCIA A SOLICITUD-->
 <div class="row">
-    <div class="col l8 offset-l3 white cajita-solicitud">
-    <img src='../../../web/img/alumno/icons/mortarboard.png' class="left mortarborad"> 
-    <div class="transicion col l9">
-    <h5><strong>Solicitud</strong></h5>
-    <p>Antes de completar el formulario, le solicitamos que lea detenidamente la 
-        información para evitar inconvenientes.  
-    </p>
-    <a class="waves-effect waves-light btn boton-solicitud right">Rellenar formulario</a>
+<div class="cajita-solicitud col s12 m7 offset-l3 l8">
+    <div class="card horizontal">
+        <img src="../../../web/img/alumno/icons/mortarboard1.png">
+      <div class="card-stacked">
+        <div class="card-content">
+            <h5><strong>Solicitud</strong></h5>
+          <p>Antes de completar el formulario, le solicitamos que lea detenidamente la 
+        información para evitar inconvenientes. </p>
+          <a class="waves-effect waves-light btn boton-solicitud right">Rellenar formulario</a>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
+</div>
 </div>
 <!-- SECCIÓN DE INFORMACION-->
 <div class="row">
-<div class="infor_s col offset-l3 l8">
+<div class="infor_s col offset-l3 l8 s12">
 <ul id="tabs-swipe-demo" class="tabs">
     <li class="tab col s4"><a href="#test-swipe-1" class="active">Documentación requerida</a></li>
     <li class="tab col s3"><a href="#test-swipe-2">Política Institucional</a></li>

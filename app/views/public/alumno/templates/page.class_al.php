@@ -26,14 +26,17 @@ class Page extends component{
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
             </div></li>
-            <li><a href='#!' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-            <li><a href='#!' class='white-text'><i class='material-icons white-text'>assignment</i>Solicitud</a></li>
+            <li><a href='../../../public/alumno/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
+            <li><a href='../../../public/alumno/solicitud/informacion_solicitud.php' class='white-text'><i class='material-icons white-text'>assignment</i>Solicitud</a></li>
             <li><a href='../../../public/alumno/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul> 
-          <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>
+         
           <main>
           <div class='row white' id='barra'>
-          <div class='col offset-l10 offset-m5'>   
+          <div class='col'>
+          <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
+          </div>
+          <div class='col offset-l9 offset-s1'>   
           <ul id='dropdown2' class='dropdown-content'>
           <li><a href='#!'>Aqui iran las super notificaciones</a></li>
           </ul>

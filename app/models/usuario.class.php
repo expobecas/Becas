@@ -106,5 +106,11 @@ class Usuario extends Validator{
         $params = array(null);
         return Database::getRows($sql, $params);
     }
+    public function ReadUsuarios(){
+        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_tipo = 1";
+        $params = array(null);
+        Database::getRows($sql, $params);
+    }
+
 }
 ?>

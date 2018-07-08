@@ -178,5 +178,17 @@ class Estudiantes extends Validator{
             return false;
         }
     }
+    public function GetDatosGenerales(){
+        $sql="SELECT primer_nombre, primer_apellido, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
+        $params = array($_SESSION['id_estudiante']);
+        $estudiantes = Database::getRow($sql, $params);
+        if($estudiantes){
+            $this->nombre1 = $estudiantes['primer_nombre'];
+            $this->apellido1 = $estudiantes['primer_apellido'];
+            $this->num_carnet = $estudiantes['n_carnet'];
+            $this->grado = $estudiantes['grado'];
+            $this->especialidad = $estudiantes['especialidad'];
+        }
+    }
 }
 ?>

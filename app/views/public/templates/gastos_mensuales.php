@@ -119,9 +119,22 @@
         <label for="otros_gastos">Otros</label>
     </div>
 
-    <div class="input-field col s12 m6 l3"> 
+    <div class="input-field col s12 m6 l3" id="ingreso"> 
         <input id="ingreso_familiar" type="text" name="ingreso_familiar" class="validate"/>
         <label for="ingreso_familiar">Ingreso familiar</label>
+    </div>
+
+    <div class="input-field col s12 m12 l12">
+        <div class="divider grey"></div>
+    </div>
+
+     <div class="col s12 m12 l12">
+        <h5>En el caso que su familia posee deudas, llenar el siguiente campo</h5>
+    </div>
+    
+    <div class="input-field col s12 m6 l3"> 
+        <input id="monto_deuda" type="text" name="monto_deuda" class="gastos validate"/>
+        <label for="monto_deuda">Monto total deuda</label>
     </div>
 </div>
 <div class="row">
@@ -135,8 +148,8 @@
     </div>
 
     <div class="input-field col s12 m4 l4"> 
-        <input id="monto" type="text" name="monto" class="validate">
-        <label for="monto">Monto de remesa</label>
+        <input id="monto_remesa" type="text" name="monto_remesa" class="gastos validate">
+        <label for="monto_remesa">Monto de remesa</label>
     </div>
 
      <div class="input-field col s12 m4 l4"> 

@@ -54,11 +54,11 @@ try
 
     //Para llenar la tabla propiedad
 	$propiedad = new Propiedad;
-	
+
 
     //para llenar la intermedia propiedad
 	$intermedia_propiedad = new Intermedia_propiedad;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
 		$data = $intermedia_propiedad->getSolicitud();
 		if($data)
@@ -78,19 +78,17 @@ try
 		$idpropiedad = $intermedia_propiedad->getPropiedad();
 		if($integrantes && $idpropiedad)
 		{
-			print($idpropiedad[0][0]);
 			$i = 0;
 			$j = 0;
 			$c=count($integrantes);
 
 			for($i ; $i<$c; $i++)
 			{
-				print($integrantes[$i][$j]);
 				$intermedia_propiedad->setIdIntegrante($integrantes[$i][$j]);
 				$intermedia_propiedad->setIdPropiedad($idpropiedad[0][0]);
 				if($intermedia_propiedad->createInterPropiedad())
 				{
-					print("simon");
+					
 				}
 				else
 				{
@@ -103,13 +101,12 @@ try
 		{
 			throw new Exception(Database::getException());
 		}
-	}*/
+	}
 
 
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla gastos mensuales
 	$gastos_mensuales = new Gastos_mensuales;
-	/*
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
@@ -128,118 +125,141 @@ try
 						$telefono = str_replace(',', '.', str_replace('.', '', $_POST['telefono']));
 						if($gastos_mensuales->setTelefono($telefono))
 						{
-							$vigilancia = str_replace(',', '.', str_replace('.', '', $_POST['vigilancia']));
-							if($gastos_mensuales->setVigilancia($vigilancia))
+							$vigilancia = $_POST['vigilancia'];
+							if($vigilancia != null)
 							{
-								$domesticos = str_replace(',', '.', str_replace('.', '', $_POST['domesticos']));
-								if($gastos_mensuales->setServicioDomestico($domesticos))
+								$vigilancia = str_replace(',', '.', str_replace('.', '', $vigilancia));
+								$gastos_mensuales->setVigilancia($vigilancia);
+							}
+							$domesticos = $_POST['domesticos'];
+							if($domesticos != null)
+							{
+								$domesticos = str_replace(',', '.', str_replace('.', '', $domesticos));
+								$gastos_mensuales->setServicioDomestico($domesticos);
+							}
+							$alcaldia = str_replace(',', '.', str_replace('.', '', $_POST['alcaldia']));
+							if($gastos_mensuales->setAlcaldia($alcaldia))
+							{
+								$pago_deudas = $_POST['pago_deudas'];
+								if($pago_deudas != null)
 								{
-									$alcaldia = str_replace(',', '.', str_replace('.', '', $_POST['alcaldia']));
-									if($gastos_mensuales->setAlcaldia($alcaldia))
+									$pago_deudas = str_replace(',', '.', str_replace('.', '', $pago_deudas));
+									$gastos_mensuales->setPagoDeudas($pago_deudas);
+								}
+								$cotizaciones = str_replace(',', '.', str_replace('.', '', $_POST['cotizaciones']));
+								if($gastos_mensuales->setCotizacion($cotizaciones))
+								{
+									$seguro_personal = $_POST['seguro_personal'];
+									if($seguro_personal != null)
 									{
-										$pago_deudas = str_replace(',', '.', str_replace('.', '', $_POST['pago_deudas']));
-										if($gastos_mensuales->setPagoDeudas($pago_deudas))
+										$seguro_personal = str_replace(',', '.', str_replace('.', '', $seguro_personal));
+										$gastos_mensuales->setSeguroPersonal($seguro_personal);
+									}
+									$seguro_vehiculo = $_POST['seguro_vehiculo'];
+									if($seguro_vehiculo != null)
+									{
+										$seguro_vehiculo = str_replace(',', '.', str_replace('.', '', $seguro_vehiculo));
+										$gastos_mensuales->setSeguroVehiculo($seguro_vehiculo);
+									}
+									$seguro_inmuebles = $_POST['seguro_inmuebles'];
+									if($seguro_inmuebles != null)
+									{
+										$seguro_inmuebles = str_replace(',', '.', str_replace('.', '', $seguro_inmuebles));
+										$gastos_mensuales->setSeguroInmuebles($seguro_inmuebles);
+									}
+									$transporte = str_replace(',', '.', str_replace('.', '', $_POST['transporte']));
+									if($gastos_mensuales->setTransporte($transporte))
+									{
+										$mant_vehiculo = $_POST['mant_vehiculo'];
+										if($mant_vehiculo != null)
 										{
-											$cotizaciones = str_replace(',', '.', str_replace('.', '', $_POST['cotizaciones']));
-											if($gastos_mensuales->setCotizacion($cotizaciones))
+											$mant_vehiculo = str_replace(',', '.', str_replace('.', '', $mant_vehiculo));
+											$gastos_mensuales->setGastosManteVehiculo($mant_vehiculo);
+										}
+										$salud = str_replace(',', '.', str_replace('.', '', $_POST['salud']));
+										if($gastos_mensuales->setSalud($salud))
+										{
+											$pago_asociaciones = $_POST['pago_asociaciones'];
+											if($pago_asociaciones != null)
 											{
-												$seguro_personal = str_replace(',', '.', str_replace('.', '', $_POST['seguro_personal']));
-												if($gastos_mensuales->setSeguroPersonal($seguro_personal))
+												$pago_asociaciones = str_replace(',', '.', str_replace('.', '', $pago_asociaciones));
+												$gastos_mensuales->setPagosAsociasiones($pago_asociaciones);
+											}
+											$pago_colegiatura = $_POST['pago_colegiatura'];
+											if($pago_colegiatura != null)
+											{
+												$pago_colegiatura = str_replace(',', '.', str_replace('.', '', $pago_colegiatura));
+												$gastos_mensuales->setPagoColegiatura($pago_colegiatura);
+											}
+											$pago_universitarios = $_POST['pago_universitarios'];
+											if($pago_universitarios != null)
+											{
+												$pago_universitarios = str_replace(',', '.', str_replace('.', '', $pago_universitarios));
+												$gastos_mensuales->setPagoUniversidad($pago_universitarios);
+											}
+											$materiales = str_replace(',', '.', str_replace('.', '', $_POST['materiales']));
+											if($gastos_mensuales->setGastosMaterialEstudios($materiales))
+											{
+												$renta = str_replace(',', '.', str_replace('.', '', $_POST['renta']));
+												if($gastos_mensuales->setImpuestoRenta($renta))
 												{
-													$seguro_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['seguro_vehiculo']));
-													if($gastos_mensuales->setSeguroVehiculo($seguro_vehiculo))
+													$iva = str_replace(',', '.', str_replace('.', '', $_POST['iva']));
+													if($gastos_mensuales->setIva($iva))
 													{
-														$seguro_inmuebles = str_replace(',', '.', str_replace('.', '', $_POST['seguro_inmuebles']));
-														if($gastos_mensuales->setSeguroInmuebles($seguro_inmuebles))
+														$tarjetas_credito = $_POST['tarjetas_credito'];
+														if($tarjetas_credito != null)
 														{
-															$transporte = str_replace(',', '.', str_replace('.', '', $_POST['transporte']));
-															if($gastos_mensuales->setTransporte($transporte))
-															{
-																$mant_vehiculo = str_replace(',', '.', str_replace('.', '', $_POST['mant_vehiculo']));
-																if($gastos_mensuales->setGastosManteVehiculo($mant_vehiculo))
-																{
-																	$salud = str_replace(',', '.', str_replace('.', '', $_POST['salud']));
-																	if($gastos_mensuales->setSalud($salud))
-																	{
-																		$pago_asociaciones = str_replace(',', '.', str_replace('.', '', $_POST['pago_asociaciones']));
-																		if($gastos_mensuales->setPagosAsociasiones($pago_asociaciones))
-																		{
-																			$pago_colegiatura = str_replace(',', '.', str_replace('.', '', $_POST['pago_colegiatura']));
-																			if($gastos_mensuales->setPagoColegiatura($pago_colegiatura))
-																			{
-																				$pago_universitarios = str_replace(',', '.', str_replace('.', '', $_POST['pago_universitarios']));
-																				if($gastos_mensuales->setPagoUniversidad($pago_universitarios))
-																				{
-																					$materiales = str_replace(',', '.', str_replace('.', '', $_POST['materiales']));
-																					if($gastos_mensuales->setGastosMaterialEstudios($materiales))
-																					{
-																						$renta = str_replace(',', '.', str_replace('.', '', $_POST['renta']));
-																						if($gastos_mensuales->setImpuestoRenta($renta))
-																						{
-																							$iva = str_replace(',', '.', str_replace('.', '', $_POST['iva']));
-																							if($gastos_mensuales->setIva($iva))
-																							{
-																								$tarjetas_credito = str_replace(',', '.', str_replace('.', '', $_POST['tarjetas_credito']));
-																								if($gastos_mensuales->setTarjetaCredito($tarjetas_credito))
-																								{
-																									$otros_gastos = str_replace(',', '.', str_replace('.', '', $_POST['otros_gastos']));
-																									if($gastos_mensuales->setOtros($otros_gastos))
-																									{
-																										if($gastos_mensuales->createGastos())
-																										{
-																											Page::showMessage(1, "Los gastos se han guardado", "");
-																										}
-																										else
-																										{
-																											throw new Exception(Database::getException());
-																										}
-																									}
-																								}
-																							}
-																							else
-																							{
-																								throw new Exception("Ingrese El iva");
-																							}
-																						}
-																						else
-																						{
-																							throw new Exception("Ingrese la cantidad del impuesto sobre la renta");
-																						}
-																					}
-																					else
-																					{
-																						throw new Exception("Ingrese el gasto de materiales de los estudios");
-																					}
-																				}
-																			}
-																		}
-																	}
-																	else
-																	{
-																		throw new Exception("Ingrese el gasto mensual de salud e higiene");
-																	}
-																}
-															}
-															else
-															{
-																throw new Exception("Ingrese el gasto de bus/taxi en el caso que obtenga vehiculo el gasto de la gasolina");
-															}
+															$tarjetas_credito = str_replace(',', '.', str_replace('.', '', $tarjetas_credito));
+															$gastos_mensuales->setTarjetaCredito($tarjetas_credito);
+														}
+														$otros_gastos = $_POST['otros_gastos'];
+														if($otros_gastos != null)
+														{
+															$otros_gastos = str_replace(',', '.', str_replace('.', '', $otros_gastos));
+															$gastos_mensuales->setOtros($otros_gastos);
+														}
+														if($gastos_mensuales->createGastos())
+														{
+														}
+														else
+														{
+															throw new Exception(Database::getException());
 														}
 													}
+													else
+													{
+														throw new Exception("Ingrese El iva");
+													}
+												}
+												else
+												{
+													throw new Exception("Ingrese la cantidad del impuesto sobre la renta");
 												}
 											}
 											else
 											{
-												throw new Exception("Ingrese las cotizaciones que tiene ya sea hacia el ISSS o la AFP");
+												throw new Exception("Ingrese el gasto de materiales de los estudios");
 											}
+										}
+										else
+										{
+											throw new Exception("Ingrese el gasto mensual de salud e higiene");
 										}
 									}
 									else
 									{
-										throw new Exception("Ingrese el gasto mensual que paga a la alcaldia");
+										throw new Exception("Ingrese el gasto de bus/taxi en el caso que obtenga vehiculo el gasto de la gasolina");
 									}
 								}
-							}							
+								else
+								{
+									throw new Exception("Ingrese las cotizaciones que tiene ya sea hacia el ISSS o la AFP");
+								}
+							}
+							else
+							{
+								throw new Exception("Ingrese el gasto mensual que paga a la alcaldia");
+							}						
 						}
 						else
 						{
@@ -265,33 +285,73 @@ try
 		{
 			throw new Exception("Ingrese el gasto de alimentacion mensual");
 		}
-	}*/
+	}
 
     //Para llenar la tabla grupo familiar
 	$grupo_familiar = new Grupo_familiar;
 	if(isset($_POST['enviar']))
 	{
 		$_POST = $grupo_familiar->validateForm($_POST);
-		if($grupo_familiar->setTotalGastos($_POST['ingreso_familiar']))
+		if($grupo_familiar->setIngresoFamiliar($_POST['ingreso_familiar']))
 		{
-
+			$id_gasto = $grupo_familiar->getIdGasto();
+			if($id_gasto)
+			{
+				$grupo_familiar->setIdGastos($id_gasto[0]);
+				$total_gasto = $grupo_familiar->getGastos();
+				if($total_gasto)
+				{
+					$grupo_familiar->setTotalGastos($total_gasto[0]);
+					$id_solicitud = $grupo_familiar->getSolicitud();
+					if($id_solicitud)
+					{
+						$grupo_familiar->setIdSolicitud($id_solicitud[0]);
+						if($_POST['monto_deuda'] !=null)
+						{
+							$monto_deuda = str_replace(',', '.', str_replace('.', '', $_POST['monto_deuda']));
+							$grupo_familiar->setMontoDeuda($monto_deuda);
+						}
+						if($grupo_familiar->createFamilia())
+						{
+							
+						}
+						else
+						{
+							throw new Exception(Database::getException());
+						}
+					}
+					else
+					{
+						throw new Exception("Ocurrio un error, por favor contactar con el administrador(id solicitud)");
+					}
+				}
+				else
+				{
+					throw new Exception("Ocurrio un error, por favor contactar con el administrador(total gasto)");
+				}
+			}
+			else
+			{
+				throw new Exception("Ocurrio un error, por favor contactar con el administrador(id gasto)");
+			}
 		}
 		else
 		{
-			throw new Exception("Ocurrio un error, por favor contactar con el administrador");
+			throw new Exception("Ocurrio un error, por favor contactar con el administrador(ingreso familiar)");
 		}
 	}
 
     //Para llenar la tabla remesa familiar
 	$remesa_familiar = new Remesa_familiar;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
 		$_POST = $remesa_familiar->validateForm($_POST);
-		if($_POST['monto'] != null && $_POST['periodo'] != null)
+		if($_POST['monto_remesa'] != null && $_POST['periodo'] != null)
 		{
 			if($_POST['periodo'] != null && $_POST['benecfactor'] != null)
 			{
-				if($remesa_familiar->setMonto($_POST['monto']))
+				$monto_remesa = str_replace(',', '.', str_replace('.', '', $_POST['monto_remesa']));
+				if($remesa_familiar->setMonto($monto_remesa))
 				{
 					if($remesa_familiar->setPeriodoRecibido($_POST['periodo']))
 					{
@@ -338,14 +398,14 @@ try
 		{
 			throw new Exception("llene todos los campos si recibe una remesa");
 		}
-	}*/
+	}
 
 	$detalle_solicitud = new Detalle_solicitud;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $detalle_solicitud->validateForm($_POST);
 		
-	}
+	}*/
 }
 catch(Exception $error)
 {

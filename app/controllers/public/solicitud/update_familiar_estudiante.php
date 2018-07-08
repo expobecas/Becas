@@ -19,17 +19,19 @@ try
             $depende = $_POST['depende'];
             $grado = $_POST['grado'];
             $institucion = $_POST['institucion'];
-            
+            $id_integrante = $_POST['id'];
+
             $familiares_estudiante->setIdIntegrante($_POST['id']);
-            if($familiares_estudiante->updateFamiliarEstudiante($depende, $grado, $institucion, $cuota))
+
+            $familiar = $familiares_estudiante->getFamiliarEstudiante();
+            if(!$familiar)
             {
-                Component::showMessage(1, "familiar estudiante agregado", "");
+                $familiares_estudiante->createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante);
             }
             else
             {
-                throw new Exception(Database::getException());
-            }
-            
+                $familiares_estudiante->updateFamiliarEstudiante($depende, $grado, $institucion, $cuota);
+            }           
 		}
     }
     

@@ -53,24 +53,6 @@
             <label for="valor_vehiculo">Valor del vehiculo</label>
         </div>
 
-
-        <div class="col s12 m6 l3 margen_radio">
-            <h6 for="">¿Posee deudas en su grupo familiar?</h6>
-            <div>
-                <input name="group4" type="radio" id="si_deudas"/>
-                <label for="si_deudas">Si</label>
-                &nbsp;
-                &nbsp;
-                <input name="group4" type="radio" id="no_deudas"/>
-                <label for="no_deudas">No</label>
-            </div>
-        </div>
-        
-        <div class="input-field col s12 m6 l3 ocultar" id="monto_mensual"> 
-            <input id="monto" type="text" name="monto" class="validate"/>
-            <label for="monto">Monto total mensual</label>
-        </div>
-
         <div class="file-field input-field col s12 m6 l3">
             <div class="btn blue">
                 <span>Agregar</span>
@@ -185,7 +167,6 @@
             <table class="responsive-table centered striped bordered margen_top" id="integrantes">
                 <thead>
                 <tr>
-                    <th class="ocultar">Id</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Parentesco</th>

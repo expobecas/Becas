@@ -310,8 +310,8 @@ class Solicitud extends Validator
 
     public function createSolicitud()
     {
-        $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, lugar_nacimiento, pais_nacimiento, estudios_finan, id_institucion_proveniente) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $params = array($this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->correo, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->lugar_nacimiento, $this->pais_nacimiento, $this->estudios_finan, $this->id_institucion_proveniente);
+        $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, lugar_nacimiento, pais_nacimiento, estudios_finan, id_institucion_proveniente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = array($this->id_estudiante, $this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->correo, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->lugar_nacimiento, $this->pais_nacimiento, $this->estudios_finan, $this->id_institucion_proveniente);
         return Database::executeRow($sql, $params);
     }
 }

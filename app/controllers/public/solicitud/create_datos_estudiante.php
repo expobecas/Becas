@@ -6,12 +6,14 @@ require_once("../../../models/solicitud.class.php");
 
 try
 {
+    session_start();
     class Datos_estudiante
     {
         function create()
         {
             $solicitud = new Solicitud;
 
+            $solicitud->setIdEstudiante($_SESSION['id_estudiante']);
             $solicitud->setIdGenero($_POST['genero']);
             $solicitud->setReligion($_POST['religion']);
             $solicitud->setEncargado($_POST['familia']);

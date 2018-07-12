@@ -31,12 +31,16 @@ class Page extends component{
                     <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
                     <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
-                    <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
+                    <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
-                  </ul>  
+                  </ul> 
+                  <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 
                   <main>
                   <div class='row white' id='barra'>
-                    <div class='col offset-l10'>   
+                  <div class='col'>
+                  <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
+                  </div>
+                    <div class='col offset-l9 offset-s1'>   
                     <ul id='dropdown2' class='dropdown-content'>
                     <li><a href='#!'>Aqui iran las super notificaciones</a></li>
                     </ul>

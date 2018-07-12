@@ -8,7 +8,10 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-   <div class="col offset-l5">
+<div class="col offset-l4">
+      <a class="waves-effect waves-light btn s-general sg4">Vista General</a>
+   </div>
+   <div class="col">
       <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
    </div>
    <div class="col">
@@ -22,7 +25,7 @@
 <div class="tabla">
 <div class="row">
    <div class="col offset-l3 l8 white">
-   <div class="col titulo-font ">
+   <div class="col titulo-font">
       <h5>Todas las solicitudes.</h5>
    </div>
       <table class="white highlight bordered tb-sol">
@@ -53,7 +56,8 @@
                <td>$row[encargado]</td>
                <td>$row[tel_fijo]</td>
                <td>
-               <a href='' class='ver-mas tooltipped' data-position='right' data-delay='50' data-tooltip='Ver más'><i class='material-icons'>remove_red_eye</i></a>
+               <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+               <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
                </td>
                </tr>");
                }
@@ -98,7 +102,8 @@
                <td>$row[encargado]</td>
                <td>$row[tel_fijo]</td>
                <td>
-               <a href='' class='ver-mas tooltipped' data-position='right' data-delay='50' data-tooltip='Ver más'><i class='material-icons'>remove_red_eye</i></a>
+               <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+               <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar caso'><img src='../../web/img/admin/icon/folder.png'></a>
                </td>
                </tr>");
                }

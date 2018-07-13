@@ -6,33 +6,33 @@ require_once("../../../models/solicitud.class.php");
 
 try
 {
+    session_start();
     class Datos_estudiante
     {
         function create()
         {
             $solicitud = new Solicitud;
 
-            $id_genero = $_POST['genero'];
-            $religion = $_POST['religion'];
-            $encargado = $_POST['familia'];
-            $direccion = $_POST['direccion'];
-            $correo = $_POST['correo'];
+            $solicitud->setIdEstudiante($_SESSION['id_estudiante']);
+            $solicitud->setIdGenero($_POST['genero']);
+            $solicitud->setReligion($_POST['religion']);
+            $solicitud->setEncargado($_POST['familia']);
+            $solicitud->setDireccion($_POST['direccion']);
+            $solicitud->setCorreo($_POST['correo']);
             $solicitud->setTelFijo($_POST['fijo']);
             $solicitud->setCelMama($_POST['madre']);
             $solicitud->setCelPapa($_POST['padre']);
             $solicitud->setCelHijo($_POST['hijo']);
-            $fecha_nacimiento = $_POST['fecha_naci'];
-            $lugar_nacimiento = $_POST['lugar'];
-            $pais_nacimiento = $_POST['pais_naci'];
-            $estudios_finan = $_POST['financiados'];
+            $solicitud->setFechaNacimiento($_POST['fecha_naci']);
+            $solicitud->setLugarNacimiento($_POST['lugar']);
+            $solicitud->setPaisNacimiento($_POST['pais_naci']);
+            $solicitud->setEstudiosFinan($_POST['financiados']);
             
             $data = $solicitud->getInstitucion();
-            foreach($data as $row)
-            {
-                $id_institucion_proveniente = $row;
-            }
+            $id_institucion_proveniente = $data[0];
+
             $solicitud->setIdInstitucion($id_institucion_proveniente);
-            $solicitud->createSolicitud($id_genero, $religion, $encargado, $direccion, $correo, $fecha_nacimiento, $lugar_nacimiento, $pais_nacimiento, $estudios_finan, $id_institucion_proveniente);
+            $solicitud->createSolicitud();
         }
     }
     $object = new Datos_estudiante();

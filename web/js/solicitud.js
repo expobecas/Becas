@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //PARA EL SLIDER 1
-    /*$("#estudiante").click(function(e){
+    $("#estudiante").click(function(e){
       //Tabla solicitud
       var genero = $('#genero').val();
       var religion = $('#religion').val();
@@ -99,8 +99,10 @@ $(document).ready(function() {
                                           pais_naci:pais_naci,
                                           fecha_naci:fecha_naci,
                                           financiados:financiados},
-                                        success: function()
+                                        success: function(datos)
                                         {
+                                          console.log(datos);
+                                          /*
                                           $('body,html').animate({
                                             scrollTop:0
                                           }, 400)
@@ -120,10 +122,7 @@ $(document).ready(function() {
                                   
                                           clearInterval(n);
                                           }, 100);
-                                          e.preventDefault();
-                                        },
-                                        error: function()
-                                        {
+                                          e.preventDefault();*/
                                         }
                                       });
                                     },
@@ -272,7 +271,7 @@ $(document).ready(function() {
           button: 'aceptar'
         });
       }
-    });*/
+    });
 
     //PARA EL SLIDER 2
     //FUNCION PARA CARGAR DATOS A LA TABLA DE INTEGRANTES CADA VEZ QUE SE INSERTA UNO

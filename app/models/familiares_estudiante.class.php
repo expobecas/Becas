@@ -119,6 +119,13 @@ class Familiares_estudiante extends Validator
         return Database::getRow($sql, $params);
     }
 
+    public function getFamiliarEstudiante()
+    {
+        $sql = "SELECT id_integrante FROM familiares_estudiante WHERE id_integrante = ?";
+        $params = array($this->id_integrante);
+        return Database::getRow($sql, $params);
+    }
+
     public function createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante)
     {
         $sql = "INSERT INTO familiares_estudiante(depende, grado, institucion, cuota, id_integrante) VALUES (?, ?, ?, ?, ?)";

@@ -4,6 +4,7 @@ $(document).ready(function() {
     $('#cancelar').hide(0);
     $('#modificar').hide(0);
     $('#idintegrante').hide(0);
+    $('#ingreso').hide(0);
   });
 
 
@@ -56,15 +57,6 @@ $(document).ready(function() {
       $("#tipo").hide(1000);
       $("#año_vehiculo").hide(1000);
       $("#vehiculo").hide(1000);
-    });
-  });
-
-  $(document).ready(function(){
-    $("#si_deudas").on("click", function(){
-      $("#monto_mensual").show(1000);
-    });
-    $("#no_deudas").on("click", function(){
-      $("#monto_mensual").hide(1000);
     });
   });
 
@@ -194,28 +186,28 @@ $regresardosButton.on('click', function(e){
     e.preventDefault();
 });
 
-$firstButton.on('click', function(e){
+/*$firstButton.on('click', function(e){
   $('body,html').animate({
     scrollTop:0
   }, 400)
   $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
   var n = setInterval(function(){
-    /*le da color verde*/
+    /*le da color verde*
   $('.progressc .circle1').removeClass('active').addClass('done');
   
-  /*este pone el checke*/
+  /*este pone el checke*
   $('.progressc .circle1 .label').html('&#10003;');
 
-  /*rellena la primera mitad de la barra*/
+  /*rellena la primera mitad de la barra*
   $('.progressc .bar1').addClass('active');
 
-  /*activamos el circulo 2 del progress*/
+  /*activamos el circulo 2 del progress*
   $('.progressc .circle2').addClass('active');
 
   clearInterval(n);
   }, 100);
   e.preventDefault();
-});
+});*/
 
 $secondButton.on('click', function(e){
   $('body,html').animate({

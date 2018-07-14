@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2018 a las 02:24:28
+-- Tiempo de generación: 14-07-2018 a las 03:19:59
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -28,14 +28,17 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `alumnos_nombre`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `alumnos_nombre` (`NombreAlumno` VARCHAR(20))  SELECT * 
 FROM estudiantes 
 WHERE primer_nombre = NombreAlumno || segundo_nombre = NombreAlumno$$
 
+DROP PROCEDURE IF EXISTS `patrocinadores_nombre`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `patrocinadores_nombre` (`NombrePatro` VARCHAR(20))  SELECT * 
 FROM patrocinadores
 WHERE nombres = NombrePatro$$
 
+DROP PROCEDURE IF EXISTS `patrocinador_tipo`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `patrocinador_tipo` (`tipo` VARCHAR(15))  SELECT nombres, apellidos, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono
 from patrocinadores, tipo_patrocinador
 WHERE patrocinadores.id_tipo_patro = tipo_patrocinador.id_tipo_patro
@@ -49,6 +52,7 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `becas`
 --
 
+DROP TABLE IF EXISTS `becas`;
 CREATE TABLE `becas` (
   `id_becas` int(11) NOT NULL,
   `id_detalle` int(11) NOT NULL,
@@ -64,6 +68,7 @@ CREATE TABLE `becas` (
 -- Estructura de tabla para la tabla `casos`
 --
 
+DROP TABLE IF EXISTS `casos`;
 CREATE TABLE `casos` (
   `id_caso` int(11) NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -77,6 +82,7 @@ CREATE TABLE `casos` (
 -- Estructura de tabla para la tabla `citas`
 --
 
+DROP TABLE IF EXISTS `citas`;
 CREATE TABLE `citas` (
   `id` int(11) NOT NULL,
   `title` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -94,6 +100,7 @@ CREATE TABLE `citas` (
 -- Estructura de tabla para la tabla `comentarios`
 --
 
+DROP TABLE IF EXISTS `comentarios`;
 CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `comentario` varchar(350) COLLATE utf8_spanish_ci NOT NULL,
@@ -108,6 +115,7 @@ CREATE TABLE `comentarios` (
 -- Estructura de tabla para la tabla `detalle_solicitud`
 --
 
+DROP TABLE IF EXISTS `detalle_solicitud`;
 CREATE TABLE `detalle_solicitud` (
   `id_detalle` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
@@ -120,6 +128,7 @@ CREATE TABLE `detalle_solicitud` (
 -- Estructura de tabla para la tabla `estado_solicitud`
 --
 
+DROP TABLE IF EXISTS `estado_solicitud`;
 CREATE TABLE `estado_solicitud` (
   `id_estado` int(11) NOT NULL,
   `estado_solicitud` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -131,6 +140,7 @@ CREATE TABLE `estado_solicitud` (
 -- Estructura de tabla para la tabla `estudiantes`
 --
 
+DROP TABLE IF EXISTS `estudiantes`;
 CREATE TABLE `estudiantes` (
   `id_estudiante` int(11) NOT NULL,
   `primer_nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -150,7 +160,7 @@ CREATE TABLE `estudiantes` (
 
 INSERT INTO `estudiantes` (`id_estudiante`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `usuario`, `contraseña`, `n_carnet`, `grado`, `especialidad`) VALUES
 (1, 'Fernando', 'Xavier', 'Maldonado', 'Canjura', 'XaviCaM', '12345678', 20160250, '3° Año', 'Desarrollo de Software'),
-(3, 'Fatima', 'Mercedez', 'Aguilar', 'Aguirre', 'Fatima6', '12345678', 20160296, '3° Año', 'Software');
+(2, 'Emily', 'Vanessa', 'Rivas', 'Castillo', 'EmilyRivas', '12345678', 20170366, '2° Año', 'Diseño Grafico');
 
 -- --------------------------------------------------------
 
@@ -158,6 +168,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `primer_nombre`, `segundo_nombre`, `
 -- Estructura de tabla para la tabla `familiares_estudiante`
 --
 
+DROP TABLE IF EXISTS `familiares_estudiante`;
 CREATE TABLE `familiares_estudiante` (
   `id_fam_estudiante` int(11) NOT NULL,
   `depende` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -173,6 +184,7 @@ CREATE TABLE `familiares_estudiante` (
 -- Estructura de tabla para la tabla `gastos_mensuales`
 --
 
+DROP TABLE IF EXISTS `gastos_mensuales`;
 CREATE TABLE `gastos_mensuales` (
   `id_gastos` int(11) NOT NULL,
   `alimentacion` double(6,2) NOT NULL,
@@ -201,25 +213,13 @@ CREATE TABLE `gastos_mensuales` (
   `otros` double(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `gastos_mensuales`
---
-
-INSERT INTO `gastos_mensuales` (`id_gastos`, `alimentacion`, `pago_vivienda`, `energia_electrica`, `agua`, `telefono`, `vigilancia`, `servicio_domestico`, `alcadia`, `pago_deudas`, `cotizacion`, `seguro_personal`, `seguro_vehiculo`, `seguro_inmuebles`, `transporte`, `gastos_man_vehiculo`, `salud`, `pagos_asociasiones`, `pago_colegiatura`, `pago_universidad`, `gastos_material_estudios`, `impuesto_renta`, `iva`, `tarjeta_credito`, `otros`) VALUES
-(1, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00, 1000.00),
-(2, 9999.99, 9999.99, 9999.99, 9999.99, 9999.99, NULL, NULL, 9999.99, NULL, 9999.99, NULL, NULL, NULL, 9999.99, NULL, 9999.99, NULL, 9999.99, NULL, 9999.99, 9999.99, 9999.99, NULL, NULL),
-(3, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
-(4, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
-(5, 1.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
-(6, 1.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00),
-(7, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00);
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `genero`
 --
 
+DROP TABLE IF EXISTS `genero`;
 CREATE TABLE `genero` (
   `id_genero` int(11) NOT NULL,
   `genero` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -239,6 +239,7 @@ INSERT INTO `genero` (`id_genero`, `genero`) VALUES
 -- Estructura de tabla para la tabla `grupo_familiar`
 --
 
+DROP TABLE IF EXISTS `grupo_familiar`;
 CREATE TABLE `grupo_familiar` (
   `id_familia` int(11) NOT NULL,
   `ingreso_familiar` double(6,2) NOT NULL,
@@ -254,6 +255,7 @@ CREATE TABLE `grupo_familiar` (
 -- Estructura de tabla para la tabla `historial`
 --
 
+DROP TABLE IF EXISTS `historial`;
 CREATE TABLE `historial` (
   `id_historial` int(11) NOT NULL,
   `id_caso` int(11) NOT NULL
@@ -265,6 +267,7 @@ CREATE TABLE `historial` (
 -- Estructura de tabla para la tabla `imagenes_casos`
 --
 
+DROP TABLE IF EXISTS `imagenes_casos`;
 CREATE TABLE `imagenes_casos` (
   `id_img_caso` int(11) NOT NULL,
   `imagen_caso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -277,6 +280,7 @@ CREATE TABLE `imagenes_casos` (
 -- Estructura de tabla para la tabla `imagenes_vehiculo`
 --
 
+DROP TABLE IF EXISTS `imagenes_vehiculo`;
 CREATE TABLE `imagenes_vehiculo` (
   `id_img_vehiculo` int(11) NOT NULL,
   `imagen_vehiculo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -289,6 +293,7 @@ CREATE TABLE `imagenes_vehiculo` (
 -- Estructura de tabla para la tabla `institucion_proveniente`
 --
 
+DROP TABLE IF EXISTS `institucion_proveniente`;
 CREATE TABLE `institucion_proveniente` (
   `id_institucion_proveniente` int(11) NOT NULL,
   `nombre_institucion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
@@ -302,9 +307,7 @@ CREATE TABLE `institucion_proveniente` (
 --
 
 INSERT INTO `institucion_proveniente` (`id_institucion_proveniente`, `nombre_institucion`, `lugar_institucion`, `cuota_pagada`, `año`) VALUES
-(15, 'La UES', 'San Salvador', 100.00, 'Segundo año'),
-(16, 'Don Bosco', 'San Salvador', 10.00, 'Segundo año'),
-(17, 'Matias', 'San Salvador', 10.00, 'Segundo año');
+(93, 'christofer goodman', 'das', 0.00, 'Noveno grado');
 
 -- --------------------------------------------------------
 
@@ -312,6 +315,7 @@ INSERT INTO `institucion_proveniente` (`id_institucion_proveniente`, `nombre_ins
 -- Estructura de tabla para la tabla `integrante_familia`
 --
 
+DROP TABLE IF EXISTS `integrante_familia`;
 CREATE TABLE `integrante_familia` (
   `id_integrante` int(11) NOT NULL,
   `nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -325,41 +329,13 @@ CREATE TABLE `integrante_familia` (
   `id_solicitud` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `integrante_familia`
---
-
-INSERT INTO `integrante_familia` (`id_integrante`, `nombres`, `apellidos`, `parentesco`, `fecha_nacimiento`, `profesion_ocupacion`, `lugar_trabajo`, `tel_trabajo`, `salario`, `id_solicitud`) VALUES
-(1, 'dddddd', 'dddddd', 'dddd', '20/04/2000', 'ddd', NULL, NULL, NULL, 7),
-(2, 'Xavier', 'Maldonado', 'Primo', '2018/05/01', 'Estudiante', NULL, NULL, NULL, 7),
-(11, 'Fernando', 'Maldonado', 'Tio', '2018/05/01', 'Estudiante', NULL, NULL, NULL, 7),
-(12, 'christofer', 'goodman', 'ddd', '2018/05/01', 'dsdsd', NULL, NULL, NULL, 7),
-(13, 'christofer', 'goodman', 'hhhhh', '2018/05/01', 'ghhghg', 'hghggh', 11111111, 20.00, 7),
-(14, 'christofer', 'goodman', 'dddd', '2018/05/01', 'jhyfghhgcfhgc', 'kujghjgf', 19465732, 20.00, 7),
-(15, 'christofer', 'goodman', 'dddd', '2018/05/01', 'jhyfghhgcfhgc', 'ddd', 19465732, 20.00, 7),
-(16, 'christofer', 'goodman', 'dddd', '2018/05/01', 'ddd', 'ddd', 19465732, 200.00, 7),
-(17, 'christofer', 'goodman', 'dsds', '2018/05/01', 'dsd', NULL, 19465732, NULL, 7),
-(18, 'adasd', 'asdadsas', 'asdasdas', '2018/05/01', 'dsds', 'asds', 11111111, 120.00, 7),
-(19, 'sdsd', 'ssds', 'sdsd', '2018/05/01', 'dsds', 'dsds', 11111111, 20.00, 7),
-(20, 'dsds', 'sds', 'sds', '2018/05/01', 'dsds', 'dsds', 11111111, 11.11, 7),
-(21, 'dssd', 'dsds', 'sdds', '2018/05/01', 'sdsd', 'dsd', 11111111, 1.00, 7),
-(22, 'fdf', 'dfdf', 'dfdf', '2018/05/01', 'fdf', 'dfd', 11111111, 10.00, 7),
-(23, 'dsds', 'dsd', 'ssdsd', '2018/05/01', 'dsd', 'ddsd', 11111111, 20.00, 7),
-(24, 'dsds', 'dsds', 'dsdsd', '2018/05/01', 'dsds', 'sdsd', 11111111, 2.00, 7),
-(25, 'dsds', 'dsds', 'dsds', '2018/05/01', 'dsd', 'dsd', 11111111, 20.00, 7),
-(26, 'christofer', 'goodman', 'dsds', '2018/05/01', 'dsds', 'dsds', 19465732, 2.00, 7),
-(27, 'christofer', 'goodman', 'dsds', '2018/05/01', 'dsds', 'dsd', 19465732, 2.00, 7),
-(28, 'christofer', 'goodman', 'dsdsd', '2018/05/01', 'dsd', 'sdsd', 19465732, 2.00, 7),
-(29, 'dsds', 'dsd', 'sdd', '2018/05/01', 'dsd', 'dsd', 11111111, 2.00, 7),
-(30, 'dsd', 'dsd', 'sdsd', '2018/05/01', 'dsd', 'dsds', 11111111, 22.00, 7),
-(31, 'christofer', 'goodman', 'dsdsd', '2018/05/01', 'dsd', 'sdsd', 19465732, 2.00, 7);
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `intermedia_propiedad`
 --
 
+DROP TABLE IF EXISTS `intermedia_propiedad`;
 CREATE TABLE `intermedia_propiedad` (
   `id_inter` int(11) NOT NULL,
   `id_integrante` int(11) NOT NULL,
@@ -372,6 +348,7 @@ CREATE TABLE `intermedia_propiedad` (
 -- Estructura de tabla para la tabla `pagos`
 --
 
+DROP TABLE IF EXISTS `pagos`;
 CREATE TABLE `pagos` (
   `id_recibo` int(11) NOT NULL,
   `fecha_emi_recibo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
@@ -384,6 +361,7 @@ CREATE TABLE `pagos` (
 -- Estructura de tabla para la tabla `patrocinadores`
 --
 
+DROP TABLE IF EXISTS `patrocinadores`;
 CREATE TABLE `patrocinadores` (
   `id_patrocinador` int(11) NOT NULL,
   `id_tipo_patro` int(11) NOT NULL,
@@ -402,6 +380,7 @@ CREATE TABLE `patrocinadores` (
 -- Estructura de tabla para la tabla `propiedad`
 --
 
+DROP TABLE IF EXISTS `propiedad`;
 CREATE TABLE `propiedad` (
   `id_propiedad` int(11) NOT NULL,
   `tipo_propiedad` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -418,7 +397,8 @@ CREATE TABLE `propiedad` (
 --
 
 INSERT INTO `propiedad` (`id_propiedad`, `tipo_propiedad`, `cuota_mensual`, `valor_casa`, `tipo_vehiculo`, `año_vehiculo`, `valor_vehiculo`, `croquis`) VALUES
-(1, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg');
+(1, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg'),
+(2, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg');
 
 -- --------------------------------------------------------
 
@@ -426,6 +406,7 @@ INSERT INTO `propiedad` (`id_propiedad`, `tipo_propiedad`, `cuota_mensual`, `val
 -- Estructura de tabla para la tabla `remesas_familiar`
 --
 
+DROP TABLE IF EXISTS `remesas_familiar`;
 CREATE TABLE `remesas_familiar` (
   `id_remesa` int(11) NOT NULL,
   `monto` double(6,2) NOT NULL,
@@ -440,6 +421,7 @@ CREATE TABLE `remesas_familiar` (
 -- Estructura de tabla para la tabla `solicitud`
 --
 
+DROP TABLE IF EXISTS `solicitud`;
 CREATE TABLE `solicitud` (
   `id_solicitud` int(11) NOT NULL,
   `id_estudiante` int(11) NOT NULL,
@@ -464,7 +446,7 @@ CREATE TABLE `solicitud` (
 --
 
 INSERT INTO `solicitud` (`id_solicitud`, `id_estudiante`, `id_genero`, `religion`, `encargado`, `direccion`, `correo`, `tel_fijo`, `cel_papa`, `cel_mama`, `cel_hijo`, `fecha_nacimiento`, `lugar_nacimiento`, `pais_nacimiento`, `estudios_finan`, `id_institucion_proveniente`) VALUES
-(7, 1, 1, 'ddd', 'Solo madre', 'ddd', 'dd@gmial.com', 11111111, NULL, NULL, NULL, '07/05/2018', 'ddd', 'dd', 'Sus padres', 17);
+(43, 1, 1, 'ddd', 'Ambos padres', '84119', 'fernanxavi58@gmail.com', 19465732, NULL, NULL, NULL, '06/07/2018', 'dasd', 'Estados Unidos', 'Sus padres', 93);
 
 -- --------------------------------------------------------
 
@@ -472,6 +454,7 @@ INSERT INTO `solicitud` (`id_solicitud`, `id_estudiante`, `id_genero`, `religion
 -- Estructura de tabla para la tabla `tipo_patrocinador`
 --
 
+DROP TABLE IF EXISTS `tipo_patrocinador`;
 CREATE TABLE `tipo_patrocinador` (
   `id_tipo_patro` int(11) NOT NULL,
   `tipo_patrocinador` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -483,6 +466,7 @@ CREATE TABLE `tipo_patrocinador` (
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
+DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE `tipo_usuario` (
   `id_tipo` int(11) NOT NULL,
   `tipo_usuario` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -503,6 +487,7 @@ INSERT INTO `tipo_usuario` (`id_tipo`, `tipo_usuario`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombres` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
@@ -640,7 +625,7 @@ ALTER TABLE `integrante_familia`
 --
 ALTER TABLE `intermedia_propiedad`
   ADD PRIMARY KEY (`id_inter`),
-  ADD KEY `id_integrante` (`id_integrante`) USING BTREE,
+  ADD UNIQUE KEY `id_integrante` (`id_integrante`) USING BTREE,
   ADD KEY `id_propiedad` (`id_propiedad`) USING BTREE;
 
 --
@@ -675,9 +660,9 @@ ALTER TABLE `remesas_familiar`
 --
 ALTER TABLE `solicitud`
   ADD PRIMARY KEY (`id_solicitud`),
-  ADD UNIQUE KEY `id_institucion_proveniente` (`id_institucion_proveniente`),
   ADD UNIQUE KEY `id_estudiante` (`id_estudiante`),
-  ADD KEY `id_genero` (`id_genero`) USING BTREE;
+  ADD KEY `id_genero` (`id_genero`) USING BTREE,
+  ADD KEY `id_institucion_proveniente` (`id_institucion_proveniente`) USING BTREE;
 
 --
 -- Indices de la tabla `tipo_patrocinador`
@@ -715,6 +700,12 @@ ALTER TABLE `casos`
   MODIFY `id_caso` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `citas`
+--
+ALTER TABLE `citas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
@@ -736,7 +727,7 @@ ALTER TABLE `estado_solicitud`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `familiares_estudiante`
@@ -748,7 +739,7 @@ ALTER TABLE `familiares_estudiante`
 -- AUTO_INCREMENT de la tabla `gastos_mensuales`
 --
 ALTER TABLE `gastos_mensuales`
-  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -784,13 +775,13 @@ ALTER TABLE `imagenes_vehiculo`
 -- AUTO_INCREMENT de la tabla `institucion_proveniente`
 --
 ALTER TABLE `institucion_proveniente`
-  MODIFY `id_institucion_proveniente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_institucion_proveniente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `integrante_familia`
 --
 ALTER TABLE `integrante_familia`
-  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `intermedia_propiedad`
@@ -814,7 +805,7 @@ ALTER TABLE `patrocinadores`
 -- AUTO_INCREMENT de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
-  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `remesas_familiar`
@@ -826,7 +817,7 @@ ALTER TABLE `remesas_familiar`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_patrocinador`

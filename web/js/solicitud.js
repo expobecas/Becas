@@ -44,6 +44,16 @@ $(document).ready(function() {
       var cuotacoma = cuotapunto.replace(',', '.');
       var año_realizaba = $('#año_realizaba').val();
 
+      $.ajax({
+        type: 'POST',
+        url: '',
+        dataType: 'json',
+        success: function(datos)
+        {
+          
+        }
+      });
+
       if($('#genero').val() != null )
       {
         if($('#religion').val() != "")
@@ -99,30 +109,28 @@ $(document).ready(function() {
                                           pais_naci:pais_naci,
                                           fecha_naci:fecha_naci,
                                           financiados:financiados},
-                                        success: function(datos)
+                                        success: function()
                                         {
-                                          console.log(datos);
-                                          /*
                                           $('body,html').animate({
                                             scrollTop:0
                                           }, 400)
                                           $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
                                           var n = setInterval(function(){
-                                            /*le da color verde*
+                                            /*le da color verde*/
                                           $('.progressc .circle1').removeClass('active').addClass('done');
                                           
-                                          /*este pone el checke*
+                                          /*este pone el checke*/
                                           $('.progressc .circle1 .label').html('&#10003;');
                                   
-                                          /*rellena la primera mitad de la barra*
+                                          /*rellena la primera mitad de la barra*/
                                           $('.progressc .bar1').addClass('active');
                                   
-                                          /*activamos el circulo 2 del progress*
+                                          /*activamos el circulo 2 del progress*/
                                           $('.progressc .circle2').addClass('active');
                                   
                                           clearInterval(n);
                                           }, 100);
-                                          e.preventDefault();*/
+                                          e.preventDefault();
                                         }
                                       });
                                     },

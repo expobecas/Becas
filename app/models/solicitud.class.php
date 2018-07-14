@@ -308,6 +308,13 @@ class Solicitud extends Validator
         return Database::getRow($sql, $params);
     }
 
+    public function checkSolicitud()
+    {
+        $sql = "SELECT s.id_solicitud FROM solicitud s INNER JOIN estudiantes e ON s.id_estudiante = e.id_estudiante WHERE e.id_estudiante = ?";
+        $params = array($this->id_estudiante);
+        return Database::getRow($sql, $params);
+    }
+
     public function createSolicitud()
     {
         $sql = "INSERT INTO solicitud(id_estudiante, id_genero, religion, encargado, direccion, correo, tel_fijo, cel_papa, cel_mama, cel_hijo, fecha_nacimiento, lugar_nacimiento, pais_nacimiento, estudios_finan, id_institucion_proveniente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

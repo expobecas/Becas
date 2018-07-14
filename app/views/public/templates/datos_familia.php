@@ -56,7 +56,7 @@
         <div class="file-field input-field col s12 m6 l3">
             <div class="btn blue">
                 <span>Agregar</span>
-                <input type="file" name="croquis"/>
+                <input type="file" name="croquis" class="botones_integrante"/>
             </div>
             <div class="file-path-wrapper">
                 <input class="file-path validate" type="text" placeholder="fotos de la vivienda">

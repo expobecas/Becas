@@ -12,7 +12,7 @@ try
         function create()
         {
             $solicitud = new Solicitud;
-
+            
             $solicitud->setIdEstudiante($_SESSION['id_estudiante']);
             $solicitud->setIdGenero($_POST['genero']);
             $solicitud->setReligion($_POST['religion']);

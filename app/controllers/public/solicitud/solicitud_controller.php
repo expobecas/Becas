@@ -12,6 +12,10 @@ require_once("../../app/models/solicitud.class.php");
 require_once("../../app/models/detalle_solicitud.php");
 try
 {
+	if($_SESSION['id_estudiante'] == "")
+	{
+		Page::showMessage(3, "Por favor inicie sessión", "../alumno/account/ingresar.php");
+	}
 	//PRIMERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla institucion proveniente
 	$institucion_proveniente = new Institucion_proveniente;
@@ -19,7 +23,17 @@ try
 
 	//Para llenar la tabla solicitud
 	$solicitud = new Solicitud;
-
+	$solicitud->setIdEstudiante($_SESSION['id_estudiante']);
+	$datos = $solicitud->checkSolicitud();
+	if($datos)
+	{
+		Page::showMessage(3, "Ya no puede llenar otra solicitud", "../alumno/index/index.php");
+		print("<script>
+		$(document).ready(function(){
+			$('#estudiante').addClass('disabled');
+		});
+		</script>");
+	}
     //SEGUNDA PARTE DEL FOMULARIO SOLICITUD
     //Para llenar la tabla integrantes*/
 	$integrante = new Integrante_familia;

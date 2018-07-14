@@ -241,7 +241,7 @@ $secondButton.on('click', function(e){
 
 /*Ayuda para el progress circle y slider forms */
 
-/*$firstButton.on("click", function(e){
+$firstButton.on("click", function(e){
   $(this).text("Saving...").delay(500).queue(function(){
     $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
   });
@@ -258,7 +258,7 @@ $secondButton.on("click", function(e){
     else { $yourname.html($name+"!"); }
   });
   e.preventDefault();
-});*/
+});
 
 
 // copy

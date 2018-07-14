@@ -32,7 +32,7 @@ class Page extends component{
                     <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
-                    <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
+                    <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
                   <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 
                   <main>

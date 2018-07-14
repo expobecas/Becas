@@ -99,7 +99,7 @@ class Solicitud2 extends Validator {
     
     /*VISTA DE TABLAS - INDEX VIEW*/
     public function getVistageneral() {
-        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM solicitud INNER JOIN estudiantes USING(id_estudiante)";
+        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo, detalle_solicitud.id_detalle FROM solicitud INNER JOIN estudiantes USING(id_estudiante) INNER JOIN detalle_solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud";
         $params = array(
             null
         );

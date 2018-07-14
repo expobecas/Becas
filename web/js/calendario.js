@@ -75,7 +75,6 @@ $(document).ready(function(){
         EnviardatosEliminar(NuevoEvento);
     });
 
-
     function Recolectardatos(){
         NuevoEvento= {
             id: $('#id').val(),
@@ -84,7 +83,8 @@ $(document).ready(function(){
             descripcion:$('#descripcionEvento').val(),
             color:"#FF0000",
             textColor:"#FFFFFF",
-            end: $('#fecha').val()+" "+$('#hora').val()
+            end: $('#fecha').val()+" "+$('#hora').val(),
+            id_detalle: $('#id_detalle').val()
         };
     }
 

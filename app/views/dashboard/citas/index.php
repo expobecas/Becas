@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div id="Calendario">
+        <div class="col offset-xl1 offset-l2" id="Calendario">
 
         </div>
     </div>
@@ -48,6 +48,10 @@
             <div class="col s12">
                 <h6>Descripcion:</h6>
                 <textarea id="descripcionEvento" name="descripcionEvento" class="materialize-textarea" class="validate"></textarea>
+            </div>
+            <div class="col s12">
+                <h6>Titulo:</h6>
+                <input type="text" id="id_detalle" name="tid_detalle" value="<?php echo $_GET['id']?>" class="validate"/>
             </div>
         </div>
     </div>

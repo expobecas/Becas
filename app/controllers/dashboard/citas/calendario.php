@@ -4,8 +4,8 @@ require_once("../../../helpers/validator.class.php");
 require_once("../../../models/citas.class.php");
 try
 {
-    $evento = new Citas;
-    $data = $evento->getEventos();
+    $citas = new Citas;
+    $data = $citas->getEventos();
     echo json_encode($data);
 
 }

@@ -8,6 +8,7 @@ class Citas extends Validator
     private $colortext = null;
     private $inicio = null;
     private $fin = null;
+    private $id_detalle = null;
 
     public function setId($value)
     {
@@ -128,6 +129,23 @@ class Citas extends Validator
         return $this->fin;
     }
 
+    public function setIdDetalle($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->id_detalle = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIdDetalle()
+    {
+        return $this->id_detalle;
+    }
+
     //metodos para CRUD del calendario
 
     public function getEventos()
@@ -139,21 +157,21 @@ class Citas extends Validator
 
     public function createEvento($titulo, $descripcion, $color, $colortext, $inicio, $fin)
     {
-        $sql = "INSERT INTO eventos(title, descripcion, color, textColor, start, end) VALUES(?, ?, ?, ?, ?, ?)";
-        $params = array($titulo, $descripcion, $color, $colortext, $inicio, $fin);
+        $sql = "INSERT INTO citas(title, descripcion, color, textColor, start, end, id_detalle) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $params = array($titulo, $descripcion, $color, $colortext, $inicio, $fin, $this->id_detalle);
         return database::executeRow($sql, $params);
     }
 
     public function updateEvento($titulo, $descripcion, $inicio, $fin, $id)
     {
-        $sql = "UPDATE eventos SET title = ?, descripcion = ?, start = ?, end = ? WHERE id = ?";
+        $sql = "UPDATE citas SET title = ?, descripcion = ?, start = ?, end = ? WHERE id = ?";
         $params = array($titulo, $descripcion, $inicio, $fin, $id);
         return database::executeRow($sql, $params);
     }
 
     public function deleteEvento($id)
     {
-        $sql = "DELETE FROM eventos WHERE id = ?";
+        $sql = "DELETE FROM citas WHERE id = ?";
         $params = array($id);
         return database::executeRow($sql, $params);
     }

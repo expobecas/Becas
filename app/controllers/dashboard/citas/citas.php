@@ -2,12 +2,10 @@
 require_once("../../app/models/citas.class.php");
 try
 {
-    $evento = new Citas;
-    $data = $evento->getEventos();
-    if($data)
-    {
-        require_once("../../app/views/dashboard/citas/index.php");
-    }
+    $citas = new Citas;
+    $data = $citas->getEventos();
+    $id_detalle = $citas->setIdDetalle($_GET['id']);
+    require_once("../../app/views/dashboard/citas/index.php");
 }
 catch(Exception $error)
 {

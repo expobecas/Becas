@@ -9,14 +9,15 @@ try
     {
         function create()
         {
-            $evento = new Citas;
+            $citas = new Citas;
+            $citas->setIdDetalle($_POST['id_detalle']);
             $titulo = $_POST['title']; 
             $descripcion = $_POST['descripcion'];
             $color = $_POST['color'];
             $colortext = $_POST['textColor'];
             $inicio = $_POST['start'];
             $fin = $_POST['end'];
-            $evento->createEvento($titulo, $descripcion, $color, $colortext, $inicio, $fin);
+            $citas->createEvento($titulo, $descripcion, $color, $colortext, $inicio, $fin);
         }
     }
 

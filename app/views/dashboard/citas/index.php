@@ -29,10 +29,6 @@
         <h4 class="modal-title" id="titulo">Agregar Evento</h4>
         <div class="divider"></div>
         <div class="row">
-            <div class="col s6">
-                <h6>Id:</h6>
-                <input type="text" id="id" name="id" class="validate"/>
-            </div>
             <div class="col s12">
                 <h6>Titulo:</h6>
                 <input type="text" id="tituloEvento" name="tituloEvento" class="validate"/>
@@ -49,9 +45,9 @@
                 <h6>Descripcion:</h6>
                 <textarea id="descripcionEvento" name="descripcionEvento" class="materialize-textarea" class="validate"></textarea>
             </div>
-            <div class="col s12">
+            <div class="col s12" id="detalle">
                 <h6>Titulo:</h6>
-                <input type="text" id="id_detalle" name="tid_detalle" value="<?php echo $_GET['id']?>" class="validate"/>
+                <input type="text" id="id_detalle" name="id_detalle" value="<?php echo $_GET['id']?>" class="validate"/>
             </div>
         </div>
     </div>

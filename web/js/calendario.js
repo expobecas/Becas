@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('#detalle').hide(0);
     $('#Calendario').fullCalendar({
         header:{
             left:'prev,today,next, month, basicWeek, basicDay',
@@ -77,7 +78,6 @@ $(document).ready(function(){
 
     function Recolectardatos(){
         NuevoEvento= {
-            id: $('#id').val(),
             title:$('#tituloEvento').val(),
             start:$('#fecha').val()+" "+$('#hora').val(),
             descripcion:$('#descripcionEvento').val(),

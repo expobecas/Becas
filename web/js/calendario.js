@@ -66,7 +66,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(datos)
             {
-                $('#citas').empty();;
+                $('#datos').empty();
                 console.log(datos);
                 var i = 0;
                 for(i; i<datos.length; i++)
@@ -76,7 +76,7 @@ $(document).ready(function(){
                     apellidos = datos[i].primer_apellido +" "+ datos[i].segundo_apellido;
                     fecha = datos[i].start.split(" ");
                     fila = fila.concat(
-                        '<tr>',
+                        '<tr class="'+datos[i].id_detalle+'" id="'+datos[i].id+'">',
                         '<td>' +nombres+'</td>',
                         '<td>' +apellidos+'</td>',
                         '<td>' +datos[i].title+'</td>',
@@ -84,9 +84,32 @@ $(document).ready(function(){
                         '<td>' +fecha[0]+'</td>',
                         '</tr>'
                     );
-                    $('#citas').append(fila);
+                    $('#datos').append(fila);
                 }
+                $('.tooltipped').tooltip({delay: 50});
+                obtenerDatosEditar();
+                document.getElementById("datos").style.cursor = "pointer";
             }
+        });
+    }
+
+    function obtenerDatosEditar()
+    {
+        $('#cita').on('click', '#datos tr', function(e){
+            e.preventDefault();
+            id_cita = $(this).attr('id');
+            id_detalle = $(this).attr('class');
+            titulo = $(this).children('td:eq(2)').text();
+            descripcion = $(this).children('td:eq(3)').text();
+            fecha = $(this).children('td:eq(4)').text()
+            
+            $('#id').val(id_cita);
+            $('#descripcionEvento').val(descripcion);
+            $('#tituloEvento').val(titulo);
+            $('#fecha').val(fecha);
+            $('#id_detalle').val(id_detalle)
+
+            $('#modalEventos').modal().modal('open');
         });
     }
 

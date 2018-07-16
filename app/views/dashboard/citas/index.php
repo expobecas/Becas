@@ -12,7 +12,7 @@
         <a href="#" class="control_c" id="control_calendario">Calendario</a>
         <div class="contenedor">
             <div class="row">
-                <table class="col l12">
+                <table class="col l12 highlight responsive-table" id="cita">
                     <thead>
                     <tr>
                         <th>Nombres</th>
@@ -22,7 +22,7 @@
                         <th>Fecha</th>
                     </tr>
                     </thead>
-                    <tbody id="citas">
+                    <tbody id="datos">
                     </tbody>
                 </table>
             </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="col s12" id="detalle">
                 <h6>Titulo:</h6>
-                <input type="text" id="id_detalle" name="id_detalle" value="<?php echo $_GET['id']?>" class="validate"/>
+                <input type="text" id="id_detalle" name="id_detalle" value="" class="validate"/>
             </div>
         </div>
     </div>

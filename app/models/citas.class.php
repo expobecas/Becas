@@ -150,7 +150,7 @@ class Citas extends Validator
 
     public function getEventos()
     {
-        $sql = "SELECT * FROM citas";
+        $sql = "SELECT e.primer_nombre, e.segundo_nombre, e.primer_apellido, e.segundo_apellido, c.id, c.title, c.descripcion, c.color, c.textColor, c.start, c.end FROM citas c INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle INNER JOIN solicitud s ON d.id_solicitud = s.id_solicitud INNER JOIN estudiantes e ON s.id_estudiante = e.id_estudiante";
         $params = array(null);
         return database::getRows($sql, $params);
     }

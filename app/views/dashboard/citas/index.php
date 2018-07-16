@@ -3,8 +3,33 @@
         <div class="col offset-xl1 offset-l2" id="Calendario">
 
         </div>
+        
     </div>
 </div>
+<div class="row">
+    <div class="tablecitas" id="formcita">
+        <a href="#" class="control_t" id="control_tabla">Tabla</a>
+        <a href="#" class="control_c" id="control_calendario">Calendario</a>
+        <div class="contenedor">
+            <div class="row">
+                <table class="col l12">
+                    <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Titulo</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                    </tr>
+                    </thead>
+                    <tbody id="citas">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
   
 </main>
@@ -29,6 +54,10 @@
         <h4 class="modal-title" id="titulo">Agregar Evento</h4>
         <div class="divider"></div>
         <div class="row">
+            <div class="col s6" id="id_cita">
+                <h6>Id:</h6>
+                <input type="text" id="id" name="id" class="validate"/>
+            </div>
             <div class="col s12">
                 <h6>Titulo:</h6>
                 <input type="text" id="tituloEvento" name="tituloEvento" class="validate"/>

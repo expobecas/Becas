@@ -87,3 +87,143 @@ ul#slide-out li a {
 .input{
     color: rgb(5, 5, 5);
 }
+
+/*CITAS*/
+.tablecitas
+{
+    position: absolute;
+    z-index: 4;
+    background: white;
+    width: 79%;
+    height: 105%;
+    right: 0;
+    bottom: -10%;
+    transform: translateX(97.3%);
+    transition-duration: 2.5s;
+}
+
+.desplazar
+{
+    position: absolute;
+    z-index: 4;
+    background:white;
+    width: 83%;
+    height: 105%;
+    right: 0;
+    bottom: -10%;
+    transform: translateX(0%);
+    transition-duration: 2.5s;
+}
+
+.desplazar.m
+{
+    position: absolute;
+    z-index: 4;
+    background:white;
+    width: 80%;
+    height: 105%;
+    right: 0;
+    bottom: -10%;
+    transform: translateX(0%);
+    transition-duration: 2.5s;
+}
+
+.desplazar.s
+{
+    position: absolute;
+    z-index: 4;
+    background:white;
+    width: 75%;
+    height: 105%;
+    right: 0;
+    bottom: -10%;
+    transform: translateX(0%);
+    transition-duration: 2.5s;
+}
+
+.desplazar.xs
+{
+    position: absolute;
+    z-index: 4;
+    background:white;
+    width: 99%;
+    height: 105%;
+    right: 0;
+    bottom: -10%;
+    transform: translateX(0%);
+    transition-duration: 2.5s;
+}
+
+
+.contenedor
+{
+    margin: 0 auto;
+    width: 85%;
+}
+.control_t
+{
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    display: block;
+    padding: 7px 7px;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}
+
+.control_t.m
+{
+    position: absolute;
+    left: -19px;
+    top: 50%;
+    display: block;
+    padding: 7px 7px;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}
+
+.control_t.s
+{
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    display: block;
+    padding: 7px 7px;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}
+
+.control_c
+{
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    display: block;
+    padding: 7px 7px;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+}

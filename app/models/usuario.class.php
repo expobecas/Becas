@@ -111,6 +111,32 @@ class Usuario extends Validator{
         $params = array(null);
         Database::getRows($sql, $params);
     }
+    public function GetDatosUsuario(){
+        $sql = "SELECT id_usuario, nombres, apellidos FROM usuarios WHERE id_tipo = 1 AND id_usuario = ?";
+        $id_usuario = 1;
+        $params = array($id_usuario);
+        $admin = Database::getRows($sql, $params);
+        if($admin){
+            $this->nombres = $admin['nombres'];
+            $this->apellidos = $admin['apellidos'];
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //CONSULTAS PARA REPORTES
+    public function getInformacion(){
+        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_usuario = ?";
+        $params = array($this->id);
+        $usuario = Database::getRows($sql, $params);
+        if($usuario){
+            $this->id = usuario['id_usuario'];
+            $this->usuario = usuario['usuario'];
+            $this->nombres = usuario['nombres'];
+            $this->apellidos = usuario['apellidos'];
+        }
+    }
 
 }
 ?>

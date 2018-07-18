@@ -10,6 +10,7 @@ class Patrocinadores extends Validator{
     private $nombre_empresa = null;
     private $direccion = null;
     private $telefono = null;
+    private $tipo2 = null;
 
     /*SET & GET PATROCINADORES*/
     public function setId_patrocinador($value)
@@ -156,6 +157,22 @@ class Patrocinadores extends Validator{
     {
         return $this->telefono;
     }
+    public function setTipo2($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->tipo2 = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getTipo2()
+    {
+        return $this->tipo2;
+    }
 
     //METODOS PARA MANEJAR EL CRUD
     public function getPatrocinadores(){
@@ -179,12 +196,13 @@ class Patrocinadores extends Validator{
         return Database::executeRow($sql, $params);
     }
     public function ReadPatrocinadores(){
-        $sql = "SELECT id_patrocinador, id_tipo_patro, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_patrocinador = ?";
+        $sql = "SELECT id_patrocinador, id_tipo_patro, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         $patrocinadores = Database::getRow($sql, $params);
         if($patrocinadores){
             $this->id_patrocinador = $patrocinadores['id_patrocinador'];
             $this->tipo = $patrocinadores['id_tipo_patro'];
+            $this->tipo2 = $patrocinadores['tipo_patrocinador'];
             $this->profesion = $patrocinadores['profesion'];
             $this->nombres = $patrocinadores['nombres'];
             $this->apellidos = $patrocinadores['apellidos'];
@@ -201,6 +219,13 @@ class Patrocinadores extends Validator{
         $sql = "DELETE FROM patrocinadores WHERE id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         return Database::executeRow($sql, $params);
+    }
+
+    //CONSULTAS PARA REPORTES
+    public function BecasCorrespondientes(){
+        $sql = "SELECT n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, monto, periodo_pago,  estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE becas.id_patrocinador = ?";
+        $params = array($this->id_patrocinador);
+        return Database::getRows($sql, $params);
     }
 }
 ?>

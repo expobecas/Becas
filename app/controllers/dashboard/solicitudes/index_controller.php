@@ -1,7 +1,7 @@
 <?php 
-require_once("../../app/models/solicitud2.class.php");
+require_once("../../app/models/solicitud.class.php");
 try{
-    $solicitud2 = new Solicitud2;
+    $solicitud2 = new Solicitud;
     $data = $solicitud2->getVistageneral();
     $data2 = $solicitud2->getUltimasSol();
     /*VISTA GENERAL DE SOLICITUDES*/

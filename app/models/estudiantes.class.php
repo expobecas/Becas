@@ -138,6 +138,7 @@ class Estudiantes extends Validator{
         $sql = "SELECT contraseña FROM estudiantes WHERE id_estudiante = ?";
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
+        echo($data['contraseña']);
         if($this->contraseña == $data['contraseña']){
             return true;
         }else{
@@ -178,10 +179,11 @@ class Estudiantes extends Validator{
         }
     }
     public function GetDatosGenerales(){
-        $sql="SELECT primer_nombre, primer_apellido, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
+        $sql="SELECT id_estudiante, primer_nombre, primer_apellido, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
         $params = array($_SESSION['id_estudiante']);
         $estudiantes = Database::getRow($sql, $params);
         if($estudiantes){
+            $this->id = $estudiantes['id_estudiante'];
             $this->nombre1 = $estudiantes['primer_nombre'];
             $this->apellido1 = $estudiantes['primer_apellido'];
             $this->num_carnet = $estudiantes['n_carnet'];

@@ -1,0 +1,127 @@
+/*CSS INGRESAR*/
+.ingresar_fondo{
+    position: absolute;
+    background-image: url("../../web/img/login/fondo.png");
+    width: 100%;
+    height: 100%;
+    
+}
+li:hover{
+    background-color: #E84A5F;
+    transition: 1.5s;    
+}
+ul#slide-out li a {
+    transition: transform 0.2s linear;
+  }
+  
+ul#slide-out li:hover a {
+    transform: translateY(-2px);
+  }
+
+.ingresar_form{
+  text-align: center;
+}
+.ingresar, .mas_info, .boton-solicitud, .boton-editar2{
+    background-color: #FF847C;
+    
+}
+.ingresar:hover, .mas_info:hover, .boton-solicitud:hover, .boton-editar2:hover{
+    background-color: rgb(255, 119, 109);
+}
+.cuadrado{
+    background-color: #ffffff;
+    height: 450px;
+    top: 90px;
+    border-radius: 3%;
+}
+.logo
+{
+    margin-top: 5%;
+}
+.fondo-general{
+    background-color: rgb(226, 231, 229);
+}
+/*DISEÑO ALUMNO*/
+.side-nav{
+    background-color: #2A363B;
+    font-size: 20px;
+}
+.user-view{
+    background-image: url("../../web/img/login/fondo.png");
+    height: 160px;
+}
+.font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Signika;
+    src: url("../../web/fonts/Signika-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/Signika-SemiBold.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
+}
+/*INICIO ALUMNO*/
+#barra{
+    position: relative;
+    background-color: #ffffff;
+}
+.avisos{
+    background-color: #ffffff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+}
+.avisos:hover{
+    background-color: #ffffff;
+}
+/*COLORES DE LOS BOTONES*/
+.sg1, .sg1:hover{
+    background-color: #2A363B;
+}
+.sg2, .sg2:hover{
+    background-color: #E84A5F;
+}
+.sg3, .sg3:hover{
+    background-color: #99B898;
+}
+.sg4, .sg4:hover{
+    background-color: rgb(243, 188, 148);
+}
+/*INDEX BECADO*/
+/*PRIMERA ROW-CAJITAS */
+.fecha_cajita{
+    font-size: 17px;
+    text-align: center;
+}
+.date-1, .date-2, .date-3, .date-4{
+    font-size: 60px;
+}
+.date-1{
+    color: #99B898;
+}
+.date-2{
+    color: #FF847C;
+}
+.date-3{
+    color: #FECEAB;
+}
+.date-4{
+    color: #E84A5F;
+}
+/*SEGUNDA CAJITA*/
+.foto-becado{
+    width: 180px;
+}
+.chatting{
+    width: 150px;
+    height: 150px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+.color-text{
+    color: #2A363B;
+}

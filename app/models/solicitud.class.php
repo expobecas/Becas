@@ -321,5 +321,26 @@ class Solicitud extends Validator
         $params = array($this->id_estudiante, $this->id_genero, $this->religion, $this->encargado, $this->direccion, $this->correo, $this->tel_fijo, $this->cel_papa, $this->cel_mama, $this->cel_hijo, $this->fecha_nacimiento, $this->lugar_nacimiento, $this->pais_nacimiento, $this->estudios_finan, $this->id_institucion_proveniente);
         return Database::executeRow($sql, $params);
     }
+        /*VISTA DE TABLAS - INDEX VIEW*/
+        public function getVistageneral() {
+            $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM solicitud INNER JOIN estudiantes USING(id_estudiante)";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+        }
+        public function getUltimasSol() {
+            $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM solicitud INNER JOIN estudiantes USING(id_estudiante) ORDER BY solicitud.id_solicitud ASC";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+        }
+        public function getAprobadas() {
+            $sql = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE detalle_solicitud.id_estado = 1";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+        }
+        public function getRechazadas() {
+            $sql = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE detalle_solicitud.id_estado = 3";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+        }
 }
 ?>

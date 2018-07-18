@@ -1,0 +1,117 @@
+/* CSS MENU JEFE */
+.content-menu, .collapsible-body{
+    background-color: #2A363B;
+}
+.menu-button{
+    position: absolute;
+}
+li:hover{
+    background-color: #E84A5F;
+    transition: 1.5s;    
+}
+ul#slide-out li a {
+    transition: transform 0.2s linear;
+  }
+  
+  ul#slide-out li:hover a {
+    transform: translateY(-2px);
+  }
+  .font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Barlow;
+    src: url("../../web/fonts/BarlowCondensed-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/BarlowCondensed-Medium.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
+    color: rgb(62, 73, 78);
+}
+.titulos_integrante{
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    color: rgb(92, 92, 92);
+}
+.user-view{
+    background-image: url("../../web/img/jefes/imagen10.png");
+    height: 150px;
+}
+.fondo-general, .buscador{
+    background-color:  rgb(226, 231, 229);
+}
+.avisos{
+    background-color: #ffffff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+}
+.avisos:hover{
+    background-color: #ffffff;
+}
+/*COLORES DE LOS BOTONES*/
+.sg1, .sg1:hover{
+    background-color: #2A363B;
+}
+.sg2, .sg2:hover{
+    background-color: #E84A5F;
+}
+.sg3, .sg3:hover{
+    background-color: #99B898;
+}
+.sg4, .sg4:hover{
+    background-color: rgb(243, 188, 148);
+}
+/*INFORMACIÓN DE LA SOLICITUD*/
+.fecha_cajita{
+    font-size: 16px;
+    text-align: center;
+}
+.date-1, .date-2, .date-3, .date-4{
+    font-size: 60px;
+    text-align: center;
+}
+.date-1{
+    color: #99B898;
+}
+.date-2{
+    color: #FF847C;
+}
+.date-3{
+    color: #FECEAB;
+}
+.date-4{
+    color: #E84A5F;
+}
+.cajita_informacion{
+    height: 450px;
+    border-radius: 4px;
+}
+.cajita_informacion2{
+    height: 450px;
+    margin-left: 40px;
+}
+/*INFORMACIÓN PARA SOLICITUD*/
+.titulo_ci3, .boton-editar, .titulo-EP{
+    text-align: center;
+}
+.nota-s, .requisitos{
+    font-size: 16px;
+    padding: 10px;
+}
+.cajita-solicitud{
+    height: 165px;
+}
+.mortarborad{
+    padding: 14px;
+}
+.infor_s{
+    position: relative;
+    margin-top: 30px;
+}
+.text-tbody{
+    font-size: 13.3px;
+}

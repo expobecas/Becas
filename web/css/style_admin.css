@@ -5,9 +5,6 @@ body{
 .content-menu, .collapsible-body{
     background-color: #2A363B;
 }
-form{
-    border-radius: 8px;
-}
 .menu-button{
     position: absolute;
 }
@@ -72,6 +69,9 @@ ul#slide-out li a {
 .sg3, .sg3:hover{
     background-color: #99B898;
 }
+.sg4, .sg4:hover{
+    background-color: rgb(243, 188, 148);
+}
 .buscador{
     bottom: 28px;
 }
@@ -86,4 +86,14 @@ ul#slide-out li a {
 /*DETALLE DE LA SOLICITUD*/
 .input{
     color: rgb(5, 5, 5);
+}
+/*PATROCINADORES*/
+.text-tbody{
+    font-size: 13px;
+}
+.add-c{
+    font-size: 16px;
+}
+.eliminar-text{
+    text-align: center;
 }

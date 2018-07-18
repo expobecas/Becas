@@ -44,14 +44,13 @@ class Page extends Component
                 <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                 <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                 <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
-            </ul> 
-            <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 
+            </ul>
             <main>
                 <div class='row white' id='barra'>
                     <div class='col'>
-                        <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
+                        <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='small material-icons'>menu</i></a>          
                     </div>
-                    <div class='col offset-l9 offset-s1'>   
+                    <div class='col right'>   
                         <ul id='dropdown2' class='dropdown-content'>
                             <li><a href='#!'>Aqui iran las super notificaciones</a></li>
                         </ul>

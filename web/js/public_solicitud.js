@@ -239,7 +239,7 @@ $secondButton.on('click', function(e){
 
 
 
-/*Ayuda para el progress circle y slider forms */
+/*Ayuda para el progress circle y slider forms *
 
 $firstButton.on("click", function(e){
   $(this).text("Saving...").delay(500).queue(function(){

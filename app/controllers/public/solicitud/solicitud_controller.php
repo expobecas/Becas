@@ -415,11 +415,12 @@ try
 	}
 
 	$detalle_solicitud = new Detalle_solicitud;
-	/*if(isset($_POST['enviar']))
+	if(isset($_POST['enviar']))
 	{
-		$_POST = $detalle_solicitud->validateForm($_POST);
-		
-	}*/
+		$id_solicitud = $detalle_solicitud->getSolicitud();
+		$detalle_solicitud->setIdSolicitud($id_solicitud[0]);
+		$detalle_solicitud->createDetalle();				
+	}
 }
 catch(Exception $error)
 {

@@ -1,9 +1,7 @@
 <!--TÍTULO-->
 <div class="row">
    <div class="col offset-l3 titulo-font">
-      <h4>
-         Solicitudes
-      </h4>
+      <h4>Solicitudes</h4>
    </div>
 </div>
 <!--BOTONES-->

@@ -1,0 +1,99 @@
+/* CSS MENU ADMIN */
+body{
+    overflow-x: hidden;
+}
+.content-menu, .collapsible-body{
+    background-color: #2A363B;
+}
+.menu-button{
+    position: absolute;
+}
+li:hover{
+    background-color: #E84A5F;
+    transition: 1.5s;    
+}
+ul#slide-out li a {
+    transition: transform 0.2s linear;
+  }
+  
+  ul#slide-out li:hover a {
+    transform: translateY(-2px);
+  }
+  .font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Barlow;
+    src: url("../../web/fonts/BarlowCondensed-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/BarlowCondensed-Medium.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
+    color: rgb(62, 73, 78);
+}
+.titulos_integrante{
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    color: rgb(92, 92, 92);
+}
+.user-view{
+    background-image: url("../../web/img/admin/imagen8.png");
+    height: 160px;
+}
+.fondo-general, .buscador{
+    background-color:  rgb(226, 231, 229);
+}
+.avisos{
+    background-color: #ffffff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+}
+.avisos:hover{
+    background-color: #ffffff;
+}
+/*SOLICITUDES*/
+.s-general{
+    border-radius: 2px;
+    font-size: 12px;
+}
+.sg1, .sg1:hover{
+    background-color: #2A363B;
+}
+.sg2, .sg2:hover{
+    background-color: #E84A5F;
+}
+.sg3, .sg3:hover{
+    background-color: #99B898;
+}
+.sg4, .sg4:hover{
+    background-color: rgb(243, 188, 148);
+}
+.buscador{
+    bottom: 28px;
+}
+.ver-mas{
+    color: #ffa260;
+    text-align: center
+}
+.tabla{
+    position: relative;
+    left: 35px;
+}
+/*DETALLE DE LA SOLICITUD*/
+.input{
+    color: rgb(5, 5, 5);
+}
+/*PATROCINADORES*/
+.text-tbody{
+    font-size: 13px;
+}
+.add-c{
+    font-size: 16px;
+}
+.eliminar-text{
+    text-align: center;
+}

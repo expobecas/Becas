@@ -25,7 +25,7 @@ class Page extends Component
             <script type='text/javascript' src='../../web/js/moment.min.js'></script>
             <script type='text/javascript' src='../../web/js/fullcalendar.min.js'></script>
             <script type='text/javascript' src='../../web/js/es.js'></script>
-            <script type='text/javascript' src='../../web/js/calendario.js'></script>
+            <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
             
         </head>
         <body>
@@ -43,7 +43,7 @@ class Page extends Component
                 <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                 <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                 <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
-                <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
+                <li><a href='../ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
             </ul>
             <main>
                 <div class='row white' id='barra'>
@@ -73,7 +73,7 @@ class Page extends Component
             ");
             $filename = basename($_SERVER['PHP_SELF']);
             if($filename != "acceder.php"){
-                self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
+                self::showMessage(3, "¡Debe iniciar sesión!", "../ingresar/acceder.php");
                 self::templateFooter();
                 exit;
             }else{
@@ -86,6 +86,7 @@ class Page extends Component
         print("
         </main>
         <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
+        <script type='text/javascript' src='../../web/js/calendario.js'></script>
         <script type='text/javascript' src='../../web/js/js_admin.js'></script>
         </body>
         </html>

@@ -1,6 +1,6 @@
 <?php
-require_once('../../app/views/dashboard/casos/templates/page.class.php');
+require_once('../../app/views/dashboard/templates/page.class.php');
 Page::templateHeader('Casos');
-require_once('../../app/controllers/dashboard/casos/index_controller.php');
+require_once('../../app/views/dashboard/casos/index.php');
 Page::templateFooter();
 ?>

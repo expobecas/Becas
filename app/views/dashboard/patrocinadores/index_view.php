@@ -10,11 +10,22 @@
 </div>
 <!--BOTONES-->
 <div class="row">
+<<<<<<< HEAD
+<div class="col offset-l9">
+      <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
+   </div>
+<<<<<<< HEAD
+=======
+   <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
+</div>
+=======
    <div class="col offset-l9">
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
+>>>>>>> 6d79f6c71e6a90f57e7dd4f34ca4dd212de07a6f
    <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
    </div>
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 <!--TABLA SOLICITUDES GENERALES-->
 <div class="row">
    <div class="tabla">

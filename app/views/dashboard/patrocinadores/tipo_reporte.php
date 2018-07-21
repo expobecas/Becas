@@ -104,23 +104,24 @@ $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
 $pdf->Ln(6);
 
-$datos = $solicitud->getSolicitudPorTipo();
+$datos = $solicitud->getTipoPa();
 foreach ($datos as $row) {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Times', 'B', 11);
     $pdf->SetX(18);
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+    $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
+
 
     $pdf->Ln();
 }
@@ -134,24 +135,24 @@ $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
 $pdf->Ln(6);
 
-$datos2 = $solicitud->getSolicitudPorTipo2();
+$datos2 = $solicitud->getTipoPa2();
 foreach ($datos2 as $row) {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Times', '', 11);
     $pdf->SetX(18);
    
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+    $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
     $pdf->Ln();
 
 }
@@ -167,24 +168,25 @@ $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
+
 $pdf->Ln(6);
 
-$datos2 = $solicitud->getSolicitudPorTipo3();
+$datos2 = $solicitud->getTipoPa3();
 foreach ($datos2 as $row) {
     $pdf->SetTextColor(250, 251, 251);
     $pdf->SetFont('Times', '', 11);
     $pdf->SetX(18);
-   
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+
+    $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
     $pdf->Ln();
 
 }

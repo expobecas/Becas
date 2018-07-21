@@ -47,12 +47,8 @@
                <td>$row[tel_fijo]</td>
                <td>
                <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
-<<<<<<< HEAD
-               <a href='../citas/index.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
-=======
                <a href='../citas/index.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
                <a href='../casos/create_caso.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
->>>>>>> cd05825b6095487627f61f207137a49a45f908f6
                </td>
                </tr>");
                }

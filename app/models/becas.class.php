@@ -144,7 +144,7 @@ class Becas extends Validator {
 
     //METODOS PARA EL CRUD
     public function getBecas(){
-        $sql = "SELECT n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, monto, periodo_pago, estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante";
+        $sql = "SELECT id_becas, n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, monto, periodo_pago, estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
@@ -208,7 +208,7 @@ class Becas extends Validator {
                 $this->nombre1 = $detalle['primer_nombre'];
                 $this->nombre2 = $detalle['segundo_nombre'];
                 $this->apellido1 = $detalle['primer_apellido'];
-                $this->apellido2 = $detalle['segundo_ap ellido'];
+                $this->apellido2 = $detalle['segundo_apellido'];
                 $this->religion = $detalle['religion'];
                 $this->encargado = $detalle['encargado'];
                 $this->direccion = $detalle['direccion'];

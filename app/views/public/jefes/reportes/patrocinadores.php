@@ -48,8 +48,6 @@ function Footer()
 $usuarios = new Usuario;
 $patrocinador = new Patrocinadores;
 
-session_start();
-
 // Creación del objeto de la clase heredada
 $pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
@@ -70,7 +68,9 @@ $pdf->setX(25);
 //Usuario
 $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
-$pdf->Cell(25,18,$_SESSION['nombres'],0,0,'C');
+//$usuarios->setId($_SESSION['id']);
+$usuarios->getInformacion();
+$pdf->Cell(25,18,$usuarios->getId(),0,0,'C');
 
 //Fecha
 $pdf->setX(127);

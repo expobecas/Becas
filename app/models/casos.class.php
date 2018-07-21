@@ -91,7 +91,7 @@ class Casos extends Validator
     public function getCasos()
     {
         $sql = "SELECT c.id_caso, c.descripcion, c.fecha, c.id_cita, es.estado_solicitud, e.primer_nombre, e.segundo_nombre, e.primer_apellido, e.segundo_apellido, ct.start FROM casos c INNER JOIN citas ct ON c.id_cita = ct.id INNER JOIN detalle_solicitud d ON ct.id_detalle = d.id_detalle INNER JOIN estado_solicitud es ON d.id_estado = es.id_estado INNER JOIN solicitud s ON d.id_solicitud = s.id_solicitud INNER JOIN estudiantes e ON s.id_estudiante = e.id_estudiante";
-        $params = array();
+        $params = array(null);
         return Database::getRows($sql, $params);
     }
 

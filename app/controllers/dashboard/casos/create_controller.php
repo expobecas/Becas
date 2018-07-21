@@ -16,12 +16,11 @@ try
         $id_cita = $caso->checkCita();
         if($id_cita == null)
         {
-            
-            Page::showMessage(3, 'No se puede hacer un caso, porque no ha asignado una cita', '../solicitudes/index.php');
+            require_once('../../app/views/dashboard/casos/create_view.php');
         }
         else
         {
-            require_once('../../app/views/dashboard/casos/create_view.php');
+            Page::showMessage(3, 'No se puede hacer un caso, porque no ha asignado una cita', '../solicitudes/index.php');
         }
     }
 
@@ -69,7 +68,7 @@ try
         }
         else
         {
-            throw new Exception("Describa el caso");
+            throw new Exception("Describa el caso y no sobre pase 500 digitos");
         }
     }
 }

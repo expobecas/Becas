@@ -125,6 +125,21 @@ class Usuario extends Validator{
         }
     }
 
+    public function readUsuario()
+    {
+        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_usuario = ?";
+        $params = array($this->id);
+        $usuario = Database::getRow($sql, $params);
+        if($usuario)
+        {
+            $this->id = $usuario['id_usuario'];
+            $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
+            $this->tipo = $usuario['id_tipo'];
+            $this->usuario = $usuario['usuario'];
+        }
+    }
+
     //CONSULTAS PARA REPORTES
     public function getInformacion(){
         $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_usuario = ?";

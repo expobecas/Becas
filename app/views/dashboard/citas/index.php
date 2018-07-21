@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<!--modal para agregar, modificar y eliminar eventos-->
+<!--modal para agregar, modificar y eliminar citas-->
 <div id="modalEventos" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4 class="modal-title" id="titulo">Agregar Evento</h4>

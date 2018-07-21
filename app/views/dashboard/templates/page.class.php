@@ -29,9 +29,27 @@ class Page extends component{
                     </div></li>
                     <li><a href='../../dashboard/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
                     <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
+                    <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
+<<<<<<< HEAD
+                    <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
+                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+=======
+                    <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
+                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+                    <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
+                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+=======
                     <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
+>>>>>>> cd05825b6095487627f61f207137a49a45f908f6
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
+>>>>>>> 6d79f6c71e6a90f57e7dd4f34ca4dd212de07a6f
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
@@ -78,6 +96,9 @@ class Page extends component{
         <script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
         <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
         <script type='text/javascript' src='../../web/js/js_admin.js'></script>
+        <script type='text/javascript' src='../../web/js/stadistics.js'></script>
+        <script type='text/javascript' src='../../web/js/Chart.js'></script>
+        <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
 		</body>
 		</html>
         ");

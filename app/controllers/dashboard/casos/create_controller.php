@@ -17,12 +17,20 @@ try
         if($id_cita == null)
         {
             
+<<<<<<< HEAD
             
             require_once('../../app/views/dashboard/casos/create_view.php');
         }
         else
         {
             Page::showMessage(3, 'No se puede hacer un caso, porque no ha asignado una cita', '../solicitudes/index.php');   
+=======
+            Page::showMessage(3, 'No se puede hacer un caso, porque no ha asignado una cita', '../solicitudes/index.php');
+        }
+        else
+        {
+            require_once('../../app/views/dashboard/casos/create_view.php');
+>>>>>>> cd05825b6095487627f61f207137a49a45f908f6
         }
     }
 
@@ -51,11 +59,19 @@ try
                     $detalle_solicitud->setIdDetalle($id_detalle);
                     if(isset($_POST['aprobar']))
                     {
+<<<<<<< HEAD
                         $detalle_solicitud->setIdEstado(2);
                     }
                     if(isset($_POST['rechazar']))
                     {
                         $detalle_solicitud->setIdEstado(3);
+=======
+                        $detalle_solicitud->setIdEstado(3);
+                    }
+                    if(isset($_POST['rechazar']))
+                    {
+                        $detalle_solicitud->setIdEstado(2);
+>>>>>>> cd05825b6095487627f61f207137a49a45f908f6
                     }
                     if($detalle_solicitud->updateDetalleSolicitud())
                     {

@@ -47,7 +47,11 @@ function Footer()
 session_start();
 //Llamando los modelos
 $usuarios = new Usuario;
+<<<<<<< HEAD
+$patrocinador = new Patrocinadores;
+=======
 $solicitud = new Patrocinadores;
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 
 // Creación del objeto de la clase heredada
 $pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
@@ -80,7 +84,10 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
+<<<<<<< HEAD
+=======
 $pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
@@ -104,24 +111,60 @@ $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 $pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
 $pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
+<<<<<<< HEAD
 $pdf->Ln(6);
 
 $datos = $solicitud->getTipoPa();
+=======
+$pdf->Ln(6);
+
+$datos = $patrocinador->getTipoPa();
+=======
+$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Ln(6);
+
+$datos = $solicitud->getSolicitudPorTipo();
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 foreach ($datos as $row) {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Times', 'B', 11);
     $pdf->SetX(18);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
     $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
     $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+<<<<<<< HEAD
     $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
 
+=======
+    $pdf->Cell(30, 6, $row['nombre_empresa'], 1, 0, 'C');
+
+=======
+    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 
     $pdf->Ln();
 }
@@ -129,30 +172,72 @@ foreach ($datos as $row) {
 $pdf->Ln(10);
 
 $pdf->SetX(18);
+<<<<<<< HEAD
+$pdf->Cell(30, 10, 'Patrocinadore empresa', 0, 0);
+=======
 $pdf->Cell(30, 10, 'Solicitudes aprobadas', 0, 0);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Ln(10);
 $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 $pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
 $pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
+<<<<<<< HEAD
 $pdf->Ln(6);
 
 $datos2 = $solicitud->getTipoPa2();
+=======
+
+$pdf->Ln(6);
+
+$datos2 = $patrocinador->getTipoPa2();
+=======
+$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Ln(6);
+
+$datos2 = $solicitud->getSolicitudPorTipo2();
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 foreach ($datos2 as $row) {
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Times', '', 11);
     $pdf->SetX(18);
    
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
     $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
     $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+<<<<<<< HEAD
     $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
+=======
+    $pdf->Cell(30, 6, $row['nombre_empresa'], 1, 0, 'C');
+   
+
+=======
+    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
     $pdf->Ln();
 
 }
@@ -162,31 +247,72 @@ $pdf->Ln(14);
 $pdf->SetX(18);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Times', 'B', 11);
+<<<<<<< HEAD
+$pdf->Cell(30, 10, 'Patrocinador independiente', 0, 0);
+=======
 $pdf->Cell(30, 10, 'Solicitudes rechazadas', 0, 0);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Ln(10);
 $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
 $pdf->SetFont('Times', 'B', 11);
 $pdf->SetTextColor(250, 251, 251);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 $pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
 $pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
 
+<<<<<<< HEAD
 $pdf->Ln(6);
 
 $datos2 = $solicitud->getTipoPa3();
+=======
+$pdf->Ln(6);
+
+$datos2 = $patrocinador->getTipoPa3();
+=======
+$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
+$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
+$pdf->Ln(6);
+
+$datos2 = $solicitud->getSolicitudPorTipo3();
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
 foreach ($datos2 as $row) {
     $pdf->SetTextColor(250, 251, 251);
     $pdf->SetFont('Times', '', 11);
     $pdf->SetX(18);
+<<<<<<< HEAD
 
+=======
+   
+<<<<<<< HEAD
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
     $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
     $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
+<<<<<<< HEAD
     $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
+=======
+    $pdf->Cell(30, 6, $row['nombre_empresa'], 1, 0, 'C');
+    
+=======
+    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
+    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+>>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
     $pdf->Ln();
 
 }

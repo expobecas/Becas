@@ -6,9 +6,17 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l10 l7">
-<a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/solicitudes/reporte_solicitudTipo.php" data-tooltip='Solicitud por tipo' data-position='bottom' >Reporte</a>
- </div>
+<div class="col offset-l4">
+      <a class="waves-effect waves-light btn s-general sg4">Vista General</a>
+   </div>
+   <div class="col">
+      <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
+   </div>
+   <div class="col">
+      <a class="waves-effect waves-light btn s-general sg1">En proceso</a>
+   </div>
+   <div class="col">
+      <a class="waves-effect waves-light btn s-general sg2">Rechazadas</a>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
@@ -47,26 +55,8 @@
                <td>$row[tel_fijo]</td>
                <td>
                <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
-<<<<<<< HEAD
                <a href='../citas/index.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
                <a href='../casos/create_caso.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
-=======
-<<<<<<< HEAD
-               <a href='../citas/index.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
-               <a href='../casos/create_caso.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
-=======
-<<<<<<< HEAD
-               <a href='../citas/index.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
-=======
-<<<<<<< HEAD
-               <a href='../citas/index.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
-=======
-               <a href='../citas/index.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
-               <a href='../casos/create_caso.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
->>>>>>> cd05825b6095487627f61f207137a49a45f908f6
->>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
->>>>>>> 543950ee2d7d39aee51bd0cfab3fa78f8f8ddf53
->>>>>>> 6d79f6c71e6a90f57e7dd4f34ca4dd212de07a6f
                </td>
                </tr>");
                }

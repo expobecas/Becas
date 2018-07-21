@@ -2,8 +2,8 @@
 require_once("../../../app/models/estudiantes.class.php");
 $object = new Estudiantes;
 if($object->logOut()){
-    Page::showMessage(1, "Autenticación eliminada", "../../../dashboard/ingresar/acceder.php");
+    Page::showMessage(1, "Autenticación eliminada", "../../../public/becados/account/ingresar.php");
 }else{
-    Page::showMessage(2, "Ocurrió un problema", "../../../dashboard/index/index.php");
+    Page::showMessage(2, "Ocurrió un problema", "../../../public/abecados/index/becado.php");
 }
 ?>

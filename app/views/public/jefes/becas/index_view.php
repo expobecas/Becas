@@ -44,7 +44,7 @@
                <td>$row[periodo_pago]</td>
                <td>$row[estado_solicitud]</td>
                <td>
-               <a href='../../../app/views/public/jefes/reportes/becas.php?id=$row[id_becas]' target='_blank' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Más información'><img src='../../../web/img/jefes/icon/clipboard.png'></a>
+               <a href='../../../app/views/public/jefes/reportes/becas.php' target='_blank' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Más información'><img src='../../../web/img/jefes/icon/clipboard.png'></a>
                </td>
                </tr>");
                }

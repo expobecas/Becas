@@ -226,23 +226,6 @@ class Patrocinadores extends Validator{
         $sql = "SELECT n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, monto, periodo_pago,  estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE becas.id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         return Database::getRows($sql, $params);
-
-    }   
-        public function getTipoPa(){
-            $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 1";
-            $params = array(null);
-            return Database::getRows($sql, $params);
-        }   
-        public function getTipoPa2(){
-            $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 2";
-            $params = array(null);
-            return Database::getRows($sql, $params);
-        }   
-        public function getTipoPa3(){
-            $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 3";
-            $params = array(null);
-            return Database::getRows($sql, $params);
-       
     }
 }
 ?>

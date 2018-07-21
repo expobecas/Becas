@@ -1,7 +1,6 @@
 <?php
 require_once('../../../../../app/helpers/validator.class.php');
 require_once('../../../../../app/models/database.class.php');
-require_once('../../../../../app/models/becas.class.php');
 require_once('../../../../../app/libraries/fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -12,7 +11,7 @@ function Header()
     //Posiciones x, y - Tamaño width y heigh
     $this->Rect(15,10,175, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
+    $this->Image('../../../../../web/img/reportes/logo_ricaldone.png',22,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha
@@ -28,7 +27,7 @@ function Header()
     $this->SetFont('Arial','',11);
     $this->Cell(198,18,utf8_decode('"Información de becas"'),0,0,'C');
     // Salto de línea
-    $this->Ln(22);
+    $this->Ln(20);
 }
 
 // Pie de página
@@ -43,15 +42,12 @@ function Footer()
 }
 }
 
-session_start();
+
 // Creación del objeto de la clase heredada
 $pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->setMargins(15,15,15);
-
-//LLAMANDO A LOS MODELOS
-$becas = new Becas;
 
 //OBTENGO LA HORA DE EL SALVADOR
 $hora = new DateTime("now", new DateTimeZone('America/El_Salvador'));
@@ -67,7 +63,7 @@ $pdf->setX(25);
 //Usuario
 $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
-$pdf->Cell(35,18,$_SESSION['usuario'],0,0,'C');
+
 //Fecha
 $pdf->setX(127);
 $pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
@@ -77,79 +73,53 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-<<<<<<< HEAD
-=======
-$pdf->Cell(10,32,utf8_decode('Nombre:'),0,0,'C');
->>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
 $pdf->setX(114);
-$pdf->Cell(10,32,utf8_decode('Hora:'),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
 $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
 //FORMATO DE HORA G = 24 HORAS - I = MINUTOS - A = AM O PM
-$pdf->Cell(10, 20, $hora->format('G:i a'), 0, 0,'C');
+$pdf->Cell(10, 18, $hora->format('G:i a'), 0, 0,'C');
 
 //INFORMACION DE LA BECA 
 $pdf->Ln(15);
-$pdf->Rect(15, 80, 175, 45); //RECTáNGULO
 $pdf->SetFont('Times','B',12);
-$pdf->SetFillColor(99, 99, 99); //COLOR DE LA CELDA
-$pdf->setY(80);
-$pdf->SetTextColor(250, 251, 251); //COLOR DEL TEXTO
-$pdf->Cell(175,8,utf8_decode('ESTUDIANTE'),0, 0, 'C', 1);
-$pdf->Ln(3);    
-$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell(32,18,utf8_decode('ESTUDIANTE'),0,0,'C');
+$pdf->Ln(8);
 $pdf->Cell(37,18,utf8_decode('Datos generales:'),0,0,'C');
 $pdf->Ln(2);
-
-//LINEAS PARA LLAMAR LA INFORMACIÓN
-$becas->setId($_GET['id']);
-$becas->getDetallebecas();
 
 //DATOS
-$pdf->setX(32);
+$pdf->setX(23);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Carnet: '.$becas->getNum_carnet()),0,0,'C');
-$pdf->setX(121);
-$pdf->Cell(10,30,utf8_decode('Grado: '.$becas->getGrado()),0,0,'C');
-$pdf->setX(40);
-$pdf->Cell(10,42,utf8_decode('Nombres: '.$becas->getNombre1().' '.$becas->getNombre2()),0,0,'C');
-$pdf->setX(135);
-$pdf->Cell(10,42,utf8_decode('Apellidos: '.$becas->getApellido1().' '.$becas->getApellido2()),0,0,'C');
-$pdf->setX(28);
-$pdf->Cell(10,54,utf8_decode('Religión: '.$becas->getReligion()),0,0,'C');
-$pdf->setX(129);
-$pdf->Cell(10,54,utf8_decode('Encargado: '.$becas->getEncargado()),0,0,'C');
-$pdf->setX(29);
-$pdf->Cell(10,66,utf8_decode('Dirección: '.$becas->getDireccion()),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Carnet:'),0,0,'C');
+$pdf->setX(115);
+$pdf->Cell(10,30,utf8_decode('Grado:'),0,0,'C');
+$pdf->setX(25);
+$pdf->Cell(10,42,utf8_decode('Nombres:'),0,0,'C');
+$pdf->setX(118);
+$pdf->Cell(10,42,utf8_decode('Apellidos:'),0,0,'C');
+$pdf->setX(25);
+$pdf->Cell(10,54,utf8_decode('Religión:'),0,0,'C');
+$pdf->setX(119);
+$pdf->Cell(10,54,utf8_decode('Encargado:'),0,0,'C');
+$pdf->setX(26);
+$pdf->Cell(10,66,utf8_decode('Dirección:'),0,0,'C');
 
-//INFORMACIÓN DEL PATROCINADOR
-$pdf->Ln(45);
-$pdf->Rect(15, 130, 175, 45); //RECTÁNGULO
+$pdf->Ln(35);
 $pdf->SetFont('Times','B',12);
-$pdf->SetFillColor(99, 99, 99); //COLOR DE LA CELDA
-$pdf->setY(130);
-$pdf->SetTextColor(250, 251, 251); //COLOR DEL TEXTO
-$pdf->Cell(175,8,utf8_decode('PATROCINADOR'),0, 0, 'C', 1);
+$pdf->Cell(41,18,utf8_decode('PATROCINADOR'),0,0,'C');
 $pdf->Ln(8);
-$pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(37,18,utf8_decode('Datos generales:'),0,0,'C');
-$pdf->setX(109);
-$pdf->Cell(37,18,utf8_decode('Financiación a la beca:'),0,0,'C');
 $pdf->Ln(2);
 
-//DATOS 
-$pdf->setX(40);
+$pdf->setX(23);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombres: '.$becas->getNombres()),0,0,'C');
-$pdf->setX(117);
-$pdf->Cell(10,30,utf8_decode('Importe: '.$becas->getMonto()),0,0,'C');
-$pdf->setX(39);
-$pdf->Cell(10,42,utf8_decode('Apellidos: '.$becas->getApellidos()),0,0,'C');
-$pdf->setX(118);
-$pdf->Cell(10,42,utf8_decode('Periodo: '.$becas->getPeriodo_pago()),0,0,'C');
-$pdf->setX(35);
-$pdf->Cell(10,54,utf8_decode('Empresa: '.$becas->getNombre_empresa()),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Nombres:'),0,0,'C');
+$pdf->setX(25);
+$pdf->Cell(10,54,utf8_decode('Religión:'),0,0,'C');
+
 
 $pdf->Output();
 ?>

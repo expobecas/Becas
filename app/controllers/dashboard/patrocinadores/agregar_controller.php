@@ -4,7 +4,7 @@ try{
     $patrocinadores = new Patrocinadores;
     if(isset($_POST['crear'])){
         $_POST = $patrocinadores->validateForm($_POST);
-        if($patrocinadores->setTipo($_POST['tipo'])){
+        if($patrocinadores->setTipo($_POST['categoria'])){
             if($patrocinadores->setProfesion($_POST['profesion'])){
                 if($patrocinadores->setNombres($_POST['nombres'])){
                     if($patrocinadores->setApellidos($_POST['apellidos'])){

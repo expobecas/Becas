@@ -341,6 +341,25 @@ class Solicitud extends Validator
             $sql = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE detalle_solicitud.id_estado = 3";
             $params = array(null);
             return Database::getRows($sql, $params);
+
+        }
+        public function getSolicitudPorTipo() {
+            $sql = "SELECT e.estado_solicitud, m.primer_nombre, m.primer_apellido, m.n_carnet, m.especialidad, m.grado FROM detalle_solicitud INNER JOIN solicitud s USING(id_solicitud) INNER JOIN estudiantes m USING(id_estudiante) INNER JOIN estado_solicitud e USING (id_estado) WHERE id_estado = 1";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+
+        }
+        public function getSolicitudPorTipo2() {
+            $sql = "SELECT e.estado_solicitud, m.primer_nombre, m.primer_apellido, m.n_carnet, m.especialidad, m.grado FROM detalle_solicitud INNER JOIN solicitud s USING(id_solicitud) INNER JOIN estudiantes m USING(id_estudiante) INNER JOIN estado_solicitud e USING (id_estado) WHERE id_estado = 2";
+            $params = array(null);
+            return Database::getRows($sql, $params);
+
+        }
+        public function getSolicitudPorTipo3() {
+            $sql = "SELECT e.estado_solicitud, m.primer_nombre, m.primer_apellido, m.n_carnet, m.especialidad, m.grado FROM detalle_solicitud INNER JOIN solicitud s USING(id_solicitud) INNER JOIN estudiantes m USING(id_estudiante) INNER JOIN estado_solicitud e USING (id_estado) WHERE id_estado = 3";
+            $params = array(null);
+            return Database::getRows($sql, $params);   
+
         }
 }
 ?>

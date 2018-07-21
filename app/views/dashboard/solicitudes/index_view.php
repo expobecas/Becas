@@ -6,17 +6,9 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l4">
-      <a class="waves-effect waves-light btn s-general sg4">Vista General</a>
-   </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
-   </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1">En proceso</a>
-   </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg2">Rechazadas</a>
+<div class="col offset-l10 l7">
+<a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/solicitudes/reporte_solicitudTipo.php" data-tooltip='Solicitud por tipo' data-position='bottom' >Reporte</a>
+ </div>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
@@ -55,7 +47,7 @@
                <td>$row[tel_fijo]</td>
                <td>
                <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
-               <a href='../citas/index.php?id=$row[id_detalle]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
+               <a href='../citas/index.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
                </td>
                </tr>");
                }

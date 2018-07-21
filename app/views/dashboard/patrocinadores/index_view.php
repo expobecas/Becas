@@ -12,7 +12,7 @@
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
    <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1" href="#categorias">Categorias</a>
+   <a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->

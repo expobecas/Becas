@@ -13,7 +13,7 @@ function Header()
     //Posiciones x, y - Tamaño width y heigh
     $this->Rect(15,10,175, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../../web/img/reportes/logo_ricaldone.png',22,13,24);
+    $this->Image('../../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha
@@ -102,51 +102,35 @@ $patrocinador->setId_patrocinador($_GET['id']);
 $patrocinador->ReadPatrocinadores();
 //PARTE 1
 $pdf->SetFont('Times','',12);
-$pdf->setX(26);
 //PROFESION
-$pdf->Cell(10,19,utf8_decode('Profesion:'),0,0,'C');
-$pdf->setX(49);
-$pdf->Cell(10,19,utf8_decode($patrocinador->getProfesion()),0,0,'C');
+$pdf->setX(39);
+$pdf->Cell(10,19,utf8_decode('Profesion: '.$patrocinador->getProfesion()),0,0,'C');
 //CATEGORIA
-$pdf->setX(118);
-$pdf->Cell(10,19,utf8_decode('Categoria:'),0,0,'C');
-$pdf->setX(135);
-$pdf->Cell(10,19,utf8_decode($patrocinador->getTipo2()),0,0,'C');
+$pdf->setX(126);
+$pdf->Cell(10,19,utf8_decode('Categoria: '.$patrocinador->getTipo2()),0,0,'C');
 //PARTE 2
 //NOMBRES
-$pdf->setX(25);
-$pdf->Cell(10,31,utf8_decode('Nombres:'),0,0,'C');
-$pdf->setX(48);
-$pdf->Cell(10,31,utf8_decode($patrocinador->getNombres()),0,0,'C');
+$pdf->setX(39);
+$pdf->Cell(10,31,utf8_decode('Nombres: '.$patrocinador->getNombres()),0,0,'C');
 //APELLIDOS
-$pdf->setX(118);
-$pdf->Cell(10,31,utf8_decode('Apellidos:'),0,0,'C');
-$pdf->setX(141);
-$pdf->Cell(10,31,utf8_decode($patrocinador->getApellidos()),0,0,'C');
+$pdf->setX(131);
+$pdf->Cell(10,31,utf8_decode('Apellidos: '.$patrocinador->getApellidos()),0,0,'C');
 $pdf->Ln(12);
 //PARTE 3
 $pdf->SetFont('Times','',12);
-$pdf->setX(23);
+$pdf->setX(35);
 //CARGO
-$pdf->Cell(10,19,utf8_decode('Cargo:'),0,0,'C');
-$pdf->setX(42);
-$pdf->Cell(10,19,utf8_decode($patrocinador->getCargo()),0,0,'C');
+$pdf->Cell(10,19,utf8_decode('Cargo: '.$patrocinador->getCargo()),0,0,'C');
 //EMPRESA
-$pdf->setX(117);
-$pdf->Cell(10,19,utf8_decode('Empresa:'),0,0,'C');
-$pdf->setX(135);
-$pdf->Cell(10,19,utf8_decode($patrocinador->getNombre_empresa()),0,0,'C');
+$pdf->setX(127);
+$pdf->Cell(10,19,utf8_decode('Empresa: '.$patrocinador->getNombre_empresa()),0,0,'C');
 //PARTE 4
 //TELEFONO
-$pdf->setX(25);
-$pdf->Cell(10,31,utf8_decode('Teléfono:'),0,0,'C');
-$pdf->setX(43);
-$pdf->Cell(10,31,utf8_decode($patrocinador->getTelefono()),0,0,'C');
+$pdf->setX(34);
+$pdf->Cell(10,31,utf8_decode('Teléfono: '.$patrocinador->getTelefono()),0,0,'C');
 //DIRECCION
-$pdf->setX(118);
-$pdf->Cell(10,31,utf8_decode('Dirección:'),0,0,'C');
-$pdf->setX(139);
-$pdf->Cell(10,31,utf8_decode($patrocinador->getDireccion()),0,0,'C');
+$pdf->setX(130);
+$pdf->Cell(10,31,utf8_decode('Dirección: '.$patrocinador->getDireccion()),0,0,'C');
 $pdf->Ln(18);
 
 ////////////////////////////////////////////////////////////////////////

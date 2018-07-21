@@ -17,10 +17,10 @@ try{
                                 Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                             }
                             if($_SESSION['id_tipo'] == 2){
-                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/account/index.php");
+                                Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
                             }
                             if($_SESSION['id_tipo'] == 3){
-                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
+                                Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
                             }
                         }else{
                             throw new Exception("Clave incorrecta");

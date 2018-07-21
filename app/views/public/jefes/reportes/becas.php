@@ -43,7 +43,7 @@ function Footer()
 }
 }
 
-
+session_start();
 // Creación del objeto de la clase heredada
 $pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
@@ -67,7 +67,7 @@ $pdf->setX(25);
 //Usuario
 $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
-
+$pdf->Cell(35,18,$_SESSION['usuario'],0,0,'C');
 //Fecha
 $pdf->setX(127);
 $pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
@@ -77,7 +77,10 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
+<<<<<<< HEAD
+=======
 $pdf->Cell(10,32,utf8_decode('Nombre:'),0,0,'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->setX(114);
 $pdf->Cell(10,32,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);

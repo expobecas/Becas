@@ -7,7 +7,7 @@
       <div class="row">
          <div class="input-field col s6">
          <?php
-           Page::showSelect("categoria", "categoria", $patrocinadores->getTipo(), $patrocinadores->getCategorias());                                     
+           Page::showSelect("tipo", "tipo", $patrocinadores->getTipo(), $patrocinadores->getCategorias());                                     
          ?>
          </div>
          <div class="input-field col s6">

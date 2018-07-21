@@ -12,6 +12,34 @@ print("
     
 </div>
 <div class = "row">
+<<<<<<< HEAD
+<form method="POST"  target='_blank'>
+<div class = "col l2 offset-l3">
+
+=======
+<<<<<<< HEAD
+<form method="POST"  target='_blank'>
+<div class = "col l2 offset-l3">
+<?php
+    Page::showSelect('Estado de datalles', 'estado', $detalle_solicitud->getIdEstado(), $detalle_solicitud->getEstados());
+?>
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
+</div>
+<?php
+print("
+<button type='submit' formaction='../../app/views/dashboard/casos/reporte.php?id=$_SESSION[id_usuario]' class='waves-effect waves-light btn green col'>Generar reporte</button>
+");
+?>
+
+</form>
+    
+</div>
+<div class = "row">
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> cd05825b6095487627f61f207137a49a45f908f6
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
     <table class="col l8 s12 offset-l3 offset-m3 white highlight centered responsive-table">
         <thead>
             <tr>

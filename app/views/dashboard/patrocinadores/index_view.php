@@ -8,12 +8,10 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l8">
+<div class="col offset-l9">
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1" href="#categorias">Categorias</a>
-   </div>
+   <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
 

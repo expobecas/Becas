@@ -102,15 +102,25 @@ class Usuario extends Validator{
 	}
     //Metodos para manejar el CRUD
     public function getUsuarios(){
-        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios";
+        $sql = "SELECT id_usuario, nombres, apellidos, tipo_usuario, usuario,correo, contraseña, telefono FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
-    public function ReadUsuarios(){
-        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_tipo = 1";
-        $params = array(null);
-        Database::getRows($sql, $params);
+    public function readUsuario(){
+        $sql = "SELECT id_usuario, nombres, apellidos, t.tipo_usuario, usuario, contraseña FROM usuarios INNER JOIN tipo_usuario t USING (id_tipo) WHERE id_usuario = ?";
+        $params = array($this->id);
+        $usuario = Database::getRow($sql, $params);
+        if($usuario){
+            $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
+            $this->tipo = $usuario['tipo_usuario'];
+            $this->usuario = $usuario['usuario'];
+            $this->clave = $usuario['contraseña'];
+            return true;
+        }else{
+            return null;
     }
+}
     public function GetDatosUsuario(){
         $sql = "SELECT id_usuario, nombres, apellidos FROM usuarios WHERE id_tipo = 1 AND id_usuario = ?";
         $id_usuario = 1;
@@ -124,17 +134,59 @@ class Usuario extends Validator{
             return false;
         }
     }
+    public function createUsuario(){
+		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña) VALUES (?,?,?,?,?)";
+		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave);
+        return Database::executeRow($sql, $params);    
+        
+    }
+    public function updateUsuario(){
+		$sql = "UPDATE usuarios SET nombres= ?, apellidos= ?, id_tipo= ?, usuario= ?, contraseña= ? WHERE id_usuario = ?";
+		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario,$this->clave, $this->id);
+		return Database::executeRow($sql, $params);
+	}
+	public function deleteUsuario(){
+		$sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+		$params = array($this->id);
+        return Database::executeRow($sql, $params);   
+    }  
+    public function getTipoe(){
+		$sql = "SELECT id_tipo, tipo_usuario FROM tipo_usuario"; 
+		$params = array(null);
+		return Database::getRows($sql, $params);
 
+    }
+public function getTipoUsuario(){
+    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 1  "; 
+    $params = array(null);
+    return Database::getRows($sql, $params);
+
+}
+public function getTipoUsuario2(){
+    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 2 "; 
+    $params = array(null);
+    return Database::getRows($sql, $params);
+
+}
+public function getTipoUsuario3(){
+    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 3 "; 
+    $params = array(null);
+    return Database::getRows($sql, $params);
+
+}
     //CONSULTAS PARA REPORTES
     public function getInformacion(){
         $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_usuario = ?";
         $params = array($this->id);
         $usuario = Database::getRows($sql, $params);
         if($usuario){
-            $this->id = usuario['id_usuario'];
-            $this->usuario = usuario['usuario'];
-            $this->nombres = usuario['nombres'];
-            $this->apellidos = usuario['apellidos'];
+            $this->id = $usuario['id_usuario'];
+            $this->usuario = $usuario['usuario'];
+            $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
+            return true;
+        }else{
+            return null;
         }
     }
 

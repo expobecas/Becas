@@ -44,6 +44,7 @@ function Footer()
 }
 }
 
+session_start();
 //Llamando los modelos
 $usuarios = new Usuario;
 $patrocinador = new Patrocinadores;
@@ -68,9 +69,7 @@ $pdf->setX(25);
 //Usuario
 $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
-//$usuarios->setId($_SESSION['id']);
-$usuarios->getInformacion();
-$pdf->Cell(25,18,$usuarios->getId(),0,0,'C');
+$pdf->Cell(35,18,$_SESSION['usuario'],0,0,'C');
 
 //Fecha
 $pdf->setX(127);
@@ -81,7 +80,6 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);

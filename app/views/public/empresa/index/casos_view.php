@@ -33,7 +33,12 @@
                     <td>$row[encargado]</td>
                     <td>$row[cel_mama]</td>
                     <td>
+<<<<<<< HEAD
+				<a href='update.php?id=$row[id_caso]' class='blue-text'><i class='material-icons green-text'>mode_edit</i></a>
+				<a href='delete.php?id=$row[id_caso]' class='red-text'><i class='material-icons red-text'>delete</i></a>
+=======
                     <a href='editar.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 			</td>
                 </tr>
             ");

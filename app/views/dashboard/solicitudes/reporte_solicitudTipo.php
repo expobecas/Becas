@@ -80,7 +80,10 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
+<<<<<<< HEAD
+=======
 $pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
@@ -128,6 +131,10 @@ foreach ($datos as $row) {
 $pdf->Ln(10);
 
 $pdf->SetX(18);
+<<<<<<< HEAD
+$pdf->SetTextColor(0, 0, 0);
+=======
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Cell(30, 10, 'Solicitudes aprobadas', 0, 0);
 $pdf->Ln(10);
 $pdf->SetX(18); //Movimiento de posición en X
@@ -176,7 +183,11 @@ $pdf->Ln(6);
 
 $datos2 = $solicitud->getSolicitudPorTipo3();
 foreach ($datos2 as $row) {
+<<<<<<< HEAD
+    $pdf->SetTextColor(0, 0, 0);
+=======
     $pdf->SetTextColor(250, 251, 251);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
     $pdf->SetFont('Times', '', 11);
     $pdf->SetX(18);
    

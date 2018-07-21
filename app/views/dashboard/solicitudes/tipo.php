@@ -101,7 +101,11 @@ $pdf->Ln(10);
 $pdf->SetX(18); //Movimiento de posición en X
 $pdf->SetFillColor(73, 66, 255);
 $pdf->SetFont('Arial', 'B', 11);
+<<<<<<< HEAD
+$pdf->SetTextColor(0, 0, 0);
+=======
 $pdf->SetTextColor(250, 251, 251);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Cell(30, 6, 'Codigo', 1, 0, 'C', 1);
 $pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Cantidad', 1, 0, 'C', 1);

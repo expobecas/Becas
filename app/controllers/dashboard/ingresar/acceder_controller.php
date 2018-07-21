@@ -16,19 +16,11 @@ try {
                             if ($_SESSION['id_tipo'] == 1) {
                                 Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                             }
-<<<<<<< HEAD
-                            if($_SESSION['id_tipo'] == 2){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
-                            }
-                            if($_SESSION['id_tipo'] == 3){
-                                Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
-=======
                             if ($_SESSION['id_tipo'] == 2) {
                                 Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
                             }
                             if ($_SESSION['id_tipo'] == 3) {
-                                Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
->>>>>>> cd05825b6095487627f61f207137a49a45f908f6
+                                Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
                             }
                         } else {
                             throw new Exception("Clave incorrecta");

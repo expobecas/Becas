@@ -13,12 +13,7 @@
    <div class="col offset-l9">
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
-<<<<<<< HEAD
-   <div class="col">
-   <a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
-=======
    <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom' >Reporte</a>
->>>>>>> cd05825b6095487627f61f207137a49a45f908f6
    </div>
 <!--TABLA SOLICITUDES GENERALES-->
 <div class="row">

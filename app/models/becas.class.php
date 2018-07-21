@@ -199,7 +199,11 @@ class Becas extends Validator {
             return Database::getRows($sql, $params);
         }
         public function getDetallebecas(){
+<<<<<<< HEAD
             $sql = "SELECT id_becas, n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, religion, encargado, solicitud.direccion, tel_fijo, grado, monto, periodo_pago, nombres, apellidos, nombre_empresa FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante INNER JOIN patrocinadores ON becas.id_patrocinador = patrocinadores.id_patrocinador WHERE becas.id_becas = ?";
+=======
+            $sql = "SELECT becas.id_becas, n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, religion, encargado, solicitud.direccion, tel_fijo, grado, monto, periodo_pago, nombres, apellidos, nombre_empresa FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante INNER JOIN patrocinadores ON becas.id_patrocinador = patrocinadores.id_patrocinador WHERE becas.id_becas = ?";
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
             $params = array($this->id);
             $detalle = Database::getRow($sql, $params);
             if($detalle){
@@ -208,7 +212,11 @@ class Becas extends Validator {
                 $this->nombre1 = $detalle['primer_nombre'];
                 $this->nombre2 = $detalle['segundo_nombre'];
                 $this->apellido1 = $detalle['primer_apellido'];
+<<<<<<< HEAD
                 $this->apellido2 = $detalle['segundo_apellido'];
+=======
+                $this->apellido2 = $detalle['segundo_ap ellido'];
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
                 $this->religion = $detalle['religion'];
                 $this->encargado = $detalle['encargado'];
                 $this->direccion = $detalle['direccion'];

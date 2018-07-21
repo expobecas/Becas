@@ -48,7 +48,11 @@ session_start();
 $usuarios = new Usuario;
 
 // Creación del objeto de la clase heredada
+<<<<<<< HEAD
 $pdf = new PDF('P','mm','letter'); //Pagina tamaño papel bond
+=======
+$pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->setMargins(15,15,15);
@@ -78,6 +82,10 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
+<<<<<<< HEAD
+=======
+$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
@@ -121,7 +129,11 @@ foreach ($datos as $row) {
 $pdf->Ln(10);
 
 $pdf->SetX(53);
+<<<<<<< HEAD
 $pdf->Cell(30, 10, 'Usuarios jefe', 0, 0);
+=======
+$pdf->Cell(30, 10, 'Usuarios empresa', 0, 0);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Ln(10);
 $pdf->SetX(53); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);
@@ -150,7 +162,11 @@ $pdf->Ln(14);
 $pdf->SetX(53);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Times', 'B', 11);
+<<<<<<< HEAD
 $pdf->Cell(30, 10, 'Usuarios empresa', 0, 0, 'C');
+=======
+$pdf->Cell(30, 10, 'Usuarios jefes', 0, 0, 'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->Ln(10);
 $pdf->SetX(53); //Movimiento de posición en X
 $pdf->SetFillColor(99, 99, 99);

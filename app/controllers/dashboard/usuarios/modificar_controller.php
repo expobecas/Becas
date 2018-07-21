@@ -1,6 +1,9 @@
 <?php
 require_once("../../app/models/usuario.class.php");
+<<<<<<< HEAD
 //CONTROLADOR PARA MODIFICAR INFORMACIÓN DEL USUARIO
+=======
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 try{
     if(isset($_GET['id'])){
         $usuario = new Usuario;

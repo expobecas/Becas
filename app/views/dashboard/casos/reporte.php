@@ -13,7 +13,11 @@ class PDF extends FPDF
         //Posiciones x, y - Tamaño width y heigh
         $this->Rect(15,10,175, 30);
         //URL-POSICION X - PISICION Y - TAMAÑO
+<<<<<<< HEAD
         $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
+=======
+        $this->Image('../../../../web/img/reportes/logo_ricaldone.png',22,13,24);
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
         // Arial bold 15
         $this->SetFont('Arial','',10);
         // Movernos a la derecha

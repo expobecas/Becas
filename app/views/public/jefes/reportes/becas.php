@@ -77,6 +77,10 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
+<<<<<<< HEAD
+=======
+$pdf->Cell(10,32,utf8_decode('Nombre:'),0,0,'C');
+>>>>>>> 5fa3c353cd7c6962fd67c551785619ba461af590
 $pdf->setX(114);
 $pdf->Cell(10,32,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);

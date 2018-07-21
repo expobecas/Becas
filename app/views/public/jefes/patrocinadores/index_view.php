@@ -1,6 +1,6 @@
 <!--TÍTULO PATROCINADORES-->
 <div class="row">
-   <div class="col offset-l3 titulo-font back">
+   <div class="col offset-l3 titulo-font">
       <h4>
          Patrocinadores
       </h4>

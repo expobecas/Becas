@@ -6,8 +6,7 @@
       </h4>
    </div>
 </div>
-<!--TABLA SOLICITUDES GENERALES-->
-
+<!--TABLA PATROCINADORES GENERALES-->
 <div class="row">
 <div class="tabla">
    <div class="col offset-l3 l8 white">

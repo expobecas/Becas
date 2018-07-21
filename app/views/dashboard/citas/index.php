@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col offset-xl1 offset-l2" id="Calendario">
+        <div class="col offset-xl2 offset-l2" id="Calendario">
 
         </div>
         
@@ -76,7 +76,7 @@
             </div>
             <div class="col s12" id="detalle">
                 <h6>Titulo:</h6>
-                <input type="text" id="id_detalle" name="id_detalle" value="" class="validate"/>
+                <input type="text" id="id_detalle" name="id_detalle" value="<?php echo $_GET['id']?>" class="validate"/>
             </div>
         </div>
     </div>

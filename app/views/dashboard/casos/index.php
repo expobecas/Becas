@@ -1,5 +1,6 @@
 <h3 class = "center">Casos</h3>
 <div class = "row">
+<<<<<<< HEAD
 <form method="POST"  target='_blank'>
 <div class = "col l2 offset-l3">
 <?php
@@ -16,6 +17,8 @@ print("
     
 </div>
 <div class = "row">
+=======
+>>>>>>> cd05825b6095487627f61f207137a49a45f908f6
     <table class="col l8 s12 offset-l3 offset-m3 white highlight centered responsive-table">
         <thead>
             <tr>

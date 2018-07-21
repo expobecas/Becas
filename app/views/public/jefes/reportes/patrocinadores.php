@@ -97,6 +97,7 @@ $pdf->Ln(15);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(60,18,utf8_decode('Información del patrocinador:'),0,0,'C');
 $pdf->Ln(7);
+
 //LINEAS PARA LLAMAR LA INFORMACIÓN
 $patrocinador->setId_patrocinador($_GET['id']);
 $patrocinador->ReadPatrocinadores();

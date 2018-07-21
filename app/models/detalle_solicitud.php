@@ -64,10 +64,25 @@ class Detalle_solicitud Extends Validator
         $params = array(null);
         return Database::getRow($sql, $params);
     }
+
+    public function getIdDetalles()
+    {
+        $sql = "SELECT id_detalle FROM citas WHERE id = ?";
+        $params = array($this->id_solicitud);
+        return Database::getRow($sql, $params);
+    }
+    
     public function createDetalle()
     {
         $sql = "INSERT INTO detalle_solicitud(id_estado, id_solicitud) VALUES (1, ?)";
         $params = array($this->id_solicitud);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateDetalleSolicitud()
+    {
+        $sql = "UPDATE detalle_solicitud SET id_estado = ? WHERE id_detalle = ?";
+        $params = array($this->id_estado, $this->id_detalle);
         return Database::executeRow($sql, $params);
     }
 }

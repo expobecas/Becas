@@ -136,3 +136,24 @@ ul#slide-out li:hover a {
 .recta{
     margin-top: 50px;
 }
+/*FONTS*/
+.font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Barlow;
+    src: url("../../web/fonts/BarlowCondensed-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/BarlowCondensed-Medium.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
+    color: rgb(62, 73, 78);
+}
+
+/*CASOS*/
+.text-tbody{
+    font-size: 13px;
+}

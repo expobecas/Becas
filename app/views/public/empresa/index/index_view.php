@@ -12,9 +12,11 @@
             <img src="../../../web/img/empresa/slider/imagen1.png"> <!-- random image -->
             <div class="caption left-align">
                <h3>Nota!</h3>
-               <h5 class="light grey-text text-lighten-3"><p>Todos los datos proporcionados, serán <strong>verificados</strong> mediante 
-          mecanismos confiables definidos por el ITR, incluyendo la
-        <strong>visita domiciliar</strong>.</h5>
+               <h5 class="light grey-text text-lighten-3">
+                  <p>Todos los datos proporcionados, serán <strong>verificados</strong> mediante 
+                     mecanismos confiables definidos por el ITR, incluyendo la
+                     <strong>visita domiciliar</strong>.
+               </h5>
             </div>
          </li>
          <li>
@@ -22,9 +24,10 @@
             <div class="caption left-align">
                <h3>En caso...</h3>
                <h5 class="light grey-text text-lighten-3">de encontrarse inconsistencia,
-          falta de información y de documentos que den fe de su situación
-          socioeconómica real, el ITR se reserva el derecho de tomar
-          medidas correspondientes en relación a la asignación de su cuota.</h5>
+                  falta de información y de documentos que den fe de su situación
+                  socioeconómica real, el ITR se reserva el derecho de tomar
+                  medidas correspondientes en relación a la asignación de su cuota.
+               </h5>
             </div>
          </li>
          <li>
@@ -32,7 +35,8 @@
             <div class="caption center-align">
                <h3>¡A tomar en cuenta!</h3>
                <h5 class="light grey-text text-lighten-3">En el transcurso del proceso de su formación académica, la cuota
-          podrá tener modificaciones debido a politicas internas de la institución.</h5>
+                  podrá tener modificaciones debido a politicas internas de la institución.
+               </h5>
             </div>
          </li>
       </ul>
@@ -71,21 +75,4 @@
       </div>
    </div>
 </div>
-<!--
-   <div class="row">
-       <div class="col white l7 offset-l4">
-       <div class="nota-s">
-       <img src='../../../web/img/alumno/icons/clipboard.png' class="col titulo_ci3"> 
-       <h2>Nota</h2>
-       <p>Todos los datos proporcionados, serán <strong>verificados</strong> mediante 
-          mecanismos confiables definidos por el ITR, incluyendo la
-        <strong>visita domiciliar</strong>; en el caso de encontrarse inconsistencia,
-          falta de información y de documentos que den fe de su situación
-          socioeconómica real, el ITR se reserva </br> el derecho de tomar
-          medidas correspondientes en relación a la asignación de su cuota.</p>
-          <p>En el transcurso del proceso de su formación académica, la cuota
-          podrá tener modificaciones debido a politicas internas de la institución.</p>
-       </div>
-       </div>
-   </div>-->
 

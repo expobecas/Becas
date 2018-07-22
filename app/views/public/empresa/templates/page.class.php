@@ -32,12 +32,12 @@ class Page extends Component{
             <li><a href='../../../public/empresa/index/mensajes.php' class='white-text'><i class='material-icons white-text'>mail_outline</i>Mensajes</a></li>
             <li><a href='../../../public/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul> 
-          <div class='fixed-action-btn horizontal click-to-toggle'>
-          <a href='#' data-activates='slide-out' class='button-collapse btn-floating btn-large red show'><i class='material-icons'>menu</i></a>
-          </div> 
           <main>
           <div class='row white' id='barra'>
-          <div class='col offset-l10'>   
+          <div class='col'>
+                  <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
+          </div>
+          <div class='col offset-l9'>   
           <ul id='dropdown2' class='dropdown-content'>
           <li><a href='#!'>Aqui iran las super notificaciones</a></li>
           </ul>

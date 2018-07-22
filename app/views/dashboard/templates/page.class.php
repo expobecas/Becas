@@ -49,16 +49,11 @@ class Page extends component{
                     <a class='btn dropdown-button grey-text avisos' href='#!' data-activates='dropdown2'>Notificación<i class='material-icons right'>notifications</i></a>
                     </div> 
                     </div>");
-                }else{
+                }
+                else
+                {
                     print("
-                    <header class='navbar-fixed'>
-                    <nav class='brown'>
-                        <div class='nav-wrapper'>
-                            <a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
-                        </div>
-                    </nav>
-                </header>
-                <main class='container'>
+                    <main class='container'>
                     ");
                     $filename = basename($_SERVER['PHP_SELF']);
                     if($filename != "acceder.php"){

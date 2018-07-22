@@ -13,14 +13,20 @@ try
     else
     {
         $caso->setIdCita($id_detalle);
-        $id_cita = $caso->checkCita();
-        if($id_cita == null)
+        $id_citatbCasos = $caso->checkCitatbCasos();
+        $id_citatbCitas = $caso->checkCitatbCitas();
+
+        if($id_citatbCitas == null)
+        {
+            Page::showMessage(3, 'No se puede generar un caso, porque no ha asignado una cita a la solicitud', '../solicitudes/index.php');
+        }
+        if($id_citatbCasos != null)
+        {
+            Page::showMessage(3, 'Ya generó un caso para está solicitud', '../solicitudes/index.php');
+        }
+        if($id_citatbCasos == null)
         {
             require_once('../../app/views/dashboard/casos/create_view.php');
-        }
-        else
-        {
-            Page::showMessage(3, 'No se puede hacer un caso, porque no ha asignado una cita', '../solicitudes/index.php');
         }
     }
 

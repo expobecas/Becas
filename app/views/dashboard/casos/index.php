@@ -23,7 +23,6 @@ print("
             </tr>
         </thead>
         <tbody id="casos">
-
         </tbody>
     </table>
 </div>
@@ -53,7 +52,7 @@ print("
         </div>
         <div class="row">
             <div class="input-field col l12">
-                <textarea placeholder=" " id="descripcion" class="materialize-textarea" name="descripcion" data-length="500"></textarea>
+                <textarea disabled placeholder=" " id="descripcion" class="materialize-textarea negrita" name="descripcion" data-length="500"></textarea>
                 <label for="descripcion">Escribir la descripción del caso</label>
             </div>
         </div>
@@ -61,6 +60,8 @@ print("
     <div class="modal-footer">
         <a href="#!" type="submit" id="modificar_caso" class="waves-effect waves-light btn btn-small">Modificar</a>
         <a href="#!" type="submit" id="eliminar_caso" class="waves-effect waves-light btn btn-small red">Eliminar</a>
-        <a href="#!" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
+        <a href="#!" type="submit" id="guardar" class="waves-effect waves-light btn btn-small">Guardar cambios</a>
+        <a href="#!" type="submit" id="cancelar_cambios" class="waves-effect waves-light btn btn-small grey">Cancelar cambios</a>
+        <a href="#!" id="cancelar" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
     </div>
 </div>

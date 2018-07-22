@@ -30,10 +30,6 @@
     </div>
 </div>
 
-
-  
-</main>
-
 <!--modal para agregar, modificar y eliminar citas-->
 <div id="modalEventos" class="modal modal-fixed-footer">
     <div class="modal-content">

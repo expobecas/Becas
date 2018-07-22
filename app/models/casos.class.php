@@ -75,9 +75,16 @@ class Casos extends Validator
     }
 
     //Metodos para el SCRUD
-    public function checkCita()
+    public function checkCitatbCasos()
     {
         $sql = "SELECT cs.id_cita FROM citas c INNER JOIN casos cs ON c.id = cs.id_cita INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle WHERE d.id_detalle = ?";
+        $params = array($this->id_cita);
+        return Database::getRow($sql, $params);
+    }
+
+    public function checkCitatbCitas()
+    {
+        $sql = "SELECT c.id FROM citas c INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle WHERE d.id_detalle = ?";
         $params = array($this->id_cita);
         return Database::getRow($sql, $params);
     }
@@ -100,6 +107,13 @@ class Casos extends Validator
         $sql = "INSERT INTO casos(descripcion, fecha, id_cita) VALUES(?, ?, ?)";
         $params = array($this->descripcion, $this->fecha, $this->id_cita);
         return Database::executeRow($sql, $params);
+    }
+
+    public function updateCaso()
+    {
+        $sql = "UPDATE casos SET descripcion = ? WHERE id_caso = ?";
+        $params = array($this->descripcion, $this->id_caso);
+        return Database::executeRow($sql ,$params);
     }
 
     public function deleteCaso()

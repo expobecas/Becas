@@ -32,7 +32,7 @@ class Page extends component{
                     <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
                     <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
-                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+                    <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
@@ -74,8 +74,14 @@ class Page extends component{
         <script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
         <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
         <script type='text/javascript' src='../../web/js/js_admin.js'></script>
-        <script type='text/javascript' src='../../web/js/js_casos.js'></script>
+        ");
 
+        $filename = basename($_SERVER['PHP_SELF']);
+        if($filename == "casos.php")
+        {
+            print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
+        }
+        print("
 		</body>
 		</html>
         ");

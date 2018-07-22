@@ -62,7 +62,7 @@ class Page extends component{
                     ");
                     $filename = basename($_SERVER['PHP_SELF']);
                     if($filename != "acceder.php"){
-                        self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
+                        self::showMessage(3, "¡Debe iniciar sesión!", "../ingresar/acceder.php");
                         self::templateFooter();
                         exit;
                     }else{

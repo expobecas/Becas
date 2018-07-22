@@ -66,7 +66,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(datos)
             {
-                $('#datos').empty();
+                $('#citas').empty();
                 console.log(datos);
                 var i = 0;
                 for(i; i<datos.length; i++)
@@ -84,18 +84,18 @@ $(document).ready(function(){
                         '<td>' +fecha[0]+'</td>',
                         '</tr>'
                     );
-                    $('#datos').append(fila);
+                    $('#citas').append(fila);
                 }
                 $('.tooltipped').tooltip({delay: 50});
                 obtenerDatosEditar();
-                document.getElementById("datos").style.cursor = "pointer";
+                document.getElementById("citas").style.cursor = "pointer";
             }
         });
     }
 
     function obtenerDatosEditar()
     {
-        $('#cita').on('click', '#datos tr', function(e){
+        $('#cita').on('click', '#citas tr', function(e){
             e.preventDefault();
             id_cita = $(this).attr('id');
             id_detalle = $(this).attr('class');

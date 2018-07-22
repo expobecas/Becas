@@ -22,7 +22,7 @@
                         <th>Fecha</th>
                     </tr>
                     </thead>
-                    <tbody id="datos">
+                    <tbody id="citas">
                     </tbody>
                 </table>
             </div>

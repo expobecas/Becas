@@ -6,31 +6,3 @@
       onOpen: function(el) {}, 
       onClose: function(el) {}}
   );
-
-$(document).ready(function(){
-    CargarTabla();
-
-    function CargarTabla()
-    {
-        $.ajax({
-            type:'POST',
-            url: '../../app/controllers/dashboard/casos/index_controller.php',
-            dataType: 'json',
-            success: function(casos)
-            {
-              $('#datos').empty();
-              i = 0;
-              for(i; i<casos.length; i++)
-              {
-                
-              }
-            }
-        });         
-    }
-    
-
-    $('#ver').on('click', '#datos tr', function(e){
-        e.preventDefault();
-
-    });
-});

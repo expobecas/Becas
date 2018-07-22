@@ -12,7 +12,7 @@ print("
     
 </div>
 <div class = "row">
-    <table class="col l8 s12 offset-l3 offset-m3 white highlight centered responsive-table">
+    <table class="col l8 s12 offset-l3 offset-m3 white highlight centered responsive-table" id="tablecaso">
         <thead>
             <tr>
             <th>Alumno</th>
@@ -23,31 +23,44 @@ print("
             </tr>
         </thead>
 
-        <tbody id="datos">
+        <tbody id="casos">
         </tbody>
     </table>
 </div>
 
 <div id="modalCasos" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <h4 class="modal-title" id="titulo">Detalle Casos</h4>
+        <h4 class="modal-title center" id="titulo">Detalle del Caso</h4>
         <div class="divider"></div>
         <div class="row">
-            <div class="col s6" id="id_caso">
-                <h6>Id:</h6>
+            <div class="input-field col s4">
+                <input disabled placeholder=" " type="text" id="fecha" name="fecha" class="validate negrita"/>
+                <label for="fecha">Fecha que se generó el caso</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s1" id="id_caso">
                 <input type="text" id="id" name="id" class="validate"/>
             </div>
-            <div class="col s12">
-                <h6>Titulo:</h6>
-                <input type="text" id="tituloEvento" name="tituloEvento" class="validate"/>
+            <div class="input-field col s4">
+                <input disabled placeholder=" " type="text" id="carnet" name="carnet" class="validate negrita"/>
+                <label for="carnet">Número de carnet</label>
             </div>
-            
+            <div class="input-field col s4">
+                <input disabled placeholder=" " type="text" id="alumno" name="alumno" class="validate negrita"/>
+                <label for="alumno">Nombre del alumno</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l12">
+                <textarea placeholder=" " id="descripcion" class="materialize-textarea" name="descripcion" data-length="500"></textarea>
+                <label for="descripcion">Escribir la descripción del caso</label>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" type="submit" id="agregar" class="waves-effect waves-light btn btn-small">Agregar</a>
-        <a href="#!" type="submit" id="modificar" class="waves-effect waves-light btn btn-small">Modificar</a>
-        <a href="#!" type="submit" id="eliminar" class="waves-effect waves-light btn btn-small red">Eliminar</a>
+        <a href="#!" type="submit" id="modificar_caso" class="waves-effect waves-light btn btn-small">Modificar</a>
+        <a href="#!" type="submit" id="eliminar_caso" class="waves-effect waves-light btn btn-small red">Eliminar</a>
         <a href="#!" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
     </div>
 </div>

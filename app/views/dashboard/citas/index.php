@@ -33,20 +33,6 @@
 
   
 </main>
-<!--modal-->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4 class="modal-title" id="titulo"></h4>
-      <div class="divider"></div>
-      <h5><div id="descripcion"></div></h5>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" type="submit" class="waves-effect waves-light btn btn-small">Agregar</a>
-        <a href="#!" type="submit" class="waves-effect waves-light btn btn-small">Modificar</a>
-        <a href="#!" type="submit" class="waves-effect waves-light btn btn-small red">Eliminar</a>
-        <a href="#!" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
-    </div>
-</div>
 
 <!--modal para agregar, modificar y eliminar citas-->
 <div id="modalEventos" class="modal modal-fixed-footer">

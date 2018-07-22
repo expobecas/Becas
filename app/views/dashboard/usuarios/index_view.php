@@ -8,9 +8,8 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l8">
-      <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
-      <a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>
+<div class="col offset-l10">
+      <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>
    </div>
    <div class="col">
    </div>

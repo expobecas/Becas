@@ -8,11 +8,11 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l8">
+<div class="col offset-l9">
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1" href="#categorias">Categorias</a>
+   <div>
+      <a class="waves-effect waves-light btn s-general sg1 col" href="#categorias">Categorias</a>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->

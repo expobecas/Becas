@@ -6,6 +6,9 @@
       onOpen: function(el) {}, 
       onClose: function(el) {}}
   );
+  $(document).ready(function() {
+    $('select').material_select();
+  });
 
 $(document).ready(function(){
     CargarTabla();

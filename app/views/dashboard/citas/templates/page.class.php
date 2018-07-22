@@ -39,12 +39,13 @@ class Page extends Component
                     <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
                 </div></li>
                 <li><a href='../../dashboard/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-                <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
-                <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
-                <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
-                <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
-                <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
-                <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
+                    <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
+                    <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
+                    <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
+                    <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
+                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+                    <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
+                    <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
             </ul>
             <main>
                 <div class='row white' id='barra'>

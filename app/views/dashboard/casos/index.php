@@ -22,8 +22,8 @@ print("
                 <th class="botones_table">Acciones</th>
             </tr>
         </thead>
-
         <tbody id="casos">
+
         </tbody>
     </table>
 </div>

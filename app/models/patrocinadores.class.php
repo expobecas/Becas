@@ -227,5 +227,21 @@ class Patrocinadores extends Validator{
         $params = array($this->id_patrocinador);
         return Database::getRows($sql, $params);
     }
+    public function getTipoPa(){
+        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 1";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }   
+    public function getTipoPa2(){
+        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 2";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }   
+    public function getTipoPa3(){
+        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 3";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+   
+}
 }
 ?>

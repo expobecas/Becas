@@ -1,4 +1,14 @@
 $(document).ready(function() {
+
+function AlertasSwal($text)
+{
+  swal({
+    title: 'Aviso',
+    text: $text,
+    icon: 'warning',
+    button: 'aceptar'
+  });
+}
     //PARA EL SLIDER 1
     $("#estudiante").click(function(e){
       //Tabla solicitud
@@ -143,141 +153,72 @@ $(document).ready(function() {
                                 }
                                 else
                                 {
-                                  swal({
-                                    title: 'Aviso',
-                                    text: 'Seleccione el año que cursaba',
-                                    icon: 'warning',
-                                    button: 'aceptar'
-                                  });
+                                  AlertasSwal('Seleccione el año que cursaba');
                                 }
                               }
                               else
                               {
-                                swal({
-                                  title: 'Aviso',
-                                  text: 'Ingrese el pais del la institucion proveniente',
-                                  icon: 'warning',
-                                  button: 'aceptar'
-                                });
+                                AlertasSwal('Ingrese el pais del la institucion proveniente');
                               }
                             }
                             else
                             {
-                              swal({
-                                title: 'Aviso',
-                                text: 'Ingrese el departamento del la institucion proveniente',
-                                icon: 'warning',
-                                button: 'aceptar'
-                              });
+                              AlertasSwal('Ingrese el departamento del la institucion proveniente');
                             }
                           }
                           else
                           {
-                            swal({
-                              title: 'Aviso',
-                              text: 'Ingrese de la institucion proveniente',
-                              icon: 'warning',
-                              button: 'aceptar'
-                            });
+                            AlertasSwal('Ingrese de la institucion proveniente');
                           }
                         }
                         else
                         {
-                          swal({
-                            title: 'Aviso',
-                            text: 'Seleccione quien financia sus estudios',
-                            icon: 'warning',
-                            button: 'aceptar'
-                          });
+                          AlertasSwal('Seleccione quien financia sus estudios');
                         }
                       }
                       else
                       {
-                        swal({
-                          title: 'Aviso',
-                          text: 'Ingrese la fecha de nacimiento ',
-                          icon: 'warning',
-                          button: 'aceptar'
-                        });
+                        AlertasSwal('Ingrese la fecha de nacimiento');
                       }
                     }
                     else 
                     {
-                      swal({
-                        title: 'Aviso',
-                        text: 'Ingrese el pais de nacimiento',
-                        icon: 'warning',
-                        button: 'aceptar'
-                      });
+                      AlertasSwal('Ingrese el pais de nacimiento');
                     }
                   }
-                  else {
-                    swal({
-                      title: 'Aviso',
-                      text: 'Ingrese el lugar de nacimiento ',
-                      icon: 'warning',
-                      button: 'aceptar'
-                    });
+                  else
+                  {
+                    AlertasSwal('Ingrese el lugar de nacimiento');
                   }
                 }
                 else
                 {
-                  swal({
-                    title: 'Aviso',
-                    text: 'Ingrese al menos un número de teléfono',
-                    icon: 'warning',
-                    button: 'aceptar'
-                  });
+                  AlertasSwal('Ingrese al menos un número de teléfono');
                 }
               }
               else
               {
-                swal({
-                  title: 'Aviso',
-                  text: 'Ingrese un correo electrónico',
-                  icon: 'warning',
-                  button: 'aceptar'
-                });
+                AlertasSwal('Ingrese un correo electrónico');
               }
             }
             else
             {
-              swal({
-                title: 'Aviso',
-                text: 'Ingrese la direccion donde vive',
-                icon: 'warning',
-                button: 'aceptar'
-              });  
+              AlertasSwal('Ingrese la direccion donde vive'); 
             }
           }
           else
           {
-            swal({
-              title: 'Aviso',
-              text: 'Seleccione con la persona con las que vive',
-              icon: 'warning',
-              button: 'aceptar'
-            });
+            AlertasSwal('Seleccione con la persona con las que vive');
           }
         }
         else
         {
-          swal({
-            title: 'Aviso',
-            text: 'Ingrese la religión',
-            icon: 'warning',
-            button: 'aceptar'
-          });
+          AlertasSwal('Ingrese la religión');
         }
       }
       else
       {
-        swal({
-          title: 'Aviso',
-          text: 'Seleccione un genero',
-          icon: 'warning',
-          button: 'aceptar'
-        });
+        AlertasSwal('Seleccione un genero');
       }
     });
 
@@ -510,12 +451,7 @@ $(document).ready(function() {
                 {
                   if(depende == null)
                   {
-                    swal({
-                      title: 'Aviso',
-                      text: 'Seleccione si depende de usted o no',
-                      icon: 'warning',
-                      button: 'aceptar'
-                    });
+                    AlertasSwal('Seleccione si depende de usted o no');
                   }
                   else if(depende === 'si' || depende === 'no')
                   {
@@ -564,76 +500,39 @@ $(document).ready(function() {
                       }
                       else
                       {
-                        swal({
-                          title: 'Aviso',
-                          text: 'Ingrese la institucion o universidad',
-                          icon: 'warning',
-                          button: 'aceptar'
-                        });
+                        AlertasSwal('Ingrese la institucion o universidad');
                       }
                     }
                     else
                     {
-                      swal({
-                        title: 'Aviso',
-                        text: 'Ingrese el grado o año que está cursando',
-                        icon: 'warning',
-                        button: 'aceptar'
-                      });
+                      AlertasSwal('Ingrese el grado o año que está cursando');
                     }
                   }
                 }
               }
               else
               {
-
-                swal({
-                  title: 'Aviso',
-                  text: 'Ingrese la prefesion del integrante de la familia',
-                  icon: 'warning',
-                  button: 'aceptar'
-                });
+                AlertasSwal('Ingrese la prefesion del integrante de la familia');
               }
             }
             else
             {
-              swal({
-                title: 'Aviso',
-                text: 'Seleccione la fecha de nacimiento del integrante',
-                icon: 'warning',
-                button: 'aceptar'
-              });
+              AlertasSwal('Seleccione la fecha de nacimiento del integrante');
             }
           }
           else
           {
-            swal({
-              title: 'Aviso',
-              text: 'Escriba el parentesco que tiene hacia el alumno',
-              icon: 'warning',
-              button: 'aceptar'
-            });
+            AlertasSwal('Escriba el parentesco que tiene hacia el alumno');
           }
         }
         else
         {
-          swal({
-            title: 'Aviso',
-            text: 'Ingrese los apellidos del integrante de la familia',
-            icon: 'warning',
-            button: 'aceptar'
-          });
+          AlertasSwal('Ingrese los apellidos del integrante de la familia');
         }
       }
       else
       {
-
-        swal({
-          title: 'Aviso',
-          text: 'Ingrese los nombres del integrante de la familia',
-          icon: 'warning',
-          button: 'aceptar'
-        });
+        AlertasSwal('Ingrese los nombres del integrante de la familia');
       }
     });
 
@@ -704,12 +603,7 @@ $(document).ready(function() {
                   {
                     if(depende == null)
                     {
-                      swal({
-                        title: 'Aviso',
-                        text: 'Seleccione si depende de usted o no',
-                        icon: 'warning',
-                        button: 'aceptar'
-                      });
+                      AlertasSwal('Seleccione si depende de usted o no');
                     }
                     else if(depende === 'si' || depende === 'no')
                     {
@@ -761,85 +655,44 @@ $(document).ready(function() {
                         }
                         else
                         {
-                          swal({
-                            title: 'Aviso',
-                            text: 'Ingrese la institucion o universidad',
-                            icon: 'warning',
-                            button: 'aceptar'
-                          });
+                          AlertasSwal('Ingrese la institucion o universidad');
                         }
                       }
                       else
                       {
-                        swal({
-                          title: 'Aviso',
-                          text: 'Ingrese el grado o año que está cursando',
-                          icon: 'warning',
-                          button: 'aceptar'
-                        });
+                        AlertasSwal('Ingrese el grado o año que está cursando');
                       }
                     }
                   }
                 }
                 else
                 {
-
-                  swal({
-                    title: 'Aviso',
-                    text: 'Ingrese la prefesion del integrante de la familia',
-                    icon: 'warning',
-                    button: 'aceptar'
-                  });
+                  AlertasSwal('Ingrese la prefesion del integrante de la familia');
                 }
               }
               else
               {
-                swal({
-                  title: 'Aviso',
-                  text: 'Seleccione la fecha de nacimiento del integrante',
-                  icon: 'warning',
-                  button: 'aceptar'
-                });
+                AlertasSwal('Seleccione la fecha de nacimiento del integrante');
               }
             }
             else
             {
-              swal({
-                title: 'Aviso',
-                text: 'Escriba el parentesco que tiene hacia el alumno',
-                icon: 'warning',
-                button: 'aceptar'
-              });
+              AlertasSwal('Escriba el parentesco que tiene hacia el alumno');
             }
           }
           else
           {
-            swal({
-              title: 'Aviso',
-              text: 'Ingrese los apellidos del integrante de la familia',
-              icon: 'warning',
-              button: 'aceptar'
-            });
+            AlertasSwal('Ingrese los apellidos del integrante de la familia');
           }
         }
         else
         {
-          swal({
-            title: 'Aviso',
-            text: 'Ingrese los nombres del integrante de la familia',
-            icon: 'warning',
-            button: 'aceptar'
-          });
+          AlertasSwal('Ingrese los nombres del integrante de la familia');
         }
       }
       else
       {
-        swal({
-          title: 'Aviso',
-          text: 'No se encontro el integrante, por favor contactar al administrador',
-          icon: 'warning',
-          button: 'aceptar'
-        });
+        AlertasSwal('No se encontro el integrante, por favor contactar al administrador');
       }
     });
 
@@ -885,12 +738,7 @@ $(document).ready(function() {
             }
             else
             {
-              swal({
-                title: 'Aviso',
-                text: 'Ocurrio un error al momento de eliminar el integrante, contacte con el administrador',
-                icon: 'warning',
-                button: 'aceptar'
-              });
+              AlertasSwal('Ocurrio un error al momento de eliminar el integrante, contacte con el administrador');
             }
           }
         });

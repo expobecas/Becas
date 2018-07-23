@@ -1,19 +1,27 @@
-<div class = "row">
-    <h3 class = "col offset-l6">Casos</h3>
+<!--TÍTULO-->
+<div class="row">
+   <div class="col offset-l3 titulo-font">
+      <h4>Casos</h4>
+   </div>
 </div>
 <div class = "row">
-<form method="POST" target="_blank">
+<form method="POST" target="_blank" class="col offset-l9">
 <?php
 print("
-<a href='../../app/views/dashboard/casos/reporte.php?id=$_SESSION[id_usuario]' class='waves-effect waves-light btn green col offset-l3'>Generar reporte</a>
+<a href='../../app/views/dashboard/casos/reporte.php?id=$_SESSION[id_usuario]' class='waves-effect waves-light btn sg1'>Generar reporte</a>
 ");
 ?>
 </form>
-    
 </div>
-<div class = "row">
-    <table class="col l8 s12 offset-l3 offset-m3 white highlight centered responsive-table" id="tablecaso">
-        <thead>
+<!--TABLA SOLICITUDES GENERALES-->
+<div class="tabla">
+<div class="row">
+   <div class="col offset-l3 l8 white">
+      <div class="col titulo-font">
+            <h5>Información.</h5>
+      </div>
+      <table class="white highlight bordered tb-sol">
+      <thead>
             <tr>
             <th>Alumno</th>
                 <th>Fecha que se generó el caso</th>
@@ -24,9 +32,12 @@ print("
         </thead>
         <tbody id="casos">
         </tbody>
-    </table>
+      </table>
+   </div>
+</div>
 </div>
 
+<!--DETALLE DEL CASO-->
 <div id="modalCasos" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4 class="modal-title center" id="titulo">Detalle del Caso</h4>

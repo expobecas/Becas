@@ -29,6 +29,7 @@
                <th>Apellidos</th>
                <th>Tipo</th>
                <th>Usuario</th>
+               <th>Correo</th>
                <th>Acción</th>
             </tr>
          </thead>
@@ -39,8 +40,9 @@
                <tr>
                <td>$row[nombres]</td>
                <td>$row[apellidos]</td>
-               <td>$row[id_tipo]</td>
+               <td>$row[tipo_usuario]</td>
                <td>$row[usuario]</td>
+               <td>$row[correo]</td>
                <td>
                <a href='modificar.php?id=$row[id_usuario]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar'><img src='../../web/img/admin/icon/edit.png'></a>
                <a href='eliminar.php?id=$row[id_usuario]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>

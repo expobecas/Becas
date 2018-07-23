@@ -52,6 +52,7 @@
       <div class="row">
       <div class="col offset-l4 l11">
          <button class="waves-effect waves-light btn boton-editar2 offset-l4 sg2" type='submit' name='actualizar'> Editar información </button>
+         <a href="../../dashboard/patrocinadores/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>
       </div>
    </form>

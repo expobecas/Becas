@@ -5,34 +5,17 @@ $(document).ready(function() {
     $('#modificar').hide(0);
     $('#idintegrante').hide(0);
     $('#ingreso').hide(0);
-  });
 
-
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
-    today: 'Hoy',
-    clear: 'Limpiar',
-    close: 'Ok',
-    formatSubmit: 'dd/mm/yyyy',
-    closeOnSelect: true, // Close upon selecting a date,
-    container: undefined, // ex. 'body' will append picker to body
-  });
-
-  //Ejemplo
-  /*Mostrar u ocultar los campos que estan ocultos o que se quieran ocultar con radiobutton */
-  $(document).ready(function(){
+    /*Mostrar u ocultar los campos que estan ocultos al presionar radiobutton */
     $("#si4").on("click", function(){
       $("#escondido").show(1000);
     });
     $("#no4").on("click", function(){
       $("#escondido").hide(1000);
     });
-  });
 
-  /*De datos_familia.php*/
-  /*Mostrar u ocultar los campos que estan ocultos o que se quieran ocultar con radiobutton */
-  $(document).ready(function(){
+    /*De datos_familia.php*/
+    /*Mostrar u ocultar los campos que estan ocultos al presionar radiobutton */
     $("#si_integran").on("click", function(){
       $("#depende").show(1000);
       $("#Grado").show(1000);
@@ -45,9 +28,7 @@ $(document).ready(function() {
       $("#Institucion").hide(1000);
       $("#Cuota_inte").hide(1000);
     });
-  });
 
-  $(document).ready(function(){
     $("#si_vehiculo").on("click", function(){
       $("#tipo").show(1000);
       $("#año_vehiculo").show(1000);
@@ -60,7 +41,21 @@ $(document).ready(function() {
     });
   });
 
-  $(function(){
+
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    max: new Date('today'),//validar para no seleccionar una fecha mayor a la de hoy
+    today: 'Hoy',
+    clear: 'Limpiar',
+    close: 'Ok',
+    formatSubmit: 'dd/mm/yyyy',
+    closeOnSelect: false, // Close upon selecting a date,
+    closeOnClear: false,
+    container: '.slider-ctr', // ex. 'body' will append picker to body
+  });
+
+    //Cuando selecciona la opcion Otros de un select mostrar el campo
     $("#casa").change(function(){
       if($(this).val() == "Otro")
       {
@@ -71,12 +66,10 @@ $(document).ready(function() {
         $("#especificar_casa").hide(1000);
       }
     });
-  });
 
   
   /*De datos_estudiantes.php*/
   /*Mostrar campo cuando se elije la opcion otros en los combobox*/
-  $(function(){
     $("#financiados").change(function(){
       if($(this).val() == "Otros")
       {
@@ -87,10 +80,8 @@ $(document).ready(function() {
         $("#especificar_finan").hide(1000);
       }
     });
-  });
 
   /*Mostrar campo cuando se elije la opcion otros en los combobox*/
-  $(function(){
     $("#familia").change(function(){
       if($(this).val() == "Otros")
       {
@@ -101,7 +92,6 @@ $(document).ready(function() {
         $("#especificar_familia").hide(1000);
       }
     });
-  });
 
 
 
@@ -124,7 +114,6 @@ $(document).ready(function() {
   }
   });
 });
-
 
   /*Formulario y progress*/
   $firstButton = $(".first");
@@ -186,28 +175,28 @@ $regresardosButton.on('click', function(e){
     e.preventDefault();
 });
 
-/*$firstButton.on('click', function(e){
+$firstButton.on('click', function(e){
   $('body,html').animate({
     scrollTop:0
   }, 400)
   $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
   var n = setInterval(function(){
-    /*le da color verde*
+    /*le da color verde*/
   $('.progressc .circle1').removeClass('active').addClass('done');
   
-  /*este pone el checke*
+  /*este pone el checke*/
   $('.progressc .circle1 .label').html('&#10003;');
 
-  /*rellena la primera mitad de la barra*
+  /*rellena la primera mitad de la barra*/
   $('.progressc .bar1').addClass('active');
 
-  /*activamos el circulo 2 del progress*
+  /*activamos el circulo 2 del progress*/
   $('.progressc .circle2').addClass('active');
 
   clearInterval(n);
   }, 100);
   e.preventDefault();
-});*/
+});
 
 $secondButton.on('click', function(e){
   $('body,html').animate({

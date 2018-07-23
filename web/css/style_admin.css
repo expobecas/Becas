@@ -120,7 +120,7 @@ ul#slide-out li a {
     right: 0;
     bottom: -10%;
     transform: translateX(97.3%);
-    transition-duration: 2.5s;
+    transition-duration: 1.5s;
 }
 
 .desplazar
@@ -133,7 +133,7 @@ ul#slide-out li a {
     right: 0;
     bottom: -10%;
     transform: translateX(0%);
-    transition-duration: 2.5s;
+    transition-duration: 1.5s;
 }
 
 .desplazar.m
@@ -146,7 +146,7 @@ ul#slide-out li a {
     right: 0;
     bottom: -10%;
     transform: translateX(0%);
-    transition-duration: 2.5s;
+    transition-duration: 1.5s;
 }
 
 .desplazar.s
@@ -159,7 +159,7 @@ ul#slide-out li a {
     right: 0;
     bottom: -10%;
     transform: translateX(0%);
-    transition-duration: 2.5s;
+    transition-duration: 1.5s;
 }
 
 .desplazar.xs
@@ -172,7 +172,7 @@ ul#slide-out li a {
     right: 0;
     bottom: -10%;
     transform: translateX(0%);
-    transition-duration: 2.5s;
+    transition-duration: 1.5s;
 }
 
 

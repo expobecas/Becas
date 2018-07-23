@@ -92,8 +92,8 @@
         </div>
 
         <div class="input-field col s12 m6 l3">
-            <input id="fecha_naci_inte" type="date" name="fecha_naci_inte"/>
-            <label class="active" for="fecha_naci_inte">Fecha de nacimiento</label>
+            <input id="fecha_naci_inte" type="text" name="fecha_naci_inte" class="datepicker" required/>
+            <label for="fecha_naci_inte">Fecha de nacimiento</label>
         </div>
 
         <div class="input-field col s12 m6 l3"> 

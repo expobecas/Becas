@@ -1,3 +1,42 @@
+$(window).resize(function(){
+    var size = document.body.clientWidth;
+    if(size < 900)
+    {
+        $('#control_tabla').removeClass("m").addClass("s");
+    }
+    if(size >= 901 && size < 1300)
+    {
+        
+        $('#control_tabla').removeClass("s").addClass("m");
+    }
+    if(size >= 1301)
+    {    
+        $('#control_tabla').removeClass("m");
+    }
+});
+
+$(window).resize(function(){
+    var size = document.body.clientWidth;
+    $(document).ready(function(){
+        if(size <=975)
+        {
+            $('#formcita').removeClass("s").addClass("xs");
+        }
+        if(size >=977 && size < 1130)
+        {
+            $('#formcita').removeClass("xs").addClass("s");
+            $('#formcita').removeClass("m").addClass("s");
+        }
+        if(size >= 1131 && size < 1300)
+        {
+            $('#formcita').removeClass("s").addClass("m");
+        }
+        if(size >= 1301)
+        {
+            $('#formcita').removeClass("m");
+        }
+    });
+});
 $(document).ready(function(){
     $('#detalle').hide(0);
     $('#id_cita').hide(0);
@@ -13,47 +52,6 @@ $(document).ready(function(){
         $('#formcita').removeClass('desplazar').addClass('tablecitas');
         $('#control_calendario').toggle();
         $('#control_tabla').toggle();
-    });
-
-
-    $(window).resize(function(){
-        var size = document.body.clientWidth;
-        if(size < 900)
-        {
-            $('#control_tabla').removeClass("m").addClass("s");
-        }
-        if(size >= 901 && size < 1300)
-        {
-            
-            $('#control_tabla').removeClass("s").addClass("m");
-        }
-        if(size >= 1301)
-        {    
-            $('#control_tabla').removeClass("m");
-        }
-    });
-
-    $(window).resize(function(){
-        var size = document.body.clientWidth;
-        $(document).ready(function(){
-            if(size <=975)
-            {
-                $('#formcita').removeClass("s").addClass("xs");
-            }
-            if(size >=977 && size < 1130)
-            {
-                $('#formcita').removeClass("xs").addClass("s");
-                $('#formcita').removeClass("m").addClass("s");
-            }
-            if(size >= 1131 && size < 1300)
-            {
-                $('#formcita').removeClass("s").addClass("m");
-            }
-            if(size >= 1301)
-            {
-                $('#formcita').removeClass("m");
-            }
-        });
     });
 
     CargarTabla();
@@ -97,6 +95,7 @@ $(document).ready(function(){
     {
         $('#cita').on('click', '#citas tr', function(e){
             e.preventDefault();
+            $('#agregar').hide(0);
             id_cita = $(this).attr('id');
             id_detalle = $(this).attr('class');
             titulo = $(this).children('td:eq(2)').text();
@@ -132,7 +131,9 @@ $(document).ready(function(){
             }
         },
         dayClick:function(date,jsEvent,view){
+            LimpiarInputs();
             $('#fecha').val(date.format());
+            $('#agregar').show(0);
             $('#modalEventos').modal().modal('open');
         },
 
@@ -140,6 +141,7 @@ $(document).ready(function(){
         events:'../../app/controllers/dashboard/citas/calendario.php',
 
         eventClick: function(calEvent, jsEvent, view){
+            LimpiarInputs();
             $('#titulo').html(calEvent.title);
             
             $('#id').val(calEvent.id);

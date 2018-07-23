@@ -8,11 +8,11 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l8">
+<div class="col offset-l9">
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1" href="#categorias">Categorias</a>
+   <div>
+      <a class="waves-effect waves-light btn s-general sg1 col" href="#categorias">Categorias</a>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
@@ -47,8 +47,8 @@
                <td>$row[cargo]</td>
                <td>$row[nombre_empresa]</td>
                <td>
-               <a href='editar.php?id=$row[id_patrocinador]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar'><img src='../../web/img/admin/icon/edit.png'></a>
-               <a href='editar.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>
+               <a href='editar.php?id=$row[id_patrocinador]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar y ver más'><img src='../../web/img/admin/icon/edit.png'></a>
+               <a href='eliminar.php?id=$row[id_patrocinador]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>
                </td>
                </tr>");
                }

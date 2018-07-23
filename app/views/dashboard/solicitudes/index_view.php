@@ -6,10 +6,7 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l4">
-      <a class="waves-effect waves-light btn s-general sg4">Vista General</a>
-   </div>
-   <div class="col">
+<div class="col offset-l5">
       <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
    </div>
    <div class="col">

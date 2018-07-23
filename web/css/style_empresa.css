@@ -6,6 +6,21 @@
     height: 100%;
     
 }
+.user-view{
+    background-image: url("../../web/img/login/fondo.png");
+    height: 160px;
+}
+li:hover{
+    background-color: #E84A5F;
+    transition: 1.5s;    
+}
+ul#slide-out li a {
+    transition: transform 0.2s linear;
+  }
+  
+ul#slide-out li:hover a {
+    transform: translateY(-2px);
+  }
 .ingresar_form{
   text-align: center;
 }
@@ -29,10 +44,6 @@
 /*INDEX ALUMNO*/
 .side-nav{
     background-color: #2A363B;
-}
-.user-view{
-    background-color: #E84A5F; 
-    height: 160px;
 }
 /*INICIO ALUMNO*/
 #barra{
@@ -69,8 +80,7 @@
 }
 
 .date-1, .date-2, .date-3, .date-4{
-    font-size: 45px;
-    margin-top: 10px;
+    font-size: 55px;
 }
 .date-1{
     color: #99B898;
@@ -125,4 +135,25 @@
 }
 .recta{
     margin-top: 50px;
+}
+/*FONTS*/
+.font-web{
+    font-family: 'Signika', sans-serif;
+}
+@font-face{
+    font-family: Barlow;
+    src: url("../../web/fonts/BarlowCondensed-Light.ttf");
+}
+@font-face{
+    font-family: Signika-Semibold;
+    src: url("../../web/fonts/BarlowCondensed-Medium.ttf");
+}
+.titulo-font{
+    font-family: 'Signika-Semibold', sans-serif;
+    color: rgb(62, 73, 78);
+}
+
+/*CASOS*/
+.text-tbody{
+    font-size: 13px;
 }

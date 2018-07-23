@@ -8,9 +8,8 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l8">
-      <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
-      <a class="waves-effect waves-light btn s-general sg3 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>
+<div class="col offset-l10">
+      <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/usuarios/tipousuario_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>
    </div>
    <div class="col">
    </div>
@@ -30,6 +29,7 @@
                <th>Apellidos</th>
                <th>Tipo</th>
                <th>Usuario</th>
+               <th>Correo</th>
                <th>Acción</th>
             </tr>
          </thead>
@@ -40,8 +40,9 @@
                <tr>
                <td>$row[nombres]</td>
                <td>$row[apellidos]</td>
-               <td>$row[id_tipo]</td>
+               <td>$row[tipo_usuario]</td>
                <td>$row[usuario]</td>
+               <td>$row[correo]</td>
                <td>
                <a href='modificar.php?id=$row[id_usuario]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar'><img src='../../web/img/admin/icon/edit.png'></a>
                <a href='eliminar.php?id=$row[id_usuario]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>

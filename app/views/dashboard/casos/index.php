@@ -20,7 +20,7 @@ print("
       <div class="col titulo-font">
             <h5>Información.</h5>
       </div>
-      <table class="white highlight bordered tb-sol">
+      <table class="white highlight bordered tb-sol" id="tablecaso">
       <thead>
             <tr>
             <th>Alumno</th>

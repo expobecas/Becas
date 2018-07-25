@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    selectYears: 20, // Creates a dropdown of 15 years to control year,
     max: new Date('today'),//validar para no seleccionar una fecha mayor a la de hoy
     today: 'Hoy',
     clear: 'Limpiar',

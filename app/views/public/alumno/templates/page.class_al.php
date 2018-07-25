@@ -27,8 +27,8 @@ class Page extends component{
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
             </div></li>
             <li><a href='../../../public/alumno/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-            <li><a href='../../solicitud/solicitud.php' class='white-text'><i class='material-icons white-text'>assignment</i>Solicitud</a></li>
-            <li><a href='../account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
+            <li><a href='../../../public/alumno/solicitud/informacion_solicitud.php' class='white-text'><i class='material-icons white-text'>assignment</i>Solicitud</a></li>
+            <li><a href='../../../public/alumno/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul> 
          
           <main>

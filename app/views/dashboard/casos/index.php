@@ -1,4 +1,4 @@
-<!--TÍTULO-->
+<!--TÍTULO CASOS-->
 <div class="row">
    <div class="col offset-l3 titulo-font">
       <h4>Casos</h4>
@@ -20,7 +20,7 @@ print("
       <div class="col titulo-font">
             <h5>Información.</h5>
       </div>
-      <table class="white highlight bordered tb-sol">
+      <table class="white highlight bordered tb-sol" id="tablecaso">
       <thead>
             <tr>
             <th>Alumno</th>
@@ -76,3 +76,4 @@ print("
         <a href="#!" id="cancelar" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
     </div>
 </div>
+

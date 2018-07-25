@@ -1,7 +1,9 @@
 <?php 
 require_once("../../app/models/patrocinadores.class.php");
+require_once("../../app/models/usuario.class.php");
 try{
     $patrocinadores = new Patrocinadores;
+    $usuario = new Usuario;
     if(isset($_POST['crear'])){
         $_POST = $patrocinadores->validateForm($_POST);
         if($patrocinadores->setTipo($_POST['categoria'])){

@@ -3,16 +3,6 @@
     <p class="titulo-EP"><strong>Modificar usuario</strong></p>
       <div class="divider"></div>
       <div class="row">
-        <div class="input-field col s4 l6">
-          <input id="nombres" type="text" name='nombres' class="black-text" class='validate' value='<?php print($usuario->getNombres()) ?>' required/>
-          <label for="nombres">Nombres</label>
-        </div>
-        <div class="input-field col s4 l6">
-          <input id="apellidos" type="text" name='apellidos' class='validate' value='<?php print($usuario->getApellidos()) ?>' required/>
-          <label for="apellidos">Apellidos</label>
-        </div>
-      </div>
-      <div class="row">
         <div class="col l12 s12 m12x">
         <?php
            Page::showSelect("Tipo", "tipo", $usuario->getTipo(), $usuario->getTipoe());                                     

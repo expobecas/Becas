@@ -10,7 +10,7 @@ try{
                     if($alumno->setContraseña($_POST['clave'])){
                         if($alumno->checkClave()){
                             $_SESSION['id_estudiante'] = $alumno->getId();
-                            $_SESSION['usuario'] = $alumno->getUsuario();
+                            $_SESSION['usuario'] = $alumno-> getUsuario();
                             Page::showMessage(1, "Autenticación correcta", "../../../public/alumno/index/index.php");
                         }else{
                             throw new Exception("Clave incorrecta");

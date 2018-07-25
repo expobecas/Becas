@@ -25,8 +25,6 @@
       <table class="white highlight bordered tb-sol text-tbody">
          <thead class="color-thead">
             <tr>
-               <th>Nombres</th>
-               <th>Apellidos</th>
                <th>Tipo</th>
                <th>Usuario</th>
                <th>Correo</th>
@@ -38,8 +36,6 @@
                foreach($data as $row){
                print("
                <tr>
-               <td>$row[nombres]</td>
-               <td>$row[apellidos]</td>
                <td>$row[tipo_usuario]</td>
                <td>$row[usuario]</td>
                <td>$row[correo]</td>

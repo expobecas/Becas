@@ -12,7 +12,7 @@ function Header()
     //Posiciones x, y - Tamaño width y heigh
     $this->Rect(15,10,175, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
+    $this->Image('../../../../../web/img/reportes/logo_ricaldone.png',22,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha

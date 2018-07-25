@@ -13,7 +13,7 @@ function Header()
     //Posiciones x, y - Tamaño width y heigh
     $this->Rect(15,10,175, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
+    $this->Image('../../../../../web/img/reportes/logo_ricaldone.png',22,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha
@@ -97,7 +97,6 @@ $pdf->Ln(15);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(60,18,utf8_decode('Información del patrocinador:'),0,0,'C');
 $pdf->Ln(7);
-
 //LINEAS PARA LLAMAR LA INFORMACIÓN
 $patrocinador->setId_patrocinador($_GET['id']);
 $patrocinador->ReadPatrocinadores();

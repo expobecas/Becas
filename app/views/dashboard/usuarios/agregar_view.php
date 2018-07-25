@@ -2,16 +2,6 @@
    <form class="col s4 l6 offset-l4 white formulario" method="POST">
       <p class="titulo-EP"><strong>Agregar usuario</strong></p>
       <div class="divider"></div>
-      <div class="row">
-         <div class="input-field col s4 l6">
-            <input id="nombres" type="text" name='nombres' class="white-text" class='validate' value='<?php print($usuario->getNombres()) ?>' required/>
-            <label for="nombres">Nombres</label>
-         </div>
-         <div class="input-field col s4 l6">
-            <input id="apellidos" type="text" name='apellidos' class='validate' value='<?php print($usuario->getApellidos()) ?>' required/>
-            <label for="apellidos">Apellidos</label>
-         </div>
-      </div>
       <div class="row  col m12">
          <div class="input-field col s12 l12">
             <?php Page::showSelect("tipo", "tipo", $usuario->getTipo(), $usuario->getTipoe());?>

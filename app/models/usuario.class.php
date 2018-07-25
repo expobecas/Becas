@@ -102,17 +102,15 @@ class Usuario extends Validator{
 	}
     //Metodos para manejar el CRUD
     public function getUsuarios(){
-        $sql = "SELECT id_usuario, nombres, apellidos, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)";
+        $sql = "SELECT id_usuario, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
     public function readUsuario(){
-        $sql = "SELECT id_usuario, nombres, apellidos, t.tipo_usuario, usuario, contraseña FROM usuarios INNER JOIN tipo_usuario t USING (id_tipo) WHERE id_usuario = ?";
+        $sql = "SELECT id_usuario, t.tipo_usuario, usuario, contraseña FROM usuarios INNER JOIN tipo_usuario t USING (id_tipo) WHERE id_usuario = ?";
         $params = array($this->id);
         $usuario = Database::getRow($sql, $params);
         if($usuario){
-            $this->nombres = $usuario['nombres'];
-            $this->apellidos = $usuario['apellidos'];
             $this->tipo = $usuario['tipo_usuario'];
             $this->usuario = $usuario['usuario'];
             $this->clave = $usuario['contraseña'];

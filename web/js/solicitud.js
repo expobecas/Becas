@@ -14,6 +14,8 @@ var id_solicitud = "";
     //PARA EL SLIDER 1
     $("#estudiante").click(function(e){
       //Tabla solicitud
+      var nombres_responsable = $('#nombres_responsable').val();
+      var apellidos_responsable = $('#apellidos_responsable').val();
       var genero = $('#genero').val();
       var religion = $('#religion').val();
       var familia;
@@ -57,167 +59,183 @@ var id_solicitud = "";
       var cuotacoma = cuotapunto.replace(',', '.');
       var año_realizaba = $('#año_realizaba').val();
 
-      if($('#genero').val() != null )
+      if(nombres_responsable != "")
       {
-        if($('#religion').val() != "")
+        if(apellidos_responsable != "")
         {
-          if(familia != null)
+          if($('#genero').val() != null )
           {
-            if($('#direccion').val() != "")
+            if($('#religion').val() != "")
             {
-              if($('#correo').val() != "")
+              if(familia != null)
               {
-                if($('#fijo').val() != "" || $('#madre').val() != "" || $('#padre').val() != "" || $('#hijo').val() != "")
+                if($('#direccion').val() != "")
                 {
-                  if($('#lugar').val() != "")
+                  if($('#correo').val() != "")
                   {
-                    if($('#pais_naci').val() != "") 
+                    if($('#fijo').val() != "" || $('#madre').val() != "" || $('#padre').val() != "" || $('#hijo').val() != "")
                     {
-                      if($('#fecha_naci').val() != "")
+                      if($('#lugar').val() != "")
                       {
-                        if(financiados != null)
+                        if($('#pais_naci').val() != "") 
                         {
-                          if ($('#institucion_prov').val() != "")
+                          if($('#fecha_naci').val() != "")
                           {
-                            if ($('#departamento').val() != "")
+                            if(financiados != null)
                             {
-                              if ($('#pais').val() != "")
+                              if ($('#institucion_prov').val() != "")
                               {
-                                if ($('#año_realizaba').val() != null)
+                                if ($('#departamento').val() != "")
                                 {
-                                  $.ajax({
-                                    type: 'POST',
-                                    url: '../../app/controllers/public/solicitud/create_institucion.php?action=create',
-                                    data:{
-                                    institucion_prov:institucion_prov,
-                                    departamento:departamento,
-                                    pais:pais,
-                                    cuotacoma:cuotacoma,
-                                    año_realizaba:año_realizaba},
-                                    success: function(idInstitucion)
+                                  if ($('#pais').val() != "")
+                                  {
+                                    if ($('#año_realizaba').val() != null)
                                     {
-                                      id_institucion = idInstitucion;
-
                                       $.ajax({
                                         type: 'POST',
-                                        url : '../../app/controllers/public/solicitud/create_datos_estudiante.php?action=create',
-                                        data: {genero:genero,
-                                          religion:religion,
-                                          familia:familia,
-                                          direccion:direccion,
-                                          correo:correo,
-                                          fijo:fijo,
-                                          madre:madre,
-                                          padre:padre,
-                                          hijo:hijo,
-                                          lugar:lugar,
-                                          pais_naci:pais_naci,
-                                          fecha_naci:fecha_naci,
-                                          financiados:financiados,
-                                          id_institucion:id_institucion},
-                                        success: function(idSolicitud)
+                                        url: '../../app/controllers/public/solicitud/create_institucion.php?action=create',
+                                        data:{
+                                        institucion_prov:institucion_prov,
+                                        departamento:departamento,
+                                        pais:pais,
+                                        cuotacoma:cuotacoma,
+                                        año_realizaba:año_realizaba},
+                                        success: function(idInstitucion)
                                         {
-                                          id_solicitud = idSolicitud;
-                                          //console.log(id);
-                                          /*
-                                          $('body,html').animate({
-                                            scrollTop:0
-                                          }, 400)
-                                          $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
-                                          var n = setInterval(function(){
-                                            /*le da color verde*
-                                          $('.progressc .circle1').removeClass('active').addClass('done');
-                                          
-                                          /*este pone el checke*
-                                          $('.progressc .circle1 .label').html('&#10003;');
-                                  
-                                          /*rellena la primera mitad de la barra*
-                                          $('.progressc .bar1').addClass('active');
-                                  
-                                          /*activamos el circulo 2 del progress*
-                                          $('.progressc .circle2').addClass('active');
-                                  
-                                          clearInterval(n);
-                                          }, 100);
-                                          e.preventDefault();*/
+                                          id_institucion = idInstitucion;
+
+                                          $.ajax({
+                                            type: 'POST',
+                                            url : '../../app/controllers/public/solicitud/create_datos_estudiante.php?action=create',
+                                            data: {genero:genero,
+                                              religion:religion,
+                                              familia:familia,
+                                              direccion:direccion,
+                                              correo:correo,
+                                              fijo:fijo,
+                                              madre:madre,
+                                              padre:padre,
+                                              hijo:hijo,
+                                              lugar:lugar,
+                                              pais_naci:pais_naci,
+                                              fecha_naci:fecha_naci,
+                                              financiados:financiados,
+                                              id_institucion:id_institucion,
+                                              nombres_responsable:nombres_responsable,
+                                              apellidos_responsable:apellidos_responsable},
+                                            success: function(idSolicitud)
+                                            {
+                                              id_solicitud = idSolicitud;
+                                              //console.log(id);
+                                              /*
+                                              $('body,html').animate({
+                                                scrollTop:0
+                                              }, 400)
+                                              $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
+                                              var n = setInterval(function(){
+                                                /*le da color verde*
+                                              $('.progressc .circle1').removeClass('active').addClass('done');
+                                              
+                                              /*este pone el checke*
+                                              $('.progressc .circle1 .label').html('&#10003;');
+                                      
+                                              /*rellena la primera mitad de la barra*
+                                              $('.progressc .bar1').addClass('active');
+                                      
+                                              /*activamos el circulo 2 del progress*
+                                              $('.progressc .circle2').addClass('active');
+                                      
+                                              clearInterval(n);
+                                              }, 100);
+                                              e.preventDefault();*/
+                                            }
+                                          });
+                                        },
+                                        error: function(e)
+                                        {
+                                          alert(e);
+                                          alert('Ocurrio algo');
                                         }
                                       });
-                                    },
-                                    error: function(e)
-                                    {
-                                      alert(e);
-                                      alert('Ocurrio algo');
                                     }
-                                  });
+                                    else
+                                    {
+                                      AlertasSwal('Seleccione el año que cursaba');
+                                    }
+                                  }
+                                  else
+                                  {
+                                    AlertasSwal('Ingrese el pais del la institucion proveniente');
+                                  }
                                 }
                                 else
                                 {
-                                  AlertasSwal('Seleccione el año que cursaba');
+                                  AlertasSwal('Ingrese el departamento del la institucion proveniente');
                                 }
                               }
                               else
                               {
-                                AlertasSwal('Ingrese el pais del la institucion proveniente');
+                                AlertasSwal('Ingrese de la institucion proveniente');
                               }
                             }
                             else
                             {
-                              AlertasSwal('Ingrese el departamento del la institucion proveniente');
+                              AlertasSwal('Seleccione quien financia sus estudios');
                             }
                           }
                           else
                           {
-                            AlertasSwal('Ingrese de la institucion proveniente');
+                            AlertasSwal('Ingrese la fecha de nacimiento');
                           }
                         }
-                        else
+                        else 
                         {
-                          AlertasSwal('Seleccione quien financia sus estudios');
+                          AlertasSwal('Ingrese el pais de nacimiento');
                         }
                       }
                       else
                       {
-                        AlertasSwal('Ingrese la fecha de nacimiento');
+                        AlertasSwal('Ingrese el lugar de nacimiento');
                       }
                     }
-                    else 
+                    else
                     {
-                      AlertasSwal('Ingrese el pais de nacimiento');
+                      AlertasSwal('Ingrese al menos un número de teléfono');
                     }
                   }
                   else
                   {
-                    AlertasSwal('Ingrese el lugar de nacimiento');
+                    AlertasSwal('Ingrese un correo electrónico');
                   }
                 }
                 else
                 {
-                  AlertasSwal('Ingrese al menos un número de teléfono');
+                  AlertasSwal('Ingrese la direccion donde vive'); 
                 }
               }
               else
               {
-                AlertasSwal('Ingrese un correo electrónico');
+                AlertasSwal('Seleccione con la persona con las que vive');
               }
             }
             else
             {
-              AlertasSwal('Ingrese la direccion donde vive'); 
+              AlertasSwal('Ingrese la religión');
             }
           }
           else
           {
-            AlertasSwal('Seleccione con la persona con las que vive');
+            AlertasSwal('Seleccione un genero');
           }
         }
         else
         {
-          AlertasSwal('Ingrese la religión');
+          AlertasSwal('Ingrese los apellidos de padre de familia responsable ante el colegio');
         }
       }
       else
       {
-        AlertasSwal('Seleccione un genero');
+        AlertasSwal('Ingrese los nombres de padre de familia responsable ante el colegio');
       }
     });
 

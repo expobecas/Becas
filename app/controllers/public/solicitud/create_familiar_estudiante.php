@@ -15,18 +15,8 @@ try
             $familiares_estudiante->setInstitucion($_POST['institucion']);
             $cuota = str_replace(',', '.', str_replace('.', '', $_POST['cuota_inte']));
             $familiares_estudiante->setCuota($cuota);
-
-            $depende = $_POST['depende'];
-            $grado = $_POST['grado'];
-            $institucion = $_POST['institucion'];
-            
-            $data = $familiares_estudiante->getIdInte();
-            foreach($data as $row)
-            {
-                $id_integrante = $row;
-            }
-            $familiares_estudiante->setIdIntegrante($id_integrante);
-            if($familiares_estudiante->createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante))
+            $familiares_estudiante->setIdIntegrante($_POST['id_integrante']);
+            if($familiares_estudiante->createFamiliarEstudiante())
             {
                 Component::showMessage(1, "familiar estudiante agregado", "");
             }

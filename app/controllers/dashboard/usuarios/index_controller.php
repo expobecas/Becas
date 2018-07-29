@@ -7,7 +7,7 @@ try{
     if($data){
         require_once("../../app/views/dashboard/usuarios/index_view.php");
     }else{
-        Page::showMessage(3, "No se encontraron solicitudes", "");
+        Page::showMessage(3, "No se encontraron usuarios", "");
     }
 
 }catch(Exception $error){

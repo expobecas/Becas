@@ -6,9 +6,11 @@ function AlertasSwal($text)
     title: 'Aviso',
     text: $text,
     icon: 'warning',
-    button: 'aceptar'
+    button: 'Aceptar'
   });
 }
+
+var id_solicitud = "";
     //PARA EL SLIDER 1
     $("#estudiante").click(function(e){
       //Tabla solicitud
@@ -46,6 +48,7 @@ function AlertasSwal($text)
       }
 
       //Tabla institucion proveniente
+      var id_institucion = "";
       var institucion_prov = $('#institucion_prov').val();
       var departamento = $('#departamento').val();
       var pais = $('#pais').val();
@@ -53,16 +56,6 @@ function AlertasSwal($text)
       var cuotapunto = cuota.replace('.', '');
       var cuotacoma = cuotapunto.replace(',', '.');
       var año_realizaba = $('#año_realizaba').val();
-
-      $.ajax({
-        type: 'POST',
-        url: '',
-        dataType: 'json',
-        success: function(datos)
-        {
-          
-        }
-      });
 
       if($('#genero').val() != null )
       {
@@ -101,8 +94,10 @@ function AlertasSwal($text)
                                     pais:pais,
                                     cuotacoma:cuotacoma,
                                     año_realizaba:año_realizaba},
-                                    success: function()
+                                    success: function(idInstitucion)
                                     {
+                                      id_institucion = idInstitucion;
+
                                       $.ajax({
                                         type: 'POST',
                                         url : '../../app/controllers/public/solicitud/create_datos_estudiante.php?action=create',
@@ -118,29 +113,33 @@ function AlertasSwal($text)
                                           lugar:lugar,
                                           pais_naci:pais_naci,
                                           fecha_naci:fecha_naci,
-                                          financiados:financiados},
-                                        success: function()
+                                          financiados:financiados,
+                                          id_institucion:id_institucion},
+                                        success: function(idSolicitud)
                                         {
+                                          id_solicitud = idSolicitud;
+                                          //console.log(id);
+                                          /*
                                           $('body,html').animate({
                                             scrollTop:0
                                           }, 400)
                                           $ctr.addClass("center slider-two-active").removeClass("full slider-one-active");
                                           var n = setInterval(function(){
-                                            /*le da color verde*/
+                                            /*le da color verde*
                                           $('.progressc .circle1').removeClass('active').addClass('done');
                                           
-                                          /*este pone el checke*/
+                                          /*este pone el checke*
                                           $('.progressc .circle1 .label').html('&#10003;');
                                   
-                                          /*rellena la primera mitad de la barra*/
+                                          /*rellena la primera mitad de la barra*
                                           $('.progressc .bar1').addClass('active');
                                   
-                                          /*activamos el circulo 2 del progress*/
+                                          /*activamos el circulo 2 del progress*
                                           $('.progressc .circle2').addClass('active');
                                   
                                           clearInterval(n);
                                           }, 100);
-                                          e.preventDefault();
+                                          e.preventDefault();*/
                                         }
                                       });
                                     },
@@ -395,6 +394,8 @@ function AlertasSwal($text)
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     $("#agregar").click(function(){
 
+      console.log(id_solicitud);
+      var id_integrante = "";
       //OBTENIENDO VALORES PARA INSERTAR EN LA TABLA INTEGRANTE_FAMILIA
       var nombres = $('#nombres_inte').val();
       var apellidos = $('#apellidos_inte').val();
@@ -436,9 +437,11 @@ function AlertasSwal($text)
                       profesion:profesion, 
                       lugar_trabajo:lugar_trabajo, 
                       tel_trabajo:tel_trabajo,
-                      salariocoma:salariocoma},
-                      success: function()
+                      salariocoma:salariocoma,
+                      id_solicitud:id_solicitud},
+                      success: function(idIntegrante)
                       {
+                        console.log(idIntegrante);
                         //funcion para cargar los datos en la tabla
                         cargarTabla();
 
@@ -472,16 +475,21 @@ function AlertasSwal($text)
                             profesion:profesion,
                             lugar_trabajo:lugar_trabajo,
                             tel_trabajo:tel_trabajo,
-                            salario:salario},
-                            success: function()
-                            {
+                            salariocoma:salariocoma,
+                            id_solicitud:id_solicitud},
+                          success: function(idIntegrante)
+                          {
+                            console.log(idIntegrante);
+                            id_integrante = idIntegrante;
+
                             $.ajax({
                               type: "POST",
                               url: '../../app/controllers/public/solicitud/create_familiar_estudiante.php?action=create',
                               data: {depende:depende,
                               grado:grado,
                               institucion:institucion,
-                              cuota_inte:cuota_inte},
+                              cuota_inte:cuota_inte,
+                              id_integrante:id_integrante},
                               success: function()
                               {
                                 //Función para cargar datos en la tabla
@@ -554,7 +562,6 @@ function AlertasSwal($text)
       var salario = $('#salario').val();
       var salariopunto = salario.replace('.', '');
       var salariocoma = salariopunto.replace(',', '.');
-      console.log($('#nombres_inte').val());
 
       //OBTENIENDO VALORES PARA INSERTAR EN LA TABLA FAMILIARES_ESTUDIANDO
       var estudiante = $('.estudiante:checked').val();
@@ -588,7 +595,8 @@ function AlertasSwal($text)
                         profesion:profesion, 
                         lugar_trabajo:lugar_trabajo, 
                         tel_trabajo:tel_trabajo,
-                        salariocoma:salariocoma},
+                        salariocoma:salariocoma,
+                        id_solicitud:id_solicitud},
                         success: function()
                         {
                           //funcion para cargar los datos en la tabla
@@ -626,7 +634,8 @@ function AlertasSwal($text)
                               profesion:profesion, 
                               lugar_trabajo:lugar_trabajo, 
                               tel_trabajo:tel_trabajo,
-                              salariocoma:salariocoma},
+                              salariocoma:salariocoma,
+                              id_solicitud:id_solicitud},
                               success: function()
                               {
                               $.ajax({
@@ -637,8 +646,9 @@ function AlertasSwal($text)
                                 grado:grado,
                                 institucion:institucion,
                                 cuota_inte:cuota_inte},
-                                success: function()
+                                success: function(datos)
                                 {
+                                  console.log(datos);
                                   //Función para cargar datos en la tabla
                                   cargarTabla();
 
@@ -730,7 +740,6 @@ function AlertasSwal($text)
                 success: function()
                 {
                   cargarTabla()
-                  console.log("Se envio");
                   //Esta funcion vacia los inputs y resetea los radio button
                   restablecer()
                 }

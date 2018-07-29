@@ -112,13 +112,6 @@ class Familiares_estudiante extends Validator
     }
 
     //Metodos para el major del SCRUD
-    public function getIdInte()
-    {
-        $sql = "SELECT id_integrante FROM integrante_familia ORDER BY id_integrante DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
-
     public function getFamiliarEstudiante()
     {
         $sql = "SELECT id_integrante FROM familiares_estudiante WHERE id_integrante = ?";
@@ -126,17 +119,17 @@ class Familiares_estudiante extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante)
+    public function createFamiliarEstudiante()
     {
         $sql = "INSERT INTO familiares_estudiante(depende, grado, institucion, cuota, id_integrante) VALUES (?, ?, ?, ?, ?)";
-        $params = array($depende, $grado, $institucion, $cuota, $id_integrante);
+        $params = array($this->depende, $this->grado, $this->institucion, $this->cuota, $this->id_integrante);
         return Database::executeRow($sql, $params);
     }
 
-    public function updateFamiliarEstudiante($depende, $grado, $institucion, $cuota)
+    public function updateFamiliarEstudiante()
     {
         $sql = "UPDATE familiares_estudiante SET depende = ?, grado = ?, institucion = ?, cuota = ? WHERE id_integrante = ?";
-        $params = array($depende, $grado, $institucion, $cuota, $this->id_integrante);
+        $params = array($this->depende, $this->grado, $this->institucion, $this->cuota, $this->id_integrante);
         return Database::executeRow($sql, $params);
     }
 

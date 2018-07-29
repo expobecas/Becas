@@ -27,12 +27,10 @@ try
             $solicitud->setLugarNacimiento($_POST['lugar']);
             $solicitud->setPaisNacimiento($_POST['pais_naci']);
             $solicitud->setEstudiosFinan($_POST['financiados']);
-            
-            $data = $solicitud->getInstitucion();
-            $id_institucion_proveniente = $data[0];
-
-            $solicitud->setIdInstitucion($id_institucion_proveniente);
+            $solicitud->setIdInstitucion($_POST['id_institucion']);
             $solicitud->createSolicitud();
+            $id_solicitud = $solicitud->getIdSolicitud();
+            echo json_decode($id_solicitud);
         }
     }
     $object = new Datos_estudiante();

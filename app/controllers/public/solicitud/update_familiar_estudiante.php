@@ -16,21 +16,23 @@ try
             $cuota = str_replace(',', '.', str_replace('.', '', $_POST['cuota_inte']));
             $familiares_estudiante->setCuota($cuota);
 
-            $depende = $_POST['depende'];
-            $grado = $_POST['grado'];
-            $institucion = $_POST['institucion'];
-            $id_integrante = $_POST['id'];
-
             $familiares_estudiante->setIdIntegrante($_POST['id']);
 
             $familiar = $familiares_estudiante->getFamiliarEstudiante();
             if(!$familiar)
             {
-                $familiares_estudiante->createFamiliarEstudiante($depende, $grado, $institucion, $cuota, $id_integrante);
+                $familiares_estudiante->createFamiliarEstudiante();
             }
             else
             {
-                $familiares_estudiante->updateFamiliarEstudiante($depende, $grado, $institucion, $cuota);
+                if($familiares_estudiante->updateFamiliarEstudiante())
+                {
+
+                }
+                else
+                {
+                    echo json_decode(Database::getException());
+                }
             }           
 		}
     }
@@ -40,6 +42,6 @@ try
 }
 catch(Exception $error)
 {
-	Component::showMessage(2, $error->getMessage(), null);
+    echo json_decode($error->getMessage());
 }
 ?>

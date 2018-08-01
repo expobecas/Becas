@@ -6,7 +6,7 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l5">
+<div class="col offset-l4">
       <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
    </div>
    <div class="col">
@@ -15,6 +15,10 @@
    <div class="col">
       <a class="waves-effect waves-light btn s-general sg2">Rechazadas</a>
    </div>
+   <div class="col">
+<a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/solicitudes/reporte_solicitudTipo.php" data-tooltip='Solicitud por tipo' data-position='bottom' >Reporte</a>
+ </div>
+</div>>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
 <div class="tabla">

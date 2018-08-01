@@ -104,20 +104,20 @@ $becas->setId($_GET['id']);
 $becas->getDetallebecas();
 
 //DATOS
-$pdf->setX(32);
+$pdf->setX(35);
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10,30,utf8_decode('Carnet: '.$becas->getNum_carnet()),0,0,'C');
-$pdf->setX(121);
+$pdf->setX(115);
 $pdf->Cell(10,30,utf8_decode('Grado: '.$becas->getGrado()),0,0,'C');
-$pdf->setX(40);
+$pdf->setX(43);
 $pdf->Cell(10,42,utf8_decode('Nombres: '.$becas->getNombre1().' '.$becas->getNombre2()),0,0,'C');
-$pdf->setX(135);
-$pdf->Cell(10,42,utf8_decode('Apellidos: '.$becas->getApellido1().' '.$becas->getApellido2()),0,0,'C');
-$pdf->setX(28);
-$pdf->Cell(10,54,utf8_decode('Religión: '.$becas->getReligion()),0,0,'C');
 $pdf->setX(129);
+$pdf->Cell(10,42,utf8_decode('Apellidos: '.$becas->getApellido1().' '.$becas->getApellido2()),0,0,'C');
+$pdf->setX(31);
+$pdf->Cell(10,54,utf8_decode('Religión: '.$becas->getReligion()),0,0,'C');
+$pdf->setX(123);
 $pdf->Cell(10,54,utf8_decode('Encargado: '.$becas->getEncargado()),0,0,'C');
-$pdf->setX(29);
+$pdf->setX(32);
 $pdf->Cell(10,66,utf8_decode('Dirección: '.$becas->getDireccion()),0,0,'C');
 
 //INFORMACIÓN DEL PATROCINADOR
@@ -136,16 +136,16 @@ $pdf->Cell(37,18,utf8_decode('Financiación a la beca:'),0,0,'C');
 $pdf->Ln(2);
 
 //DATOS 
-$pdf->setX(40);
+$pdf->setX(43);
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10,30,utf8_decode('Nombres: '.$becas->getNombres()),0,0,'C');
 $pdf->setX(117);
-$pdf->Cell(10,30,utf8_decode('Importe: '.$becas->getMonto()),0,0,'C');
-$pdf->setX(39);
+$pdf->Cell(10,30,utf8_decode('Importe: $'.$becas->getMonto()),0,0,'C');
+$pdf->setX(42);
 $pdf->Cell(10,42,utf8_decode('Apellidos: '.$becas->getApellidos()),0,0,'C');
-$pdf->setX(118);
+$pdf->setX(117);
 $pdf->Cell(10,42,utf8_decode('Periodo: '.$becas->getPeriodo_pago()),0,0,'C');
-$pdf->setX(35);
+$pdf->setX(38);
 $pdf->Cell(10,54,utf8_decode('Empresa: '.$becas->getNombre_empresa()),0,0,'C');
 
 $pdf->Output();

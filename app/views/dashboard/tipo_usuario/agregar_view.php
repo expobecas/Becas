@@ -1,5 +1,5 @@
-<div class="row">
-    <form method="POST" class="col s12 offset-l1 l3 white">
+<div>
+    <form method="POST" class="white">
     <div class="row">
     <div class="col titulo-font">
       <h5>Agregar tipo</h5>

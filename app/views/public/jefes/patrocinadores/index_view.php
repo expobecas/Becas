@@ -14,13 +14,11 @@
    <div class="col titulo-font">
       <h5>Información</h5>
    </div>
-      <table class="white highlight bordered tb-sol text-tbody">
+   <table class="white highlight bordered tb-sol text-tbody">
          <thead class="color-thead">
             <tr>
                <th>Categoría</th>
                <th>Profesion</th>
-               <th>Nombres</th>
-               <th>Apellidos</th>
                <th>Cargo</th>
                <th>Empresa</th>
                <th>Acción</th>
@@ -33,8 +31,6 @@
                <tr>
                <td>$row[tipo_patrocinador]</td>
                <td>$row[profesion]</td>
-               <td>$row[nombres]</td>
-               <td>$row[apellidos]</td>
                <td>$row[cargo]</td>
                <td>$row[nombre_empresa]</td>
                <td>

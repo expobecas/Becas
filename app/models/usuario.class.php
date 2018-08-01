@@ -5,6 +5,7 @@ class Usuario extends Validator{
     private $clave = null;
     private $nombres = null;
     private $apellidos = null;
+    private $correo = null;
     private $tipo = null;
     
     public function setId($value){
@@ -62,6 +63,17 @@ class Usuario extends Validator{
     public function getApellidos(){
         return $this->apellidos;
     }
+    public function setCorreo($value){
+        if($this->validateAlphanumeric($value, 1, 50)){
+            $this->correo = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function getCorreo(){
+        return $this->correo;
+    }
     public function setTipo($value){
         if($this->validateId($value)){
             $this->tipo = $value;
@@ -102,7 +114,7 @@ class Usuario extends Validator{
 	}
     //Metodos para manejar el CRUD
     public function getUsuarios(){
-        $sql = "SELECT id_usuario, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)";
+        $sql = "SELECT id_usuario, nombres, apellidos, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
@@ -155,19 +167,7 @@ class Usuario extends Validator{
 
     }
 public function getTipoUsuario(){
-    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 1  "; 
-    $params = array(null);
-    return Database::getRows($sql, $params);
-
-}
-public function getTipoUsuario2(){
-    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 2 "; 
-    $params = array(null);
-    return Database::getRows($sql, $params);
-
-}
-public function getTipoUsuario3(){
-    $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_tipo = 3 "; 
+    $sql = "SELECT tipo_usuario, nombres, apellidos, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)ORDER BY tipo_usuario "; 
     $params = array(null);
     return Database::getRows($sql, $params);
 

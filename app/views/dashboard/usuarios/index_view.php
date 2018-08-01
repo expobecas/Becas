@@ -18,14 +18,16 @@
 
 <div class="row">
 <div class="tabla">
-   <div class="col offset-l3 l8 white">
-   <div class="col titulo-font">
+   <div class="col offset-l3 l8 s12 m11 white">
+   <div class="titulo-font">
       <h5>Información</h5>
    </div>
-      <table class="white highlight bordered tb-sol text-tbody">
+      <table class="white highlight bordered tb-sol text-tbody responsive-table">
          <thead class="color-thead">
             <tr>
                <th>Tipo</th>
+               <th>Nombres</th>
+               <th>Apellidos</th>
                <th>Usuario</th>
                <th>Correo</th>
                <th>Acción</th>
@@ -37,6 +39,8 @@
                print("
                <tr>
                <td>$row[tipo_usuario]</td>
+               <td>$row[nombres]</td>
+               <td>$row[apellidos]</td>
                <td>$row[usuario]</td>
                <td>$row[correo]</td>
                <td>

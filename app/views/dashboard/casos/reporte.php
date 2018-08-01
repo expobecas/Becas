@@ -84,14 +84,31 @@ $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(10, 18, $Hora, 0, 0,'C');
 $pdf->Ln();
+
+$pdf->SetX(15);
+$pdf->Cell(30, 10, 'Casos', 0, 0);
+$pdf->Ln(10);
+$pdf->SetX(15); //Movimiento de posición en X
+$pdf->SetFillColor(99, 99, 99);
+$pdf->SetFont('Times', 'B', 11);
+ $pdf->SetTextColor(0, 0, 0);
+$pdf->SetTextColor(250, 251, 251);
+$pdf->Cell(50, 6, 'Nombres', 1, 0, 'C', 1);
+$pdf->Cell(45, 6, utf8_decode('Fecha de creación'), 1, 0, 'C', 1);
+$pdf->Cell(45, 6, 'Estado', 1, 0, 'C', 1);
+$pdf->Cell(35, 6, 'Fecha de la cita', 1, 0, 'C', 1);
+$pdf->Ln(6);
 $casos = $caso->getCasos();
 
 foreach($casos as $row)
 {
-    $pdf->Cell(50, 10, $row['primer_nombre'].' '.$row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(45, 10, $row['fecha'], 1, 0, 'C');
-    $pdf->Cell(45, 10, $row['estado_solicitud'], 1, 0, 'C');
-    $pdf->Cell(40, 10, $row['start'], 1, 0, 'C');
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Times', '', 8);
+    $pdf->SetX(15);
+    $pdf->Cell(50, 10, utf8_decode($row['primer_nombre'].' '.$row['segundo_nombre'].' '.$row['primer_apellido'].' '.$row['segundo_apellido']), 1, 0, 'C');
+    $pdf->Cell(45, 10, utf8_decode($row['fecha']), 1, 0, 'C');
+    $pdf->Cell(45, 10, utf8_decode($row['estado_solicitud']), 1, 0, 'C');
+    $pdf->Cell(35, 10, utf8_decode($row['start']), 1, 0, 'C');
     $pdf->Ln();
 }
 

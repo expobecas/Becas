@@ -1,11 +1,25 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
-   <form class="col s12 l6 offset-l4 white edit_form" method='POST'>
+   <form class="col s12 l7 offset-l4 white edit_form" method='POST'>
       <p class="titulo-EP"><strong>Agregar usuario</strong></p>
       <div class="divider"></div>
       <div class="row  col m12">
-         <div class="input-field col s12 l12">
+         <div class="input-field col s12 l6">
             <?php Page::showSelect("tipo", "tipo", $usuario->getTipo(), $usuario->getTipoe());?>
+         </div>
+         <div class="input-field col s4 l6">
+            <input id="correo" type="text" name='correo' class='validate' value='<?php print($usuario->getCorreo()) ?>' required/>
+            <label for="correo">Correo</label>
+         </div>
+      </div>
+      <div class="row">
+         <div class="input-field col s4 l6">
+            <input id="nombres" type="text" name='nombres' class='validate' value='<?php print($usuario->getNombres()) ?>' required/>
+            <label for="nombres">Nombres</label>
+         </div>
+         <div class="input-field col s4 l6">
+            <input id="apellidos" type="text" name='apellidos' class='validate' value='<?php print($usuario->getApellidos()) ?>' required/>
+            <label for="apellidos">Apellidos</label>
          </div>
       </div>
       <div class="row">
@@ -33,19 +47,7 @@
             <label for="nombre2">Profesion</label>
          </div>
       </div>
-      <!--SEGUNDA FILA-->
-      <div class="row">
-         <div class="input-field col s6">
-            <input id="apellido1" type="text" class="validate" name='nombres' >
-            <label for="apellido1">Nombres</label>
-         </div>
-         <div class="input-field col s6">
-            <input id="apellido2" type="text" class="validate" name='apellidos'>
-            <label for="apellido2">Apellidos</label>
-         </div>
-         
-      </div>
-      <!--TERCERA FILA-->
+      <!--SEGUNDA FILA--> 
       <div class="row">
          <div class="input-field col s6">
             <input id="usuario" type="text" class="validate" name='cargo'>

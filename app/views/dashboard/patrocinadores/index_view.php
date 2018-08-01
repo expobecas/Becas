@@ -12,7 +12,7 @@
       <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
    </div>
    <div>
-      <a class="waves-effect waves-light btn s-general sg1 col" href="#categorias">Categorias</a>
+      <a class="waves-effect waves-light btn s-general sg1 col tooltipped" href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Patrocinadores por tipo' data-position='bottom'>Reporte</a>
    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
@@ -28,22 +28,18 @@
             <tr>
                <th>Categoría</th>
                <th>Profesion</th>
-               <th>Nombres</th>
-               <th>Apellidos</th>
                <th>Cargo</th>
                <th>Empresa</th>
                <th>Acción</th>
             </tr>
          </thead>
-         <tbody>
+         <tbody>                                                  
          <?php 
                foreach($data as $row){
                print("
                <tr>
                <td>$row[tipo_patrocinador]</td>
                <td>$row[profesion]</td>
-               <td>$row[nombres]</td>
-               <td>$row[apellidos]</td>
                <td>$row[cargo]</td>
                <td>$row[nombre_empresa]</td>
                <td>

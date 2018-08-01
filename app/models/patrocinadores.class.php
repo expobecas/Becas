@@ -173,10 +173,11 @@ class Patrocinadores extends Validator{
     {
         return $this->tipo2;
     }
+    
 
     //METODOS PARA MANEJAR EL CRUD
     public function getPatrocinadores(){
-        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro)";
+        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
@@ -196,7 +197,7 @@ class Patrocinadores extends Validator{
         return Database::executeRow($sql, $params);
     }
     public function ReadPatrocinadores(){
-        $sql = "SELECT id_patrocinador, id_tipo_patro, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_patrocinador = ?";
+        $sql = "SELECT id_patrocinador, id_tipo_patro, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono, nombres, apellidos FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) INNER JOIN usuarios ON usuarios.id_usuario = patrocinadores.id_usuario WHERE id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         $patrocinadores = Database::getRow($sql, $params);
         if($patrocinadores){
@@ -204,12 +205,13 @@ class Patrocinadores extends Validator{
             $this->tipo = $patrocinadores['id_tipo_patro'];
             $this->tipo2 = $patrocinadores['tipo_patrocinador'];
             $this->profesion = $patrocinadores['profesion'];
-            $this->nombres = $patrocinadores['nombres'];
-            $this->apellidos = $patrocinadores['apellidos'];
             $this->cargo = $patrocinadores['cargo'];
             $this->nombre_empresa = $patrocinadores['nombre_empresa'];
             $this->direccion = $patrocinadores['direccion'];
             $this->telefono = $patrocinadores['telefono'];
+            $this->nombres = $patrocinadores['nombres'];
+            $this->apellidos = $patrocinadores['apellidos'];
+
             return true;
         }else{
             return null;
@@ -228,12 +230,12 @@ class Patrocinadores extends Validator{
         return Database::getRows($sql, $params);
     }
     public function getTipoPa(){
-        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 1";
+        $sql = "SELECT nombres, apellidos, profesion,cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN usuarios USING(id_usuario) INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE patrocinadores.id_tipo_patro = 1";
         $params = array(null);
         return Database::getRows($sql, $params);
     }   
     public function getTipoPa2(){
-        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_tipo_patro = 2";
+        $sql = "SELECT nombres, apellidos, profesion,cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN usuarios USING(id_usuario) INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE patrocinadores.id_tipo_patro = 2";
         $params = array(null);
         return Database::getRows($sql, $params);
     }   

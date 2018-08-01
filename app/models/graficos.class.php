@@ -3,13 +3,13 @@ class Graficos extends Validator{
 
       
    public function grafico1(){
-		$sql = "SELECT usuarios.id_usuario, tipo_usuario.id_tipo, COUNT(usuarios.id_tipo) AS 'Cantidad Ingresada' FROM (usuarios INNER JOIN tipo_usuario ON tipo_usuario.id_tipo = usuarios.id_tipo) GROUP BY usuarios.id_tipo ";
+		$sql = "SELECT usuarios.id_usuario, tipo_usuario.tipo_usuario, COUNT(usuarios.id_tipo) AS 'Cantidad Ingresada' FROM (usuarios INNER JOIN tipo_usuario ON tipo_usuario.id_tipo = usuarios.id_tipo) GROUP BY usuarios.id_tipo ";
 		$params = array(null);
 		return Database::getRows($sql, $params);
 	}
 
     public function grafico2(){
-		$sql = "SELECT clientes.id_cliente, generos.genero, COUNT(clientes.id_genero) AS 'Cantidad Ingresada' FROM (clientes INNER JOIN generos ON generos.id_genero = clientes.id_genero) GROUP BY clientes.id_genero 
+		$sql = "SELECT usuarios.id_usuario, tipo_usuario.tipo_usuario, COUNT(usuarios.id_tipo) AS 'Cantidad Ingresada' FROM (usuarios INNER JOIN tipo_usuario ON tipo_usuario.id_tipo = usuarios.id_tipo) GROUP BY usuarios.id_tipo 
 		";
 		$params = array(null);
 		return Database::getRows($sql, $params);

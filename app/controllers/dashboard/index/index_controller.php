@@ -21,11 +21,11 @@ echo "var myChart = new Chart(ctx, {
     data: {
         labels: [";
    foreach ($grafica1 as $row) {
-        	echo "'".$row['id_tipo']."' ,";
+        	echo "'".$row['tipo_usuario']."' ,";
         }
  echo "],
         datasets: [{
-            label: 'producto',
+            label: 'usuario',
             data: [";
    foreach ($grafica1 as $row) {
         	echo "".$row['Cantidad Ingresada'].",";
@@ -71,7 +71,7 @@ echo "var myChart = new Chart(ctx, {
     data: {
         labels: [";
    foreach ($grafica2 as $row) {
-        	echo "'".$row['genero']."' ,";
+        	echo "'".$row['tipo_usuario']."' ,";
         }
  echo "],
         datasets: [{
@@ -265,8 +265,5 @@ echo "function grafica5(){";
      });
     }";
     //fin de la funcion --------------------------
-
-
 echo "</script>";
-
 ?>

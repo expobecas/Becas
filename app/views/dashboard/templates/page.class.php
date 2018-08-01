@@ -15,7 +15,14 @@ class Page extends component{
             <link type='text/css' rel='stylesheet' href='../../web/css/materialize.min.css'/>
             <link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
             <link type='text/css' rel='stylesheet' href='../../web/css/style_admin.css'/>
+            <script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
+            <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
+            <script type='text/javascript' src='../../web/js/js_admin.js'></script>
+            <script type='text/javascript' src='../../web/js/stadistics.js'></script>
+            <script type='text/javascript' src='../../web/js/Chart.js'></script>
             <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
+            <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
+            
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
         <body class='fondo-general font-web'>
@@ -32,7 +39,7 @@ class Page extends component{
                     <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
                     <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
-                    <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
@@ -49,15 +56,20 @@ class Page extends component{
                     <a class='btn dropdown-button grey-text avisos' href='#!' data-activates='dropdown2'>Notificación<i class='material-icons right'>notifications</i></a>
                     </div> 
                     </div>");
-                }
-                else
-                {
+                }else{
                     print("
-                    <main class='container'>
+                    <header class='navbar-fixed'>
+                    <nav class='brown'>
+                        <div class='nav-wrapper'>
+                            <a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
+                        </div>
+                    </nav>
+                </header>
+                <main class='container'>
                     ");
                     $filename = basename($_SERVER['PHP_SELF']);
                     if($filename != "acceder.php"){
-                        self::showMessage(3, "¡Debe iniciar sesión!", "../ingresar/acceder.php");
+                        self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
                         self::templateFooter();
                         exit;
                     }else{
@@ -71,17 +83,6 @@ class Page extends component{
     public static function templateFooter(){
         print("
         </main>
-        <script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
-        <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
-        <script type='text/javascript' src='../../web/js/js_admin.js'></script>
-        ");
-
-        $filename = basename($_SERVER['PHP_SELF']);
-        if($filename == "casos.php")
-        {
-            print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
-        }
-        print("
 		</body>
 		</html>
         ");

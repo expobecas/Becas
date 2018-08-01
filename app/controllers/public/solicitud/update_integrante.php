@@ -20,28 +20,16 @@ try
             $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
             $integrante->setTelTrabajo($_POST['tel_trabajo']);
             $dato = $integrante->getSolicitud();
-            foreach($dato as $row)
-            {
-                $id_solicitud = $row;
-            }
-
-			$nombres = $_POST['nombres'];
-			$apellidos = $_POST['apellidos'];
-            $paretesco = $_POST['parentesco'];
-			$fecha_nacimiento = $fecha;
-			$profesion_ocupacion = $_POST['profesion'];
-			$lugar_trabajo = $_POST['lugar_trabajo'];
-            $tel_trabajo = $_POST['tel_trabajo'];
             $integrante->setSalario($_POST['salariocoma']);
             $integrante->setIdIntegrante($_POST['id']);
-            $integrante->setIdSolicitud($id_solicitud);
-            if($integrante->updateIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion))
+            $integrante->setIdSolicitud($_POST['id_solicitud']);
+            if($integrante->updateIntegrante())
             {
-                Component::showMessage(1, "integrante modificado", "");
+                
             }
             else
             {
-                throw new Exception(Database::getException());
+                echo json_decode(Database::getException());
             }
             
 		}

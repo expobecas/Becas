@@ -13,20 +13,26 @@ try
             $institucion_proveniente = new Institucion_Proveniente;
 
             //Obteniendo datos para el insert de la tabla institucion_proveniente
-            $nombre_institucion = $_POST['institucion_prov'];
-            $lugar_institucion = $_POST['departamento'];
-            $institucion_proveniente->setCuotaPagaba($_POST['cuotacoma']);
-            $cuota_pagaba = $_POST['cuotacoma'];
-            $año = $_POST['año_realizaba'];
-
-            if($institucion_proveniente->createInstitucion($nombre_institucion, $lugar_institucion, $cuota_pagaba, $año))
+            $institucion_proveniente->setNombre($_POST['institucion_prov']);
+            $institucion_proveniente->setLugar($_POST['departamento'].', '.$_POST['pais']);
+            $cuota = 0.00;
+            if($_POST['cuotacoma'] != null)
             {
-                Component::showMessage(1, "integrante agregada", "");
+                $cuota = $_POST['cuotacoma'];
+            }
+            $institucion_proveniente->setCuotaPagaba($cuota);
+            $institucion_proveniente->setAño($_POST['año_realizaba']);
+
+            if($institucion_proveniente->createInstitucion())
+            {
+                
             }
             else
             {
-                throw new Exception(Database::getException());
+                echo json_decode(Database::getException());
             }
+            $id_institucion = $institucion_proveniente->getIdInstitucion();
+            echo json_decode($id_institucion);
         }
     }
     $object = new institucion();

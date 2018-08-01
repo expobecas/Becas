@@ -138,7 +138,6 @@ class Estudiantes extends Validator{
         $sql = "SELECT contraseña FROM estudiantes WHERE id_estudiante = ?";
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        echo($data['contraseña']);
         if($this->contraseña == $data['contraseña']){
             return true;
         }else{

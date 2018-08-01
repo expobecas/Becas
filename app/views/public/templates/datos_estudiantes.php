@@ -1,4 +1,14 @@
 <div class="row">
+    <div class="input-field col s12 m6 l3">   
+        <input id="nombres_responsable" type="text" name="nombres_responsable" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
+        <label for="nombres_responsable">Nombres del responsable</label>
+    </div>
+
+    <div class="input-field col s12 m6 l3">   
+        <input id="apellidos_responsable" type="text" name="apellidos_responsable" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
+        <label for="apellidos_responsable">Apellidos del responsable</label>
+    </div>
+
     <div class="input-field col s12 m6 l3">
         <?php
            Page::showSelect("Genero", "genero", $solicitud->getIdGenero(), $solicitud->getGeneros());

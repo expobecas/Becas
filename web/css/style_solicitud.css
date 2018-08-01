@@ -28,6 +28,9 @@
   margin-top: 35px;
   margin-bottom: 50px;
 }
+.margen_four{
+  margin-bottom: 50px;
+}
 .margen_top{
   margin-top: 25px;
   margin-bottom: 25px;
@@ -82,6 +85,15 @@
     border-radius: 40px;
 	  border: 1px solid #d5d5da;
   }
+  .progressc .circle4,
+  .progressc .bar3 {
+    display: inline-block;
+    background: #fff;
+    width: 40px; 
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid #d5d5da;
+  }
   .progressc .bar1 {
     position: relative;
     width: 80px;
@@ -105,6 +117,17 @@
     border-radius: 0;
   }
   .progressc .bar3 {
+    position: relative;
+    width: 80px;
+    height: 6px;
+    top: -33px;
+    margin-left: -5px;
+    margin-right: -5px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+  .progressc .bar4 {
     position: relative;
     width: 80px;
     height: 6px;
@@ -140,6 +163,17 @@
     border-radius: 0;
   }
   .progressc .bar3.responsive{
+    position: relative;
+    width: 30px;
+    height: 6px;
+    top: -33px;
+    margin-left: -5px;
+    margin-right: -5px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+  .progressc .bar4.responsive{
     position: relative;
     width: 30px;
     height: 6px;
@@ -199,6 +233,22 @@
     line-height: 30px;
     margin-left: -5px;
   }
+  .progressc .circle4 .label {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 32px;
+    margin-top: 3px;
+    color: #b5b5ba;
+    font-size: 17px;
+  }
+  .progressc .circle4 .title {
+    color: #b5b5ba;
+    font-size: 13px;
+    line-height: 30px;
+    margin-left: -5px;
+  }
   
   /* Done / Active */
   .progressc .bar1.done,
@@ -212,11 +262,18 @@
   .progressc .circle3.done {
     background: #eee;
   }
+  .progressc .bar3.done,
+  .progressc .circle4.done {
+    background: #eee;
+  }
 
   .progressc .bar1.active {
     background: linear-gradient(to right, #EEE 40%, #FFF 60%);
   }
   .progressc .bar2.active {
+    background: linear-gradient(to right, #EEE 40%, #FFF 60%);
+  }
+  .progressc .bar3.active {
     background: linear-gradient(to right, #EEE 40%, #FFF 60%);
   }
 
@@ -235,6 +292,11 @@
     background: #8bc435;
     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
   }
+  .progressc .circle4.done .label {
+    color: #FFF;
+    background: #8bc435;
+    box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+  }
 
   .progressc .circle1.done .title {
     color: #444;
@@ -243,6 +305,9 @@
     color: #444;
   }
   .progressc .circle3.done .title {
+    color: #444;
+  }
+  .progressc .circle4.done .title {
     color: #444;
   }
 
@@ -261,6 +326,11 @@
     background: #0c95be;
     box-shadow: inset 0 0 2px rgba(0,0,0,.2);
   }
+  .progressc .circle4.active .label {
+    color: #FFF;
+    background: #0c95be;
+    box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+  }
 
   .progressc .circle1.active .title {
     color: #0c95be;
@@ -269,6 +339,9 @@
     color: #0c95be;
   }
   .progressc .circle3.active .title {
+    color: #0c95be;
+  }
+  .progressc .circle4.active .title {
     color: #0c95be;
   }
 
@@ -365,7 +438,7 @@ button:active,
 /*Tamaño total del slider*/
 .slider {
 	overflow: visible;
-  width: 300%;
+  width: 400%;
 	-webkit-transition: .3s all ease;
 	transition: .3s all ease;
 	-webkit-transform: translate(0px) scale(1);
@@ -374,21 +447,32 @@ button:active,
 }
 
 .containers.slider-one-active .slider-two,
-.containers.slider-one-active .slider-three {
+.containers.slider-one-active .slider-three
+.containers.slider-one-active .slider-four, {
 	-webkit-transform: scale(.5);
 	-ms-transform: scale(.5);
 	transform: scale(.5);
 }
 
 .containers.slider-two-active .slider-one,
-.containers.slider-two-active .slider-three {
+.containers.slider-two-active .slider-three,
+.containers.slider-two-active .slider-four, {
 	-webkit-transform: scale(.5);
 	-ms-transform: scale(.5);
 	transform: scale(.5);
 }
 
 .containers.slider-three-active .slider-one,
-.containers.slider-three-active .slider-two {
+.containers.slider-three-active .slider-two,
+.containers.slider-three-active .slider-four, {
+	-webkit-transform: scale(.5);
+	-ms-transform: scale(.5);
+	transform: scale(.5);
+}
+
+.containers.slider-four-active .slider-one,
+.containers.slider-four-active .slider-two,
+.containers.slider-four-active .slider-three {
 	-webkit-transform: scale(.5);
 	-ms-transform: scale(.5);
 	transform: scale(.5);
@@ -396,14 +480,15 @@ button:active,
 
 .slider-one,
 .slider-two,
-.slider-three {
+.slider-three,
+.slider-four {
 	-webkit-transition: .3s all ease;
 	transition: .3s all ease;
 }
 /*tamaño de slider individual*/
 .slider-form {
 	float: left;
-	width: 33%;
+	width: 25%;
   text-align: center;
 }
 
@@ -546,9 +631,9 @@ label.radio .emot .mouth.sad {
 
 /*desplazamiento de slider*/
 .containers.center .slider {
-	-webkit-transform: translate(-33%);
-	-ms-transform: translate(-33%);
-	transform: translate(-33%);
+	-webkit-transform: translate(-25%);
+	-ms-transform: translate(-25%);
+	transform: translate(-25%);
 }
 
 .containers.regresar .slider {
@@ -565,8 +650,40 @@ label.radio .emot .mouth.sad {
 	width: 100%;
 }
 
-/*	full */
+/*	three */
 
+.containers.three .line .dot-move {
+	left: 100%;
+	animation: .3s anim 1;
+}
+
+.containers.three .line .dot.three {
+	background: #5892fc;
+}
+
+.containers.three .slider {
+	-webkit-transform: translate(-50%);
+	-ms-transform: translate(-50%);
+	transform: translate(-50%);
+}
+
+.containers.return .slider {
+	-webkit-transform: translate(25%);
+	-ms-transform: translate(25%);
+	transform: translate(25%);
+}
+
+.containers.three .step-two,
+.containers.three .step-three {
+	clip: rect(0, 100px, 25px, 0px);
+}
+
+.containers.three .step-one .liner,
+.containers.three .step-two .liner {
+	width: 100%;
+}
+
+/* four */
 .containers.full .line .dot-move {
 	left: 100%;
 	animation: .3s anim 1;
@@ -577,15 +694,15 @@ label.radio .emot .mouth.sad {
 }
 
 .containers.full .slider {
-	-webkit-transform: translate(-66%);
-	-ms-transform: translate(-66%);
-	transform: translate(-66%);
+	-webkit-transform: translate(-75%);
+	-ms-transform: translate(-75%);
+	transform: translate(-75%);
 }
 
-.containers.return .slider {
-	-webkit-transform: translate(33%);
-	-ms-transform: translate(33%);
-	transform: translate(33%);
+.containers.return_three .slider {
+	-webkit-transform: translate(50%);
+	-ms-transform: translate(50%);
+	transform: translate(50%);
 }
 
 .containers.full .step-two,

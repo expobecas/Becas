@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2018 a las 03:19:59
+-- Tiempo de generación: 29-07-2018 a las 19:58:17
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -28,17 +28,14 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `alumnos_nombre`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `alumnos_nombre` (`NombreAlumno` VARCHAR(20))  SELECT * 
 FROM estudiantes 
 WHERE primer_nombre = NombreAlumno || segundo_nombre = NombreAlumno$$
 
-DROP PROCEDURE IF EXISTS `patrocinadores_nombre`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `patrocinadores_nombre` (`NombrePatro` VARCHAR(20))  SELECT * 
 FROM patrocinadores
 WHERE nombres = NombrePatro$$
 
-DROP PROCEDURE IF EXISTS `patrocinador_tipo`$$
 CREATE DEFINER=`Expo_becas`@`localhost` PROCEDURE `patrocinador_tipo` (`tipo` VARCHAR(15))  SELECT nombres, apellidos, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono
 from patrocinadores, tipo_patrocinador
 WHERE patrocinadores.id_tipo_patro = tipo_patrocinador.id_tipo_patro
@@ -52,7 +49,6 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `becas`
 --
 
-DROP TABLE IF EXISTS `becas`;
 CREATE TABLE `becas` (
   `id_becas` int(11) NOT NULL,
   `id_detalle` int(11) NOT NULL,
@@ -68,7 +64,6 @@ CREATE TABLE `becas` (
 -- Estructura de tabla para la tabla `casos`
 --
 
-DROP TABLE IF EXISTS `casos`;
 CREATE TABLE `casos` (
   `id_caso` int(11) NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -82,7 +77,6 @@ CREATE TABLE `casos` (
 -- Estructura de tabla para la tabla `citas`
 --
 
-DROP TABLE IF EXISTS `citas`;
 CREATE TABLE `citas` (
   `id` int(11) NOT NULL,
   `title` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -100,7 +94,6 @@ CREATE TABLE `citas` (
 -- Estructura de tabla para la tabla `comentarios`
 --
 
-DROP TABLE IF EXISTS `comentarios`;
 CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `comentario` varchar(350) COLLATE utf8_spanish_ci NOT NULL,
@@ -115,7 +108,6 @@ CREATE TABLE `comentarios` (
 -- Estructura de tabla para la tabla `detalle_solicitud`
 --
 
-DROP TABLE IF EXISTS `detalle_solicitud`;
 CREATE TABLE `detalle_solicitud` (
   `id_detalle` int(11) NOT NULL,
   `id_estado` int(11) NOT NULL,
@@ -128,11 +120,19 @@ CREATE TABLE `detalle_solicitud` (
 -- Estructura de tabla para la tabla `estado_solicitud`
 --
 
-DROP TABLE IF EXISTS `estado_solicitud`;
 CREATE TABLE `estado_solicitud` (
   `id_estado` int(11) NOT NULL,
   `estado_solicitud` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estado_solicitud`
+--
+
+INSERT INTO `estado_solicitud` (`id_estado`, `estado_solicitud`) VALUES
+(1, 'en proceso'),
+(2, 'Rechazada'),
+(3, 'Aprobada');
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,6 @@ CREATE TABLE `estado_solicitud` (
 -- Estructura de tabla para la tabla `estudiantes`
 --
 
-DROP TABLE IF EXISTS `estudiantes`;
 CREATE TABLE `estudiantes` (
   `id_estudiante` int(11) NOT NULL,
   `primer_nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -168,7 +167,6 @@ INSERT INTO `estudiantes` (`id_estudiante`, `primer_nombre`, `segundo_nombre`, `
 -- Estructura de tabla para la tabla `familiares_estudiante`
 --
 
-DROP TABLE IF EXISTS `familiares_estudiante`;
 CREATE TABLE `familiares_estudiante` (
   `id_fam_estudiante` int(11) NOT NULL,
   `depende` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -184,7 +182,6 @@ CREATE TABLE `familiares_estudiante` (
 -- Estructura de tabla para la tabla `gastos_mensuales`
 --
 
-DROP TABLE IF EXISTS `gastos_mensuales`;
 CREATE TABLE `gastos_mensuales` (
   `id_gastos` int(11) NOT NULL,
   `alimentacion` double(6,2) NOT NULL,
@@ -219,7 +216,6 @@ CREATE TABLE `gastos_mensuales` (
 -- Estructura de tabla para la tabla `genero`
 --
 
-DROP TABLE IF EXISTS `genero`;
 CREATE TABLE `genero` (
   `id_genero` int(11) NOT NULL,
   `genero` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -239,7 +235,6 @@ INSERT INTO `genero` (`id_genero`, `genero`) VALUES
 -- Estructura de tabla para la tabla `grupo_familiar`
 --
 
-DROP TABLE IF EXISTS `grupo_familiar`;
 CREATE TABLE `grupo_familiar` (
   `id_familia` int(11) NOT NULL,
   `ingreso_familiar` double(6,2) NOT NULL,
@@ -255,7 +250,6 @@ CREATE TABLE `grupo_familiar` (
 -- Estructura de tabla para la tabla `historial`
 --
 
-DROP TABLE IF EXISTS `historial`;
 CREATE TABLE `historial` (
   `id_historial` int(11) NOT NULL,
   `id_caso` int(11) NOT NULL
@@ -267,7 +261,6 @@ CREATE TABLE `historial` (
 -- Estructura de tabla para la tabla `imagenes_casos`
 --
 
-DROP TABLE IF EXISTS `imagenes_casos`;
 CREATE TABLE `imagenes_casos` (
   `id_img_caso` int(11) NOT NULL,
   `imagen_caso` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -277,13 +270,12 @@ CREATE TABLE `imagenes_casos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `imagenes_vehiculo`
+-- Estructura de tabla para la tabla `imagenes_propiedad`
 --
 
-DROP TABLE IF EXISTS `imagenes_vehiculo`;
-CREATE TABLE `imagenes_vehiculo` (
-  `id_img_vehiculo` int(11) NOT NULL,
-  `imagen_vehiculo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+CREATE TABLE `imagenes_propiedad` (
+  `id_img_propiedad` int(11) NOT NULL,
+  `imagen` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `id_propiedad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -293,7 +285,6 @@ CREATE TABLE `imagenes_vehiculo` (
 -- Estructura de tabla para la tabla `institucion_proveniente`
 --
 
-DROP TABLE IF EXISTS `institucion_proveniente`;
 CREATE TABLE `institucion_proveniente` (
   `id_institucion_proveniente` int(11) NOT NULL,
   `nombre_institucion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
@@ -307,7 +298,17 @@ CREATE TABLE `institucion_proveniente` (
 --
 
 INSERT INTO `institucion_proveniente` (`id_institucion_proveniente`, `nombre_institucion`, `lugar_institucion`, `cuota_pagada`, `año`) VALUES
-(93, 'christofer goodman', 'das', 0.00, 'Noveno grado');
+(93, 'christofer goodman', 'das', 0.00, 'Noveno grado'),
+(119, 'christofer goodman', 'UT, Estados Unidos', 0.00, 'Noveno grado'),
+(120, 'christofer goodman', 'UT, Estados Unidos', 0.00, 'Noveno grado'),
+(121, 'dasd', 'dasd, das', 0.00, 'Noveno grado'),
+(122, 'gdfg', 'gdf, gfdg', 0.00, 'Primero año'),
+(123, 'gdfg', 'gdf, gfdg', 0.00, 'Primero año'),
+(124, 'fsdf', 'fsdf, fsdf', 0.00, 'Primero año'),
+(125, 'fsdf', 'fsdf, fsdf', 0.00, 'Noveno grado'),
+(126, 'fsdf', 'fsdf, fsdf', 0.00, 'Noveno grado'),
+(127, 'fsdf', 'fsdf, fsdf', 0.00, 'Noveno grado'),
+(128, 'fsdf', 'fsdf, fsdf', 0.00, 'Noveno grado');
 
 -- --------------------------------------------------------
 
@@ -315,7 +316,6 @@ INSERT INTO `institucion_proveniente` (`id_institucion_proveniente`, `nombre_ins
 -- Estructura de tabla para la tabla `integrante_familia`
 --
 
-DROP TABLE IF EXISTS `integrante_familia`;
 CREATE TABLE `integrante_familia` (
   `id_integrante` int(11) NOT NULL,
   `nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -335,7 +335,6 @@ CREATE TABLE `integrante_familia` (
 -- Estructura de tabla para la tabla `intermedia_propiedad`
 --
 
-DROP TABLE IF EXISTS `intermedia_propiedad`;
 CREATE TABLE `intermedia_propiedad` (
   `id_inter` int(11) NOT NULL,
   `id_integrante` int(11) NOT NULL,
@@ -348,7 +347,6 @@ CREATE TABLE `intermedia_propiedad` (
 -- Estructura de tabla para la tabla `pagos`
 --
 
-DROP TABLE IF EXISTS `pagos`;
 CREATE TABLE `pagos` (
   `id_recibo` int(11) NOT NULL,
   `fecha_emi_recibo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
@@ -361,7 +359,6 @@ CREATE TABLE `pagos` (
 -- Estructura de tabla para la tabla `patrocinadores`
 --
 
-DROP TABLE IF EXISTS `patrocinadores`;
 CREATE TABLE `patrocinadores` (
   `id_patrocinador` int(11) NOT NULL,
   `id_tipo_patro` int(11) NOT NULL,
@@ -380,25 +377,12 @@ CREATE TABLE `patrocinadores` (
 -- Estructura de tabla para la tabla `propiedad`
 --
 
-DROP TABLE IF EXISTS `propiedad`;
 CREATE TABLE `propiedad` (
   `id_propiedad` int(11) NOT NULL,
   `tipo_propiedad` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `cuota_mensual` double(6,2) DEFAULT NULL,
-  `valor_casa` double(6,2) DEFAULT NULL,
-  `tipo_vehiculo` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `año_vehiculo` varchar(4) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `valor_vehiculo` double(6,2) DEFAULT NULL,
-  `croquis` varchar(500) COLLATE utf8_spanish_ci NOT NULL
+  `valor_casa` double(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `propiedad`
---
-
-INSERT INTO `propiedad` (`id_propiedad`, `tipo_propiedad`, `cuota_mensual`, `valor_casa`, `tipo_vehiculo`, `año_vehiculo`, `valor_vehiculo`, `croquis`) VALUES
-(1, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg'),
-(2, 'Propia', 20.00, NULL, 'Sedan', NULL, NULL, '5b0df68ba0bec.jpg');
 
 -- --------------------------------------------------------
 
@@ -406,7 +390,6 @@ INSERT INTO `propiedad` (`id_propiedad`, `tipo_propiedad`, `cuota_mensual`, `val
 -- Estructura de tabla para la tabla `remesas_familiar`
 --
 
-DROP TABLE IF EXISTS `remesas_familiar`;
 CREATE TABLE `remesas_familiar` (
   `id_remesa` int(11) NOT NULL,
   `monto` double(6,2) NOT NULL,
@@ -421,7 +404,6 @@ CREATE TABLE `remesas_familiar` (
 -- Estructura de tabla para la tabla `solicitud`
 --
 
-DROP TABLE IF EXISTS `solicitud`;
 CREATE TABLE `solicitud` (
   `id_solicitud` int(11) NOT NULL,
   `id_estudiante` int(11) NOT NULL,
@@ -438,15 +420,11 @@ CREATE TABLE `solicitud` (
   `lugar_nacimiento` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `pais_nacimiento` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `estudios_finan` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_institucion_proveniente` int(11) NOT NULL
+  `id_institucion_proveniente` int(11) NOT NULL,
+  `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `nombres_responsable` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos_responsable` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `solicitud`
---
-
-INSERT INTO `solicitud` (`id_solicitud`, `id_estudiante`, `id_genero`, `religion`, `encargado`, `direccion`, `correo`, `tel_fijo`, `cel_papa`, `cel_mama`, `cel_hijo`, `fecha_nacimiento`, `lugar_nacimiento`, `pais_nacimiento`, `estudios_finan`, `id_institucion_proveniente`) VALUES
-(43, 1, 1, 'ddd', 'Ambos padres', '84119', 'fernanxavi58@gmail.com', 19465732, NULL, NULL, NULL, '06/07/2018', 'dasd', 'Estados Unidos', 'Sus padres', 93);
 
 -- --------------------------------------------------------
 
@@ -454,7 +432,6 @@ INSERT INTO `solicitud` (`id_solicitud`, `id_estudiante`, `id_genero`, `religion
 -- Estructura de tabla para la tabla `tipo_patrocinador`
 --
 
-DROP TABLE IF EXISTS `tipo_patrocinador`;
 CREATE TABLE `tipo_patrocinador` (
   `id_tipo_patro` int(11) NOT NULL,
   `tipo_patrocinador` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -466,7 +443,6 @@ CREATE TABLE `tipo_patrocinador` (
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE `tipo_usuario` (
   `id_tipo` int(11) NOT NULL,
   `tipo_usuario` varchar(15) COLLATE utf8_spanish_ci NOT NULL
@@ -487,7 +463,6 @@ INSERT INTO `tipo_usuario` (`id_tipo`, `tipo_usuario`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombres` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
@@ -504,6 +479,20 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `id_tipo`, `usuario`, `contraseña`) VALUES
 (1, 'Xavier', 'Canjura', 1, 'XaviCaM', '12345678'),
 (2, 'The best', 'x2', 2, 'thebest', '12345678');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vehiculos`
+--
+
+CREATE TABLE `vehiculos` (
+  `id_vehiculo` int(11) NOT NULL,
+  `tipo_vehiculo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `año` varchar(4) COLLATE utf8_spanish_ci NOT NULL,
+  `valor_actual` double(6,2) NOT NULL,
+  `id_propiedad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Índices para tablas volcadas
@@ -601,11 +590,11 @@ ALTER TABLE `imagenes_casos`
   ADD KEY `id_caso` (`id_caso`) USING BTREE;
 
 --
--- Indices de la tabla `imagenes_vehiculo`
+-- Indices de la tabla `imagenes_propiedad`
 --
-ALTER TABLE `imagenes_vehiculo`
-  ADD PRIMARY KEY (`id_img_vehiculo`),
-  ADD KEY `id_propiedad` (`id_propiedad`) USING BTREE;
+ALTER TABLE `imagenes_propiedad`
+  ADD PRIMARY KEY (`id_img_propiedad`),
+  ADD KEY `id_propiedad` (`id_propiedad`);
 
 --
 -- Indices de la tabla `institucion_proveniente`
@@ -684,6 +673,13 @@ ALTER TABLE `usuarios`
   ADD KEY `id_tipo` (`id_tipo`) USING BTREE;
 
 --
+-- Indices de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  ADD PRIMARY KEY (`id_vehiculo`),
+  ADD KEY `id_propiedad` (`id_propiedad`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -715,13 +711,13 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `detalle_solicitud`
 --
 ALTER TABLE `detalle_solicitud`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estado_solicitud`
 --
 ALTER TABLE `estado_solicitud`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
@@ -733,13 +729,13 @@ ALTER TABLE `estudiantes`
 -- AUTO_INCREMENT de la tabla `familiares_estudiante`
 --
 ALTER TABLE `familiares_estudiante`
-  MODIFY `id_fam_estudiante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fam_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `gastos_mensuales`
 --
 ALTER TABLE `gastos_mensuales`
-  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gastos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -751,7 +747,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `grupo_familiar`
 --
 ALTER TABLE `grupo_familiar`
-  MODIFY `id_familia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_familia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `historial`
@@ -766,28 +762,28 @@ ALTER TABLE `imagenes_casos`
   MODIFY `id_img_caso` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `imagenes_vehiculo`
+-- AUTO_INCREMENT de la tabla `imagenes_propiedad`
 --
-ALTER TABLE `imagenes_vehiculo`
-  MODIFY `id_img_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `imagenes_propiedad`
+  MODIFY `id_img_propiedad` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `institucion_proveniente`
 --
 ALTER TABLE `institucion_proveniente`
-  MODIFY `id_institucion_proveniente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_institucion_proveniente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT de la tabla `integrante_familia`
 --
 ALTER TABLE `integrante_familia`
-  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_integrante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `intermedia_propiedad`
 --
 ALTER TABLE `intermedia_propiedad`
-  MODIFY `id_inter` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_inter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
@@ -811,13 +807,13 @@ ALTER TABLE `propiedad`
 -- AUTO_INCREMENT de la tabla `remesas_familiar`
 --
 ALTER TABLE `remesas_familiar`
-  MODIFY `id_remesa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_remesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_patrocinador`
@@ -836,6 +832,12 @@ ALTER TABLE `tipo_usuario`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -900,10 +902,10 @@ ALTER TABLE `imagenes_casos`
   ADD CONSTRAINT `imagenes_casos_ibfk_1` FOREIGN KEY (`id_caso`) REFERENCES `casos` (`id_caso`);
 
 --
--- Filtros para la tabla `imagenes_vehiculo`
+-- Filtros para la tabla `imagenes_propiedad`
 --
-ALTER TABLE `imagenes_vehiculo`
-  ADD CONSTRAINT `imagenes_vehiculo_ibfk_1` FOREIGN KEY (`id_propiedad`) REFERENCES `propiedad` (`id_propiedad`);
+ALTER TABLE `imagenes_propiedad`
+  ADD CONSTRAINT `imagenes_propiedad_ibfk_1` FOREIGN KEY (`id_propiedad`) REFERENCES `propiedad` (`id_propiedad`);
 
 --
 -- Filtros para la tabla `integrante_familia`
@@ -949,6 +951,12 @@ ALTER TABLE `solicitud`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_usuario` (`id_tipo`);
+
+--
+-- Filtros para la tabla `vehiculos`
+--
+ALTER TABLE `vehiculos`
+  ADD CONSTRAINT `vehiculos_ibfk_1` FOREIGN KEY (`id_propiedad`) REFERENCES `propiedad` (`id_propiedad`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

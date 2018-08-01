@@ -19,29 +19,18 @@ try
             $integrante->setProfesionOcupacion($_POST['profesion']);
             $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
             $integrante->setTelTrabajo($_POST['tel_trabajo']);
-            $dato = $integrante->getSolicitud();
-            foreach($dato as $row)
-            {
-                $id_solicitud = $row;
-            }
-
-			$nombres = $_POST['nombres'];
-			$apellidos = $_POST['apellidos'];
-            $paretesco = $_POST['parentesco'];
-			$fecha_nacimiento = $fecha;
-			$profesion_ocupacion = $_POST['profesion'];
-			$lugar_trabajo = $_POST['lugar_trabajo'];
-            $tel_trabajo = $_POST['tel_trabajo'];
             $integrante->setSalario($_POST['salariocoma']);
-            $integrante->setIdSolicitud($id_solicitud);
-            if($integrante->createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $lugar_trabajo, $tel_trabajo))
+            $integrante->setIdSolicitud($_POST['id_solicitud']);
+            if($integrante->createIntegrante())
             {
-                Component::showMessage(1, "integrante agregada", "");
+
             }
             else
             {
-                throw new Exception(Database::getException());
+                echo json_decode(Database::getException());
             }
+            $id_integrante = $integrante->getIdIntegrante();
+            echo json_decode($id_integrante);
             
 		}
     }

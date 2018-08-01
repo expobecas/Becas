@@ -15,10 +15,10 @@ try{
                         if($_SESSION['id_tipo'] == 1){
                             Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                         }
-                        if($_SESSION['id_tipo'] == 2){
+                        if($_SESSION['id_tipo'] == 3){
                             Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
                         }
-                        if($_SESSION['id_tipo'] == 3){
+                        if($_SESSION['id_tipo'] == 2){
                             Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
                         }
                     }else{

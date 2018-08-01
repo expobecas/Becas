@@ -185,13 +185,6 @@ class Integrante_familia extends Validator
 
     //Metodos para el control del SCRUD
 
-    public function getSolicitud()
-    {
-        $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
-
     public function getIntegranteTable()
     {
         $sql = "SELECT i.id_integrante, i.nombres, i.apellidos, i.parentesco, i.fecha_nacimiento, i.profesion_ocupacion, i.lugar_trabajo, i.tel_trabajo, i.salario, f.depende, f.grado, f.institucion, f.cuota 
@@ -209,17 +202,22 @@ class Integrante_familia extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function createIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion)
+    public function createIntegrante()
     {
         $sql = "INSERT INTO integrante_familia(nombres, apellidos, parentesco, fecha_nacimiento, profesion_ocupacion, lugar_trabajo, tel_trabajo, salario, id_solicitud) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_solicitud);
-        return Database::executeRow($sql, $params);
+        $params = array($this->nombres, $this->apellidos, $this->parentesco, $this->fecha_nacimiento, $this->profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_solicitud);
+        $idIntegrante = Database::executeRow($sql, $params);
+        if($idIntegrante)
+        {
+            $this->id_integrante = Database::getLastRowId();
+        }
     }
 
-    public function updateIntegrante($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion)
+    public function updateIntegrante()
     {
         $sql = "UPDATE integrante_familia SET nombres = ?, apellidos = ? ,parentesco = ?, fecha_nacimiento = ?, profesion_ocupacion = ?, lugar_trabajo = ?, tel_trabajo = ?, salario = ? WHERE id_integrante = ? AND id_solicitud = ?";
-        $params = array($nombres, $apellidos, $paretesco, $fecha_nacimiento, $profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_integrante, $this->id_solicitud);
+        $params = array($this->nombres, $this->apellidos, $this->parentesco, $this->fecha_nacimiento, $this->profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_integrante, $this->id_solicitud);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 

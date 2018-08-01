@@ -11,6 +11,11 @@ try
     {
         function create()
         {
+            //Se obtiene la fecha de El Salvador
+            date_default_timezone_set("America/El_Salvador");
+            //Se da un formato y se guarda en una variable
+            $Fecha = date("d/m/Y");
+            echo $fecha;
             $solicitud = new Solicitud;
             
             $solicitud->setIdEstudiante($_SESSION['id_estudiante']);
@@ -27,12 +32,13 @@ try
             $solicitud->setLugarNacimiento($_POST['lugar']);
             $solicitud->setPaisNacimiento($_POST['pais_naci']);
             $solicitud->setEstudiosFinan($_POST['financiados']);
-            
-            $data = $solicitud->getInstitucion();
-            $id_institucion_proveniente = $data[0];
-
-            $solicitud->setIdInstitucion($id_institucion_proveniente);
+            $solicitud->setIdInstitucion($_POST['id_institucion']);
+            $solicitud->setFecha($Fecha);
+            $solicitud->setNombresResponsable($_POST['nombres_responsable']);
+            $solicitud->setApellidosResponsable($_POST['apellidos_responsable']);
             $solicitud->createSolicitud();
+            $id_solicitud = $solicitud->getIdSolicitud();
+            echo json_decode($id_solicitud);
         }
     }
     $object = new Datos_estudiante();

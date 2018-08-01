@@ -131,7 +131,6 @@ $(document).ready(function(){
             }
         },
         dayClick:function(date,jsEvent,view){
-            LimpiarInputs();
             $('#fecha').val(date.format());
             $('#agregar').show(0);
             $('#modalEventos').modal().modal('open');
@@ -151,6 +150,7 @@ $(document).ready(function(){
             $('#fecha').val(FechaHora[0]);
             $('#hora').val(FechaHora[1]);
 
+            $('#agregar').hide(0);
             $('#modalEventos').modal().modal('open');
         },
 
@@ -189,7 +189,21 @@ $(document).ready(function(){
 
     $('#eliminar').click(function(){
         Recolectardatos();
-        EnviardatosEliminar(NuevoEvento);
+        swal({
+            title: 'Eliminar Caso',
+            text: '¿Quiere eliminar este Caso?',
+            icon: 'warning',
+            dangerMode: true,
+            buttons: {
+              cancel: "No",
+              danger: "Si"
+            },
+          }).then((willDelete) => {
+            if(willDelete)
+            {
+                EnviardatosEliminar(NuevoEvento);
+            }
+          });
     });
 
     function Recolectardatos(){
@@ -211,8 +225,9 @@ $(document).ready(function(){
             type:'POST', 
             url:'../../app/controllers/dashboard/citas/create_controller.php?action=create',
             data: objEvento,
-            success: function(data)
+            success: function(datos)
             {
+                console.log(datos);
                 $('#Calendario').fullCalendar('refetchEvents');
                 $('#modalEventos').modal().modal('close');
                 LimpiarInputs();

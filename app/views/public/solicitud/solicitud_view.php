@@ -12,6 +12,11 @@
     <span class="bar2"></span>
     <div class="circle3">
         <span class="label">3</span>
+        <span class="title">Propiedad</span>
+    </div>
+    <span class="bar3"></span>
+    <div class="circle4">
+        <span class="label">4</span>
         <span class="title">Gastos</span>
     </div>
 </div>
@@ -42,16 +47,25 @@
                 <button class="waves-effect waves-light btn blue second margen_second">Siguiente</button>
             </div>
 
+            <!--Formulario 3, slider 3, Datos de la familia -->
+            <div class="slider-form slider-three" >
+                <h2>Datos de la propiedad</h2>
+                <?php
+                include_once("../../app/views/public/templates/datos_propiedad.php");
+                ?>
+                <a class="waves-effect waves-light btn blue regresardos margen_three">Regresar</a>
+                <button class="waves-effect waves-light btn blue three margen_three">Siguiente</button>
+            </div>
             
-                <!--Formulario 3, slider 3, Gastos mensuales-->
-            <div class="slider-form slider-three ">
+                <!--Formulario 4, slider 4, Gastos mensuales-->
+            <div class="slider-form slider-four">
                 <form method="POST" id="frmGastos" enctype='multipart/form-data'>
                     <h2>Gastos mensuales y remesas</h2>
                     <?php
                     include_once("../../app/views/public/templates/gastos_mensuales.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue regresardos margen_three">Regresar</a>
-                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue three next margen_three">Finalizar</button>
+                    <a class="waves-effect waves-light btn blue regresarthree margen_four">Regresar</a>
+                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue four next margen_four">Finalizar</button>
                 </form>
             </div>            
         </div>

@@ -10,14 +10,21 @@ try
         function create()
         {
             $citas = new Citas;
-            $citas->setIdDetalle($_POST['id_detalle']);
             $titulo = $_POST['title']; 
             $descripcion = $_POST['descripcion'];
             $color = $_POST['color'];
             $colortext = $_POST['textColor'];
             $inicio = $_POST['start'];
             $fin = $_POST['end'];
-            $citas->createEvento($titulo, $descripcion, $color, $colortext, $inicio, $fin);
+            $citas->setIdDetalle($_POST['id_detalle']);
+            if($citas->createEvento($titulo, $descripcion, $color, $colortext, $inicio, $fin))
+            {
+
+            }
+            else
+            {
+                echo json_encode(Database::getException());
+            }
         }
     }
 
@@ -26,6 +33,6 @@ try
 }
 catch(Exception $error)
 {
-    Component::showMessage(4, $error->getMessage(), null);
+    echo json_encode($error->getMessage());
 }
 ?>

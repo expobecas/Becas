@@ -99,6 +99,7 @@ $(document).ready(function() {
   jQuery(document).ready(function($) {
   var $bar1 = $(".bar1");
   var $bar2 = $(".bar2");
+  var $bar3 = $(".bar3");
 
   $(window).resize(function(){
     var size = document.body.clientWidth;
@@ -106,11 +107,13 @@ $(document).ready(function() {
   {
     $bar1.addClass("responsive");
     $bar2.addClass("responsive");
+    $bar3.addClass("responsive");
   }
   else if(size >= 601)
   {    
     $bar1.removeClass("responsive");
     $bar2.removeClass("responsive");
+    $bar3.removeClass("responsive");
   }
   });
 });
@@ -118,9 +121,10 @@ $(document).ready(function() {
   /*Formulario y progress*/
   $firstButton = $(".first");
   $secondButton = $(".second"),
-  $threeButton = $("three"),
+  $threeButton = $(".three"),
   $regresarunoButton = $(".regresaruno"),
   $regresardosButton = $(".regresardos"),
+  $regresarthreeButton = $(".regresarthree"),
   $ctr = $(".containers");
 
 /*activa el circulo 1 con color azul*/
@@ -153,7 +157,7 @@ $regresardosButton.on('click', function(e){
   $('body,html').animate({
     scrollTop:0
   }, 400)
-    $ctr.addClass("center slider-two-active").removeClass("full slider-three-active");
+    $ctr.addClass("center slider-two-active").removeClass("three slider-three-active");
     var n = setInterval(function(){
       /*sobra de la segunda mitad de la barra*/
       $('.progressc .bar1').removeClass('done').addClass('active');
@@ -169,6 +173,58 @@ $regresardosButton.on('click', function(e){
     
       /*activamos el circulo 3 del progress*/
       $('.progressc .circle3').removeClass('active');
+
+      clearInterval(n);
+    }, 100);
+    e.preventDefault();
+});
+
+$regresardosButton.on('click', function(e){
+  $('body,html').animate({
+    scrollTop:0
+  }, 400)
+    $ctr.addClass("center slider-two-active").removeClass("three slider-three-active");
+    var n = setInterval(function(){
+      /*sobra de la segunda mitad de la barra*/
+      $('.progressc .bar1').removeClass('done').addClass('active');
+    
+      /*le da color verde*/
+      $('.progressc .circle2').removeClass('done').addClass('active');
+      
+      /*este pone el checke*/
+      $('.progressc .circle2 .label').html('2');
+    
+      /*rellena la primera mitad de la barra*/
+      $('.progressc .bar2').removeClass('active');
+    
+      /*activamos el circulo 3 del progress*/
+      $('.progressc .circle3').removeClass('active');
+
+      clearInterval(n);
+    }, 100);
+    e.preventDefault();
+});
+
+$regresarthreeButton.on('click', function(e){
+  $('body,html').animate({
+    scrollTop:0
+  }, 400)
+    $ctr.addClass("three slider-three-active").removeClass("full slider-four-active");
+    var n = setInterval(function(){
+      /*sobra de la segunda mitad de la barra*/
+      $('.progressc .bar2').removeClass('done').addClass('active');
+    
+      /*le da color verde*/
+      $('.progressc .circle3').removeClass('done').addClass('active');
+      
+      /*este pone el checke*/
+      $('.progressc .circle3 .label').html('3');
+    
+      /*rellena la primera mitad de la barra*/
+      $('.progressc .bar3').removeClass('active');
+    
+      /*activamos el circulo 3 del progress*/
+      $('.progressc .circle4').removeClass('active');
 
       clearInterval(n);
     }, 100);
@@ -202,7 +258,7 @@ $secondButton.on('click', function(e){
   $('body,html').animate({
     scrollTop:0
   }, 400)
-    $ctr.addClass("full slider-three-active").removeClass("center slider-two-active ");
+    $ctr.addClass("three slider-three-active").removeClass("center slider-two-active ");
   //var i = 1;
   var m = setInterval(function(){
 
@@ -220,6 +276,34 @@ $secondButton.on('click', function(e){
 
   /*activamos el circulo 3 del progress*/
   $('.progressc .circle3').addClass('active');
+
+  clearInterval(m);
+  }, 100);
+  e.preventDefault();
+});
+
+$threeButton.on('click', function(e){
+  $('body,html').animate({
+    scrollTop:0
+  }, 400)
+    $ctr.addClass("full slider-four-active").removeClass("three slider-three-active");
+  //var i = 1;
+  var m = setInterval(function(){
+
+  /*sobra de la segunda mitad de la barra*/
+  $('.progressc .bar2').removeClass('active').addClass('done');
+
+  /*le da color verde*/
+  $('.progressc .circle3').removeClass('active').addClass('done');
+  
+  /*este pone el checke*/
+  $('.progressc .circle3 .label').html('&#10003;');
+
+  /*rellena la primera mitad de la barra*/
+  $('.progressc .bar3').addClass('active');
+
+  /*activamos el circulo 4 del progress*/
+  $('.progressc .circle4').addClass('active');
 
   clearInterval(m);
   }, 100);

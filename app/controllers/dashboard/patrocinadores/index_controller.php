@@ -7,7 +7,7 @@ try{
     if($data){
         require_once("../../app/views/dashboard/patrocinadores/index_view.php");
     }else{
-        Page::showMessage(3, "No se encontraron solicitudes", "");
+        Page::showMessage(3, "No se encontraron patrocinadores", "");
     }
 
 }catch(Exception $error){

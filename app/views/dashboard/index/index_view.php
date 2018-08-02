@@ -6,7 +6,11 @@
          <canvas id="myChart1" width="400" height="400"></canvas>
      </div> 
  <!--Gráfica2-->
+<<<<<<< HEAD
      <div class="col s12 m4 l4 push-l1 white">
+=======
+     <div class="col s12 m4 l4 white">
+>>>>>>> 8272a664206a7b358ae6e7a421df58ba57cc4fcb
          <h4>Solicitudes por genero</h4>
          <canvas id="myChart2" width="400" height="400"></canvas>
      </div> 

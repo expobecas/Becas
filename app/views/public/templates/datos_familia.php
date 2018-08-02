@@ -89,7 +89,7 @@
         <div class="col s12 m6 l3">
             <a type="submit" id="agregar" class="waves-effect waves-light btn blue botones_integrante">Agregar</a>
             <a type="submit" id="modificar" class="waves-effect waves-light btn blue botones_integrante">Modificar</a>
-            <a type="button" id="cancelar" class="waves-effect waves-light btn blue botones_integrante">Cancelar</a>
+            <a type="button" id="cancelar" class="waves-effect waves-light btn grey botones_integrante">Cancelar</a>
         </div>
     
         <div class="col s12 m12 l12">

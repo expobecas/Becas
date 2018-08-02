@@ -11,7 +11,9 @@ function AlertasSwal($text)
 }
 
 var id_solicitud = "";
-    //PARA EL SLIDER 1
+    /************************************************************************************************************************************************
+     **********************************************************PARA EL SLIDER 1**********************************************************************
+     ************************************************************************************************************************************************/
     $("#estudiante").click(function(e){
       //Tabla solicitud
       var nombres_responsable = $('#nombres_responsable').val();
@@ -239,7 +241,9 @@ var id_solicitud = "";
       }
     });
 
-    //PARA EL SLIDER 2
+    /************************************************************************************************************************************************
+     **********************************************************PARA EL SLIDER 2**********************************************************************
+     ************************************************************************************************************************************************/
     //FUNCION PARA CARGAR DATOS A LA TABLA DE INTEGRANTES CADA VEZ QUE SE INSERTA UNO
     function cargarTabla()
     {
@@ -771,4 +775,296 @@ var id_solicitud = "";
         });
       });
     }
+
+    /************************************************************************************************************************************************
+     **********************************************************PARA EL SLIDER 3**********************************************************************
+     ************************************************************************************************************************************************/
+
+     /*----------------------------------------------------------------------------------------------------------------------------------------------
+     --------------------------------------PARA INSERTAR EN LA TABLA PROPIEDAD Y EN LA VEHICULOS-----------------------------------------------------
+     -----------------------------------------------------------------------------------------------------------------------------------------------*/
+    var id_propiedad = "";
+    //funcion para guardar en la tabla propiedad
+    function GuardarPropiedad()
+    {
+      if($('#tipocasa').val() === 'Otro')
+      {
+        tipo_casa = $('#especificar_casa').val()
+      }
+      else
+      {
+        tipo_casa = $('#tipocasa').val();
+      }
+      cuota_mensual = $('#cuota_mensual').val();
+      valor_actual = $('#valor_actual').val();
+      if(tipo_casa != null)
+      {
+        $.ajax({
+          type: 'POST',
+          url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
+          data:{tipo_casa:tipo_casa,
+          cuota_mensual:cuota_mensual,
+          valor_actual:valor_actual},
+          success: function(IdPropiedad)
+          {
+            id_propiedad = IdPropiedad;
+          }
+        });
+      }
+      else
+      {
+        AlertasSwal('Seleccione el estado de la casa que pertenece');
+      }
+    }
+    //Funcion para guardar en la tabla propiedad y en la de vehiculos
+    function GuardarPropiedad_Vehiculo()
+    {
+      if($('#tipocasa').val() === 'Otro')
+      {
+        tipo_casa = $('#especificar_casa').val()
+      }
+      else
+      {
+        tipo_casa = $('#tipocasa').val();
+      }
+      cuota_mensual = $('#cuota_mensual').val();
+      valor_actual = $('#valor_actual').val();
+      var tipo_vehiculo = $('#tipo_vehiculo').val();
+      var año_vehiculo = $('#año').val();;
+      var valor_vehiculo = $('#valor_vehiculo').val();
+      if(tipo_casa != null)
+      {
+        if(tipo_vehiculo != null)
+        {
+          if(año_vehiculo != null)
+          {
+            if(valor_vehiculo != null)
+            {
+              $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
+                data:{tipo_casa:tipo_casa,
+                cuota_mensual:cuota_mensual,
+                valor_actual:valor_actual},
+                success: function(IdPropiedad)
+                {
+                  id_propiedad = IdPropiedad;
+                  $.ajax({
+                    type: 'POST',
+                    url: '../../app/controllers/public/solicitud/create_vehiculo.php?action=create',
+                    data:{tipo_vehiculo:tipo_vehiculo,
+                    año_vehiculo:año_vehiculo,
+                    valor_vehiculo:valor_vehiculo,
+                    id_propiedad:id_propiedad},
+                    dataType: 'json',
+                    success: function(datos)
+                    {
+                      LimpiarinputsVehiculos();
+                      console.log(datos);
+                      $('#vehiculos').empty();
+                      var i = 0;
+                      datos = JSON.parse(JSON.stringify(datos).replace(/null/g, '""'));//todos los datos con valor null se convierten en vacios
+                      for(i; i<datos.length; i++)
+                      {
+                        var fila = "";
+                        //OBTENIENDO LOS VALORES DEL ARRAY Y CREAR EL BODY DE LA TABLA CON LOS DATOS
+                        fila = fila.concat(
+                          '<tr class="integrante" id="'+datos[i].id_vehiculo+'">',
+                          '<td>'+datos[i].tipo_vehiculo+'</td>',
+                          '<td>'+datos[i].año+'</td>',
+                          '<td>'+datos[i].valor_actual+'</td>',
+                          '</tr>'
+                        );
+                        $('#vehiculos').append(fila);
+                      }
+                    }
+                  });
+                }
+              });
+            }
+            else
+            {
+              AlertasSwal('Ingrese el valor actual de su vehiculo');
+            }
+          }
+          else
+          {
+            AlertasSwal('Ingrese el año de su vehiculo');
+          }
+        }
+        else
+        {
+          AlertasSwal('Ingrese el tipo de su vehiculo');
+        }
+      }
+      else
+      {
+        AlertasSwal('Seleccione el estado de la casa que pertenece');
+      }
+    }
+
+    //Funcion para guardar en la tabla vehiculos
+    function GuardarVehiculo()
+    {
+      console.log(id_propiedad);
+      var tipo_vehiculo = $('#tipo_vehiculo').val();
+      var año_vehiculo = $('#año').val();
+      var valor_vehiculo = $('#valor_vehiculo').val();
+
+      if(tipo_vehiculo != null)
+      {
+        if(año_vehiculo != null)
+        {
+          if(valor_vehiculo != null)
+          {
+            $.ajax({
+              type: 'POST',
+              url: '../../app/controllers/public/solicitud/create_vehiculo.php?action=create',
+              data:{tipo_vehiculo:tipo_vehiculo,
+              año_vehiculo:año_vehiculo,
+              valor_vehiculo:valor_vehiculo,
+              id_propiedad:id_propiedad},
+              dataType: 'json',
+              success: function(datos)
+              {
+                LimpiarinputsVehiculos();
+                console.log(datos);
+                $('#vehiculos').empty();
+                var i = 0;
+                datos = JSON.parse(JSON.stringify(datos).replace(/null/g, '""'));//todos los datos con valor null se convierten en vacios
+                for(i; i<datos.length; i++)
+                {
+                  var fila = "";
+                  //OBTENIENDO LOS VALORES DEL ARRAY Y CREAR EL BODY DE LA TABLA CON LOS DATOS
+                  fila = fila.concat(
+                    '<tr class="integrante" id="'+datos[i].id_vehiculo+'">',
+                    '<td>'+datos[i].tipo_vehiculo+'</td>',
+                    '<td>'+datos[i].año+'</td>',
+                    '<td>'+datos[i].valor_actual+'</td>',
+                    '</tr>'
+                  );
+                  $('#vehiculos').append(fila);
+                }
+              }
+            });
+          }
+          else
+          {
+            AlertasSwal('Ingrese el valor actual de su vehiculo');
+          }
+        }
+        else
+        {
+          AlertasSwal('Ingrese el año de su vehiculo');
+        }
+      }
+      else
+      {
+        AlertasSwal('Ingrese el tipo de su vehiculo');
+      }
+    }
+    
+    //Cuando presione el boton con el id agregar_vehiculo que se ejecute la funcion
+    $('#agregar_vehiculo').click(function(){
+      if(id_propiedad == "")
+      {
+        GuardarPropiedad_Vehiculo();
+      }
+      else
+      {
+        GuardarVehiculo();
+      }      
+    });
+    //Funcion para limpiar los inputs de vehiculos
+    function LimpiarinputsVehiculos()
+    {
+      $('#tipo_vehiculo').val("");
+      $('#año').val("");
+      $('#valor_vehiculo').val("");
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------------------------------
+     --------------------------------------PARA SUBIR E INSERTAR EN LA TABLA IMAGENES PROPIEDAD-----------------------------------------------------
+     -----------------------------------------------------------------------------------------------------------------------------------------------*/
+    $('#propiedad').click(function(){
+
+      if($('#tipocasa').val() === 'Otro')
+      {
+        tipo_casa = $('#especificar_casa').val()
+      }
+      else
+      {
+        tipo_casa = $('#tipocasa').val();
+      }
+      cuota_mensual = $('#cuota_mensual').val();
+      valor_actual = $('#valor_actual').val();
+
+
+      if(tipo_casa != null)
+      {
+        if($('#imagen_casa')[0].files.length != 0)
+        {
+          if($('#imagen_casa')[0].files.type == 'image/jpg' || 'image/png')
+          {
+            $.ajax({
+              type: 'POST',
+              url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
+              data:{tipo_casa:tipo_casa,
+              cuota_mensual:cuota_mensual,
+              valor_actual:valor_actual},
+              success: function(IdPropiedad)
+              {
+                id_propiedad = IdPropiedad;
+                
+                var data = new FormData();
+                $.each($('#imagen_casa')[0].files, function(i, file){
+                  data.append('archivo', file);
+                });
+                data.append('id_propiedad', id_propiedad);
+
+                $.ajax({
+                  type: 'POST',
+                  url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
+                  processData: false,
+                  data: data,
+                  contentType: false,
+                  success: function(resultado)
+                  {
+                    console.log(resultado);
+                  }
+                });
+              }
+            });
+          }
+          else
+          {
+            AlertasSwal('El tipo de la imagen debe ser jpg o png');
+          }
+        }
+        else
+        {
+          AlertasSwal('Subir una imagen de su casa');
+        }
+      }
+      else
+      {
+        AlertasSwal('Seleccione el estado de la casa que pertenece');
+      }
+    });
+
+     
 });
+
+//Funcion para ver la imagen que ha seleccionado
+function readURL(input){
+  if(input.files && input.files[0])
+  {
+    var reader = new FileReader();
+
+    reader.onload = function (e){
+      $('#imagen_propiedad').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}

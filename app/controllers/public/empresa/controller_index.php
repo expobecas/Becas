@@ -9,7 +9,7 @@ try{
 		$total = $beca->getTotal();
 		if(!$data)
 		{
-			throw new Exception("Murio4");
+			throw new Exception("No hay Becas relacionadas");
 		}
 		else
 		{

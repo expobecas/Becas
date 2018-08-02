@@ -47,7 +47,7 @@ echo "var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -67,15 +67,15 @@ echo "var myChart = new Chart(ctx, {
 echo "function grafica2(){";
 echo "var ctx = document.getElementById('myChart2').getContext('2d');";
 echo "var myChart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
         labels: [";
    foreach ($grafica2 as $row) {
-        	echo "'".$row['tipo_usuario']."' ,";
+        	echo "'".$row['genero']."' ,";
         }
  echo "],
         datasets: [{
-            label: 'Cantidad de clientes ',
+            label: 'Cantidad de solicitudes ',
             data: [";
    foreach ($grafica2 as $row) {
         	echo "".$row['Cantidad Ingresada'].",";
@@ -98,7 +98,7 @@ echo "var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -123,11 +123,11 @@ echo "var myChart = new Chart(ctx, {
     data: {
         labels: [";
    foreach ($grafica3 as $row) {
-        	echo "'".$row['talla']."' ,";
+        	echo "'".$row['tipo_patrocinador']."' ,";
         }
  echo "],
         datasets: [{
-            label: 'Cantidad de productos en una talla',
+            label: 'Cantidad de patrocinadores',
             data: [";
    foreach ($grafica3 as $row) {
         	echo "".$row['Cantidad Ingresada'].",";
@@ -149,7 +149,7 @@ echo "var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -173,7 +173,7 @@ echo "var myChart = new Chart(ctx, {
     data: {
         labels: [";
    foreach ($grafica4 as $row) {
-        	echo "'".$row['nombre']."' ,";
+        	echo "'".$row['estado_solicitud']."' ,";
         }
  echo "],
         datasets: [{
@@ -200,7 +200,7 @@ echo "var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -220,15 +220,15 @@ echo "var myChart = new Chart(ctx, {
 echo "function grafica5(){";
     echo "var ctx = document.getElementById('grafico5').getContext('2d');";
     echo "var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'polarArea',
         data: {
             labels: [";
        foreach ($grafica5 as $row) {
-                echo "'".$row['nombre']."' ,";
+                echo "'".$row['grado']."' ,";
             }
      echo "],
             datasets: [{
-                label: 'Precios de productos',
+                label: 'Nivel del estudiante',
                 data: [";
        foreach ($grafica5 as $row) {
                 echo "".$row['Cantidad Ingresada'].",";
@@ -250,7 +250,7 @@ echo "function grafica5(){";
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2
             }]
         },
         options: {

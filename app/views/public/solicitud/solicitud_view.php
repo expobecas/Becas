@@ -54,7 +54,7 @@
                 include_once("../../app/views/public/templates/datos_propiedad.php");
                 ?>
                 <a class="waves-effect waves-light btn blue regresardos margen_three">Regresar</a>
-                <button class="waves-effect waves-light btn blue three margen_three">Siguiente</button>
+                <button id="propiedad" class="waves-effect waves-light btn blue three margen_three">Siguiente</button>
             </div>
             
                 <!--Formulario 4, slider 4, Gastos mensuales-->

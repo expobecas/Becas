@@ -5,6 +5,10 @@ $(document).ready(function() {
     $('#modificar').hide(0);
     $('#idintegrante').hide(0);
     $('#ingreso').hide(0);
+    $("#tablevehiculos").hide(0);
+    $("#botones_vehiculo").hide(0);
+    $("#modificar_vehiculo").hide(0);
+    $("#cancelar_vehiculo").hide(0);
 
     /*Mostrar u ocultar los campos que estan ocultos al presionar radiobutton */
     $("#si4").on("click", function(){
@@ -33,11 +37,15 @@ $(document).ready(function() {
       $("#tipo").show(1000);
       $("#año_vehiculo").show(1000);
       $("#vehiculo").show(1000);
+      $("#tablevehiculos").show(1000);
+      $("#botones_vehiculo").show(1000);
     });
     $("#no_vehiculo").on("click", function(){
       $("#tipo").hide(1000);
       $("#año_vehiculo").hide(1000);
       $("#vehiculo").hide(1000);
+      $("#tablevehiculos").hide(1000);
+      $("#botones_vehiculo").hide(1000);
     });
   });
 
@@ -56,7 +64,7 @@ $(document).ready(function() {
   });
 
     //Cuando selecciona la opcion Otros de un select mostrar el campo
-    $("#casa").change(function(){
+    $("#tipocasa").change(function(){
       if($(this).val() == "Otro")
       {
         $("#especificar_casa").show(1000);

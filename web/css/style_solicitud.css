@@ -47,6 +47,12 @@
   box-shadow: 0 1px 0 0 #F44336 !important;
 }
 
+.imagenes_propiedad
+{
+  width: 100px;
+  height: 100px;
+}
+
 /*css para el progress*/
 *, *:after, *:before {
     margin: 0;

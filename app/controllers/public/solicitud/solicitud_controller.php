@@ -2,7 +2,7 @@
 require_once("../../app/models/familiares_estudiante.class.php");
 require_once("../../app/models/gastos_mensuales.class.php");
 require_once("../../app/models/grupo_familiar.class.php");
-require_once("../../app/models/imagenes_vehiculo.class.php");
+require_once("../../app/models/imagenes_propiedad.class.php");
 require_once("../../app/models/institucion_proveniente.class.php");
 require_once("../../app/models/integrante_familia.class.php");
 require_once("../../app/models/intermedia_propiedad.class.php");
@@ -40,31 +40,6 @@ try
 
     //Para llenar la tabla familiares estudiante
     $familiares_estudiante = new Familiares_estudiante;
-
-    //Para llenar la tabla imagenes_vehiculo
-	/*$imagenes_vehiculo = new Imagenes_vehiculo;
-	if(isset($_POST['enviar']))
-	{
-		$_POST = $imagenes_vehiculo->validateForm($_POST['']);
-		if($imagenes_vehiculo->setImagenVehiculo())
-		{
-			if($imagenes_vehiculo->setIdPropiedad($_POST['']))
-			{
-				if($imagenes_vehiculo->createImagenVehiculo())
-				{
-					Page::showMessage(1, "Imagen agregada", "");
-				}
-				else
-				{
-					throw new Exception(Database::getException());
-				}
-			}
-		}
-		else
-		{
-			throw new Exception("Agrege una imagen de su vehiculo");
-		}
-	}*/
 
     //Para llenar la tabla propiedad
 	$propiedad = new Propiedad;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Personalice la directiva de seguridad de contenido en la etiqueta meta como sea necesario. Agregue "unsafe-inline" a default-src para permitir JavaScript insertado.
+        Para obtener más detalles, consulte http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link href="css\icons.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+    <div>
+        <ul id='slide-out' class='side-nav fixed blue-grey darken-4'>
+          <li><div class='user-view'>
+          <div>
+          </div>
+          <a href='#!user'><img class='circle' src='web/img/prueba.jpg'></a>
+          <a href='#!name'><span class='white-text name'>John Doe</span></a>
+          <a href='#!email'><span class='white-text email'>jdandturk@gmail.com</span></a>
+        </div></li>    
+          <li><div class='divider'></div></li>
+          <li><a href='solicitudes.php' class='white-text'><i class='material-icons white-text'>description</i>Solicitudes</a></li>
+          <li><div class='divider'></div></li>
+          <li><a href='casos.php' class='white-text'><i class='material-icons white-text'>folder_shared</i>Casos</a></li>
+          <li><div class='divider'></div></li>      
+          <li><a href='patrocinadores.php' class='white-text'><i class='material-icons white-text'>mood</i>Patrocinadores</a></li>
+          <li><div class='divider'></div></li>
+          <li><a href='../web/reportes/becados.php' class='white-text'><i class='material-icons white-text'>assignment</i>Reportes</a></li>
+          <li><div class='divider'></div></li>
+          <li><a href='estudiantes_becados.php' class='white-text'><i class='material-icons white-text'>group</i>Estudiantes becados</a></li>
+          <li><div class='divider'></div></li>
+       
+        </ul>
+      </div>
+      
+      <nav class='mobile black'>
+      <a href='#' data-activates='slide-out' class='button-collapse'><i class='material-icons'>menu</i></a>
+      </nav>
+      
+       
+    <script type="text/javascript" src="scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/materialize.min.js"></script>
+
+</body>
+</html>

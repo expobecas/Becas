@@ -39,7 +39,7 @@ class Page extends component{
                     <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
                     <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
-                    <li><a href='../casos/index.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
+                    <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
@@ -69,7 +69,7 @@ class Page extends component{
                     ");
                     $filename = basename($_SERVER['PHP_SELF']);
                     if($filename != "acceder.php"){
-                        self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
+                        self::showMessage(3, "¡Debe iniciar sesión!", "../../dashboard/ingresar/acceder.php");
                         self::templateFooter();
                         exit;
                     }else{

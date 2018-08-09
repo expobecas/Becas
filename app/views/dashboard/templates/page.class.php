@@ -81,8 +81,12 @@ class Page extends component{
     
 
     public static function templateFooter(){
+        $filename = basename($_SERVER['PHP_SELF']);
+        if($filename == "casos.php")
+        {
+            print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
+        }
         print("
-        </main>
 		</body>
 		</html>
         ");

@@ -23,7 +23,7 @@ print("
       <table class="white highlight bordered tb-sol" id="tablecaso">
       <thead>
             <tr>
-            <th>Alumno</th>
+                <th>Alumno</th>
                 <th>Fecha que se generó el caso</th>
                 <th>Estado de solicitud</th>
                 <th>Fecha de cita</th>

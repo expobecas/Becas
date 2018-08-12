@@ -6,7 +6,7 @@ try{
         $_POST = $tipo->validateForm($_POST);
         if($tipo->setTipo($_POST['tipo'])){
             if($tipo->CreateTipo()){
-                Page::showMessage(1, "Tipo creada","../../dashboard/tipo_usuario/index.php");
+                Page::showMessage(1, "Tipo creada","../../dashboard/usuario/index.php");
             }else{
                 throw new Exception("Tipo invalida");
             }

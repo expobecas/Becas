@@ -10,7 +10,7 @@
         else
         {
             alert("dentro del else"); //ESTE MENSAJE LO MUESTRA
-          $("#formpatro").hide(1000);
+          $("#formpatro").hide(0);
         }
       });
   });

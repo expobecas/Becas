@@ -14,8 +14,7 @@ try
             $integrante->setNombres($_POST['nombres']);
             $integrante->setApellidos($_POST['apellidos']);
             $integrante->setParentesco($_POST['parentesco']);
-            $fecha = str_replace('-', '/', $_POST['fecha_nacimiento']);
-            $integrante->setFechaNacimiento($fecha);
+            $integrante->setFechaNacimiento($_POST['fecha_nacimiento']);
             $integrante->setProfesionOcupacion($_POST['profesion']);
             $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
             $integrante->setTelTrabajo($_POST['tel_trabajo']);

@@ -76,13 +76,6 @@ class Intermedia_propiedad extends Validator
     }
 
     //Metodos para el manejo del SCRUD
-    public function getSolicitud()
-    {
-        $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
-
     public function getIntegrantes()
     {
         $sql = "SELECT id_integrante FROM integrante_familia WHERE id_solicitud = ?";

@@ -58,12 +58,6 @@ class Detalle_solicitud Extends Validator
     }
 
     //Metodos para el matenimiento del SCRUD
-    public function getSolicitud()
-    {
-        $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
 
     public function getIdDetalles()
     {
@@ -74,8 +68,8 @@ class Detalle_solicitud Extends Validator
     
     public function createDetalle()
     {
-        $sql = "INSERT INTO detalle_solicitud(id_estado, id_solicitud) VALUES (1, ?)";
-        $params = array($this->id_solicitud);
+        $sql = "INSERT INTO detalle_solicitud(id_estado, id_solicitud) VALUES (?, ?)";
+        $params = array($this->id_estado, $this->id_solicitud);
         return Database::executeRow($sql, $params);
     }
 

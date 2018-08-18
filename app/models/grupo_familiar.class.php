@@ -120,26 +120,15 @@ class Grupo_Familiar extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function getIdGasto()
-    {
-        $sql = "SELECT id_gastos FROM gastos_mensuales ORDER BY id_gastos DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-    }
-
-    public function getSolicitud()
-    {
-        $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1";
-        $params = array(null);
-        return Database::getRow($sql, $params);
-
-    }
-
     public function createFamilia()
     {
         $sql = "INSERT INTO grupo_familiar(ingreso_familiar, id_gastos, total_gastos, id_solicitud, monto_deuda) VALUES(?, ?, ?, ?, ?)";
         $params = array($this->ingreso_familiar, $this->id_gastos, $this->total_gastos, $this->id_solicitud, $this->monto_deuda);
-        return Database::executeRow($sql, $params);
+        $grupo_familiar = Database::executeRow($sql, $params);
+        if($grupo_familiar)
+        {
+            $this->id_familia = Database::getLastRowId();
+        }
     }
 }
 ?>

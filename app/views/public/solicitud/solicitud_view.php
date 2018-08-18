@@ -64,9 +64,9 @@
                     <?php
                     include_once("../../app/views/public/templates/gastos_mensuales.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue regresarthree margen_four">Regresar</a>
-                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue four next margen_four">Finalizar</button>
                 </form>
+                <a class="waves-effect waves-light btn blue regresarthree margen_four">Regresar</a>
+                <button id="enviar" name="enviar" class="waves-effect waves-light btn blue four next margen_four">Finalizar</button>
             </div>            
         </div>
     </div>

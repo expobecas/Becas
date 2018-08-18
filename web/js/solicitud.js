@@ -416,7 +416,7 @@ var id_solicitud = "";
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     $("#agregar").click(function(){
 
-      console.log(id_solicitud);
+      console.log('El id de la soli es: '+id_solicitud);
       var id_integrante = "";
       //OBTENIENDO VALORES PARA INSERTAR EN LA TABLA INTEGRANTE_FAMILIA
       var nombres = $('#nombres_inte').val();
@@ -987,72 +987,83 @@ var id_solicitud = "";
      --------------------------------------PARA SUBIR E INSERTAR EN LA TABLA IMAGENES PROPIEDAD-----------------------------------------------------
      -----------------------------------------------------------------------------------------------------------------------------------------------*/
     $('#propiedad').click(function(){
-
-      if($('#tipocasa').val() === 'Otro')
+      if(id_propiedad == "")
       {
-        tipo_casa = $('#especificar_casa').val()
-      }
-      else
-      {
-        tipo_casa = $('#tipocasa').val();
-      }
-      cuota_mensual = $('#cuota_mensual').val();
-      valor_actual = $('#valor_actual').val();
-
-
-      if(tipo_casa != null)
-      {
-        if($('#imagen_casa')[0].files.length != 0)
+        if($('#tipocasa').val() === 'Otro')
         {
-          if($('#imagen_casa')[0].files.type == 'image/jpg' || 'image/png')
-          {
-            $.ajax({
-              type: 'POST',
-              url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
-              data:{tipo_casa:tipo_casa,
-              cuota_mensual:cuota_mensual,
-              valor_actual:valor_actual},
-              success: function(IdPropiedad)
-              {
-                id_propiedad = IdPropiedad;
-                
-                var data = new FormData();
-                $.each($('#imagen_casa')[0].files, function(i, file){
-                  data.append('archivo', file);
-                });
-                data.append('id_propiedad', id_propiedad);
+          tipo_casa = $('#especificar_casa').val()
+        }
+        else
+        {
+          tipo_casa = $('#tipocasa').val();
+        }
+        cuota_mensual = $('#cuota_mensual').val();
+        valor_actual = $('#valor_actual').val();
 
-                $.ajax({
-                  type: 'POST',
-                  url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
-                  processData: false,
-                  data: data,
-                  contentType: false,
-                  success: function(resultado)
-                  {
-                    console.log(resultado);
-                  }
-                });
-              }
-            });
+
+        if(tipo_casa != null)
+        {
+          if($('#imagen_casa')[0].files.length != 0)
+          {
+            if($('#imagen_casa')[0].files.type == 'image/jpg' || 'image/png')
+            {
+              $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
+                data:{tipo_casa:tipo_casa,
+                cuota_mensual:cuota_mensual,
+                valor_actual:valor_actual},
+                success: function(IdPropiedad)
+                {
+                  id_propiedad = IdPropiedad;
+                  
+                  var data = new FormData();
+                  $.each($('#imagen_casa')[0].files, function(i, file){
+                    data.append('archivo', file);
+                  });
+                  data.append('id_propiedad', id_propiedad);
+
+                  $.ajax({
+                    type: 'POST',
+                    url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
+                    processData: false,
+                    data: data,
+                    contentType: false,
+                    success: function(resultado)
+                    {
+                      console.log(resultado);
+                    }
+                  });
+                }
+              });
+            }
+            else
+            {
+              AlertasSwal('El tipo de la imagen debe ser jpg o png');
+            }
           }
           else
           {
-            AlertasSwal('El tipo de la imagen debe ser jpg o png');
+            AlertasSwal('Subir una imagen de su casa');
           }
         }
         else
         {
-          AlertasSwal('Subir una imagen de su casa');
+          AlertasSwal('Seleccione el estado de la casa que pertenece');
         }
-      }
-      else
-      {
-        AlertasSwal('Seleccione el estado de la casa que pertenece');
       }
     });
 
-     
+    /************************************************************************************************************************************************
+     **********************************************************PARA EL SLIDER 4**********************************************************************
+     ************************************************************************************************************************************************/
+
+     $('#enviar').click(function(){
+      console.log(id_solicitud);
+       /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA -----------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/       
+     });
 });
 
 //Funcion para ver la imagen que ha seleccionado

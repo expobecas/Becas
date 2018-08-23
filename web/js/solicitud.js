@@ -416,7 +416,7 @@ var id_solicitud = "";
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     $("#agregar").click(function(){
 
-      console.log(id_solicitud);
+      console.log('El id de la soli es: '+id_solicitud);
       var id_integrante = "";
       //OBTENIENDO VALORES PARA INSERTAR EN LA TABLA INTEGRANTE_FAMILIA
       var nombres = $('#nombres_inte').val();
@@ -987,72 +987,256 @@ var id_solicitud = "";
      --------------------------------------PARA SUBIR E INSERTAR EN LA TABLA IMAGENES PROPIEDAD-----------------------------------------------------
      -----------------------------------------------------------------------------------------------------------------------------------------------*/
     $('#propiedad').click(function(){
-
-      if($('#tipocasa').val() === 'Otro')
+      if(id_propiedad == "")
       {
-        tipo_casa = $('#especificar_casa').val()
-      }
-      else
-      {
-        tipo_casa = $('#tipocasa').val();
-      }
-      cuota_mensual = $('#cuota_mensual').val();
-      valor_actual = $('#valor_actual').val();
-
-
-      if(tipo_casa != null)
-      {
-        if($('#imagen_casa')[0].files.length != 0)
+        if($('#tipocasa').val() === 'Otro')
         {
-          if($('#imagen_casa')[0].files.type == 'image/jpg' || 'image/png')
-          {
-            $.ajax({
-              type: 'POST',
-              url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
-              data:{tipo_casa:tipo_casa,
-              cuota_mensual:cuota_mensual,
-              valor_actual:valor_actual},
-              success: function(IdPropiedad)
-              {
-                id_propiedad = IdPropiedad;
-                
-                var data = new FormData();
-                $.each($('#imagen_casa')[0].files, function(i, file){
-                  data.append('archivo', file);
-                });
-                data.append('id_propiedad', id_propiedad);
+          tipo_casa = $('#especificar_casa').val()
+        }
+        else
+        {
+          tipo_casa = $('#tipocasa').val();
+        }
+        cuota_mensual = $('#cuota_mensual').val();
+        valor_actual = $('#valor_actual').val();
 
-                $.ajax({
-                  type: 'POST',
-                  url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
-                  processData: false,
-                  data: data,
-                  contentType: false,
-                  success: function(resultado)
-                  {
-                    console.log(resultado);
-                  }
-                });
-              }
-            });
+
+        if(tipo_casa != null)
+        {
+          if($('#imagen_casa')[0].files.length != 0)
+          {
+            if($('#imagen_casa')[0].files.type == 'image/jpg' || 'image/png')
+            {
+              $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/public/solicitud/create_propiedad.php?action=create',
+                data:{tipo_casa:tipo_casa,
+                cuota_mensual:cuota_mensual,
+                valor_actual:valor_actual},
+                success: function(IdPropiedad)
+                {
+                  id_propiedad = IdPropiedad;
+                  
+                  var data = new FormData();
+                  $.each($('#imagen_casa')[0].files, function(i, file){
+                    data.append('archivo', file);
+                  });
+                  data.append('id_propiedad', id_propiedad);
+
+                  $.ajax({
+                    type: 'POST',
+                    url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
+                    processData: false,
+                    data: data,
+                    contentType: false,
+                    success: function(resultado)
+                    {
+                      console.log(resultado);
+                    }
+                  });
+                }
+              });
+            }
+            else
+            {
+              AlertasSwal('El tipo de la imagen debe ser jpg o png');
+            }
           }
           else
           {
-            AlertasSwal('El tipo de la imagen debe ser jpg o png');
+            AlertasSwal('Subir una imagen de su casa');
           }
         }
         else
         {
-          AlertasSwal('Subir una imagen de su casa');
+          AlertasSwal('Seleccione el estado de la casa que pertenece');
         }
-      }
-      else
-      {
-        AlertasSwal('Seleccione el estado de la casa que pertenece');
       }
     });
 
-     
+    /************************************************************************************************************************************************
+     **********************************************************PARA EL SLIDER 4**********************************************************************
+     ************************************************************************************************************************************************/
+
+     $('#enviar').click(function(){
+      console.log(id_solicitud);
+      /*-----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA GASTOS MENSUALES---------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        //Obtener los datos de los inputs y guardarlos en variables
+        alimentacion = $('#alimentacion').val();
+        casa = $('#casa').val();
+        energia_electrica = $('#energia_electrica').val();
+        agua = $('#agua').val();
+        telefono = $('#telefono').val();
+        vigilancia = $('#vigilancia').val();
+        domesticos = $('#domesticos').val();
+        alcaldia = $('#alcaldia').val();
+        pago_deudas = $('#pago_deudas').val();
+        cotizaciones = $('#cotizaciones').val();
+        seguro_personal = $('#seguro_personal').val();
+        seguro_vehiculo = $('#seguro_vehiculo').val();
+        seguro_inmuebles = $('#seguro_inmuebles').val();
+        transporte = $('#transporte').val();
+        mant_vehiculo = $('#mant_vehiculo').val();
+        salud = $('#salud').val();
+        pago_asociaciones = $('#pago_asociaciones').val();
+        pago_colegiatura = $('#pago_colegiatura').val();
+        pago_universitarios = $('#pago_universitarios').val();
+        materiales = $('#materiales').val();
+        renta = $('#renta').val();
+        iva = $('#iva').val();
+        tarjetas_credito = $('#tarjetas_credito').val();
+        otros_gastos = $('#otros_gastos').val();
+
+        if(alimentacion != '')
+        {
+          if(casa != '')
+          {
+            if(energia_electrica != '')
+            {
+              if(agua != '')
+              {
+                if(telefono != '')
+                {
+                  if(alcaldia != '')
+                  {
+                    if(cotizaciones != '')
+                    {
+                      if(transporte != '')
+                      {
+                        if(salud != '')
+                        {
+                          if(materiales != '')
+                          {
+                            if(renta !=  '')
+                            {
+                              if(iva != '')
+                              {
+                                $.ajax({
+                                  type: 'POST',
+                                  url: '../../app/controllers/public/solicitud/create_gastos_mensuales.php?action=create',
+                                  data: {
+                                    alimentacion:alimentacion,
+                                    casa:casa,
+                                    energia_electrica:energia_electrica,
+                                    agua:agua,
+                                    telefono:telefono,
+                                    vigilancia:vigilancia,
+                                    domesticos:domesticos,
+                                    alcaldia:alcaldia,
+                                    pago_deudas:pago_deudas,
+                                    cotizaciones:cotizaciones,
+                                    seguro_personal:seguro_personal,
+                                    seguro_vehiculo:seguro_vehiculo,
+                                    seguro_inmuebles:seguro_inmuebles,
+                                    transporte:transporte,
+                                    mant_vehiculo:mant_vehiculo,
+                                    salud:salud,
+                                    pago_asociaciones:pago_asociaciones,
+                                    pago_colegiatura:pago_colegiatura,
+                                    pago_universitarios:pago_universitarios,
+                                    materiales:materiales,
+                                    renta:renta,
+                                    iva:iva,
+                                    tarjetas_credito:tarjetas_credito,
+                                    otros_gastos:otros_gastos
+                                    },
+                                  success: function()
+                                  {
+                                    console.log('Los datos de gastos fueron enviados');
+                                    console.log(
+                                    alimentacion+"- "+
+                                    casa+"- "+
+                                    energia_electrica+"- "+
+                                    agua+"- "+
+                                    telefono+"- "+
+                                    vigilancia+"- "+
+                                    domesticos+"- "+
+                                    alcaldia+"- "+
+                                    pago_deudas+"- "+
+                                    cotizaciones+"- "+
+                                    seguro_personal+"- "+
+                                    seguro_vehiculo+"- "+
+                                    seguro_inmuebles+"- "+
+                                    transporte+"- "+
+                                    mant_vehiculo+"- "+
+                                    salud+"- "+
+                                    pago_asociaciones+"- "+
+                                    pago_colegiatura+"- "+
+                                    pago_universitarios+"- "+
+                                    materiales+"- "+
+                                    renta+"- "+
+                                    iva+"- "+
+                                    tarjetas_credito+"- "+
+                                    otros_gastos
+                                    );
+                                  }
+                                });
+                              }
+                              else
+                              {
+                                AlertasSwal('Ingrese el IVA');
+                              }
+                            }
+                            else
+                            {
+                              AlertasSwal('Ingrese la cantidad del impuesto sobre la renta');
+                            }
+                          }
+                          else
+                          {
+                            AlertasSwal('Ingrese el gasto de materiales de los estudios');
+                          }
+                        }
+                        else
+                        {
+                          AlertasSwal('Ingrese el gasto mensual de la salud e higiene');
+                        }
+                      }
+                      else
+                      {
+                        AlertasSwal('Ingrese el gasto de bus/taxi, en el caso que vehiculo el gasto de la gasolina mensual');
+                      }
+                    }
+                    else
+                    {
+                      AlertasSwal('Ingrese las cotizaciones que tiene hacia el ISSS o la AFP');
+                    }
+                  }
+                  else
+                  {
+                    AlertasSwal('Ingrese el gasto que paga a la alcaldia');
+                  }
+                }
+                else
+                {
+                  AlertasSwal('Ingrese el ultimo pago de telefono');
+                }
+              }
+              else
+              {
+                AlertasSwal('Ingrese el ultimo pago del servicio del agua');
+              }
+            }
+            else
+            {
+              AlertasSwal('Ingrese el ultimo pago del servicio de la energia electrica');
+            }
+          }
+          else
+          {
+            AlertasSwal('Ingrese el gasto del alquiler de la casa o pago al banco mensual');
+          }
+        }
+        else
+        {
+          AlertasSwal('Ingrese el gasto de alimentacion mensual');
+        }
+       /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA -----------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/       
+     });
 });
 
 //Funcion para ver la imagen que ha seleccionado

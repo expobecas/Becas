@@ -12,7 +12,8 @@ require_once("../../app/models/solicitud.class.php");
 require_once("../../app/models/detalle_solicitud.php");
 try
 {
-	if($_SESSION['id_estudiante'] == "")
+	$id_estudiante = $_SESSION['id_estudiante'];
+	if($id_estudiante == "")
 	{
 		Page::showMessage(3, "Por favor inicie sessión", "../alumno/account/ingresar.php");
 	}
@@ -23,7 +24,7 @@ try
 
 	//Para llenar la tabla solicitud
 	$solicitud = new Solicitud;
-	$solicitud->setIdEstudiante($_SESSION['id_estudiante']);
+	$solicitud->setIdEstudiante($id_estudiante);
 	$datos = $solicitud->checkSolicitud();
 	if($datos)
 	{
@@ -47,21 +48,9 @@ try
 
     //para llenar la intermedia propiedad
 	$intermedia_propiedad = new Intermedia_propiedad;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
-		$data = $intermedia_propiedad->getSolicitud();
-		if($data)
-		{
-			foreach($data as $id)
-			{
-				$id_solicitud = $id;
-			}
-			$intermedia_propiedad->setIdSolicitud($id_solicitud);
-		}
-		else
-		{
-			throw new Exception(Database::getException());
-		}
+		$intermedia_propiedad->setIdSolicitud($id_solicitud[0]);
 
 		$integrantes = $intermedia_propiedad->getIntegrantes();
 		$idpropiedad = $intermedia_propiedad->getPropiedad();
@@ -74,10 +63,9 @@ try
 			for($i ; $i<$c; $i++)
 			{
 				$intermedia_propiedad->setIdIntegrante($integrantes[$i][$j]);
-				$intermedia_propiedad->setIdPropiedad($idpropiedad[0][0]);
+				$intermedia_propiedad->setIdPropiedad($idpropiedad[0]);
 				if($intermedia_propiedad->createInterPropiedad())
 				{
-					
 				}
 				else
 				{
@@ -90,13 +78,13 @@ try
 		{
 			throw new Exception(Database::getException());
 		}
-	}
+	}*/
 
 
     //TERCERA PARTE DEL FOMULARIO SOLICITUD
 	//Para llenar la tabla gastos mensuales
 	$gastos_mensuales = new Gastos_mensuales;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $gastos_mensuales->validateForm($_POST);
 		$alimentacion = str_replace(',', '.', str_replace('.', '', $_POST['alimentacion']));
@@ -209,6 +197,15 @@ try
 														}
 														if($gastos_mensuales->createGastos())
 														{
+															$id_gasto = $gastos_mensuales->getIdGastos();
+															if($id_gasto != null)
+															{
+																print("Hay algo");	
+															}
+															else
+															{
+																print("Neles");	
+															}
 														}
 														else
 														{
@@ -274,27 +271,25 @@ try
 		{
 			throw new Exception("Ingrese el gasto de alimentacion mensual");
 		}
-	}
+	}*/
 
-    //Para llenar la tabla grupo familiar
+	//Para llenar la tabla grupo familiar
+	$id_familia = "";
 	$grupo_familiar = new Grupo_familiar;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
+		echo $id_gasto;
 		$_POST = $grupo_familiar->validateForm($_POST);
 		if($grupo_familiar->setIngresoFamiliar($_POST['ingreso_familiar']))
 		{
-			$id_gasto = $grupo_familiar->getIdGasto();
-			if($id_gasto)
+			if($grupo_familiar->setIdGastos($id_gasto))
 			{
-				$grupo_familiar->setIdGastos($id_gasto[0]);
 				$total_gasto = $grupo_familiar->getGastos();
 				if($total_gasto)
 				{
 					$grupo_familiar->setTotalGastos($total_gasto[0]);
-					$id_solicitud = $grupo_familiar->getSolicitud();
-					if($id_solicitud)
-					{
-						$grupo_familiar->setIdSolicitud($id_solicitud[0]);
+					if($grupo_familiar->setIdSolicitud($id_solicitud[0]))
+					{						
 						if($_POST['monto_deuda'] !=null)
 						{
 							$monto_deuda = str_replace(',', '.', str_replace('.', '', $_POST['monto_deuda']));
@@ -302,7 +297,7 @@ try
 						}
 						if($grupo_familiar->createFamilia())
 						{
-							
+							$id_familia = $grupo_familiar->getIdFamilia();
 						}
 						else
 						{
@@ -328,11 +323,11 @@ try
 		{
 			throw new Exception("Ocurrio un error, por favor contactar con el administrador(ingreso familiar)");
 		}
-	}
+	}*/
 
     //Para llenar la tabla remesa familiar
 	$remesa_familiar = new Remesa_familiar;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
 		$_POST = $remesa_familiar->validateForm($_POST);
 		if($_POST['monto_remesa'] != null && $_POST['periodo'] != null)
@@ -346,12 +341,11 @@ try
 					{
 						if($remesa_familiar->setBenefactor($_POST['benecfactor']))
 						{
-							$idfamilia = $remesa_familiar->getFamilia();
-							if($remesa_familiar->setIdFamilia($idfamilia[0][0]))
+							if($remesa_familiar->setIdFamilia($id_familia))
 							{
 								if($remesa_familiar->createRemesa())
 								{
-									Page::showMessage(1, "Remesa creada", "");
+									
 								}
 								else
 								{
@@ -387,15 +381,18 @@ try
 		{
 			throw new Exception("llene todos los campos si recibe una remesa");
 		}
-	}
+	}*/
 
 	$detalle_solicitud = new Detalle_solicitud;
-	if(isset($_POST['enviar']))
+	/*if(isset($_POST['enviar']))
 	{
-		$id_solicitud = $detalle_solicitud->getSolicitud();
+		$detalle_solicitud->setIdEstado(1);
 		$detalle_solicitud->setIdSolicitud($id_solicitud[0]);
-		$detalle_solicitud->createDetalle();				
-	}
+		if($detalle_solicitud->createDetalle())
+		{
+			Page::showMessage(1, "Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema", "");
+		}
+	}*/
 }
 catch(Exception $error)
 {

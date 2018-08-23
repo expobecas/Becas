@@ -15,7 +15,6 @@ try
             date_default_timezone_set("America/El_Salvador");
             //Se da un formato y se guarda en una variable
             $Fecha = date("d/m/Y");
-            echo $fecha;
             $solicitud = new Solicitud;
             
             $solicitud->setIdEstudiante($_SESSION['id_estudiante']);

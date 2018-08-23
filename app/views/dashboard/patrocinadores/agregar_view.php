@@ -34,7 +34,8 @@
       </div>
       <!--PRIMERA FILA-->
       <div class="divider"></div>
-      <p class="titulo-EP"><strong>Agregar patrocinador</strong></p>
+   <div id="formpatro">
+   <p class="titulo-EP"><strong>Agregar patrocinador</strong></p>
       <div class="divider"></div>
       <div class="row">
          <div class="input-field col s6">
@@ -68,6 +69,7 @@
             <label for="especialidad">Teléfono</label>
          </div>
       </div>
+   </div>
       <!--BOTON-->
       <div class="row">
       <div class="col offset-l3 l11">

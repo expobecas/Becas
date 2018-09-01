@@ -11,7 +11,6 @@ try{
                         $_SESSION['id_usuario'] = $usuarios->getId();
                         $_SESSION['usuario'] = $usuarios-> getUsuario();
                         $_SESSION['id_tipo'] = $usuarios-> getTipo();
-                        echo $_SESSION['id_tipo'];
                         if($_SESSION['id_tipo'] == 1){
                             Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                         }

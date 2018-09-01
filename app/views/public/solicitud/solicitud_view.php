@@ -1,23 +1,44 @@
 <!--Progress circle-->
-<div class="progressc">
-    <div class="circle1">
-        <span class="label">1</span>
-        <span class="title">Personal</span>
+<div class="stiky z-depth-1">
+    <div class="progressc">
+        <div class="circle1">
+            <span class="label">1</span>
+            <span class="title">Personal</span>
+        </div>
+        <span class="bar1"></span>
+        <div class="circle2">
+            <span class="label">2</span>
+            <span class="title">Familiar</span>
+        </div>
+        <span class="bar2"></span>
+        <div class="circle3">
+            <span class="label">3</span>
+            <span class="title">Propiedad</span>
+        </div>
+        <span class="bar3"></span>
+        <div class="circle4">
+            <span class="label">4</span>
+            <span class="title">Gastos</span>
+        </div>
     </div>
-    <span class="bar1"></span>
-    <div class="circle2">
-        <span class="label">2</span>
-        <span class="title">Familiar</span>
-    </div>
-    <span class="bar2"></span>
-    <div class="circle3">
-        <span class="label">3</span>
-        <span class="title">Propiedad</span>
-    </div>
-    <span class="bar3"></span>
-    <div class="circle4">
-        <span class="label">4</span>
-        <span class="title">Gastos</span>
+
+    <div class="row">
+        <div class="input-field col s6 m3 l3 margin_inputs"> 
+            <input id="ingreso_mensual" type="text" name="ingreso_mensual" class="validate"/>
+            <label for="ingreso_mensual" id="label_ingreso">Ingreso Mensual</label>
+        </div>
+        <div class="input-field col s6 m3 l3 margin_inputs"> 
+            <input id="ingreso_remesa" type="text" name="ingreso_remesa" class="validate"/>
+            <label for="ingreso_remesa" id="label_remesa">(+)Ingreso Remesa</label>
+        </div>
+        <div class="input-field col s6 m3 l3 margin_inputs"> 
+            <input id="gasto_mensual" type="text" name="gasto_mensual" class="validate"/>
+            <label for="gasto_mensual" id="label_gasto">(-)Gasto Mensual</label>
+        </div>
+        <div class="input-field col s6 m3 l3 margin_inputs"> 
+            <input id="saldo" type="text" name="saldo" class="validate"/>
+            <label for="saldo" id="label_saldo">(=)Saldo</label>
+        </div>
     </div>
 </div>
 
@@ -64,9 +85,9 @@
                     <?php
                     include_once("../../app/views/public/templates/gastos_mensuales.php");
                     ?>
-                    <a class="waves-effect waves-light btn blue regresarthree margen_four">Regresar</a>
-                    <button type="submit" name="enviar" class="waves-effect waves-light btn blue four next margen_four">Finalizar</button>
                 </form>
+                <a class="waves-effect waves-light btn blue regresarthree margen_four">Regresar</a>
+                <button id="enviar" name="enviar" class="waves-effect waves-light btn blue four next margen_four">Finalizar</button>
             </div>            
         </div>
     </div>

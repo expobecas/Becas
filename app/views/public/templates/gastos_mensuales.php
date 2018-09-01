@@ -90,8 +90,8 @@
     </div>
 
     <div class="input-field col s12 m6 l3"> 
-        <input id="pago_universitaros" type="text" name="pago_universitarios" class="gastos validate" onkeyup="sumar();" value = '<?php print($gastos_mensuales->getPagoUniversidad())?>'/>
-        <label for="pago_universitaros">Pago de cuotas universitarias</label>
+        <input id="pago_universitarios" type="text" name="pago_universitarios" class="gastos validate" onkeyup="sumar();" value = '<?php print($gastos_mensuales->getPagoUniversidad())?>'/>
+        <label for="pago_universitarios">Pago de cuotas universitarias</label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -133,7 +133,7 @@
     </div>
     
     <div class="input-field col s12 m6 l3"> 
-        <input id="monto_deuda" type="text" name="monto_deuda" class="gastos validate"/>
+        <input id="monto_deuda" type="text" name="monto_deuda" class="validate"/>
         <label for="monto_deuda">Monto total deuda</label>
     </div>
 </div>
@@ -148,17 +148,17 @@
     </div>
 
     <div class="input-field col s12 m4 l4"> 
-        <input id="monto_remesa" type="text" name="monto_remesa" class="gastos validate">
+        <input id="monto_remesa" type="text" name="monto_remesa" class="validate"/>
         <label for="monto_remesa">Monto de remesa</label>
     </div>
 
      <div class="input-field col s12 m4 l4"> 
-        <input id="periodo" type="text" name="periodo" class="validate">
+        <input id="periodo" type="text" name="periodo" class="validate"/>
         <label for="periodo">Periodo en el que lo recibe</label>
     </div>
 
     <div class="input-field col s12 m4 l4"> 
-        <input id="benecfactor" type="text" name="benecfactor" class="validate">
+        <input id="benecfactor" type="text" name="benecfactor" class="validate"/>
         <label for="benecfactor">Quien lo envia(parentesco)</label>
     </div>
 </div>

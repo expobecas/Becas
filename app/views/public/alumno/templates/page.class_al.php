@@ -46,13 +46,7 @@ class Page extends component{
                 ");
         }else{
             print("
-            <header class='navbar-fixed'>
-            <nav class='brown'>
-                <div class='nav-wrapper'>
-                    <a href='login.php' class='brand-logo'><i class='material-icons'>dashboard</i></a>
-                </div>
-            </nav>
-        </header>
+            <div class='ingresar_fondo'></div>
         <main class='container'>
             ");
             $filename = basename($_SERVER['PHP_SELF']);

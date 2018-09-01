@@ -47,12 +47,78 @@ $(document).ready(function() {
       $("#tablevehiculos").hide(1000);
       $("#botones_vehiculo").hide(1000);
     });
-  });
 
+    $('#monto_remesa').on('keyup', function(){
+      remesa = $('#monto_remesa').val();
+      remesa = remesa.toString().replace('.', '');//quita los puntos de el valor
+      remesa = remesa.toString().replace(',', '.');//remplaza las comas por puntos
+      remesa = parseFloat(remesa);
+      if(isNaN(remesa))
+      {
+        remesa = 0;
+      }
+        
+      $('#ingreso_remesa').val(remesa);
+      $('#label_remesa').addClass('active');
+      Total();
+    });
+
+    
+});
+function Total()
+{
+
+  gastos = 0;
+  remesa = $('#ingreso_remesa').val();
+  gastos = $('#gasto_mensual').val();
+
+  remesa = parseFloat(remesa);
+  gastos = parseFloat(gastos);
+
+  if(isNaN(remesa))
+  {
+    remesa = 0;
+  }
+  if(isNaN(gastos))
+  {
+    gastos = 0;
+  }
+
+  saldo = remesa - gastos;
+  $('#saldo').val(saldo);
+  $('#label_saldo').addClass('active');
+
+};
+
+//Sumar el gasto de manera dinamica
+function sumar(){
+
+  var total = 0;
+  $('#gasto_mensual').val('');
+  $(".gastos").each(function() {
+    inputs = $(this).val();
+    inputs = inputs.toString().replace('.', '');//quita los puntos de el valor
+    inputs = inputs.toString().replace(',', '.');//remplaza las comas por puntos
+    inputs = parseFloat(inputs);
+    
+    if (isNaN(inputs))//si los inputs no tiene valor que sume 0
+    {
+      total += 0;
+    } 
+    else 
+    {
+      total += inputs;
+    }
+  });
+  total = Number(total.toFixed(2));//fija y aproxima a 2 decimales
+  $('#gasto_mensual').val(total);
+  $('#label_gasto').addClass('active');
+  Total();
+};
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 20, // Creates a dropdown of 15 years to control year,
+    selectYears: 20, // Creates a dropdown of 20 years to control year,
     max: new Date('today'),//validar para no seleccionar una fecha mayor a la de hoy
     today: 'Hoy',
     clear: 'Limpiar',

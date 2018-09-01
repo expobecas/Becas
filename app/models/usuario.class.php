@@ -144,6 +144,20 @@ class Usuario extends Validator{
             return false;
         }
     }
+    public function getCorreos()
+    {
+        $sql = "SELECT correo FROM usuarios";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
+    public function createAdmin()
+    {
+        $sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
+        $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $this->clave, $this->correo);
+        return Database::executeRow($sql, $params); 
+    }
+
     public function createUsuario(){
 		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña) VALUES (?,?,?,?,?)";
 		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave);

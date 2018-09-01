@@ -217,7 +217,6 @@ class Integrante_familia extends Validator
     {
         $sql = "UPDATE integrante_familia SET nombres = ?, apellidos = ? ,parentesco = ?, fecha_nacimiento = ?, profesion_ocupacion = ?, lugar_trabajo = ?, tel_trabajo = ?, salario = ? WHERE id_integrante = ? AND id_solicitud = ?";
         $params = array($this->nombres, $this->apellidos, $this->parentesco, $this->fecha_nacimiento, $this->profesion_ocupacion, $this->lugar_trabajo, $this->tel_trabajo, $this->salario, $this->id_integrante, $this->id_solicitud);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 

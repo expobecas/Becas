@@ -31,7 +31,7 @@ class Usuario extends Validator{
         return $this->usuario;
     }
     public function setClave($value){
-		if($this->validateAlphanumeric($value, 1, 50)){
+		if($this->validatePassword($value)){
 			$this->clave = $value;
 			return true;
 		}else{
@@ -102,13 +102,36 @@ class Usuario extends Validator{
     
 
     public function checkClave(){
-		$sql = "SELECT id_usuario FROM usuarios WHERE contraseña = ?";
-		$params = array($this->clave);
+		$sql = "SELECT contraseña FROM usuarios WHERE id_usuario = ?";
+		$params = array($this->id);
 		$data = Database::getRow($sql, $params);
-		if($data){
-            $this->id = $data['id_usuario'];
-			return true;
-		}else{
+        if($data)
+        {
+            if(strlen($data['contraseña']) == 60)
+            {
+                if(password_verify($this->clave, $data['contraseña']))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if($this->clave == $data['contraseña'])
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
+            }			
+        }
+        else
+        {
 			return false;
 		}
     }

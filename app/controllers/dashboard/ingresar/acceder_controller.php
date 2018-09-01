@@ -24,7 +24,7 @@ try{
                         throw new Exception("Clave incorrecta");
                     }
                 }else{
-                    throw new Exception("Clave menor a 6 caracteres");
+                    throw new Exception($usuarios->getErrorPassword());
                 }
             }else{
                 throw new Exception("Usuario invalido");

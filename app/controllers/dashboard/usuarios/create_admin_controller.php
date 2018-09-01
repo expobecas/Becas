@@ -55,7 +55,7 @@ try
                                             }
                                             else
                                             {
-                                                Page::showMessage(2, 'Ingrese la contraseña de la administradora', null);
+                                                Page::showMessage(2, $usuario->getErrorPassword(), null);
                                             }
                                         }
                                         else

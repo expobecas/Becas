@@ -19,6 +19,7 @@ class Page extends component{
             <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
             <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
             <script type='text/javascript' src='../../web/js/js_admin.js'></script>
+            <script type='text/javascript' src='../../web/js/deshabilitar.js'></script>
             <script type='text/javascript' src='../../web/js/stadistics.js'></script>
             <script type='text/javascript' src='../../web/js/Chart.js'></script>
             <script type='text/javascript' src='../../web/js/Chart.min.js'></script>

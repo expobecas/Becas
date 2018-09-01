@@ -98,6 +98,9 @@ class Usuario extends Validator{
             return false;
         }
     }
+    
+    
+
     public function checkClave(){
 		$sql = "SELECT id_usuario FROM usuarios WHERE contraseña = ?";
 		$params = array($this->clave);
@@ -153,8 +156,9 @@ class Usuario extends Validator{
 
     public function createAdmin()
     {
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
         $sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
-        $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $this->clave, $this->correo);
+        $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $hash, $this->correo);
         return Database::executeRow($sql, $params); 
     }
 

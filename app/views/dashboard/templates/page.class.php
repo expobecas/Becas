@@ -18,12 +18,6 @@ class Page extends component{
             <script type='text/javascript' src='../../web/js/jquery-3.2.1.min.js'></script>
             <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
             <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
-            <script type='text/javascript' src='../../web/js/js_admin.js'></script>
-            <script type='text/javascript' src='../../web/js/deshabilitar.js'></script>
-            <script type='text/javascript' src='../../web/js/stadistics.js'></script>
-            <script type='text/javascript' src='../../web/js/Chart.js'></script>
-            <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
-            
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
         <body class='fondo-general font-web'>
@@ -76,12 +70,26 @@ class Page extends component{
     
 
     public static function templateFooter(){
+        
+        print("
+        <script type='text/javascript' src='../../web/js/js_admin.js'></script>
+        <script type='text/javascript' src='../../web/js/deshabilitar.js'></script>
+        <script type='text/javascript' src='../../web/js/Chart.js'></script>
+        <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
+        ");
         $filename = basename($_SERVER['PHP_SELF']);
+        if($filename == "index.php")
+        {
+            print("
+            <script type='text/javascript' src='../../web/js/stadistics.js'></script>
+            ");
+        }
         if($filename == "casos.php")
         {
             print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
         }
         print("
+        </main>
 		</body>
 		</html>
         ");

@@ -20,7 +20,7 @@ class Page extends component{
             <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
-        <body class='fondo-general font-web'>
+        <body class='fondo-general font-web' onunload='getLogoffTime()'>
                 ");
                 if(isset($_SESSION['id_usuario'])){
                     print("
@@ -78,6 +78,10 @@ class Page extends component{
         <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
         ");
         $filename = basename($_SERVER['PHP_SELF']);
+        if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
+        {
+            print("<script type='text/javascript' src='../../web/js/js_inactividad/js_inactividad_admin.js'></script>");
+        }
         if($filename == "index.php")
         {
             print("

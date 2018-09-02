@@ -28,7 +28,7 @@ class Page extends Component
             <script type='text/javascript' src='../../web/js/sweetalert.min.js'></script>
             
         </head>
-        <body>
+        <body onunload='getLogoffTime()'>
         ");
         if(isset($_SESSION['id_usuario']))
         {
@@ -90,6 +90,7 @@ class Page extends Component
         <script type='text/javascript' src='../../web/js/materialize.min.js'></script>
         <script type='text/javascript' src='../../web/js/calendario.js'></script>
         <script type='text/javascript' src='../../web/js/js_admin.js'></script>
+        <script type='text/javascript' src='../../web/js/js_inactividad/js_inactividad_admin.js'></script>
         </body>
         </html>
         ");

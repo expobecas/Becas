@@ -122,6 +122,7 @@ class Usuario extends Validator{
             {
                 if($this->clave == $data['contraseña'])
                 {
+                    $this->clave = $data['contraseña'];
                     return true;
                 }
                 else
@@ -135,6 +136,15 @@ class Usuario extends Validator{
 			return false;
 		}
     }
+
+    public function encryptContraseña()
+    {
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario= ?";
+        $params = array($hash, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
     public function logOut(){
 		return session_destroy();
 	}

@@ -8,6 +8,11 @@ try{
             if($usuarios->checkUsuario()){
                 if($usuarios->setClave($_POST['clave'])){
                     if($usuarios->checkClave()){
+                        $contraseña = $usuarios->getClave();
+                        if(strlen($contraseña) < 60)
+                        {
+                            $usuarios->encryptContraseña();
+                        }
                         $_SESSION['id_usuario'] = $usuarios->getId();
                         $_SESSION['usuario'] = $usuarios-> getUsuario();
                         $_SESSION['id_tipo'] = $usuarios-> getTipo();

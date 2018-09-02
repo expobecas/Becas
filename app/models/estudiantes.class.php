@@ -183,6 +183,13 @@ class Estudiantes extends Validator{
 	}
 
     //Metodos para manejar el CRUD
+    public function getIdEstudiantes()
+    {
+        $sql = "SELECT id_estudiante FROM estudiantes";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
     public function getEstudiantes(){
         $sql = "SELECT id_estudiante, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario, contraseña, n_carnet, grado, especialidad FROM estudiantes";
         $params = array(null);

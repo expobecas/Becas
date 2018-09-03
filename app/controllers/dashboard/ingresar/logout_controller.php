@@ -1,6 +1,9 @@
 <?php
 require_once("../../app/models/usuario.class.php");
 $object = new Usuario;
+$object->setEstadoSesion(0);
+$object->setId($_SESSION['id_usuario']);
+$object->updateEstadoSesion();
 if(isset($_GET['id']))
 {
     if($object->logOut()){

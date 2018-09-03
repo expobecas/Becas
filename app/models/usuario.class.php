@@ -7,6 +7,10 @@ class Usuario extends Validator{
     private $apellidos = null;
     private $correo = null;
     private $tipo = null;
+    private $intentos = null;
+    private $estado_sesion = null;
+    private $fecha_contraseña = null;
+    private $estado = null;
     
     public function setId($value){
         if($this->validateId($value)){
@@ -85,14 +89,87 @@ class Usuario extends Validator{
     public function getTipo(){
         return $this->tipo;
     }
+
+    public function setIntentos($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->intentos = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIntentos()
+    {
+        return $this->intentos;
+    }
+
+    public function setEstadoSesion($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->estado_sesion = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getEstadoSesion()
+    {
+        return $this->estado_sesion;
+    }
+
+    public function setFechaContraseña($value)
+    {
+      if($this->validateAlphanumeric($value, 1, 60))
+      {
+          $this->fecha_contraseña = $value;
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    }
+    public function getFechaContraseña()
+    {
+        return $this->fecha_contraseña;
+    }
+
+    public function setEstado($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->estado = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
     //VERIFICACIÓN
     public function checkUsuario(){
-        $sql = "SELECT id_usuario, id_tipo FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion FROM usuarios WHERE usuario = ?";
         $params = array($this->usuario);
         $data =Database::getRow($sql, $params);
         if($data){
             $this->id = $data['id_usuario'];
             $this->tipo = $data['id_tipo'];
+            $this->intentos = $data['intentos'];
+            $this->fecha_contraseña = $data['fecha_contraseña'];
+            $this->estado = $data['estado'];
+            $this->estado_sesion = $data['estado_sesion'];
             return true;
         }else{
             return false;
@@ -143,6 +220,47 @@ class Usuario extends Validator{
         $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario= ?";
         $params = array($hash, $this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    //Cada vez que se equivoque se actualizara los intentos en la base
+    public function updateIntentos()
+    {
+        $sql = "UPDATE usuarios SET intentos = ? WHERE id_usuario = ?";
+        $params = array($this->intentos, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function resetIntentos()
+    {
+        $intentos = 0;
+        $sql = "UPDATE usuarios SET intentos = ? WHERE id_usuario = ?";
+        $params = array($intentos, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateEstado()
+    {
+        $sql = "UPDATE usuarios SET estado = ? WHERE id_usuario = ?";
+        $params = array($this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Cuando los intentos sean 3 se bloqueará el usuario cambiandole el estado
+    public function blockUsuario()
+    {
+        $intentos = 0;
+        $fecha_contraseña = date("Y-m-d H:i:s");
+        $sql = "UPDATE usuarios SET intentos = ?, fecha_contraseña = ?, estado = ? WHERE id_usuario = ?";
+        $params = array($intentos, $fecha_contraseña, $this->estado, $this->id);
+        print_r($params);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateEstadoSesion()
+    {
+        $sql = "UPDATE usuarios SET estado_sesion = ? WHERE id_usuario = ?";
+        $params = array($this->estado_sesion, $this->id);
+        return database::executeRow($sql, $params);
     }
 
     public function logOut(){
@@ -196,8 +314,8 @@ class Usuario extends Validator{
     }
 
     public function createUsuario(){
-		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña) VALUES (?,?,?,?,?)";
-		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave);
+		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
+		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);    
         
     }

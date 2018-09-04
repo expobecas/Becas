@@ -3,6 +3,7 @@ require_once('../../../../app/helpers/validator.class.php');
 require_once('../../../../app/models/database.class.php');
 require_once('../../../../app/models/usuario.class.php');
 require_once('../../../../app/models/patrocinadores.class.php');
+require_once('../../../../app/models/categorias.class.php');
 require_once('../../../../app/libraries/fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -27,7 +28,7 @@ function Header()
 
     $this->Ln(6);
     $this->SetFont('Arial','',11);
-    $this->Cell(198,18,utf8_decode('"Patrocinador por tipo especifico"'),0,0,'C');
+    $this->Cell(198,18,utf8_decode('"Patrocinadores por tipo especifico"'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
 }
@@ -47,7 +48,7 @@ function Footer()
 session_start();
 //Llamando los modelos
 $usuarios = new Usuario;
-$patrocinadores= new Patrocinadores;
+$solicitud = new Patrocinadores;
 
 // Creación del objeto de la clase heredada
 $pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
@@ -71,6 +72,7 @@ $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
 $pdf->Cell(25,18,$_SESSION['usuario'],0,0,'C');
 
+
 //Fecha
 $pdf->setX(127);
 $pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
@@ -80,80 +82,49 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Nombre: '),0,0,'C');
+$pdf->Cell(30,30,$usuarios->getNombres().' '.$usuarios->getApellidos(),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
 $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
-//FORMATO DE HORA G = 24 HORAS - I = MINUTOS - A = AM O PM
 $pdf->Cell(10, 18, $hora->format('G:i a'), 0, 0,'C');
 
-/////////////////////////////////////////////////////////////////////////
+$pdf->ln(10);
+$query = "SELECT id_tipo_patro, tipo_patrocinador FROM tipo_patrocinador WHERE id_tipo_patro BETWEEN 1 and 4  ";
+    $params = array(null);
+    $titulo = Database::getRows($query, $params);
 
-////////////////////////////////////////////////////////////////////////
+	foreach($titulo as $tipo)
+	{
+        $pdf->ln(10);
+        $pdf->Cell(185,10,utf8_decode("Tipo: ".$tipo['tipo_patrocinador']),1,1,'C');
 
-//Becas correspondientes
-$pdf->SetFont('Times','B',12);
-$pdf->Ln(17);
+        $query = "SELECT p.nombres, p.apellidos, p.profesion,p.cargo, p.nombre_empresa, usuarios.usuario FROM patrocinadores p INNER JOIN usuarios USING(id_usuario) INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE tipo_patrocinador.id_tipo_patro = $tipo[id_tipo_patro] ORDER BY id_tipo_patro";
+        $params = array(null);
+        $productos = Database::getRows($query, $params);
 
-$pdf->SetX(18);
-$pdf->Cell(30, 10, 'Patrocinador - empresa', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(18); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
-$pdf->Ln(6);
+        $pdf->Cell(36,6,'Nombres',1,0,'C');
+        $pdf->Cell(36,6,'Apellidos',1,0,'C');
+        $pdf->Cell(35,6,'Profesion',1,0,'C');
+        $pdf->Cell(36,6,'Cargo',1,0,'C');
+        $pdf->Cell(42,6,'Usuario',1,1,'C');
 
-$datos = $patrocinadores->getTipoPa();
-foreach ($datos as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(18);
-    $pdf->Cell(35, 6, $row['nombres'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['profesion'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
-}
 
-$pdf->Ln();
+        if($productos){
+            foreach($productos as $tipos)
+            {
+                $pdf->Cell(36,6,utf8_decode($tipos['nombres']),1,0,'C');  
+                $pdf->Cell(36,6,utf8_decode($tipos['apellidos']),1,0,'C'); 
+                $pdf->Cell(35,6,utf8_decode($tipos['profesion']),1,0,'C'); 
+                $pdf->Cell(36,6,utf8_decode($tipos['nombre_empresa']),1,0,'C'); 
+                $pdf->Cell(42,6,utf8_decode($tipos['usuario']),1,1,'C');  
 
-$pdf->SetX(18);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->Cell(30, 10, 'Patrocinador - independiente', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(18); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Profesion', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Cargo', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Empresa', 1, 0, 'C', 1);
-$pdf->Ln(6);
-
-$datos2 = $patrocinadores->getTipoPa2();
-foreach ($datos2 as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(18);
-   
-    $pdf->Cell(35, 6, $row['profesion'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['nombres'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['apellidos'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['cargo'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['nombre_empresa']), 1, 0, 'C');
-    $pdf->Ln();
-
-}
-
-$pdf->Output();
+            }
+        }else{
+            $pdf->Cell(185,6,'No hay Patrocinadores',1,1,'C');
+        }
+    }
+	$pdf->Output();
 ?>

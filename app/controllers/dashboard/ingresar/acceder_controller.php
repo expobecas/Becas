@@ -41,7 +41,7 @@ try{
                                 $estado = 0;
                                 $id_usuario = $usuarios->getId();
                                 $estado_sesion = 1;
-                                
+                    
                                 $usuarios->setEstado($estado);
                                 $usuarios->setEstadoSesion($estado_sesion);
                                 $usuarios->setId($id_usuario);

@@ -160,7 +160,7 @@ class Usuario extends Validator{
 
     //VERIFICACIÓN
     public function checkUsuario(){
-        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion, correo FROM usuarios WHERE usuario = ?";
         $params = array($this->usuario);
         $data =Database::getRow($sql, $params);
         if($data){
@@ -170,12 +170,12 @@ class Usuario extends Validator{
             $this->fecha_contraseña = $data['fecha_contraseña'];
             $this->estado = $data['estado'];
             $this->estado_sesion = $data['estado_sesion'];
+            $this->correo = $data['correo'];
             return true;
         }else{
             return false;
         }
-    }
-    
+    }  
     
 
     public function checkClave(){
@@ -354,5 +354,55 @@ public function getTipoUsuario(){
         }
     }
 
+
+    //FUNCION PARA ENVIAR CORREO
+    function send_mail($correo,$message,$subject)
+	{
+        
+    }
+    
+    function generaPass(){
+        $opc_letras = TRUE; //  FALSE para quitar las letras
+        $opc_numeros = TRUE; // FALSE para quitar los números
+        $opc_letrasMayus = TRUE; // FALSE para quitar las letras mayúsculas
+        $opc_especiales = TRUE; // FALSE para quitar los caracteres especiales
+        $longitud = 20;
+        $password = '';
+        
+        $letras ="abcdefghijklmnopqrstuvwxyz";
+        $numeros = "1234567890";
+        $letrasMayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $especiales =".,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,";
+        $listado = null;
+        
+        if($opc_letras == TRUE) 
+        {
+            $listado .= $letras;
+        }
+        if($opc_numeros == TRUE)
+        {
+            $listado .= $numeros;
+        }
+        if($opc_letrasMayus == TRUE)
+        {
+            $listado .= $letrasMayus;
+        }
+        if($opc_especiales == TRUE)
+        {
+            $listado .= $especiales;
+        }
+        echo strlen($listado);
+        str_shuffle($listado);
+        for( $i=1; $i<=$longitud; $i++) 
+        {
+            $password[$i] = $listado[rand(0,strlen($listado)-$i)];
+            str_shuffle($listado);
+        }
+        return $password;
+        /*foreach ($password as $dato_password) 
+        {
+            echo $dato_password;
+        }*/
+    }
 }
 ?>

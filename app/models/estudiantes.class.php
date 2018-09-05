@@ -78,7 +78,7 @@ class Estudiantes extends Validator{
         return $this->usuario;
     }
     public function setContraseña($value){
-        if($this->validateAlphanumeric($value, 1 ,50)){
+        if($this->validateAlphanumeric($value, 1, 50)){
             $this->contraseña = $value;
             return true;
         }else{
@@ -138,17 +138,58 @@ class Estudiantes extends Validator{
         $sql = "SELECT contraseña FROM estudiantes WHERE id_estudiante = ?";
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if($this->contraseña == $data['contraseña']){
-            return true;
-        }else{
+        if($data)
+        {
+            if(strlen($data['contraseña']) == 60)
+            {
+                if(password_verify($this->contraseña, $data['contraseña']))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if($this->contraseña == $data['contraseña'])
+                {
+                    $this->contraseña = $data['contraseña'];
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        else
+        {
             return false;
         }
     }
+
+    public function encryptContraseña()
+    {
+        $hash = password_hash($this->contraseña, PASSWORD_DEFAULT);
+        $sql = "UPDATE estudiantes SET contraseña = ? WHERE id_estudiante = ?";
+        $params = array($hash, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
     public function logOut(){
 		return session_destroy();
 	}
 
     //Metodos para manejar el CRUD
+    public function getIdEstudiantes()
+    {
+        $sql = "SELECT id_estudiante FROM estudiantes";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+
     public function getEstudiantes(){
         $sql = "SELECT id_estudiante, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario, contraseña, n_carnet, grado, especialidad FROM estudiantes";
         $params = array(null);

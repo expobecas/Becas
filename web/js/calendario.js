@@ -37,6 +37,20 @@ $(window).resize(function(){
         }
     });
 });
+
+function getUrlVars() 
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) 
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 $(document).ready(function(){
     $('#detalle').hide(0);
     $('#id_cita').hide(0);
@@ -207,6 +221,8 @@ $(document).ready(function(){
     });
 
     function Recolectardatos(){
+        getUrlVars();
+        var id = decodeURI(getUrlVars()["id"]);
         NuevoEvento= {
             id:$('#id').val(),
             title:$('#tituloEvento').val(),
@@ -215,7 +231,7 @@ $(document).ready(function(){
             color:"#FF0000",
             textColor:"#FFFFFF",
             end: $('#fecha').val()+" "+$('#hora').val(),
-            id_detalle: $('#id_detalle').val()
+            id_detalle: id
         };
     }
 
@@ -228,10 +244,25 @@ $(document).ready(function(){
             success: function(datos)
             {
                 console.log(datos);
-                $('#Calendario').fullCalendar('refetchEvents');
-                $('#modalEventos').modal().modal('close');
-                LimpiarInputs();
-                CargarTabla();
+                if(datos === 'id_error')
+                {
+                    swal({
+                        title: 'Aviso',
+                        text: 'Seleccione una solicitud para hacer una cita',
+                        icon: 'warning',
+                        button: 'Aceptar',
+                        closeOnClickOutside: false, 
+                        closeOnEsc: false
+                      }).then(value=>{location.href = '../../dashboard/solicitudes/index.php'})
+                }
+                else
+                {
+                    $('#Calendario').fullCalendar('refetchEvents');
+                    $('#modalEventos').modal().modal('close');
+                    LimpiarInputs();
+                    CargarTabla();
+                }
+                
             },
             error:function()
             {

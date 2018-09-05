@@ -41,6 +41,11 @@ ul#slide-out li:hover a {
 .fondo-general{
     background-color: rgb(226, 231, 229);
 }
+#recover
+{
+    margin-top: 8%;
+    border-radius: 3%;
+}
 /*DISEÑO ALUMNO*/
 .side-nav{
     background-color: #2A363B;

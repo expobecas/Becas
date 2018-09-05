@@ -9,6 +9,11 @@ try{
                 if($alumno->checkAlumno()){
                     if($alumno->setContraseña($_POST['clave'])){
                         if($alumno->checkClave()){
+                            $contraseña = $alumno->getContraseña();
+                            if(strlen($contraseña) < 60)
+                            {
+                                $alumno->encryptContraseña();
+                            }
                             $_SESSION['id_estudiante'] = $alumno->getId();
                             $_SESSION['usuario'] = $alumno-> getUsuario();
                             Page::showMessage(1, "Autenticación correcta", "../../../public/alumno/index/index.php");

@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/tipo_usuario.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $tipo = new Tipo;
     if(isset($_POST['crear'])){
         $_POST = $tipo->validateForm($_POST);

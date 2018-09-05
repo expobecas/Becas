@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/tipo_usuario.class.php");
 try{
+    $_SESSION['lapso'] = time();
     if(isset($_GET['id'])){
         $tipo = new Tipo;
         if($tipo->setId($_GET['id'])){

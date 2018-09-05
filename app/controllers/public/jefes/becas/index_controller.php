@@ -1,6 +1,7 @@
 <?php 
 require_once("../../../app/models/becas.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $becas = new Becas;
     $data = $becas->getBecas();
     /*VISTA GENERAL DE SOLICITUDES*/

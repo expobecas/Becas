@@ -1,4 +1,5 @@
 <?php
+$_SESSION['lapso'] = time();
 require_once("../../app/views/dashboard/index/index_view.php");
 require_once("../../app/models/graficos.class.php");
 

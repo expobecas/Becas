@@ -5,6 +5,7 @@ require_once("../../../helpers/component.class.php");
 require_once("../../../models/citas.class.php");
 try
 {
+    $_SESSION['lapso'] = time();
     class Controlador
     {
         function delete()

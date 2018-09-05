@@ -1,6 +1,7 @@
 <?php
 require_once("../../../app/models/estudiantes.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $estudiantes = new Estudiantes;
     $data = $estudiantes->GetDatosGenerales();
 }catch(Exception $error){

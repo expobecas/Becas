@@ -319,6 +319,12 @@ class Usuario extends Validator{
         return Database::executeRow($sql, $params);    
         
     }
+    public function changePassword(){
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario	 = ?";
+        $params = array($hash, $this->id);
+        return Database::executeRow($sql, $params);
+    }
     public function updateUsuario(){
 		$sql = "UPDATE usuarios SET nombres= ?, apellidos= ?, id_tipo= ?, usuario= ?, contraseña= ? WHERE id_usuario = ?";
 		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario,$this->clave, $this->id);

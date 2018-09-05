@@ -48,6 +48,7 @@ class Page extends Component{
             <li><a href='../../../public/empresa/index/becados.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Mis becados</a></li>
             <li><a href='../../../public/empresa/index/casos.php' class='white-text'><i class='material-icons white-text'>assignment</i>Casos</a></li>
             <li><a href='../../../public/empresa/index/mensajes.php' class='white-text'><i class='material-icons white-text'>mail_outline</i>Mensajes</a></li>
+            <li><a href='../../../public/empresa/ingresar/contraseña.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar clave</a></li>
             <li><a href='../../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul> 
           <main>

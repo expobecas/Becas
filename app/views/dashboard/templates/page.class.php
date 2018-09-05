@@ -54,6 +54,7 @@ class Page extends component{
                     <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
                     <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
+                    <li><a href='../../dashboard/ingresar/contraseña.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar contraseña</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
                   <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 

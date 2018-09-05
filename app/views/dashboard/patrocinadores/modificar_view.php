@@ -1,6 +1,6 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
-   <form class="col s12 l6 offset-l4 white edit_form" method='POST'>
+   <form class="col s12 l6 offset-l4 white edit_form" method='POST' autocomplete="off">
       <p class="titulo-EP"><strong>Editar Patrocinador</strong></p>
       <div class="divider"></div>
       <!--PRIMERA FILA-->

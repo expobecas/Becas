@@ -1,5 +1,5 @@
 <h3 class="center">Crear Caso</h3>
-<form method="POST">
+<form method="POST"  autocomplete="off">
     <div class="row">
         <div class="input-field col l8 m8 offset-l3">
             <textarea id="descripcion" class="materialize-textarea" name="descripcion" data-length="500"></textarea>

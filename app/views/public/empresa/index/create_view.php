@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-<form method='post' enctype='multipart/form-data'>
+<form method='post' enctype='multipart/form-data'  autocomplete="off">
   <div class="row">
     <div class="input-field col s6 offset-l3 white-text">
         <input id="mensaje" type="text" name="mensaje"  class="white-text" class="validate" value="<?php print($mensaje->getMensaje()) ?>" required/>

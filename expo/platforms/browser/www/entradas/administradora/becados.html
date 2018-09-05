@@ -14,6 +14,27 @@
     <link rel="stylesheet" type="text/css" href="../../web/css/materialize.min.css">
     <link href="../../web/css\icons.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../web/css/main.css">
+        <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "http://localhost/Becas/expo/www/php/select_becados.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id_estudiante = field.id_estudiante;
+                var primer_nombre = field.primer_nombre;
+                var segundo_nombre  = field.segundo_nombre;
+                var primer_apellido = field.primer_apellido;
+                var segundo_apellido = field.segundo_apellido;
+                var usuario = field.usuario;
+                var contraseña = field.contraseña;
+                var n_carnet = field.n_carnet;
+                var grado = field.grado;
+                var especialidad = field.especialidad;
+                $("#listview").append("<a class='item' href='form.html?id_estudiante=" + id_estudiante + "&primer_nombre=" + primer_nombre+ "&segundo_nombre=" + segundo_nombre + "&primer_apellido=" + primer_apellido + "$segundo_apellido" + segundo_apellido + "$usuario" + usuario + "$contraseña" + contraseña + "$n_carnet" + n_carnet + "$grado" + grado + "$especialidad" + especialidad + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p><p>" + specialty + "</p></a>");
+            });
+        });
+    });
+    </script>
 
 
 </head>
@@ -63,23 +84,7 @@
                               </tr>
                             </thead>
                     
-                            <tbody>
-                              <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                              </tr>
-                              <tr>
-                                <td>Alan</td>
-                                <td>Jellybean</td>
-                                <td>$3.76</td>
-                              </tr>
-                              <tr>
-                                <td>Jonathan</td>
-                                <td>Lollipop</td>
-                                <td>$7.00</td>
-                              </tr>
-                            </tbody>
+
                           </table>
                                 
             </div>

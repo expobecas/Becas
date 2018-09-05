@@ -72,7 +72,7 @@ function timer(){
         //console.log(logMinutos);
         if(logMinutos == ':05')
         {
-            window.location = '../../dashboard/ingresar/logout.php?id=1';
+            window.location = '../../../dashboard/ingresar/logout.php?id=1';
         }
     }
     

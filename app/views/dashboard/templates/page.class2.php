@@ -29,29 +29,9 @@ class Page extends component{
                       <a href='#!user'><img class='circle' src='../../web/img/admin/icon/man.png'></a>
                       <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
                     </div></li>
-                    <li><a href='../../dashboard/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-                    <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
-                    <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
-                    <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
-                    <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
-                    <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
-                    <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
-                    <li><a href='../../dashboard/ingresar/contraseña.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar contraseña</a></li>
-                    <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
-                  <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 
-                  <main>
-                  <div class='row white' id='barra'>
-                  <div class='col'>
-                  <a href='#' data-activates='slide-out' class='button-collapse menu-btn'><i class='material-icons'>menu</i></a>          
-                  </div>
-                    <div class='col offset-l9 offset-s1'>   
-                    <ul id='dropdown2' class='dropdown-content'>
-                    <li><a href='#!'>Aqui iran las super notificaciones</a></li>
-                    </ul>
-                    <a class='btn dropdown-button grey-text avisos' href='#!' data-activates='dropdown2'>Notificación<i class='material-icons right'>notifications</i></a>
-                    </div> 
-                    </div>");
+ 
+                  <main>");
                 }else{
                     print("
                 <div class='ingresar_fondo'></div>

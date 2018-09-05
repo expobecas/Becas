@@ -314,14 +314,16 @@ class Usuario extends Validator{
     }
 
     public function createUsuario(){
-<<<<<<< HEAD
-		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, correo, contraseña) VALUES (?,?,?,?,?,?)";
-=======
 		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
->>>>>>> 3795f9f05bb36225ed50fba0724bd6990b8504e3
 		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);    
         
+    }
+    public function changePassword(){
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario	 = ?";
+        $params = array($hash, $this->id);
+        return Database::executeRow($sql, $params);
     }
     public function updateUsuario(){
 		$sql = "UPDATE usuarios SET nombres= ?, apellidos= ?, id_tipo= ?, usuario= ?, contraseña= ? WHERE id_usuario = ?";
@@ -402,5 +404,23 @@ public function getTipoUsuario(){
             echo $dato_password;
         }*/
     }
+    public function changePassword(){
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+		$sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario = ?";
+		$params = array($hash, $this->id);
+		return Database::executeRow($sql, $params);
+    }
+    public function FechaCreacion(){
+		$sql = "UPDATE usuarios SET fecha_contraseña = ? WHERE id_usuario = ?";
+		$fecha1= date("Y-m-d");
+		$params = array($fecha1,  $this->id);
+		return Database::executeRow($sql, $params);
+    }
+    public function SesionUnica2(){
+		$sql = "UPDATE usuarios SET estado_sesion = ? WHERE id_usuario = ?";
+		$inactivo = 0;
+		$params = array($inactivo, $_SESSION['id_usuario']);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

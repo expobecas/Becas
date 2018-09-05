@@ -57,8 +57,7 @@ try
                         }
                         else
                         {
-                            throw new Exception($usuario->getErrorPassword());
-                            //Page::showMessage(2, 'Ocurrio un problema la enviar el correo, por favor intente de nuevo', null);
+                            throw new Exception($usuario->getErrorPassword().' vuelva a intentar');
                         }                        
                     }
                     else

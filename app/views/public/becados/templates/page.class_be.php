@@ -21,8 +21,6 @@ class Page extends component{
         <body class='fondo-general font-web' onunload='getLogoffTime()'>
         ");
         if(isset($_SESSION['id_estudiante'])){
-<<<<<<< HEAD
-=======
             if (isset($_SESSION['lapso'])) {
                 
                 $inactivo = 60; //Segundos de actividad de pantalla.
@@ -41,7 +39,6 @@ class Page extends component{
                     $_SESSION['lapso'] = time();
                 }
             }
->>>>>>> 3795f9f05bb36225ed50fba0724bd6990b8504e3
             $id_estudiante = $_SESSION['id_estudiante'];
             $id_estudiante = password_hash($id_estudiante, PASSWORD_DEFAULT);
             print("<ul id='slide-out' class='side-nav fixed content-menu'>

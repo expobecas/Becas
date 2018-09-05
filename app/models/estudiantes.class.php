@@ -10,6 +10,10 @@ class Estudiantes extends Validator{
     private $num_carnet = null;
     private $grado = null;
     private $especialidad = null;
+    private $intentos = null;
+    private $estado_sesion = null;
+    private $fecha_contraseña = null;
+    private $estado = null;
 
     public function setId($value){
         if($this->validateId($value)){
@@ -78,7 +82,7 @@ class Estudiantes extends Validator{
         return $this->usuario;
     }
     public function setContraseña($value){
-        if($this->validateAlphanumeric($value, 1, 50)){
+        if($this->validateAlphanumeric($value, 1, 60)){
             $this->contraseña = $value;
             return true;
         }else{
@@ -122,15 +126,89 @@ class Estudiantes extends Validator{
         return $this->especialidad;
     }
 
+    public function setIntentos($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->intentos = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getIntentos()
+    {
+        return $this->intentos;
+    }
+
+    public function setEstadoSesion($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->estado_sesion = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getEstadoSesion()
+    {
+        return $this->estado_sesion;
+    }
+
+    public function setFechaContraseña($value)
+    {
+      if($this->validateAlphanumeric($value, 1, 60))
+      {
+          $this->fecha_contraseña = $value;
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    }
+    public function getFechaContraseña()
+    {
+        return $this->fecha_contraseña;
+    }
+
+    public function setEstado($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->estado = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
     //VERIFICACIÓN 
     public function checkAlumno(){
-        $sql = "SELECT id_estudiante FROM estudiantes WHERE usuario = ?";
+        $sql = "SELECT id_estudiante, fecha_contraseña, intentos, estado, estado_sesion FROM estudiantes WHERE usuario = ?";
         $params = array($this->usuario);
         $data = Database::getRow($sql, $params);
         if($data){
             $this->id = $data['id_estudiante'];
+            $this->fecha_contraseña = $data['fecha_contraseña'];
+            $this->intentos = $data['intentos'];
+            $this->estado = $data['estado'];
+            $this->estado_sesion = $data['estado_sesion'];
             return true;
-        }else{
+        }
+        else
+        {
             return false;
         }
     }
@@ -176,6 +254,47 @@ class Estudiantes extends Validator{
         $sql = "UPDATE estudiantes SET contraseña = ? WHERE id_estudiante = ?";
         $params = array($hash, $this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    //Cada vez que se equivoque se actualizara los intentos en la base
+    public function updateIntentos()
+    {
+        $sql = "UPDATE estudiantes SET intentos = ? WHERE id_estudiante = ?";
+        $params = array($this->intentos, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function resetIntentos()
+    {
+        $intentos = 0;
+        $sql = "UPDATE estudiantes SET intentos = ? WHERE id_estudiante = ?";
+        $params = array($intentos, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateEstado()
+    {
+        $sql = "UPDATE estudiantes SET estado = ? WHERE id_estudiante = ?";
+        $params = array($this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Cuando los intentos sean 3 se bloqueará el usuario cambiandole el estado
+    public function blockUsuario()
+    {
+        $intentos = 0;
+        $fecha_contraseña = date("Y-m-d H:i:s");
+        $sql = "UPDATE estudiantes SET intentos = ?, fecha_contraseña = ?, estado = ? WHERE id_estudiante = ?";
+        $params = array($intentos, $fecha_contraseña, $this->estado, $this->id);
+        print_r($params);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateEstadoSesion()
+    {
+        $sql = "UPDATE estudiantes SET estado_sesion = ? WHERE id_estudiante = ?";
+        $params = array($this->estado_sesion, $this->id);
+        return database::executeRow($sql, $params);
     }
 
     public function logOut(){

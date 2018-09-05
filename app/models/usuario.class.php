@@ -314,11 +314,7 @@ class Usuario extends Validator{
     }
 
     public function createUsuario(){
-<<<<<<< HEAD
-		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, correo, contraseña) VALUES (?,?,?,?,?,?)";
-=======
 		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
->>>>>>> 3795f9f05bb36225ed50fba0724bd6990b8504e3
 		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);    
         

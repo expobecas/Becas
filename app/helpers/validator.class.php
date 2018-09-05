@@ -25,7 +25,7 @@ class Validator{
 
 	public function validateForm($fields){
 		foreach($fields as $index => $value){
-			$value = trim($value);
+			$value = strip_tags(trim($value));
 			$fields[$index] = $value;
 		}
 		return $fields;
@@ -97,12 +97,96 @@ class Validator{
 		}
 	}
 
-	public function validatePassword($value){
+	/*public function validatePassword($value){
 		if(strlen($value) > 5){
 			return true;
 		}else{
 			return false;
 		}
+	}*/
+
+	public function validatePassword($value){
+		$mayuscula = preg_match('/[A-ZÑÁÉÍÓÚ]+/', $value);
+		$minuscula = preg_match('/[a-zñáéíóú]+/', $value);
+		$numero = preg_match('/[0-9]+/', $value);
+		$signos = preg_match('/[\.\,]+/', $value);
+		$espacio = preg_match("/[\s]+/", $value);
+		if($mayuscula)
+		{
+			if($minuscula)
+			{
+				if($numero)
+				{
+					if($signos)
+					{
+						if(!$espacio)
+						{
+							if(strlen($value) >= 8)
+							{
+								return true;
+							}
+							else
+							{
+								$this->passwordError = 6;
+								return false;
+							}
+						}
+						else
+						{
+							$this->passwordError = 5;
+							return false;
+						}
+					}
+					else
+					{
+						$this->passwordError = 4;
+						return false;
+					}
+				}
+				else
+				{
+					$this->passwordError = 3;
+					return false;
+				}
+			}
+			else
+			{
+				$this->passwordError = 2;
+				return false;
+			}
+		}
+		else
+		{
+			$this->passwordError = 1;
+			return false;
+		}
+	}
+
+	public function getErrorPassword(){
+		switch($this->passwordError)
+		{
+			case 1:
+				$error = 'La contraseña no tiene al menos una mayuscula';
+				break;
+			case 2:
+				$error = 'La contraseña no tiene al menos una minuscula';
+				break;
+			case 3:
+				$error = 'La contraseña no tiene al menos un número';
+				break;
+			case 4:
+				$error = 'La contraseña debe de tener un signo("," ó ".")';
+				break;
+			case 5:
+				$error = 'La contraseña no debe de tener espacios';
+				break;
+			case 6:
+				$error = 'La contraseña debe de tener al menos 8 caracteres';
+				break;
+			default:
+				$error = 'Ocurrio un problema al guardar la contraseña';
+		}
+		return $error;
 	}
 }
 ?>

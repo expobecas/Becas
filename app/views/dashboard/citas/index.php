@@ -63,9 +63,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" type="submit" id="agregar" class="waves-effect waves-light btn btn-small">Agregar</a>
-        <a href="#!" type="submit" id="modificar" class="waves-effect waves-light btn btn-small">Modificar</a>
-        <a href="#!" type="submit" id="eliminar" class="waves-effect waves-light btn btn-small red">Eliminar</a>
-        <a href="#!" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
+        <a id="agregar" class="waves-effect waves-light btn btn-small">Agregar</a>
+        <a id="modificar" class="waves-effect waves-light btn btn-small">Modificar</a>
+        <a id="eliminar" class="waves-effect waves-light btn btn-small red">Eliminar</a>
+        <a class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
     </div>
 </div>

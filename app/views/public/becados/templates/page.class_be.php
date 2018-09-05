@@ -18,16 +18,39 @@ class Page extends component{
             <script type='text/javascript' src='../../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
-        <body class='fondo-general font-web'>
+        <body class='fondo-general font-web' onunload='getLogoffTime()'>
         ");
         if(isset($_SESSION['id_estudiante'])){
+<<<<<<< HEAD
+=======
+            if (isset($_SESSION['lapso'])) {
+                
+                $inactivo = 60; //Segundos de actividad de pantalla.
+                
+                //Calculamos tiempo de vida inactivo.
+                $lapsosesion = time() - $_SESSION['lapso'];
+                
+                //El lapso de la sesion sea mayor a el tiempo insertado en inactivo.
+                if ($lapsosesion > $inactivo) {
+                    //Destruimos sesión.
+                    session_destroy();
+                    Page::showMessage(3, "Sesión inactiva, vuelva a iniciar sesión", "../../../public/becados/account/ingresar.php");
+                    exit();
+                } else {
+                    //Activamos sesion
+                    $_SESSION['lapso'] = time();
+                }
+            }
+>>>>>>> 3795f9f05bb36225ed50fba0724bd6990b8504e3
+            $id_estudiante = $_SESSION['id_estudiante'];
+            $id_estudiante = password_hash($id_estudiante, PASSWORD_DEFAULT);
             print("<ul id='slide-out' class='side-nav fixed content-menu'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
             </div></li>
             <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-            <li><a href='../../../public/becados/account/editar_perfil.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
+            <li><a href='../../../public/becados/account/editar_perfil.php?id=$id_estudiante' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
             <li><a href='../../../public/becados/account/mensajes.php' class='white-text'><i class='material-icons white-text'>question_answer</i>Mensajes</a></li>
             <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul>  
@@ -57,7 +80,7 @@ class Page extends component{
             ");
             $filename = basename($_SERVER['PHP_SELF']);
 			if($filename != "ingresar.php"){
-				self::showMessage(3, "¡Debe iniciar sesión!", "../../../public/ingresar/ingresar.php");
+				self::showMessage(3, "¡Debe iniciar sesión!", "../../../public/becados/account/ingresar.php");
 				self::templateFooter();
 				exit;
 			}else{
@@ -76,6 +99,11 @@ class Page extends component{
 		</body>
 		</html>
         ");
+        $filename = basename($_SERVER['PHP_SELF']);
+        if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
+        {
+            print("<script type='text/javascript' src='../../../web/js/js_inactividad/js_inactividad_becados.js'></script>");
+        }
     }
 }
 ?> 

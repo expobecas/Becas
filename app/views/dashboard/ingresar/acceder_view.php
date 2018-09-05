@@ -13,7 +13,10 @@
           <label for="password">Contraseña</label>
         </div>
       </div>
-      <button class="waves-effect waves-light btn ingresar" type='submit' name='ingresar'>Ingresar</button>      
+      <button class="waves-effect waves-light btn ingresar" type='submit' name='ingresar'>Ingresar</button>
+      <div class='center'>
+          <a href="recover.php"> ¿Olvidastes tú Contraseña?</a>
+      </div>
       </div>
     </form>
   </div>

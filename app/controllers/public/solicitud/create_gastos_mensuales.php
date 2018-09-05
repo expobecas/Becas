@@ -115,6 +115,9 @@ try
 			{
 				echo json_decode(Database::getException());
 			}
+			$id_gastos = $gastos_mensuales->getIdGastos();
+
+			echo json_decode($id_gastos);
 		}
     }
     $object = new Datos_estudiante();

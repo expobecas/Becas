@@ -41,6 +41,17 @@
   margin-bottom: 13px;
 }
 
+.stiky
+{
+  display: block;
+  left: 2%;
+  width: 96%;
+  z-index: 4;
+  background:white;
+  position: sticky;
+  top: 0%;
+}
+
 .invalidad
 {
   border-bottom: 1px solid #F44336 !important;
@@ -439,7 +450,6 @@ button:active,
 	width: 100%;
   overflow: hidden;
   margin-bottom: 50px;
-  margin-top: 50px;
 }
 /*Tamaño total del slider*/
 .slider {

@@ -1,4 +1,5 @@
 <?php 
+//JEFES
 require_once("../../../app/models/database.class.php");
 require_once("../../../app/helpers/validator.class.php");
 require_once("../../../app/helpers/component.class.php");
@@ -18,7 +19,7 @@ class Page extends Component{
             <script type='text/javascript' src='../../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
-        <body class='fondo-general'>
+        <body class='fondo-general' onunload='getLogoffTime()'>
         ");
         if(isset($_SESSION['id_usuario'])){
             print(" <ul id='slide-out' class='side-nav fixed content-menu'>
@@ -58,7 +59,7 @@ class Page extends Component{
             ");
             $filename = basename($_SERVER['PHP_SELF']);
 			if($filename != "acceder.php"){
-				self::showMessage(3, "¡Debe iniciar sesión!", "../../../public/ingresar/acceder.php");
+				self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
 				self::templateFooter();
 				exit;
 			}else{
@@ -77,6 +78,11 @@ class Page extends Component{
 		</body>
 		</html>
         ");
+        $filename = basename($_SERVER['PHP_SELF']);
+        if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
+        {
+            print("<script type='text/javascript' src='../../../web/js/js_inactividad/js_inactividad_jefes.js'></script>");
+        }
     }
 }
 ?> 

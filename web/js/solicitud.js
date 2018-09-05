@@ -288,6 +288,7 @@ var id_solicitud = "";
           });
           console.log(totalsalario);
           $('#ingreso_familiar').val(totalsalario);
+          $('#ingreso_mensual').val(totalsalario);
           
           $('.tooltipped').tooltip({delay: 50});
           
@@ -1058,8 +1059,10 @@ var id_solicitud = "";
      **********************************************************PARA EL SLIDER 4**********************************************************************
      ************************************************************************************************************************************************/
 
-     $('#enviar').click(function(){
+    $('#enviar').click(function(){
+      var id_gastos = 0;
       console.log(id_solicitud);
+      console.log(id_propiedad);
       /*-----------------------------------------------------------------------------------------------------------------------------------------------
         --------------------------------------PARA INSERTAR EN LA TABLA GASTOS MENSUALES---------------------------------------------------------------
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -1142,35 +1145,11 @@ var id_solicitud = "";
                                     tarjetas_credito:tarjetas_credito,
                                     otros_gastos:otros_gastos
                                     },
-                                  success: function()
+                                  success: function(IdGastos)
                                   {
+                                    id_gastos = IdGastos;
                                     console.log('Los datos de gastos fueron enviados');
-                                    console.log(
-                                    alimentacion+"- "+
-                                    casa+"- "+
-                                    energia_electrica+"- "+
-                                    agua+"- "+
-                                    telefono+"- "+
-                                    vigilancia+"- "+
-                                    domesticos+"- "+
-                                    alcaldia+"- "+
-                                    pago_deudas+"- "+
-                                    cotizaciones+"- "+
-                                    seguro_personal+"- "+
-                                    seguro_vehiculo+"- "+
-                                    seguro_inmuebles+"- "+
-                                    transporte+"- "+
-                                    mant_vehiculo+"- "+
-                                    salud+"- "+
-                                    pago_asociaciones+"- "+
-                                    pago_colegiatura+"- "+
-                                    pago_universitarios+"- "+
-                                    materiales+"- "+
-                                    renta+"- "+
-                                    iva+"- "+
-                                    tarjetas_credito+"- "+
-                                    otros_gastos
-                                    );
+                                    console.log(id_gastos);
                                   }
                                 });
                               }
@@ -1233,13 +1212,78 @@ var id_solicitud = "";
         {
           AlertasSwal('Ingrese el gasto de alimentacion mensual');
         }
-    });
-
-     $('#enviar').click(function(){
-      console.log(id_solicitud);
        /*----------------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------PARA INSERTAR EN LA TABLA -----------------------------------------------------
-        -----------------------------------------------------------------------------------------------------------------------------------------------*/       
+        --------------------------------------PARA INSERTAR EN LA TABLA INTERMEDIA PROPIEDAD-----------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        $.ajax({
+          type: 'POST',
+          url: '../../app/controllers/public/solicitud/create_inter_propiedad.php?action=create',
+          data:{
+            id_propiedad:id_propiedad,
+            id_solicitud:id_solicitud
+            },
+          success: function(error)
+          {
+            console.log(error + 'error de intermedia propiedad');
+          }
+        });
+        /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA DETALLE SOLICITUD---------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        $.ajax({
+          type: 'POST',
+          url: '../../app/controllers/public/solicitud/create_detalle_solicitud.php?action=create',
+          data: {
+            id_solicitud:id_solicitud
+          },
+          success: function()
+          {
+            AlertasSwal("Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema");
+          }
+        });
+        /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA GRUPO FAMILIAR ----------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        id_familia = "";
+        ingreso_mensual = $('#ingreso_mensual').val();
+        gasto_mensual = $('#gasto_mensual').val();
+        monto_deuda = $('#monto_deuda').val();
+        if(ingreso_mensual != "")
+        {
+          if(gasto_mensual != "")
+          {
+            $.ajax({
+              type: 'POST',
+              url: '../../app/controllers/public/solicitud/create_grupo_familiar.php?action=create',
+              data:{
+                ingreso_mensual:ingreso_mensual,
+                gasto_mensual:gasto_mensual,
+                monto_deuda:monto_deuda,
+                id_gastos:id_gastos,
+                id_solicitud:id_solicitud
+              },
+              success: function(IdFamilia)
+              {
+                id_familia = IdFamilia;
+                console.log(id_familia);
+              }
+            });
+          }
+          else
+          {
+            AlertasSwal('Ingrese los gastos mensuales');
+          }
+        }
+        else
+        {
+          AlertasSwal('los ingresos mensuales no han sido ingresados');
+        }
+        /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA REMESA FAMILIAR----------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        $.ajax({
+          
+        });
      });
 });
 

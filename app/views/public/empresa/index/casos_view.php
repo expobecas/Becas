@@ -42,7 +42,7 @@
             <td>$row[especialidad]</td>
             <td>$row[encargado]</td>
             <td>$row[cel_mama]</td>
-            <td> <a href='editar.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a></td>
+            <td> <a href='editar.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../../web/img/admin/icon/eraser.png'></a></td>
         </tr>
         ");
       }?>

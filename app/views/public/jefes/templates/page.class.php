@@ -18,7 +18,7 @@ class Page extends component{
             <script type='text/javascript' src='../../../web/js/sweetalert.min.js'></script>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         </head>
-        <body class='fondo-general font-web'>
+        <body class='fondo-general font-web' onunload='getLogoffTime()'>
         ");
         if(isset($_SESSION['id_usuario'])){
             print("<ul id='slide-out' class='side-nav fixed content-menu'>
@@ -57,7 +57,7 @@ class Page extends component{
         <main class='container'>
             ");
             $filename = basename($_SERVER['PHP_SELF']);
-			if($filename != "acceder.php.php"){
+			if($filename != "acceder.php"){
 				self::showMessage(3, "¡Debe iniciar sesión!", "../../../dashboard/ingresar/acceder.php");
 				self::templateFooter();
 				exit;
@@ -77,6 +77,11 @@ class Page extends component{
 		</body>
 		</html>
         ");
+        $filename = basename($_SERVER['PHP_SELF']);
+        if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
+        {
+            print("<script type='text/javascript' src='../../../web/js/js_inactividad/js_inactividad_empresa.js'></script>");
+        }
     }
 }
 ?> 

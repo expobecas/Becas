@@ -148,6 +148,13 @@ class Citas extends Validator
 
     //metodos para CRUD del calendario
 
+    public function getIdDetalles()
+    {
+        $sql = "SELECT id_detalle FROM detalle_solicitud";
+        $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+    
     public function getEventos()
     {
         $sql = "SELECT e.primer_nombre, e.segundo_nombre, e.primer_apellido, e.segundo_apellido, c.id, c.title, c.descripcion, c.color, c.textColor, c.start, c.end, c.id_detalle FROM citas c INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle INNER JOIN solicitud s ON d.id_solicitud = s.id_solicitud INNER JOIN estudiantes e ON s.id_estudiante = e.id_estudiante";
@@ -159,6 +166,7 @@ class Citas extends Validator
     {
         $sql = "INSERT INTO citas(title, descripcion, color, textColor, start, end, id_detalle) VALUES(?, ?, ?, ?, ?, ?, ?)";
         $params = array($titulo, $descripcion, $color, $colortext, $inicio, $fin, $this->id_detalle);
+        print_r($params);
         return database::executeRow($sql, $params);
     }
 

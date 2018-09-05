@@ -3,6 +3,7 @@ require_once('../../../../app/helpers/validator.class.php');
 require_once('../../../../app/models/database.class.php');
 require_once('../../../../app/models/usuario.class.php');
 require_once('../../../../app/models/solicitud.class.php');
+require_once('../../../../app/models/detalle_solicitud.class.php');
 require_once('../../../../app/libraries/fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -71,6 +72,7 @@ $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
 $pdf->Cell(25,18,$_SESSION['usuario'],0,0,'C');
 
+
 //Fecha
 $pdf->setX(127);
 $pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
@@ -80,114 +82,49 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Nombre: '),0,0,'C');
+$pdf->Cell(30,30,$usuarios->getNombres().' '.$usuarios->getApellidos(),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
 $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
-//FORMATO DE HORA G = 24 HORAS - I = MINUTOS - A = AM O PM
 $pdf->Cell(10, 18, $hora->format('G:i a'), 0, 0,'C');
 
-/////////////////////////////////////////////////////////////////////////
+$pdf->ln(10);
+$query = "SELECT id_estado, estado_solicitud FROM estado_solicitud WHERE id_estado BETWEEN 1 and 4 ";
+    $params = array(null);
+    $titulo = Database::getRows($query, $params);
 
-////////////////////////////////////////////////////////////////////////
+	foreach($titulo as $tipo)
+	{
+        $pdf->ln(10);
+        $pdf->Cell(185,10,utf8_decode("Tipo: ".$tipo['estado_solicitud']),1,1,'C');
 
-//Becas correspondientes
-$pdf->SetFont('Times','B',12);
-$pdf->Ln(17);
+        $query = "SELECT e.estado_solicitud, m.primer_nombre, m.primer_apellido, m.n_carnet, m.especialidad, m.grado FROM detalle_solicitud INNER JOIN solicitud s USING(id_solicitud) INNER JOIN estudiantes m USING(id_estudiante) INNER JOIN estado_solicitud e USING (id_estado) WHERE detalle_solicitud.id_estado = $tipo[id_estado] ORDER BY id_estado";
+        $params = array(null);
+        $productos = Database::getRows($query, $params);
 
-$pdf->SetX(18);
-$pdf->Cell(30, 10, 'Solicitudes aprobadas', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(18); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
-$pdf->Ln(6);
+        $pdf->Cell(36,6,'Nombre',1,0,'C');
+        $pdf->Cell(36,6,'Apellido',1,0,'C');
+        $pdf->Cell(35,6,'N_Carnet',1,0,'C');
+        $pdf->Cell(36,6,'Grado',1,0,'C');
+        $pdf->Cell(42,6,'Especialidad',1,1,'C');
 
-$datos = $solicitud->getSolicitudPorTipo();
-foreach ($datos as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', 'B', 11);
-    $pdf->SetX(18);
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
 
-    $pdf->Ln();
-}
+        if($productos){
+            foreach($productos as $tipos)
+            {
+                $pdf->Cell(36,6,utf8_decode($tipos['primer_nombre']),1,0,'C');  
+                $pdf->Cell(36,6,utf8_decode($tipos['primer_apellido']),1,0,'C'); 
+                $pdf->Cell(35,6,utf8_decode($tipos['n_carnet']),1,0,'C'); 
+                $pdf->Cell(36,6,utf8_decode($tipos['grado']),1,0,'C'); 
+                $pdf->Cell(42,6,utf8_decode($tipos['especialidad']),1,1,'C');  
 
-$pdf->Ln(10);
-
-$pdf->SetX(18);
-$pdf->Cell(30, 10, 'Solicitudes rechazadas', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(18); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
-$pdf->Ln(6);
-
-$datos2 = $solicitud->getSolicitudPorTipo2();
-foreach ($datos2 as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(18);
-   
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
-    $pdf->Ln();
-
-}
-
-$pdf->Ln(14);
-
-$pdf->SetX(18);
-$pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->Cell(30, 10, 'Solicitudes en proceso', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(18); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Apellido', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Carnet', 1, 0, 'C', 1);
-$pdf->Cell(45, 6, 'Especialidad', 1, 0, 'C', 1);
-$pdf->Cell(30, 6, 'Grado', 1, 0, 'C', 1);
-$pdf->Ln(6);
-
-$datos2 = $solicitud->getSolicitudPorTipo3();
-foreach ($datos2 as $row) {
-    $pdf->SetTextColor(250, 251, 251);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(18);
-   
-    $pdf->Cell(35, 6, $row['primer_nombre'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['n_carnet'], 1, 0, 'C');
-    $pdf->Cell(45, 6, $row['especialidad'], 1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($row['grado']), 1, 0, 'C');
-    $pdf->Ln();
-
-}
-
-$pdf->Output();
+            }
+        }else{
+            $pdf->Cell(185,6,'No hay solicitudes',1,1,'C');
+        }
+    }
+	$pdf->Output();
 ?>

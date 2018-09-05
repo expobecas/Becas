@@ -12,8 +12,12 @@ require_once("../../app/models/solicitud.class.php");
 require_once("../../app/models/detalle_solicitud.php");
 try
 {
-	$id_estudiante = $_SESSION['id_estudiante'];
-	if($id_estudiante == "")
+	$id_estudiante = "";
+	if(isset($_SESSION['id_estudiante']))
+	{
+		$id_estudiante = $_SESSION['id_estudiante'];
+	}
+	else
 	{
 		Page::showMessage(3, "Por favor inicie sessión", "../alumno/account/ingresar.php");
 	}

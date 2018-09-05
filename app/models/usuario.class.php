@@ -365,7 +365,7 @@ public function getTipoUsuario(){
         $letras ="abcdefghijklmnopqrstuvwxyz";
         $numeros = "1234567890";
         $letrasMayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $especiales =".,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,";
+        $especiales =".,.,.,.,.,.,.,.,";
         $listado = null;
         
         if($opc_letras == TRUE) 
@@ -386,11 +386,12 @@ public function getTipoUsuario(){
         }
         echo strlen($listado);
         str_shuffle($listado);
-        for( $i=1; $i<=$longitud; $i++) 
+        for($i=1; $i<=$longitud; $i++) 
         {
             $password[$i] = $listado[rand(0,strlen($listado)-$i)];
             str_shuffle($listado);
         }
+        $password = str_replace(' ', '', $password);
         return $password;
         /*foreach ($password as $dato_password) 
         {

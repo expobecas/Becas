@@ -21,7 +21,6 @@ class Page extends component{
         <body class='fondo-general font-web'>
         ");
         if(isset($_SESSION['id_estudiante'])){
-<<<<<<< HEAD
             if (isset($_SESSION['lapso'])) {
                 
                 $inactivo = 60; //Segundos de actividad de pantalla.
@@ -40,10 +39,8 @@ class Page extends component{
                     $_SESSION['lapso'] = time();
                 }
             }
-=======
             $id_estudiante = $_SESSION['id_estudiante'];
             $id_estudiante = password_hash($id_estudiante, PASSWORD_DEFAULT);
->>>>>>> 47c17ba4cda8e8c988a11950dd124ce627b8b466
             print("<ul id='slide-out' class='side-nav fixed content-menu'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>

@@ -48,14 +48,18 @@ try
                     if($mail->Send())
                     {
                         $clave = $usuario->getClave();
-                        if($usuario->setClave($clave))
+                        if($usuario->setClave($contra))
                         {
                             if($usuario->encryptContraseña())
                             {
                                 Page::showMessage(1, 'La nueva contraseña se envia al correo electrónico', '../ingresar/acceder.php');
                             }
                         }
-                        
+                        else
+                        {
+                            throw new Exception($usuario->getErrorPassword());
+                            //Page::showMessage(2, 'Ocurrio un problema la enviar el correo, por favor intente de nuevo', null);
+                        }                        
                     }
                     else
                     {

@@ -112,7 +112,7 @@ try{
                                 {
                                     $usuarios->setIntentos($intentos);
                                     $usuarios->updateIntentos();
-                                    throw new Exception($usuarios->getErrorPassword());
+                                    throw new Exception($usuarios->getErrorPassword().' vuelva a intentar');
                                 }
                             }
                         }

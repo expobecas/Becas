@@ -1,7 +1,6 @@
 <?php
 require_once("../../../app/models/mensaje_beca.php");
 try{
-	$_SESSION['lapso'] = time();
 	$mensaje = new Mensaje; 
 	if(isset($_POST['buscar'])){
 		$_POST = $mensaje->validateForm($_POST);

@@ -1,15 +1,7 @@
 <?php
 require_once ("../../../app/models/estudiantes.class.php");
-<<<<<<< HEAD
 try {
-    $_SESSION['lapso'] = time();
     if (isset($_GET['id'])) {
-=======
-try 
-{
-    if (isset($_GET['id']))
-    {
->>>>>>> 47c17ba4cda8e8c988a11950dd124ce627b8b466
         $estudiantes = new Estudiantes;
         $id_encrypt = $_GET['id'];
         $ids_estudiantes = $estudiantes->getIdEstudiantes();

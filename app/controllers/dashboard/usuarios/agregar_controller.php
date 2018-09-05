@@ -2,7 +2,6 @@
 require_once("../../app/models/patrocinadores.class.php");
 require_once("../../app/models/usuario.class.php");
 try{
-    $_SESSION['lapso'] = time();
     $patrocinadores = new Patrocinadores;
     $usuario = new Usuario;
     if(isset($_POST['crear'])){

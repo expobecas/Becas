@@ -1,7 +1,6 @@
 <?php
 require_once("../../app/models/becas.class.php");
 try{
-    $_SESSION['lapso'] = time();
     $becas = new Becas;
     if(isset($_POST['crear'])){
         $_POST = $becas->validateForm($_POST);

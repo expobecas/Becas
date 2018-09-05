@@ -1,7 +1,6 @@
 <?php
 require_once("../../../app/models/empresa_casos.php");
 try{
-	$_SESSION['lapso'] = time();
 	$casos = new Casos; 
 	if(isset($_POST['buscar'])){
 		$_POST = $casos->validateForm($_POST);

@@ -1,7 +1,6 @@
 <?php 
 require_once("../../app/models/categorias.class.php");
 try{
-    $_SESSION['lapso'] = time();
     if(isset($_GET['id'])){
         $categorias = new Categorias;
         if($categorias->setId($_GET['id'])){

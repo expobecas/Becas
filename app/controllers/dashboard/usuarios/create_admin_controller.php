@@ -3,7 +3,6 @@
 require_once('../../app/models/usuario.class.php');
 try
 {
-    $_SESSION['lapso'] = time();
     $usuario = new Usuario;
     $usuarios = $usuario->getUsuarios();
 

@@ -1,7 +1,6 @@
 <?php 
 require_once("../../app/models/tipo_usuario.class.php");
 try{
-    $_SESSION['lapso'] = time();
     $tipo = new Tipo;
     $data = $tipo->getTipos();
     /*VISTA GENERAL DE SOLICITUDES*/

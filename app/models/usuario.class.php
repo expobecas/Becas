@@ -404,5 +404,23 @@ public function getTipoUsuario(){
             echo $dato_password;
         }*/
     }
+    public function changePassword(){
+        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
+		$sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario = ?";
+		$params = array($hash, $this->id);
+		return Database::executeRow($sql, $params);
+    }
+    public function FechaCreacion(){
+		$sql = "UPDATE usuarios SET fecha_contraseña = ? WHERE id_usuario = ?";
+		$fecha1= date("Y-m-d");
+		$params = array($fecha1,  $this->id);
+		return Database::executeRow($sql, $params);
+    }
+    public function SesionUnica2(){
+		$sql = "UPDATE usuarios SET estado_sesion = ? WHERE id_usuario = ?";
+		$inactivo = 0;
+		$params = array($inactivo, $_SESSION['id_usuario']);
+		return Database::executeRow($sql, $params);
+	}
 }
 ?>

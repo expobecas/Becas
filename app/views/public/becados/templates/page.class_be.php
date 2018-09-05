@@ -21,6 +21,7 @@ class Page extends component{
         <body class='fondo-general font-web'>
         ");
         if(isset($_SESSION['id_estudiante'])){
+<<<<<<< HEAD
             if (isset($_SESSION['lapso'])) {
                 
                 $inactivo = 60; //Segundos de actividad de pantalla.
@@ -39,13 +40,17 @@ class Page extends component{
                     $_SESSION['lapso'] = time();
                 }
             }
+=======
+            $id_estudiante = $_SESSION['id_estudiante'];
+            $id_estudiante = password_hash($id_estudiante, PASSWORD_DEFAULT);
+>>>>>>> 47c17ba4cda8e8c988a11950dd124ce627b8b466
             print("<ul id='slide-out' class='side-nav fixed content-menu'>
             <li><div class='user-view'>
               <a href='#!user'><img class='circle' src='../../../web/img/alumno/users/user.png'></a>
               <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
             </div></li>
             <li><a href='../../../public/becados/index/becado.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
-            <li><a href='../../../public/becados/account/editar_perfil.php?id=$_SESSION[id_estudiante]' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
+            <li><a href='../../../public/becados/account/editar_perfil.php?id=$id_estudiante' class='white-text'><i class='material-icons white-text'>settings</i>Editar perfil</a></li>
             <li><a href='../../../public/becados/account/mensajes.php' class='white-text'><i class='material-icons white-text'>question_answer</i>Mensajes</a></li>
             <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul>  

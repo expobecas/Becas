@@ -47,7 +47,15 @@ try
                     $mail->MsgHTML($message);
                     if($mail->Send())
                     {
-                        Page::showMessage(1, 'La nueva contraseña se envia al correo electrónico', '../ingresar');
+                        $clave = $usuario->getClave();
+                        if($usuario->setClave($clave))
+                        {
+                            if($usuario->encryptContraseña())
+                            {
+                                Page::showMessage(1, 'La nueva contraseña se envia al correo electrónico', '../ingresar/acceder.php');
+                            }
+                        }
+                        
                     }
                     else
                     {

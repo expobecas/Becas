@@ -353,14 +353,7 @@ public function getTipoUsuario(){
             $this->apellidos = usuario['apellidos'];
         }
     }
-
-
-    //FUNCION PARA ENVIAR CORREO
-    function send_mail($correo,$message,$subject)
-	{
-        
-    }
-    
+    //FUNCION PARA GENERAR CONTRASEÑA ALEATORIAMENTE
     function generaPass(){
         $opc_letras = TRUE; //  FALSE para quitar las letras
         $opc_numeros = TRUE; // FALSE para quitar los números

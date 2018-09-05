@@ -1,6 +1,10 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
+<<<<<<< HEAD
+   <form class="col s4 l6 offset-l4 white formulario" method="POST" autocomplete="off">
+=======
    <form class="col s12 l7 offset-l4 white edit_form" method='POST'>
+>>>>>>> e9a73c951aadf72f3e99c602958f525deb0f6a13
       <p class="titulo-EP"><strong>Agregar usuario</strong></p>
       <div class="divider"></div>
       <div class="row  col m12">

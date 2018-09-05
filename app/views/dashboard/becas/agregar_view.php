@@ -1,6 +1,6 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
-   <form class="col s4 l7 offset-l4 white edit_form" method='POST'>
+   <form class="col s4 l7 offset-l4 white edit_form" method='POST' autocomplete="off">
       <p class="titulo-EP"><strong>Agregar becas</strong></p>
       <div class="divider"></div>
       <!--PRIMERA FILA-->

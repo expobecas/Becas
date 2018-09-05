@@ -1,6 +1,7 @@
 <?php 
 require_once("../../../app/models/comentarios.class.php");
 try{
+    $_SESSION['lapso'] = time();
         $comentarios = new Comentarios;
         $data = $comentarios->getMensajes();
 }catch(Exception $error){

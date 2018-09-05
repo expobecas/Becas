@@ -23,6 +23,24 @@ class Page extends component{
         <body class='fondo-general font-web'>
                 ");
                 if(isset($_SESSION['id_usuario'])){
+                    if (isset($_SESSION['lapso'])) {
+                
+                        $inactivo = 300; //Segundos de actividad de pantalla.
+                        
+                        //Calculamos tiempo de vida inactivo.
+                        $lapsosesion = time() - $_SESSION['lapso'];
+                        
+                        //El lapso de la sesion sea mayor a el tiempo insertado en inactivo.
+                        if ($lapsosesion > $inactivo) {
+                            //Destruimos sesión.
+                            session_destroy();
+                            Page::showMessage(3, "Sesión inactiva, vuelva a iniciar sesión", "../../dashboard/ingresar/acceder.php");
+                            exit();
+                        } else {
+                            //Activamos sesion
+                            $_SESSION['lapso'] = time();
+                        }
+                    }
                     print("
                     <ul id='slide-out' class='side-nav fixed content-menu white-text social-buttos'>
                     <li><div class='user-view'>

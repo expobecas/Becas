@@ -87,8 +87,8 @@ class Comentarios extends Validator{
     }
 
     public function getMensajes(){
-        $sql = "SELECT comentario, fecha, id_becas, nombres, apellidos FROM patrocinadores INNER JOIN comentarios USING (id_patrocinador) INNER JOIN becas USING (id_becas) INNER JOIN detalle_solicitud USING (Id_detalle) INNER JOIN solicitud USING (id_solicitud) INNER JOIN estudiantes USING (id_estudiante) WHERE estudiantes.id_estudiante = ?";
-        $params = array($this->id_estudiante);
+        $sql = "SELECT estudiantes.primer_nombre, estudiantes.primer_apellido, comentario, fecha FROM comentarios INNER JOIN patrocinadores USING(id_patrocinador) INNER JOIN becas USING(id_becas) INNER JOIN detalle_solicitud ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN solicitud on solicitud.id_solicitud = detalle_solicitud.id_solicitud INNER JOIN estudiantes ON estudiantes.id_estudiante = solicitud.id_estudiante INNER JOIN usuarios ON usuarios.id_usuario = comentarios.id_usuario WHERE comentarios.id_usuario = ?";
+        $params = array($_SESSION['id_usuario']);
         return Database::getRows($sql, $params);
     }
     public function readComentario(){

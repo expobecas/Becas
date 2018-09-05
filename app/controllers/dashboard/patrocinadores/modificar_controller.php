@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/patrocinadores.class.php");
 try{
+    $_SESSION['lapso'] = time();
     if(isset($_GET['id'])){
         $patrocinadores = new Patrocinadores;
         if($patrocinadores->setId_patrocinador($_GET['id'])){

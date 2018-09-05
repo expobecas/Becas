@@ -2,6 +2,7 @@
 //Controlador para ver el carrito
 require_once("../../../app/models/empresa_beca.php");
 try{
+	$_SESSION['lapso'] = time();
 	if(isset($_SESSION['id_usuario'])){
 		$beca = new Empresa;
 		$beca->setIdUsuario($_SESSION['id_usuario']);

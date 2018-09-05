@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/usuario.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $usuario = new Usuario;
     $data = $usuario->getUsuarios();
     /*VISTA GENERAL DE SOLICITUDES*/

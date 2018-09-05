@@ -4,6 +4,7 @@ require_once("../../../helpers/validator.class.php");
 require_once('../../../models/casos.class.php');
 try
 {
+    $_SESSION['lapso'] = time();
     $caso = new Casos;
     $caso->setIdCaso($_POST['id_caso']);
     $caso->setDescripcion($_POST['descripcion']);

@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/patrocinadores.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $patrocinadores = new Patrocinadores;
     $data = $patrocinadores->getPatrocinadores();
     /*VISTA GENERAL DE SOLICITUDES*/

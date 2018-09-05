@@ -1,6 +1,7 @@
 <?php
 require_once ("../../../app/models/estudiantes.class.php");
 try {
+    $_SESSION['lapso'] = time();
     if (isset($_GET['id'])) {
         $estudiantes = new Estudiantes;
         if ($estudiantes->setId($_GET['id'])){

@@ -1,6 +1,7 @@
 <?php
 require_once("../../app/models/becas.class.php");
 try{
+    $_SESSION['lapso'] = time();
     if(isset($_GET['id'])){
         $becas = new Becas;
         if($becas->setId($_GET['id'])){

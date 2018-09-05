@@ -1,6 +1,7 @@
 <?php 
 require_once("../../app/models/categorias.class.php");
 try{
+    $_SESSION['lapso'] = time();
     $categorias = new Categorias;
     $data = $categorias->getCategorias();
     /*VISTA GENERAL DE SOLICITUDES*/

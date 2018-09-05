@@ -45,7 +45,14 @@ try
                     $mail->AddReplyTo("thebestdestroyer6@gmail.com","Ricaldone");
                     $mail->Subject    = $subject;
                     $mail->MsgHTML($message);
-                    $mail->Send();
+                    if($mail->Send())
+                    {
+                        Page::showMessage(1, 'La nueva contraseña se envia al correo electrónico', '../ingresar');
+                    }
+                    else
+                    {
+                        Page::showMessage(2, 'Ocurrio un problema la enviar el correo, por favor intente de nuevo', null);
+                    }
                 }
                 else
                 {

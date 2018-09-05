@@ -3,7 +3,6 @@ require_once('../../app/models/casos.class.php');
 require_once('../../app/models/detalle_solicitud.php');
 try
 {
-    $_SESSION['lapso'] = time();
     $caso = new Casos;
     $detalle_solicitud = new Detalle_solicitud;
     $id_detalle = $_GET['id'];

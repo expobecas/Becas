@@ -1,7 +1,6 @@
 <?php 
 require_once("../../app/models/categorias.class.php");
 try{
-    $_SESSION['lapso'] = time();
     $categorias = new Categorias;
     if(isset($_POST['crear'])){
         $_POST = $categorias->validateForm($_POST);

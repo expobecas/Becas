@@ -1,7 +1,6 @@
 <?php
 require_once("../../../app/models/comentarios_empresa.class.php");
 try{
-    $_SESSION['lapso'] = time();
     if(isset($_GET['id'])){
         $comentarios = new Comentarios;
         if($comentarios->setId($_GET['id'])){

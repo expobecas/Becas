@@ -1,7 +1,6 @@
 <?php 
 require_once("../../../app/models/solicitud.class.php");
 try{
-    $_SESSION['lapso'] = time();
     $solicitud2 = new Solicitud;
     $data = $solicitud2->getAprobadas();
     $data2 = $solicitud2->getRechazadas();

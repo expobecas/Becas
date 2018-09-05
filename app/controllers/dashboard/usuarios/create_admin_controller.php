@@ -3,11 +3,10 @@
 require_once('../../app/models/usuario.class.php');
 try
 {
-    $_SESSION['lapso'] = time();
     $usuario = new Usuario;
     $usuarios = $usuario->getUsuarios();
 
-    if(!$usuarios)
+    if($usuarios)
     {
         require_once('../../app/views/dashboard/usuarios/create_admin_view.php');
     }

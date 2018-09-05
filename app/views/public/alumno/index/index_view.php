@@ -1,6 +1,3 @@
-<?php 
- $_SESSION['lapso'] = time();
-?>
 <!--CARDS INFORMATIVAS-CARD 1-->
 <div class="row">
 <div class="col offset-l3 s12 m2">

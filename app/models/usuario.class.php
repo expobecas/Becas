@@ -314,7 +314,11 @@ class Usuario extends Validator{
     }
 
     public function createUsuario(){
+<<<<<<< HEAD
+		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, correo, contraseña) VALUES (?,?,?,?,?,?)";
+=======
 		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
+>>>>>>> 3795f9f05bb36225ed50fba0724bd6990b8504e3
 		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario, $this->clave, $this->correo);
         return Database::executeRow($sql, $params);    
         
@@ -371,7 +375,7 @@ public function getTipoUsuario(){
         $letras ="abcdefghijklmnopqrstuvwxyz";
         $numeros = "1234567890";
         $letrasMayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $especiales =".,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,";
+        $especiales =".,.,.,.,.,.,.,.,";
         $listado = null;
         
         if($opc_letras == TRUE) 
@@ -392,11 +396,12 @@ public function getTipoUsuario(){
         }
         echo strlen($listado);
         str_shuffle($listado);
-        for( $i=1; $i<=$longitud; $i++) 
+        for($i=1; $i<=$longitud; $i++) 
         {
             $password[$i] = $listado[rand(0,strlen($listado)-$i)];
             str_shuffle($listado);
         }
+        $password = str_replace(' ', '', $password);
         return $password;
         /*foreach ($password as $dato_password) 
         {

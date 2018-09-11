@@ -158,7 +158,7 @@
     </div>
 
     <div class="input-field col s12 m4 l4"> 
-        <input id="benecfactor" type="text" name="benecfactor" class="validate"/>
-        <label for="benecfactor">Quien lo envia(parentesco)</label>
+        <input id="benefactor" type="text" name="benefactor" class="validate"/>
+        <label for="benefactor">Quien lo envia(parentesco)</label>
     </div>
 </div>

@@ -70,7 +70,7 @@ function timer(){
     if(window_focus == false)
     {
         //console.log(logMinutos);
-        if(logMinutos == ':05')
+        if(logSegundos == ':05')
         {
             window.location = '../../../dashboard/ingresar/logout.php?id=1';
         }

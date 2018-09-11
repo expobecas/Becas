@@ -1,10 +1,7 @@
 /*INICIO DE SESION*/
 .ingresar_fondo{
-<<<<<<< HEAD
     top: 0;
     z-index: -10;
-=======
->>>>>>> 74a7dd302c8144bc5341b1832ff20d0c590edc03
     position: absolute;
     background-image: url("../../web/img/login/fondo.png");
     width: 100%;

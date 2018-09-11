@@ -16,9 +16,19 @@
         </div>
       <div class="row">
         <div class="input-field col s4 l6">
-          <input id="contraseña" type="password" name='contraseña' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
-          <label for="contraseña">Password</label>
+          <input id="contraseña" type="text" name='contraseña' class='validate' value='<?php print($usuario->getCorreo()) ?>' required/>
+          <label for="contraseña">Correo</label>
         </div>
+        <div class="row">
+         <div class="input-field col s4 l6">
+            <input id="nombres" type="text" name='nombres' class='validate' value='<?php print($usuario->getNombres()) ?>' required/>
+            <label for="nombres">Nombres</label>
+         </div>
+         <div class="input-field col s4 l6">
+            <input id="apellidos" type="text" name='apellidos' class='validate' value='<?php print($usuario->getApellidos()) ?>' required/>
+            <label for="apellidos">Apellidos</label>
+         </div>
+      </div>
       </div>
       <div class="row">
       <div class="input-field col s12 offset-l3">

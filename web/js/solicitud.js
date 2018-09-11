@@ -1281,9 +1281,31 @@ var id_solicitud = "";
         /*----------------------------------------------------------------------------------------------------------------------------------------------
         --------------------------------------PARA INSERTAR EN LA TABLA REMESA FAMILIAR----------------------------------------------------------------
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
-        $.ajax({
-          
-        });
+        
+        monto_remesa = $('#monto_remesa').val();
+        periodo = $('#periodo').val();
+        benefector = $('#benefactor').val();
+        if(monto_remesa != '' && periodo != '' && benefactor != '')
+        {
+          $.ajax({
+            type: 'POST',
+            url: '../../app/controllers/public/solicitud/create_remesa_familiar.php?action=create',
+            data: {
+              monto_remesa:monto_remesa,
+              periodo:periodo,
+              benefactor:benefactor,
+              id_familia:id_familia
+            },
+            success: function()
+            {
+
+            }
+          });
+        }
+        else
+        {
+          AlertasSwal('Complete los campos de remesa');
+        }
      });
 });
 

@@ -2,6 +2,7 @@
 class Validator{
 	private $imageName = null;
 	private $imageError = null;
+	private $passwordError = null;
 
 	public function getImageName(){
 		return $this->imageName;

@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="col s12 offset-l4 white l5" method="POST">
+    <form class="col s12 offset-l4 white l5" method="POST"  autocomplete="off">
     <div class="row">
     <div class="col titulo-font">
     <h6>Escribe tu mensaje:</h6>

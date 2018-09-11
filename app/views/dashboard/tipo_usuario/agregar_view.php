@@ -1,5 +1,5 @@
 <div>
-    <form method="POST" class="white">
+    <form method="POST" class="white" autocomplete="off">
     <div class="row">
     <div class="col titulo-font">
       <h5>Agregar tipo</h5>

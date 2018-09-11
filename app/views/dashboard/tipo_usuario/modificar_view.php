@@ -1,5 +1,5 @@
 <div class="row">
-    <form method="POST" class="col s12 offset-l4 l6 white">
+    <form method="POST" class="col s12 offset-l4 l6 white" autocomplete="off">
     <p class="titulo-EP"><strong>Modificar tipo</strong></p>
       <div class="divider"></div>
     <div class="row">

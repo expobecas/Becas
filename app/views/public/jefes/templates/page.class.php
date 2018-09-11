@@ -31,7 +31,7 @@ class Page extends component{
             <li><a href='../../../public/jefes/becas/index.php' class='white-text'><i class='material-icons white-text'>assignment</i>Becas</a></li>
             <li><a href='../../../public/jefes/patrocinador/index.php' class='white-text'><i class='material-icons white-text'>how_to_reg</i>Patrocinadores</a></li>
             <li><a href='../../../public/jefes/index/contraseña.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar clave</a></li>
-            <li><a href='../../../public/becados/account/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
+            <li><a href='../../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
           </ul>  
           <main>
           <div class='row white' id='barra'>

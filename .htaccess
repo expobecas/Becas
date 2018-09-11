@@ -2,8 +2,6 @@
 # | Custom error messages/pages                                        |
 # ----------------------------------------------------------------------
 
-ErrorDocument 404 /Becas/web/404.html
-ErrorDocument 403 /Becas/web/403.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |

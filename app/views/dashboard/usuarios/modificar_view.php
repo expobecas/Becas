@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="col s4 l6 offset-l4 white formulario" method="POST">
+    <form class="col s4 l6 offset-l4 white formulario" method="POST" autocomplete="off">
     <p class="titulo-EP"><strong>Modificar usuario</strong></p>
       <div class="divider"></div>
       <div class="row">

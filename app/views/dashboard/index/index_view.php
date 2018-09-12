@@ -26,7 +26,7 @@
      </div>
  <!--Gráfica4-->    
      <div class="col s12 m4 l4 white titulo-font">
-         <h5>Solicitudes por tipo</h5>
+         <h5>Estado de las solicitudes</h5>
          <canvas id="grafico4" width="340" height="200"></canvas>
      </div>
 </div>

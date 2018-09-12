@@ -23,7 +23,7 @@ try{
                                                   if(preg_match($especiales, $contra)){
                                                     if($usuario->setClave($_POST['contranueva'])){
                                                         if($usuario->changePassword()){
-                                                            $usuario->FechaCreacion();
+                                                            $usuario->FechaContraseña();
                                                             if($usuario->logOut()){
                                                                 if($usuario->SesionUnica2()){
                                                                     Page::showMessage(1,"Exito, clave actualizada", "../../dashboard/ingresar/acceder.php");

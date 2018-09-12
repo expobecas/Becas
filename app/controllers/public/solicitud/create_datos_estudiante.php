@@ -35,7 +35,14 @@ try
             $solicitud->setFecha($Fecha);
             $solicitud->setNombresResponsable($_POST['nombres_responsable']);
             $solicitud->setApellidosResponsable($_POST['apellidos_responsable']);
-            $solicitud->createSolicitud();
+            if($solicitud->createSolicitud())
+            {
+                
+            }
+            else
+            {
+                echo Database::getException();
+            }
             $id_solicitud = $solicitud->getIdSolicitud();
             echo json_decode($id_solicitud);
         }

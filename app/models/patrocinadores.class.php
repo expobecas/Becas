@@ -192,8 +192,8 @@ class Patrocinadores extends Validator{
         return Database::executeRow($sql, $params);   
     }
     public function UpdatePatrocinadores(){
-        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, nombres = ?, apellidos = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ? WHERE id_patrocinador = ?";
-        $params = array($this->tipo, $this->profesion, $this->nombres, $this->apellidos,$this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->id_patrocinador);
+        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ? WHERE id_patrocinador = ?";
+        $params = array($this->tipo, $this->profesion, $this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->id_patrocinador);
         return Database::executeRow($sql, $params);
     }
     public function ReadPatrocinadores(){

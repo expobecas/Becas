@@ -18,11 +18,11 @@
       <!--SEGUNDA FILA-->
       <div class="row">
          <div class="input-field col s6">
-            <input id="nombres" type="text" class="validate" name='nombres' value="<?php print($patrocinadores->getNombres());?>">
+            <input id="nombres" type="text" class="validate" name='nombres' disabled value="<?php print($patrocinadores->getNombres());?>">
             <label for="nombres">Nombres</label>
          </div>
          <div class="input-field col s6">
-            <input id="apellidos" type="text" class="validate" name='apellidos' value="<?php print($patrocinadores->getApellidos());?>">
+            <input id="apellidos" type="text" class="validate" name='apellidos' disabled value="<?php print($patrocinadores->getApellidos());?>">
             <label for="apellidos">Apellidos</label>
          </div>
          

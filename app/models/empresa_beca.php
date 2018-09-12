@@ -122,7 +122,7 @@ class Empresa extends Validator{
 		}
 	}
 	public function getBecas2(){
-		$sql = "SELECT estudiantes.primer_nombre, estudiantes.primer_apellido, estudiantes.n_carnet, becas.monto, becas.periodo_pago, becas.fecha_ini_beca FROM becas INNER JOIN detalle_solicitud ON becas.id_detalle = detalle_solicitud.id_detalle INNER JOIN solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante INNER JOIN patrocinadores ON patrocinadores.id_patrocinador = becas.id_patrocinador INNER JOIN usuarios ON usuarios.id_usuario = patrocinadores.id_usuario WHERE usuarios.id_usuario = ?";
+		$sql = "SELECT estudiantes.id_estudiante,estudiantes.primer_nombre, estudiantes.primer_apellido, estudiantes.n_carnet, becas.monto, becas.periodo_pago, becas.fecha_ini_beca FROM becas INNER JOIN detalle_solicitud ON becas.id_detalle = detalle_solicitud.id_detalle INNER JOIN solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante INNER JOIN patrocinadores ON patrocinadores.id_patrocinador = becas.id_patrocinador INNER JOIN usuarios ON usuarios.id_usuario = patrocinadores.id_usuario WHERE usuarios.id_usuario = ?";
 		$params = array($_SESSION['id_usuario']);
 		return Database::getRows($sql, $params);
 

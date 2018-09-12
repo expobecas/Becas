@@ -1,11 +1,9 @@
 <?php
-require_once("../../../app/models/comentarios_empresa.class.php");
+require_once("../../../app/models/comentarios.class.php");
 try{
     if(isset($_GET['id'])){
         $comentarios = new Comentarios;
         if($comentarios->setId($_GET['id'])){
-            if($comentarios->GetEstudiantes()){
-            if($comentarios->getId_estudiante()){
                 if(isset($_POST['enviar'])){
                     $_POST = $comentarios->validateForm($_POST); 
                     if($comentarios->setId_estudiante($_POST['estudiante'])){
@@ -22,12 +20,8 @@ try{
                         throw new Exception("Codigo incorrecto");
                     }                    
                 }
-            }else{
-                Page::showMessage(2, "Patrocinador inexistente", "../../../public/becados/account/mensajes.php");
-            }
-        }else{}
         }else{
-            Page::showMessage(2, "CPatrocinador incorrecta", "../../../public/becados/account/mensajes.php");
+            Page::showMessage(2, "Patrocinador incorrecta", "../../../public/becados/account/mensajes.php");
         }        
     }
 }catch(Exception $error){

@@ -2,19 +2,19 @@
  <div class="row">
       <!--Gráfica3-->    
       <div class="col s12 m4 l8 offset-l3 white titulo-font">
-         <h5>Patrocinadores por tipo</h5>
+         <h5>Patrocinadores por categoría</h5>
          <canvas id="grafico3" width="600" height="200"></canvas>
      </div> 
  </div>
  <div class="row">
  <!--Gráfica1 -->
      <div class="col s12 m4 l4 offset-l3 white titulo-font">
-         <h5>Usuarios por tipo</h5>
+         <h5>Usuarios por categoría</h5>
          <canvas id="myChart1" width="340" height="200"></canvas>
      </div> 
  <!--Gráfica2-->
      <div class="col s12 m4 l4 white titulo-font">
-         <h5>Solicitudes por genero</h5>
+         <h5>Solicitudes por género</h5>
          <canvas id="myChart2" width="340" height="200"></canvas>
      </div> 
  </div>

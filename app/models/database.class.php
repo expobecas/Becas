@@ -9,9 +9,15 @@ class Database
     private function connect()
     {
         $server = "localhost";
-        $database = "dbecas2";
+<<<<<<< HEAD
+        $database = "dbecas";
         $username = "root" /*"Expo_becas"*/;
         $password = ""/*"becasricaldone"*/;
+=======
+        $database = "dbecas";
+        $username = "Expo_becas";
+        $password = "becasricaldone";
+>>>>>>> a2c4820c9007f8695f983de856f9c7d1c9578a3b
         try
         {
             @self::$connection = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $username, $password);

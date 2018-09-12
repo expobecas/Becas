@@ -273,13 +273,15 @@ class Usuario extends Validator{
         return Database::getRows($sql, $params);
     }
     public function readUsuario(){
-        $sql = "SELECT id_usuario, t.tipo_usuario, usuario, contraseña FROM usuarios INNER JOIN tipo_usuario t USING (id_tipo) WHERE id_usuario = ?";
+        $sql = "SELECT id_usuario, t.id_tipo, usuario, correo, nombres, apellidos FROM usuarios INNER JOIN tipo_usuario t USING (id_tipo) WHERE id_usuario = ?";
         $params = array($this->id);
         $usuario = Database::getRow($sql, $params);
         if($usuario){
-            $this->tipo = $usuario['tipo_usuario'];
+            $this->tipo = $usuario['id_tipo'];
             $this->usuario = $usuario['usuario'];
-            $this->clave = $usuario['contraseña'];
+            $this->correo = $usuario['correo'];
+            $this->nombres = $usuario['nombres'];
+            $this->apellidos = $usuario['apellidos'];
             return true;
         }else{
             return null;

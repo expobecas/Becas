@@ -346,8 +346,8 @@ class Usuario extends Validator{
         return Database::executeRow($sql, $params);
     }
     public function updateUsuario(){
-		$sql = "UPDATE usuarios SET nombres= ?, apellidos= ?, id_tipo= ?, usuario= ?, contraseña= ? WHERE id_usuario = ?";
-		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario,$this->clave, $this->id);
+		$sql = "UPDATE usuarios SET nombres= ?, apellidos= ?, id_tipo= ?, usuario= ?, correo= ? WHERE id_usuario = ?";
+		$params = array($this->nombres, $this->apellidos,$this->tipo, $this->usuario,$this->correo, $this->id);
 		return Database::executeRow($sql, $params);
 	}
 	public function deleteUsuario(){

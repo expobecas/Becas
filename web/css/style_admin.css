@@ -257,3 +257,6 @@ ul#slide-out li a {
     cursor: pointer;
     transform: rotate(-90deg);
 }
+.icon-form{
+    font-size: 1rem;
+}

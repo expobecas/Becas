@@ -82,7 +82,7 @@ class Page extends Component{
         $filename = basename($_SERVER['PHP_SELF']);
         if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
         {
-            print("<script type='text/javascript' src='../../../web/js/js_inactividad/js_inactividad_jefes.js'></script>");
+            print("<script type='text/javascript' src=''></script>");
         }
     }
 }

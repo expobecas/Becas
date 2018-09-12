@@ -11,9 +11,9 @@ try{
                         if($usuario->setApellidos($_POST['apellidos'])){
                             if($usuario->setTipo($_POST['tipo'])){
                             if($usuario->setUsuario($_POST['usuario'])){
-                                if($usuario->setClave($_POST['contraseña'])){
+                                if($usuario->setCorreo($_POST['correo'])){
                                         if($usuario->updateUsuario()){
-                                            Page::showMessage(1, "Usuario ", "index.php");
+                                            Page::showMessage(1, "Usuario modificado", "index.php");
                                         }
                                         else{
                                             throw new Exception(Database::getException());

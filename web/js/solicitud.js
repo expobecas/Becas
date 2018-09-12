@@ -1290,9 +1290,10 @@ var id_solicitud = "";
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
         function createRemesaFamiliar()
         {
-          monto_remesa = $('#monto_remesa').val();
+          monto_remesa = $('#ingreso_remesa').val();
           periodo = $('#periodo').val();
           benefector = $('#benefactor').val();
+          console.log(monto_deuda+', '+periodo+', '+benefactor+', '+id_familia);
           if(monto_remesa != '' && periodo != '' && benefactor != '')
           {
             $.ajax({
@@ -1352,10 +1353,7 @@ var id_solicitud = "";
               console.log(error + 'error de intermedia propiedad');
             }
           });
-        }
-        
-        
-        
+        } 
         
      });
 });

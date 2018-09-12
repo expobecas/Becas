@@ -69,12 +69,18 @@ function Total()
 {
 
   gastos = 0;
+  ingreso = $('#ingreso_mensual').val();
   remesa = $('#ingreso_remesa').val();
   gastos = $('#gasto_mensual').val();
 
+  ingreso = parseFloat(ingreso);
   remesa = parseFloat(remesa);
   gastos = parseFloat(gastos);
 
+  if(isNaN(ingreso))
+  {
+    ingreso = 0;
+  }
   if(isNaN(remesa))
   {
     remesa = 0;
@@ -84,7 +90,7 @@ function Total()
     gastos = 0;
   }
 
-  saldo = remesa - gastos;
+  saldo = (ingreso + remesa) - gastos;
   $('#saldo').val(saldo);
   $('#label_saldo').addClass('active');
 

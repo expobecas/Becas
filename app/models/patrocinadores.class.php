@@ -177,7 +177,7 @@ class Patrocinadores extends Validator{
 
     //METODOS PARA MANEJAR EL CRUD
     public function getPatrocinadores(){
-        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro)";
+        $sql = "SELECT p.id_patrocinador, p.id_tipo_patro, tp.tipo_patrocinador, p.profesion, u.nombres, u.apellidos, p.cargo, p.nombre_empresa, p.direccion, p.telefono FROM patrocinadores p INNER JOIN usuarios u USING(id_usuario) INNER JOIN tipo_patrocinador tp USING(id_tipo_patro)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
@@ -192,8 +192,8 @@ class Patrocinadores extends Validator{
         return Database::executeRow($sql, $params);   
     }
     public function UpdatePatrocinadores(){
-        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, nombres = ?, apellidos = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ? WHERE id_patrocinador = ?";
-        $params = array($this->tipo, $this->profesion, $this->nombres, $this->apellidos,$this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->id_patrocinador);
+        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ? WHERE id_patrocinador = ?";
+        $params = array($this->tipo, $this->profesion, $this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->id_patrocinador);
         return Database::executeRow($sql, $params);
     }
     public function ReadPatrocinadores(){

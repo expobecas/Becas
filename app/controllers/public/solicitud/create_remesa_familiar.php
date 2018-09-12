@@ -11,7 +11,8 @@ try
 		function create()
 		{
 			$remesa_familiar = new Remesa_familiar;
-			$remesa_familiar->setMonto($_POST['monto_remesa']);
+			$monto_remesa = str_replace(',', '.', str_replace('.', '', $_POST['monto_remesa']));
+			$remesa_familiar->setMonto($monto_remesa);
 			$remesa_familiar->setPeriodoRecibido($_POST['periodo']);
 			$remesa_familiar->setBenefactor($_POST['benefactor']);
 			$remesa_familiar->setIdFamilia($_POST['id_familia']);
@@ -23,7 +24,6 @@ try
 			{
 				echo Database::getException(); 
 			}
-
 		}
 	}
 	$object = new Create_Remesa;

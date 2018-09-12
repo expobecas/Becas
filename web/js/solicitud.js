@@ -14,7 +14,7 @@ var id_solicitud = "";
     /************************************************************************************************************************************************
      **********************************************************PARA EL SLIDER 1**********************************************************************
      ************************************************************************************************************************************************/
-    $("#estudiante").click(function(e){
+    $("#estudiante").click(function(){
       //Tabla solicitud
       var nombres_responsable = $('#nombres_responsable').val();
       var apellidos_responsable = $('#apellidos_responsable').val();
@@ -104,6 +104,7 @@ var id_solicitud = "";
                                         año_realizaba:año_realizaba},
                                         success: function(idInstitucion)
                                         {
+                                          console.log(idInstitucion);
                                           id_institucion = idInstitucion;
 
                                           $.ajax({
@@ -127,7 +128,9 @@ var id_solicitud = "";
                                               apellidos_responsable:apellidos_responsable},
                                             success: function(idSolicitud)
                                             {
+                                              
                                               id_solicitud = idSolicitud;
+                                              console.log(id_solicitud);
                                               //console.log(id);
                                               /*
                                               $('body,html').animate({
@@ -1018,6 +1021,7 @@ var id_solicitud = "";
                 {
                   id_propiedad = IdPropiedad;
                   
+                  createImagenProp();/*
                   var data = new FormData();
                   $.each($('#imagen_casa')[0].files, function(i, file){
                     data.append('archivo', file);
@@ -1034,7 +1038,7 @@ var id_solicitud = "";
                     {
                       console.log(resultado);
                     }
-                  });
+                  });*/
                 }
               });
             }
@@ -1053,14 +1057,39 @@ var id_solicitud = "";
           AlertasSwal('Seleccione el estado de la casa que pertenece');
         }
       }
+      else
+      {
+        createImagenProp();
+      }
     });
+
+    function createImagenProp()
+    {
+      var data = new FormData();
+      $.each($('#imagen_casa')[0].files, function(i, file){
+        data.append('archivo', file);
+      });
+      data.append('id_propiedad', id_propiedad);
+
+      $.ajax({
+        type: 'POST',
+        url: '../../app/controllers/public/solicitud/create_img_propiedad.php?action=create',
+        processData: false,
+        data: data,
+        contentType: false,
+        success: function(resultado)
+        {
+          console.log(resultado);
+        }
+      });
+    }
 
     /************************************************************************************************************************************************
      **********************************************************PARA EL SLIDER 4**********************************************************************
      ************************************************************************************************************************************************/
-
+    var id_gastos = 0;
     $('#enviar').click(function(){
-      var id_gastos = 0;
+      
       console.log(id_solicitud);
       console.log(id_propiedad);
       /*-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -1150,6 +1179,7 @@ var id_solicitud = "";
                                     id_gastos = IdGastos;
                                     console.log('Los datos de gastos fueron enviados');
                                     console.log(id_gastos);
+                                    createGrupoFamiliar();
                                   }
                                 });
                               }
@@ -1212,100 +1242,121 @@ var id_solicitud = "";
         {
           AlertasSwal('Ingrese el gasto de alimentacion mensual');
         }
-       /*----------------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------PARA INSERTAR EN LA TABLA INTERMEDIA PROPIEDAD-----------------------------------------------------
-        -----------------------------------------------------------------------------------------------------------------------------------------------*/
-        $.ajax({
-          type: 'POST',
-          url: '../../app/controllers/public/solicitud/create_inter_propiedad.php?action=create',
-          data:{
-            id_propiedad:id_propiedad,
-            id_solicitud:id_solicitud
-            },
-          success: function(error)
-          {
-            console.log(error + 'error de intermedia propiedad');
-          }
-        });
-        /*----------------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------PARA INSERTAR EN LA TABLA DETALLE SOLICITUD---------------------------------------------------------------
-        -----------------------------------------------------------------------------------------------------------------------------------------------*/
-        $.ajax({
-          type: 'POST',
-          url: '../../app/controllers/public/solicitud/create_detalle_solicitud.php?action=create',
-          data: {
-            id_solicitud:id_solicitud
-          },
-          success: function()
-          {
-            AlertasSwal("Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema");
-          }
-        });
+
         /*----------------------------------------------------------------------------------------------------------------------------------------------
         --------------------------------------PARA INSERTAR EN LA TABLA GRUPO FAMILIAR ----------------------------------------------------------------
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
-        id_familia = "";
-        ingreso_mensual = $('#ingreso_mensual').val();
-        gasto_mensual = $('#gasto_mensual').val();
-        monto_deuda = $('#monto_deuda').val();
-        if(ingreso_mensual != "")
+        function createGrupoFamiliar()
         {
-          if(gasto_mensual != "")
+          id_familia = "";
+          ingreso_mensual = $('#ingreso_mensual').val();
+          gasto_mensual = $('#gasto_mensual').val();
+          monto_deuda = $('#monto_deuda').val();
+          if(ingreso_mensual != "")
+          {
+            if(gasto_mensual != "")
+            {
+              $.ajax({
+                type: 'POST',
+                url: '../../app/controllers/public/solicitud/create_grupo_familiar.php?action=create',
+                data:{
+                  ingreso_mensual:ingreso_mensual,
+                  gasto_mensual:gasto_mensual,
+                  monto_deuda:monto_deuda,
+                  id_gastos:id_gastos,
+                  id_solicitud:id_solicitud
+                },
+                success: function(IdFamilia)
+                {
+                  id_familia = IdFamilia;
+                  console.log('el id de familia es'+id_familia);
+                  createRemesaFamiliar();
+                }
+              });
+            }
+            else
+            {
+              AlertasSwal('Ingrese los gastos mensuales');
+            }
+          }
+          else
+          {
+            AlertasSwal('los ingresos mensuales no han sido ingresados');
+          }
+        }
+
+        /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA REMESA FAMILIAR----------------------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        function createRemesaFamiliar()
+        {
+          monto_remesa = $('#monto_remesa').val();
+          periodo = $('#periodo').val();
+          benefector = $('#benefactor').val();
+          if(monto_remesa != '' && periodo != '' && benefactor != '')
           {
             $.ajax({
               type: 'POST',
-              url: '../../app/controllers/public/solicitud/create_grupo_familiar.php?action=create',
-              data:{
-                ingreso_mensual:ingreso_mensual,
-                gasto_mensual:gasto_mensual,
-                monto_deuda:monto_deuda,
-                id_gastos:id_gastos,
-                id_solicitud:id_solicitud
+              url: '../../app/controllers/public/solicitud/create_remesa_familiar.php?action=create',
+              data: {
+                monto_remesa:monto_remesa,
+                periodo:periodo,
+                benefactor:benefactor,
+                id_familia:id_familia
               },
-              success: function(IdFamilia)
+              success: function(dato)
               {
-                id_familia = IdFamilia;
-                console.log(id_familia);
+                console.log(dato);
+                createDetalleSolicitud();
               }
             });
           }
           else
           {
-            AlertasSwal('Ingrese los gastos mensuales');
+            AlertasSwal('Complete los campos de remesa');
           }
         }
-        else
-        {
-          AlertasSwal('los ingresos mensuales no han sido ingresados');
-        }
+
         /*----------------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------PARA INSERTAR EN LA TABLA REMESA FAMILIAR----------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA DETALLE SOLICITUD---------------------------------------------------------------
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
-        
-        monto_remesa = $('#monto_remesa').val();
-        periodo = $('#periodo').val();
-        benefector = $('#benefactor').val();
-        if(monto_remesa != '' && periodo != '' && benefactor != '')
+        function createDetalleSolicitud()
         {
           $.ajax({
             type: 'POST',
-            url: '../../app/controllers/public/solicitud/create_remesa_familiar.php?action=create',
+            url: '../../app/controllers/public/solicitud/create_detalle_solicitud.php?action=create',
             data: {
-              monto_remesa:monto_remesa,
-              periodo:periodo,
-              benefactor:benefactor,
-              id_familia:id_familia
+              id_solicitud:id_solicitud
             },
             success: function()
             {
-
+              AlertasSwal("Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema");
             }
           });
         }
-        else
+       /*----------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------PARA INSERTAR EN LA TABLA INTERMEDIA PROPIEDAD-----------------------------------------------------
+        -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        createInterPropiedad();
+        function createInterPropiedad()
         {
-          AlertasSwal('Complete los campos de remesa');
+          $.ajax({
+            type: 'POST',
+            url: '../../app/controllers/public/solicitud/create_inter_propiedad.php?action=create',
+            data:{
+              id_propiedad:id_propiedad,
+              id_solicitud:id_solicitud
+              },
+            success: function(error)
+            {
+              console.log(error + 'error de intermedia propiedad');
+            }
+          });
         }
+        
+        
+        
+        
      });
 });
 

@@ -177,7 +177,7 @@ class Patrocinadores extends Validator{
 
     //METODOS PARA MANEJAR EL CRUD
     public function getPatrocinadores(){
-        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro)";
+        $sql = "SELECT p.id_patrocinador, p.id_tipo_patro, tp.tipo_patrocinador, p.profesion, u.nombres, u.apellidos, p.cargo, p.nombre_empresa, p.direccion, p.telefono FROM patrocinadores p INNER JOIN usuarios u USING(id_usuario) INNER JOIN tipo_patrocinador tp USING(id_tipo_patro)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }

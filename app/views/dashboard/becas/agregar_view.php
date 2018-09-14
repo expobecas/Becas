@@ -1,31 +1,33 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
-   <form class="col s4 l7 offset-l4 white edit_form" method='POST' autocomplete="off">
+   <form class="col s4 l8 offset-l3  white edit_form" method='POST' autocomplete="off">
       <p class="titulo-EP"><strong>Agregar becas</strong></p>
       <div class="divider"></div>
       <!--PRIMERA FILA-->
       <div class="row">
-         <div class="input-field col s8">
+         <div class="input-field col s8 l5">
          <?php
            Page::showSelect("Detalle", "detalle", $becas->getDetalle(), $becas->getDetalles());                                     
          ?>
-         <div class="row">
-         <div class="input-field col s10">
+   </div>
+          <div class="input-field col s10 l5">
          <?php
-           Page::showSelect("Patrocinador", "patrocinadores",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
+           Page::showSelect("patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
          ?>
          </div>
-         <div class="input-field col s10">
+
+        <div class="row">
+         <div class="input-field col s10 l5">
             <input id="monto" type="text" class="validate" name='monto'>
             <label for="monto">Monto</label>
+         </div>
+         <div class="input-field col s10 l5">
+            <input id="periodo" type="text" class="validate" name='periodo' >
+            <label for="periodo">Periodo de pago</label>
          </div>
       </div>
       <!--SEGUNDA FILA-->
       <div class="row">
-         <div class="input-field col s10">
-            <input id="periodo" type="text" class="validate" name='periodo' >
-            <label for="periodo">Periodo de pago</label>
-         </div>
          <div class="input-field col s10">
             <input id="fecha" type="text" class="validate" name='fecha'>
             <label for="fecha">Fecha</label>

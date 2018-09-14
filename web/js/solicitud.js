@@ -1292,7 +1292,7 @@ var id_solicitud = "";
         {
           monto_remesa = $('#ingreso_remesa').val();
           periodo = $('#periodo').val();
-          benefector = $('#benefactor').val();
+          benefactor = $('#benefactor').val();
           console.log(monto_deuda+', '+periodo+', '+benefactor+', '+id_familia);
           if(monto_remesa != '' && periodo != '' && benefactor != '')
           {
@@ -1308,7 +1308,7 @@ var id_solicitud = "";
               success: function(dato)
               {
                 console.log(dato);
-                createDetalleSolicitud();
+                
               }
             });
           }
@@ -1321,6 +1321,7 @@ var id_solicitud = "";
         /*----------------------------------------------------------------------------------------------------------------------------------------------
         --------------------------------------PARA INSERTAR EN LA TABLA DETALLE SOLICITUD---------------------------------------------------------------
         -----------------------------------------------------------------------------------------------------------------------------------------------*/
+        createDetalleSolicitud();
         function createDetalleSolicitud()
         {
           $.ajax({
@@ -1329,9 +1330,17 @@ var id_solicitud = "";
             data: {
               id_solicitud:id_solicitud
             },
-            success: function()
+            success: function(datos)
             {
-              AlertasSwal("Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema");
+              if(datos == 1)
+              {
+                AlertasSwal("Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema");
+              }
+              else
+              {
+                AlertasSwal('Ocurrio un problema crear detalle de solicitud');
+              }
+              
             }
           });
         }

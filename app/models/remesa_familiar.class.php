@@ -97,7 +97,6 @@ class Remesa_familiar extends Validator
     {
         $sql = "INSERT INTO remesas_familiar(monto, periodo_recibido, benefactor, id_familia) VALUES(?, ?, ?, ?)";
         $params = array($this->monto, $this->periodo_recibido, $this->benefactor, $this->id_familia);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 }

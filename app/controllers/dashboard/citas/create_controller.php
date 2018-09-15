@@ -52,7 +52,7 @@ try
             }
             else
             {
-                echo 'seleccione_sollicitud';
+                echo 'id_error';
             }
         }
     }

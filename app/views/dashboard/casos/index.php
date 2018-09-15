@@ -5,36 +5,41 @@
    </div>
 </div>
 <div class = "row">
-<form method="POST" target="_blank" class="col offset-l9">
-<?php
-print("
-<a href='../../app/views/dashboard/casos/reporte.php?id=$_SESSION[id_usuario]' class='waves-effect waves-light btn sg1'>Generar reporte</a>
-");
-?>
-</form>
+    <div class="input-field col s12 m6 l3 offset-l3"> 
+        <input id="buscar_caso" type="text" name="buscar_caso" class="validate"/>
+        <label for="buscar_caso">Buscar casos por número de carnet</label>
+    </div>
+    <form method="POST" target="_blank" class="col offset-l3">
+    <?php
+    print("
+    <a href='../../app/views/dashboard/casos/reporte.php?id=$_SESSION[id_usuario]' class='waves-effect waves-light btn sg1'>Generar reporte</a>
+    ");
+    ?>
+    </form>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
 <div class="tabla">
-<div class="row">
-   <div class="col offset-l3 l8 white">
-      <div class="col titulo-font">
-            <h5>Información.</h5>
-      </div>
-      <table class="white highlight bordered tb-sol" id="tablecaso">
-      <thead>
-            <tr>
-                <th>Alumno</th>
-                <th>Fecha que se generó el caso</th>
-                <th>Estado de solicitud</th>
-                <th>Fecha de cita</th>
-                <th class="botones_table">Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="casos">
-        </tbody>
-      </table>
-   </div>
-</div>
+    <div class="row">
+    <div class="col offset-l3 l8 white">
+        <div class="col titulo-font">
+                <h5>Información.</h5>
+        </div>
+        <table class="white highlight bordered tb-sol" id="tablecaso">
+        <thead>
+                <tr>
+                    <th>N° de carnet</th>
+                    <th>Alumno</th>
+                    <th>Fecha que se generó el caso</th>
+                    <th>Estado de solicitud</th>
+                    <th>Fecha de cita</th>
+                    <th class="botones_table">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="casos">
+            </tbody>
+        </table>
+    </div>
+    </div>
 </div>
 
 <!--DETALLE DEL CASO-->

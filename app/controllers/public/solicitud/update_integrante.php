@@ -19,17 +19,15 @@ try
             $integrante->setProfesionOcupacion($_POST['profesion']);
             $integrante->setLugarTrabajo($_POST['lugar_trabajo']);
             $integrante->setTelTrabajo($_POST['tel_trabajo']);
-            $dato = $integrante->getSolicitud();
             $integrante->setSalario($_POST['salariocoma']);
             $integrante->setIdIntegrante($_POST['id']);
-            $integrante->setIdSolicitud($_POST['id_solicitud']);
             if($integrante->updateIntegrante())
             {
                 
             }
             else
             {
-                echo json_decode(Database::getException());
+                echo Database::getException();
             }
             
 		}

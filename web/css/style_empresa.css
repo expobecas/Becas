@@ -152,7 +152,18 @@ ul#slide-out li:hover a {
     font-family: 'Signika-Semibold', sans-serif;
     color: rgb(62, 73, 78);
 }
-
+.sg1, .sg1:hover{
+    background-color: #2A363B;
+}
+.sg2, .sg2:hover{
+    background-color: #E84A5F;
+}
+.sg3, .sg3:hover{
+    background-color: #99B898;
+}
+.sg4, .sg4:hover{
+    background-color: rgb(243, 188, 148);
+}
 /*CASOS*/
 .text-tbody{
     font-size: 13px;

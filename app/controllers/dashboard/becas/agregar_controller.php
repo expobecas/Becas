@@ -16,20 +16,20 @@ try{
                                         throw new Exception(Database::getException());
                                     }
                                 }else{
-                                    throw new Exception("Contraseña incorrecta");
+                                    throw new Exception("Fecha incorrecta");
                                 }
                         }else{
                             throw new Exception("Usuario incorrecto");
                         }
                     }else{
-                        throw new Exception("direccion incorrecta");
+                        throw new Exception("Monto incorrect0");
                     }
                     }else{
-                        throw new Exception("Telefono incorrecto");
+                        throw new Exception("Patrocinador incorrecto");
                     }
                 }else
                 {
-                    throw new Exception("Genero incorrecto");
+                    throw new Exception("Detalle incorrecto");
                 }
             }
             } catch (Exception $error){

@@ -10,7 +10,6 @@
             <th>MONTO</th>
             <th>PERIODO DE PAGO</th>
             <th>FECHA INICIO</th>
-            <th>ACCION</th>
         </tr>
         </thead>
         <tbody>
@@ -27,9 +26,6 @@
                     <td>$row[monto]</td>
                     <td>$row[periodo_pago]</td>
                     <td>$row[fecha_ini_beca]</td>
-                    <td>
-                 <a href='enviar_mensaje.php?id=$row[id_estudiante]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Enviar mensaje'><img src='../../../web/img/icons/enviar.jpg'></a>
-               </td>
                 </tr>
             ");
         }

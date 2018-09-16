@@ -70,6 +70,7 @@ class Detalle_solicitud Extends Validator
     {
         $sql = "INSERT INTO detalle_solicitud(id_estado, id_solicitud) VALUES (?, ?)";
         $params = array($this->id_estado, $this->id_solicitud);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 

@@ -13,12 +13,17 @@ try
             $grupo_familiar = new Grupo_familiar;
             $_POST = $grupo_familiar->validateForm($_POST);
             $grupo_familiar->setIngresoFamiliar($_POST['ingreso_mensual']);
+            $grupo_familiar->setIdGastos($_POST['id_gastos']);
             $grupo_familiar->setTotalGastos($_POST['gasto_mensual']);
             $grupo_familiar->setIdSolicitud($_POST['id_solicitud']);
             if($_POST['monto_deuda'] != null)
             {
                 $monto_deuda = str_replace(',', '.', str_replace('.', '', $_POST['monto_deuda']));
                 $grupo_familiar->setMontoDeuda($monto_deuda);
+            }
+            else
+            {
+                $grupo_familiar->setMontoDeuda(0);
             }
             if($grupo_familiar->createFamilia())
             {

@@ -6,7 +6,7 @@ require_once("../../../models/detalle_solicitud.php");
 
 try
 {
-    class detalle_solicitud
+    class detallesolicitud
     {
         function create()
         {
@@ -15,11 +15,15 @@ try
             $detalle_solicitud->setIdSolicitud($_POST['id_solicitud']);
             if($detalle_solicitud->createDetalle())
             {
-                Page::showMessage(1, "Solicitud enviada, por favor descarge el PDF, por si ocurre algun problema", "");
+                echo 1;
+            }
+            else
+            {
+                echo 0;
             }
         }
     }
-    $object = new detalle_solicitud();
+    $object = new detallesolicitud();
     $object->create();
 }
 catch(Exception $error)

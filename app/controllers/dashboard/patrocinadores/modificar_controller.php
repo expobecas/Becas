@@ -9,8 +9,6 @@ try{
                     $_POST = $patrocinadores->validateForm($_POST);
                     if($patrocinadores->setTipo($_POST['categoria'])){
                         if($patrocinadores->setProfesion($_POST['profesion'])){
-                            if($patrocinadores->setNombres($_POST['nombres'])){
-                                if($patrocinadores->setApellidos($_POST['apellidos'])){
                                     if($patrocinadores->setCargo($_POST['cargo'])){
                                         if($patrocinadores->setNombre_empresa($_POST['empresa'])){
                                             if($patrocinadores->setDireccion($_POST['direccion'])){
@@ -32,12 +30,6 @@ try{
                                     }else{
                                         throw new Exception("Cargo invalida");
                                     }
-                                }else{
-                                    throw new Exception("Apellidos invalida");
-                                }
-                            }else{
-                                throw new Exception("Nombres invalida");
-                            }
                         }else{
                             throw new Exception("Profesion invalida");
                         }

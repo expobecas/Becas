@@ -158,12 +158,12 @@ class Becas extends Validator {
         public function getPatrocinadores(){
             $sql = "SELECT id_patrocinador, nombre_empresa FROM patrocinadores";
             $params = array(null);
-            return Database::getRow($sql, $params);	
+            return Database::getRows($sql, $params);	
        }
        public function getDetalles(){
         $sql = "SELECT id_detalle, id_solicitud  FROM detalle_solicitud ";
         $params = array(null);
-        return Database::getRow($sql, $params);	
+        return Database::getRows($sql, $params);	
     }
     
         public function readBecas(){

@@ -46,11 +46,11 @@
             </div>
             <div class="col s6">
                 <h6>Fecha:</h6>
-                <input type="text" id="fecha" name="fecha" class="validate"/>
+                <input type="text" id="fecha" name="fecha" class="validate" disabled/>
             </div>
             <div class="col s6">
                 <h6>Hora:</h6>
-                <input type="text" id="hora" name="hora" class="validate"/>
+                <input type="text" id="hora" name="hora" class="timepicker">
             </div>
             <div class="col s12">
                 <h6>Descripcion:</h6>

@@ -21,6 +21,7 @@ class Solicitud extends Validator
     private $fecha = null;
     private $nombres_responsable = null;
     private $apellidos_responsable = null;
+    private $id_estado = null;
 
     public function setIdSolicitud($value)
     {
@@ -344,6 +345,22 @@ class Solicitud extends Validator
     {
         return $this->apellidos_responsable;
     }
+    public function setId_estado($value)
+    {
+        if($this->validateId($value))
+        {
+            $this->id_estado = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getId_estado()
+    {
+        return $this->id_solicitud;
+    }
 
     //Metodos para el manejo del SCRUD
     public function getGeneros()
@@ -381,13 +398,18 @@ class Solicitud extends Validator
      *************************************************************VISTA DE TABLAS - INDEX VIEW***********************************************************************************
      ***************************************************************************************************************************************************************************/
     public function getVistageneral() {
-        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo, detalle_solicitud.id_detalle FROM solicitud INNER JOIN estudiantes USING(id_estudiante) INNER JOIN detalle_solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud";
+        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo, detalle_solicitud.id_detalle, solicitud.fecha FROM solicitud INNER JOIN estudiantes USING(id_estudiante) INNER JOIN detalle_solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
     public function getUltimasSol() {
-        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo FROM solicitud INNER JOIN estudiantes USING(id_estudiante) ORDER BY solicitud.id_solicitud ASC";
+        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo, detalle_solicitud.id_detalle FROM solicitud INNER JOIN estudiantes USING(id_estudiante) INNER JOIN detalle_solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud ORDER BY solicitud.id_solicitud ASC";
         $params = array(null);
+        return Database::getRows($sql, $params);
+    }
+    public function getArchivoSolicitud() {
+        $sql    = "SELECT solicitud.id_solicitud, primer_nombre, primer_apellido, n_carnet, grado, especialidad, encargado, tel_fijo, detalle_solicitud.id_detalle, solicitud.fecha FROM solicitud INNER JOIN estudiantes USING(id_estudiante) INNER JOIN detalle_solicitud ON detalle_solicitud.id_solicitud = solicitud.id_solicitud WHERE detalle_solicitud.id_estado = ? ORDER BY solicitud.fecha DESC";
+        $params = array($this->id_estado);
         return Database::getRows($sql, $params);
     }
     public function getAprobadas() {

@@ -1,33 +1,25 @@
 <!--TÍTULO-->
 <div class="row">
    <div class="col offset-l3 titulo-font">
-      <h4>
-         Solicitudes
-      </h4>
+      <h4>Solicitudes</h4>
    </div>
 </div>
-<!--BOTONES-->
-<div class="row">
-   <div class="col offset-l5">
-      <a class="waves-effect waves-light btn s-general sg3">Aprobadas</a>
-   </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg1">En proceso</a>
-   </div>
-   <div class="col">
-      <a class="waves-effect waves-light btn s-general sg2">Rechazadas</a>
-   </div>
-</div>
-<!--TABLA SOLICITUDES GENERALES-->
+<!--BOTONES/OPCIONES -->
+<?php 
+require_once("opciones_view.php");
+?>
+<!--TABLA SOLICITUDES APROBADAS-->
 <div class="tabla">
 <div class="row">
    <div class="col offset-l3 l8 white">
-   <div class="col titulo-font ">
-      <h5>Todas las solicitudes.</h5>
-   </div>
-      <table class="white highlight bordered tb-sol">
+      <div class="col titulo-font">
+            <h5>Solicitudes aprobadas</h5>
+            <p>En este apartado pueden visualizarse solo las solicitudes aprobadas.</p>
+      </div>
+      <table class="white highlight bordered striped">
          <thead class="color-thead">
-            <tr>
+            <tr class="letra">
+               <th>N° Solicitud</th>
                <th>Nombre</th>
                <th>Apellido</th>
                <th>Carnet</th>
@@ -35,25 +27,32 @@
                <th>Especialidad</th>
                <th>Encargada/o</th>
                <th>Teléfono</th>
+               <th>Fecha de ingreso</th>
                <th>Acción</th>
             </tr>
          </thead>
          <tbody>
             <?php 
-               foreach($data as $row){
-               print("
-               <tr>
-               <td>$row[primer_nombre]</td>
-               <td>$row[primer_apellido]</td>
-               <td>$row[n_carnet]</td>
-               <td>$row[grado]</td>
-               <td>$row[especialidad]</td>
-               <td>$row[encargado]</td>
-               <td>$row[tel_fijo]</td>
-               <td>
-               <a href='' class='ver-mas tooltipped' data-position='right' data-delay='50' data-tooltip='Ver más'><i class='material-icons'>remove_red_eye</i></a>
-               </td>
-               </tr>");
+               foreach($data as $row)
+               {
+                  $id_detalle = $row['id_detalle'];
+                  $id_detalle = password_hash($id_detalle, PASSWORD_DEFAULT);
+                  print("
+                  <tr>
+                  <td>$row[id_solicitud]</td>
+                  <td>$row[primer_nombre]</td>
+                  <td>$row[primer_apellido]</td>
+                  <td>$row[n_carnet]</td>
+                  <td>$row[grado]</td>
+                  <td>$row[especialidad]</td>
+                  <td>$row[encargado]</td>
+                  <td>$row[tel_fijo]</td>
+                  <td>$row[fecha]</td>
+                  <td>
+                  <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+                  <a href='../casos/create_caso.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Caso'><img src='../../web/img/admin/icon/folder.png'></a>
+                  </td>
+                  </tr>");
                }
             ?>
          </tbody>

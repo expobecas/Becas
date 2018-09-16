@@ -13,8 +13,8 @@ require_once("opciones_view.php");
 <div class="row">
    <div class="col offset-l3 l8 white">
       <div class="col titulo-font">
-            <h5>Solicitudes</h5>
-            <p>En este apartado se encuentran todas las solcitudes existentes, solo pueden visualizarse.</p>
+            <h5>Solicitudes en proceso</h5>
+            <p>Las solicitudes son ordenadas según la fecha de expedición.</p>
       </div>
       <table class="white highlight bordered striped">
          <thead class="color-thead">
@@ -50,6 +50,8 @@ require_once("opciones_view.php");
                   <td>$row[fecha]</td>
                   <td>
                   <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+                  <a href='../citas/index.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/icons/calendar.png'></a>
+                  <a href='../casos/create_caso.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Caso'><img src='../../web/img/admin/icon/folder.png'></a>
                   </td>
                   </tr>");
                }

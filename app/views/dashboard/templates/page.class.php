@@ -38,7 +38,6 @@ class Page extends component{
                     <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/estudiantes/index.php' class='white-text'><i class='material-icons white-text'>group</i>Estudiantes</a></li>
-                    <li><a href='../../dashboard/recordatorios/index.php' class='white-text'><i class='material-icons white-text'>notifications_none</i>Recordatorios</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
                   <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 

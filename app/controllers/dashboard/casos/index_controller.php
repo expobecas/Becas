@@ -5,8 +5,16 @@ require_once('../../../models/casos.class.php');
 try
 {
     $caso = new Casos;
-    $casos = $caso->getCasos();
-    echo json_encode($casos);
+    if(isset($_POST['buscar']))
+    {
+        $casos = $caso->searchCasos($_POST['buscar']);
+        echo json_encode($casos);
+    }
+    else
+    {
+        $casos = $caso->getCasos();
+        echo json_encode($casos);
+    }
 }
 catch(Exception $error)
 {

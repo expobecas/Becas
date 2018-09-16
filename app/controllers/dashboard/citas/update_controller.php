@@ -24,6 +24,6 @@ try
 }
 catch(Exception $error)
 {
-    Component::showMessage(4, $error->getMessage(), null);
+    echo $error->getMessage();
 }
 ?>

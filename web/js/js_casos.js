@@ -6,9 +6,11 @@ $(document).ready(function(){
 
     function CargarTabla()
     {
+        buscar = $('#buscar_caso').val();
         $.ajax({
             type:'POST',
             url: '../../app/controllers/dashboard/casos/index_controller.php',
+            data: {buscar:buscar},
             dataType: 'json',
             success: function(casos)
             {
@@ -23,6 +25,7 @@ $(document).ready(function(){
                         fecha = casos[i].start.split(" ");
                         fila = fila.concat(
                             '<tr id="'+casos[i].id_caso+'">',
+                            '<td>'+casos[i].n_carnet+'</td>',
                             '<td>'+alumno+'</td>',
                             '<td>'+casos[i].fecha+'</td>',
                             '<td>'+casos[i].estado_solicitud+'</td>',
@@ -40,6 +43,12 @@ $(document).ready(function(){
                     document.getElementById("casos").style.cursor = "default";
                     ObtenerDatos();
                 }
+                else if(buscar != '' && casos == '')
+                {
+                    var fila = "";
+                    fila = fila.concat('<tr> <td colspan="7"> <h5 class="center">No se encontro ningun resultado</h5> </td> </tr>');
+                    $('#casos').append(fila);
+                }
                 else
                 {
                     swal({
@@ -55,6 +64,10 @@ $(document).ready(function(){
             }
         });         
     }
+
+    $('#buscar_caso').on('keyup', function(){
+        CargarTabla();
+    });
     
     //Con esta funcion se obtienen los datos de la fila cuando se presiona detalle del caso
     function ObtenerDatos()

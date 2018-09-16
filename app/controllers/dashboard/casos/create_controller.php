@@ -16,10 +16,10 @@ try
         $id_citatbCasos = $caso->checkCitatbCasos();
         $id_citatbCitas = $caso->checkCitatbCitas();
 
-        if($id_citatbCitas == null)
+        /*if($id_citatbCitas == null)
         {
             Page::showMessage(3, 'No se puede generar un caso, porque no ha asignado una cita a la solicitud', '../solicitudes/index.php');
-        }
+        }*/
         if($id_citatbCasos != null)
         {
             Page::showMessage(3, 'Ya generó un caso para está solicitud', '../solicitudes/index.php');
@@ -45,7 +45,7 @@ try
                 {
                     if($caso->createCaso())
                     {
-                        
+                        Page::showMessage(1, 'caso creado', null);
                     }
                     else
                     {

@@ -1,7 +1,7 @@
 <!--FORMULARIO PARA MODIFICAR USUARIO-->
 <!--CODIGO PHP - PRINT, SIRVE PARA IMPRIMIR/MOSTRAR/LEER LOS DATOS DE LA BASE SEGÚN EL ID DEL USUARIO-->
 <div class="row">
-    <form class="col s12 l6 m12 offset-l4 white formulario" method="POST" autocomplete="off">
+    <form class="col s12 l6 m10 offset-m1 offset-l4 white formulario" method="POST" autocomplete="off">
         <p class="titulo-EP"><strong>Modificar usuario</strong></p>
         <div class="divider"></div>
         <div class="row">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12 offset-l3 offset-m4">
+                <div class="input-field col s12 offset-l3 offset-m3">
                     <button class="waves-effect waves-light btn sg2" type='submit' name='actualizar'>Modificar</button>
                     <a href="../../dashboard/usuarios/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
                 </div>

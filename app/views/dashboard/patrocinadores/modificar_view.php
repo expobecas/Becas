@@ -1,4 +1,4 @@
-<!--FORMULARIO PARA AGREGAR PATROCINADORES-->
+<!--FORMULARIO PARA Modificar PATROCINADORES-->
 <div class="row">
    <form class="col s12 l7 offset-l4 m10 offset-m1 white edit_form" method='POST' autocomplete="off"> <!--OFFSET = CUANTAS COLUMNAS DEBE MOVERSE EL OBJETO-->
       <!--PRIMERA FILA-->
@@ -60,7 +60,7 @@
    </div>
       <!--BOTON-->
       <div class="row">
-      <div class="col offset-l3 l11 offset-m3 offset-s1">
+      <div class="col offset-l3 l11 offset-m3 m12 s12">
          <button class="waves-effect waves-light btn boton-editar2 sg3" type='submit' name='actualizar'> Modificar</button>
          <a href="../../dashboard/patrocinadores/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>

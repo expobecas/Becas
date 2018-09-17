@@ -60,7 +60,7 @@
    </div>
       <!--BOTON-->
       <div class="row">
-      <div class="col offset-l3 l11 offset-m3 offset-s1">
+      <div class="col offset-l3 l11 offset-m3 s12 m12">
          <button class="waves-effect waves-light btn boton-editar2 sg2" type='submit' name='crear'> Agregar</button>
          <a href="../../dashboard/patrocinadores/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>

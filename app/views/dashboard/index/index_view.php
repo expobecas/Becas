@@ -33,6 +33,7 @@
  </div>
 </div>
 </div>
+
 <?php
   $hoy = date('Y-m-j');
   $a = "'";

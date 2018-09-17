@@ -8,7 +8,10 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l10">
+<div class="col offset-l8">
+        <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
+    </div>
+<div class="col">
       <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>
    </div>
 </div>
@@ -16,11 +19,14 @@
 
 <div class="row">
 <div class="tabla">
-   <div class="col offset-l3 l8 white">
-   <div class="col titulo-font">
-      <h5>Información</h5>
-   </div>
-      <table class="white highlight bordered tb-sol text-tbody">
+    <div class="col white offset-l3 l8 offset-m1 m10 s12">
+            <div class="col titulo-font">
+                  <h5>Patrocinadores</h5>
+                  <p>Aquí se puede visualizar la información principal, para ver más o modificar seleccione el icono del lápiz.</p>
+            </div>
+      </div>
+      <div class="col offset-l3 white l8 offset-m1 m10 s12">
+      <table class="white highlight bordered tb-sol text-tbody responsive-table">
          <thead class="color-thead">
             <tr>
                <th>Categoría</th>

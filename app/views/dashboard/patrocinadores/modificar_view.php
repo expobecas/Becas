@@ -1,9 +1,11 @@
-<!--FORMULARIO PARA EDICIÓN DE PERFIL-->
+<!--FORMULARIO PARA AGREGAR PATROCINADORES-->
 <div class="row">
-   <form class="col s12 l6 offset-l4 white edit_form" method='POST' autocomplete="off">
-      <p class="titulo-EP"><strong>Editar Patrocinador</strong></p>
-      <div class="divider"></div>
+   <form class="col s12 l7 offset-l4 m10 offset-m1 white edit_form" method='POST' autocomplete="off"> <!--OFFSET = CUANTAS COLUMNAS DEBE MOVERSE EL OBJETO-->
       <!--PRIMERA FILA-->
+      <div class="divider"></div>
+   <div id="formpatro">
+   <p class="titulo-EP"><strong>Agregar patrocinador</strong></p>
+      <div class="divider"></div>
       <div class="row">
          <div class="input-field col s6">
          <?php
@@ -11,47 +13,55 @@
          ?>
          </div>
          <div class="input-field col s6">
-            <input id="profesion" type="text" class="validate" name='profesion' value="<?php print($patrocinadores->getProfesion());?>">
-            <label for="profesion">Profesion</label>
+            <input id="nombre2" type="text" class="validate" name='profesion' value="<?php print($patrocinadores->getProfesion());?>">
+            <label for="nombre2">Profesion</label>
          </div>
       </div>
-      <!--SEGUNDA FILA-->
+      <!--SEGUNDA FILA--> 
       <div class="row">
          <div class="input-field col s6">
-            <input id="nombres" type="text" class="validate" name='nombres' disabled value="<?php print($patrocinadores->getNombres());?>">
-            <label for="nombres">Nombres</label>
+            <input id="usuario" type="text" class="validate" name='cargo'  value="<?php print($patrocinadores->getCargo());?>">
+            <label for="usuario">Cargo</label>    
          </div>
          <div class="input-field col s6">
-            <input id="apellidos" type="text" class="validate" name='apellidos' disabled value="<?php print($patrocinadores->getApellidos());?>">
+            <input id="carnet" type="text" class="validate" name='empresa'  value="<?php print($patrocinadores->getNombre_empresa());?>">
+            <label for="carnet">Empresa</label>
+         </div>
+      </div>
+            <!--DATOS--> 
+            <div class="row">
+         <div class="input-field col s6">
+            <input id="nombres" type="text" class="validate" name='nombres'  value="<?php print($patrocinadores->getNombres());?>">
+            <label for="nombres">Nombres</label>    
+         </div>
+         <div class="input-field col s6">
+            <input id="apellidos" type="text" class="validate" name='apellidos'  value="<?php print($patrocinadores->getApellidos());?>">
             <label for="apellidos">Apellidos</label>
          </div>
-         
       </div>
-      <!--TERCERA FILA-->
+         <!--TERCER FILA--> 
       <div class="row">
          <div class="input-field col s6">
-            <input id="cargo" type="text" class="validate" name='cargo' value="<?php print($patrocinadores->getCargo());?>">
-            <label for="cargo">Cargo</label>    
+            <input id="grado" type="text" class="validate" name='direccion'  value="<?php print($patrocinadores->getDireccion());?>">
+            <label for="grado">Dirección</label>
          </div>
          <div class="input-field col s6">
-            <input id="empresa" type="text" class="validate" name='empresa' value="<?php print($patrocinadores->getNombre_empresa());?>">
-            <label for="empresa">Empresa</label>
+            <input id="especialidad" type="text" class="validate" name='telefono'  value="<?php print($patrocinadores->getTelefono());?>">
+            <label for="especialidad">Teléfono</label>
          </div>
       </div>
-      <div class="row">
-         <div class="input-field col s6">
-            <input id="direccion" type="text" class="validate" name='direccion' value="<?php print($patrocinadores->getDireccion());?>">
-            <label for="direccion">Dirección</label>
+   </div>
+   <!--CUARTA FILA-->
+   <div class="row">
+         <div class="input-field col s12">
+            <input id="correo" type="email" class="validate" name='correo' value="<?php print($patrocinadores->getCorreo());?>">
+            <label for="correo">Correo</label>
          </div>
-         <div class="input-field col s6">
-            <input id="telefono" type="text" class="validate" name='telefono' value="<?php print($patrocinadores->getTelefono());?>">
-            <label for="telefono">Teléfono</label>
-         </div>
-      </div>
+   </div>
       <!--BOTON-->
       <div class="row">
-      <div class="col offset-l4 l11">
-         <button class="waves-effect waves-light btn boton-editar2 offset-l4 sg2" type='submit' name='actualizar'> Editar información </button>
+      <div class="col offset-l3 l11 offset-m3 offset-s1">
+         <button class="waves-effect waves-light btn boton-editar2 sg3" type='submit' name='actualizar'> Modificar</button>
          <a href="../../dashboard/patrocinadores/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>
       </div>

@@ -29,7 +29,12 @@
             </div>
             <div class="input-field col s6 l6">
                 <input id="contraseña" type="password" name='contraseña' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
-                <label for="contraseña">Password <i class='material-icons icon-form'>lock_outline</i></label>
+                <label for="contraseña">Contraseña <i class='material-icons icon-form'>lock_outline</i></label>
+            </div>
+        </div>
+        <div class="input-field col s6 l6">
+                <input id="contraseña1" type="password" name='contraseña1' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
+                <label for="contraseña1">Confirmar contraseña<i class='material-icons icon-form'>lock_outline</i></label>
             </div>
         </div>
         <!--BOTON-->

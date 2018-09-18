@@ -36,10 +36,9 @@
                 <input id="contraseña1" type="password" name='contraseña1' class='validate' value='<?php print($usuario->getClave()) ?>' required/>
                 <label for="contraseña1">Confirmar contraseña<i class='material-icons icon-form'>lock_outline</i></label>
             </div>
-        </div>
         <!--BOTON-->
         <div class="row">
-            <div class="col offset-l3 l11 s12 offset-s1 offset-m3">
+            <div class="col offset-l4 l11 s12 offset-s1 offset-m3">
                 <button class="waves-effect waves-light btn boton-editar2 sg2" type='submit' name='crear'> Agregar</button>
                 <a href="../../dashboard/usuarios/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
             </div>

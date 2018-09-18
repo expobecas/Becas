@@ -78,6 +78,7 @@ class Page extends component{
         <script type='text/javascript' src='../../web/js/deshabilitar.js'></script>
         <script type='text/javascript' src='../../web/js/Chart.js'></script>
         <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
+        <script type='text/javascript' src='../../web/js/validacion.js'></script>
         ");
         $filename = basename($_SERVER['PHP_SELF']);
         if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')

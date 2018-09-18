@@ -9,7 +9,7 @@
 <!--BOTONES-->
 <div class="row">
 <div class="col offset-l8">
-        <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
+        <a class="waves-effect waves-light btn s-general sg3 tooltipped" data-position='bottom' data-delay='50' data-tooltip='Agregar patrocinador' href="agregar.php">Agregar</a>
     </div>
 <div class="col">
       <a class="waves-effect waves-light btn s-general sg1 tooltipped " href="../../app/views/dashboard/patrocinadores/tipo_reporte.php" data-tooltip='Usuarios por tipo' data-position='bottom' >Reporte</a>

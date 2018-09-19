@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once('../../../models/database.class.php');
 require_once('../../../helpers/validator.class.php');
 require_once('../../../models/casos.class.php');

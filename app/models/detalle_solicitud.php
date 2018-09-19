@@ -59,6 +59,20 @@ class Detalle_solicitud Extends Validator
 
     //Metodos para el matenimiento del SCRUD
 
+    public function checkCitatbCasos()
+    {
+        $sql = "SELECT cs.id_cita FROM citas c INNER JOIN casos cs ON c.id = cs.id_cita INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle WHERE d.id_detalle = ?";
+        $params = array($this->id_detalle);
+        return Database::getRow($sql, $params);
+    }
+
+    public function checkCitatbCitas()
+    {
+        $sql = "SELECT c.id FROM citas c INNER JOIN detalle_solicitud d ON c.id_detalle = d.id_detalle WHERE d.id_detalle = ?";
+        $params = array($this->id_detalle);
+        return Database::getRow($sql, $params);
+    }
+    
     public function getIdDetalles()
     {
         $sql = "SELECT id_detalle FROM citas WHERE id = ?";

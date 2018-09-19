@@ -9,11 +9,15 @@
 <!--TABLA SOLICITUDES GENERALES-->
 <div id="#categorias" class="row">
 <div class="tabla">
-   <div class="col offset-l3 l4 white">
-   <div class="col titulo-font">
-      <h5>Categorías existentes</h5>
-   </div>
-      <table class="white highlight bordered tb-sol text-tbody">
+<div class="row">
+      <div class="col white offset-l3 l8 offset-m1 m10 s12">
+            <div class="col titulo-font">
+                  <h5>Categorías</h5>
+                  <p>Categorías que pueden poseer los patrocinadores.</p>
+            </div>
+      </div>
+      <div class="col offset-l3 white l8 offset-m1 m10 s12">
+      <table class="white highlight bordered tb-sol text-tbody responsive-table">
          <thead class="color-thead">
             <tr>
                <th>Categoria</th>

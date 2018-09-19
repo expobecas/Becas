@@ -6,7 +6,7 @@
    </div>
     </div>
         <div class="row">
-        <div class="input-field col s6 l12 ">
+        <div class="input-field col s12 m12 l12 ">
         <button class="waves-effect waves-light btn boton-editar2 offset-l4 sg2 add-c" type='submit' name='eliminar'> Eliminar </button>
         <a href="../../dashboard/patrocinadores/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
         </div>

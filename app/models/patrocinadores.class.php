@@ -11,6 +11,7 @@ class Patrocinadores extends Validator{
     private $direccion = null;
     private $telefono = null;
     private $tipo2 = null;
+    private $correo = null;
 
     /*SET & GET PATROCINADORES*/
     public function setId_patrocinador($value)
@@ -173,11 +174,27 @@ class Patrocinadores extends Validator{
     {
         return $this->tipo2;
     }
+    public function setCorreo($value)
+    {
+        if($this->validateAlphanumeric($value,1 ,50))
+        {
+            $this->correo = $value;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
     
 
     //METODOS PARA MANEJAR EL CRUD
     public function getPatrocinadores(){
-        $sql = "SELECT p.id_patrocinador, p.id_tipo_patro, tp.tipo_patrocinador, p.profesion, u.nombres, u.apellidos, p.cargo, p.nombre_empresa, p.direccion, p.telefono FROM patrocinadores p INNER JOIN usuarios u USING(id_usuario) INNER JOIN tipo_patrocinador tp USING(id_tipo_patro)";
+        $sql = "SELECT id_patrocinador, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono,correo FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro)";
         $params = array(null);
         return Database::getRows($sql, $params);
     }
@@ -187,17 +204,17 @@ class Patrocinadores extends Validator{
         return Database::getRows($sql, $params);
     }
     public function CreatePatrocinadores(){
-        $sql = "INSERT INTO patrocinadores(id_tipo_patro, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-        $params = array($this->tipo, $this->profesion, $this->nombres, $this->apellidos,$this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono);
+        $sql = "INSERT INTO patrocinadores(id_tipo_patro, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono, correo) VALUES(?, ?, ?, ?, ?, ?, ?,?,?)";
+        $params = array($this->tipo, $this->profesion, $this->nombres, $this->apellidos, $this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->correo);
         return Database::executeRow($sql, $params);   
     }
     public function UpdatePatrocinadores(){
-        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ? WHERE id_patrocinador = ?";
-        $params = array($this->tipo, $this->profesion, $this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->id_patrocinador);
+        $sql = "UPDATE patrocinadores SET id_tipo_patro = ?, profesion = ?, nombres = ?, apellidos = ?, cargo = ?, nombre_empresa = ?, direccion = ?, telefono = ?, correo = ? WHERE id_patrocinador = ?";
+        $params = array($this->tipo, $this->profesion, $this->nombres, $this->apellidos,$this->cargo, $this->nombre_empresa, $this->direccion, $this->telefono, $this->correo,$this->id_patrocinador);
         return Database::executeRow($sql, $params);
     }
     public function ReadPatrocinadores(){
-        $sql = "SELECT id_patrocinador, id_tipo_patro, tipo_patrocinador, profesion, cargo, nombre_empresa, direccion, telefono, nombres, apellidos FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) INNER JOIN usuarios ON usuarios.id_usuario = patrocinadores.id_usuario WHERE id_patrocinador = ?";
+        $sql = "SELECT id_patrocinador, id_tipo_patro, tipo_patrocinador, profesion, nombres, apellidos, cargo, nombre_empresa, direccion, telefono, correo FROM patrocinadores INNER JOIN tipo_patrocinador USING(id_tipo_patro) WHERE id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         $patrocinadores = Database::getRow($sql, $params);
         if($patrocinadores){
@@ -205,13 +222,13 @@ class Patrocinadores extends Validator{
             $this->tipo = $patrocinadores['id_tipo_patro'];
             $this->tipo2 = $patrocinadores['tipo_patrocinador'];
             $this->profesion = $patrocinadores['profesion'];
+            $this->nombres = $patrocinadores['nombres'];
+            $this->apellidos = $patrocinadores['apellidos'];
             $this->cargo = $patrocinadores['cargo'];
             $this->nombre_empresa = $patrocinadores['nombre_empresa'];
             $this->direccion = $patrocinadores['direccion'];
             $this->telefono = $patrocinadores['telefono'];
-            $this->nombres = $patrocinadores['nombres'];
-            $this->apellidos = $patrocinadores['apellidos'];
-
+            $this->correo = $patrocinadores['correo'];
             return true;
         }else{
             return null;

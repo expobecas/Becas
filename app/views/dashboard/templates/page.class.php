@@ -80,6 +80,8 @@ class Page extends component{
         <script type='text/javascript' src='../../web/js/deshabilitar.js'></script>
         <script type='text/javascript' src='../../web/js/Chart.js'></script>
         <script type='text/javascript' src='../../web/js/Chart.min.js'></script>
+        <script type='text/javascript' src='../../web/js/validaciones.js'></script>
+        <script src='https://www.google.com/recaptcha/api.js?hl=es' async defer></script>
         ");
         $filename = basename($_SERVER['PHP_SELF']);
         if($filename != 'acceder.php' || $filename != 'create_admin.php' || $filename != 'logout.php')
@@ -92,7 +94,7 @@ class Page extends component{
             <script type='text/javascript' src='../../web/js/stadistics.js'></script>
             ");
         }
-        if($filename == "casos.php")
+        if($filename == "casos.php" || $filename == "create_caso.php")
         {
             print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
         }

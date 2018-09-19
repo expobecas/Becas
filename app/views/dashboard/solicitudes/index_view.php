@@ -49,10 +49,9 @@ require_once("opciones_view.php");
                   <td>$row[especialidad]</td>
                   <td>$row[encargado]</td>
                   <td>$row[tel_fijo]</td>
+                  <td>$row[fecha]</td>
                   <td>
                   <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
-                  <a href='../citas/index.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
-                  <a href='../casos/create_caso.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
                   </td>
                   </tr>");
                }

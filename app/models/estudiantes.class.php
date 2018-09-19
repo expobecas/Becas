@@ -321,6 +321,16 @@ class Estudiantes extends Validator{
         return Database::executeRow($sql, $params);    
         
     }
+    public function verificacion_carnet() {
+        $sql = "SELECT * FROM estudiantes WHERE n_carnet =?";
+        $params = array($this->num_carnet);
+        return Database::getRows($sql, $params);
+    }
+    public function deleteEstudiante(){
+		$sql = "DELETE FROM estudiantes WHERE id_estudiante = ?";
+		$params = array($this->id);
+		return Database::executeRow($sql, $params);
+	}
 
 
     public function updatePerfil(){
@@ -329,7 +339,7 @@ class Estudiantes extends Validator{
         return Database::executeRow($sql, $params);
     }
     public function readPerfil(){
-        $sql = "SELECT id_estudiante, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
+        $sql = "SELECT id_estudiante, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, usuario, contraseña, n_carnet, grado, especialidad FROM estudiantes WHERE id_estudiante = ?";
         $params = array($this->id);
         $estudiantes = Database::getRow($sql, $params);
         if($estudiantes){
@@ -338,6 +348,7 @@ class Estudiantes extends Validator{
             $this->apellido1 = $estudiantes['primer_apellido'];
             $this->apellido2 = $estudiantes['segundo_apellido'];
             $this->usuario = $estudiantes['usuario'];
+            $this->contraseña = $estudiantes['contraseña'];
             $this->num_carnet = $estudiantes['n_carnet'];
             $this->grado = $estudiantes['grado'];
             $this->especialidad = $estudiantes['especialidad'];

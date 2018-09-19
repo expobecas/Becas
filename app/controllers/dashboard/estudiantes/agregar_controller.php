@@ -12,6 +12,8 @@ try{
                             $clave = $_POST['clave1'];  
                             if($_POST['clave1'] == $_POST['clave2']){
                                 if($estudiantes->setNum_carnet($_POST['carnet'])){
+                                    $verificacion_carnet = $estudiantes->verificacion_carnet();
+                                    if(!$verificacion_carnet) {
                                     if($estudiantes->setGrado($_POST['grado'])){
                                         if($estudiantes->setEspecialidad($_POST['especialidad'])){
                                     if($estudiantes->createEstudiante()){
@@ -27,6 +29,9 @@ try{
                                 }else{
                                     throw new Exception("Grado incorrecto");
                                 }
+                            }else{
+                                throw new Exception("Carnet duplicado");
+                            }
                                 }else{
                                     throw new Exception("Carnet incorrecto");
                                 }

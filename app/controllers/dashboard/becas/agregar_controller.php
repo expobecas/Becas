@@ -6,9 +6,8 @@ try{
         $_POST = $becas->validateForm($_POST);
         if($becas->setDetalle($_POST['detalle'])){
             if($becas->setPatrocinador($_POST['patrocinador'])){ 
-            if($becas->setMonto($_POST['monto'])){
-                if($becas->setPeriodo($_POST['periodo'])){
-                    if($becas->setFecha($_POST['fecha'])){
+                if($becas->setPeriodo_pago($_POST['periodo'])){
+                    if($becas->setFecha_inicio($_POST['fecha'])){
                                     if($becas->createBecas()){
                                         Page::showMessage(1, "Beca ingresada", "index.php");
                                     }
@@ -19,11 +18,8 @@ try{
                                     throw new Exception("Fecha incorrecta");
                                 }
                         }else{
-                            throw new Exception("Usuario incorrecto");
+                            throw new Exception("Periodo incorrecto");
                         }
-                    }else{
-                        throw new Exception("Monto incorrect0");
-                    }
                     }else{
                         throw new Exception("Patrocinador incorrecto");
                     }

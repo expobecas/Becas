@@ -30,10 +30,40 @@
          <canvas id="grafico4" width="340" height="200"></canvas>
      </div>
 </div>
+<div class="row">
+      <!--Gráfica5-->  
+      <div class="col s12 m4 l4 offset-l3 white titulo-font">
+         <h5> Cantidad de estudiantes por especialidad</h5>
+         <canvas id="grafico6" width="340" height="200"></canvas>
+     </div>
+ <!--Gráfica4-->    
+     <div class="col s12 m4 l4 white titulo-font">
+         <h5>Cantidad de becas por patrocinador</h5>
+         <canvas id="grafico7" width="340" height="200"></canvas>
+     </div>  
+</div>
+<div class="row">
+      <!--Gráfica5-->  
+      <div class="col s12 m4 l4 offset-l3 white titulo-font">
+         <h5>Cantidad de becas por patrocinador</h5>
+         <canvas id="grafico8" width="340" height="200"></canvas>
+     </div>
+ <!--Gráfica4-->    
+     <div class="col s12 m4 l4 white titulo-font">
+         <h5>Cantidad de pagos por patrocinador</h5>
+         <canvas id="grafico9" width="340" height="200"></canvas>
+     </div>
+</div>
+<div class="row">
+      <!--Gráfica3-->    
+      <div class="col s12 m4 l8 offset-l3 white titulo-font">
+         <h5>Cantidad de solicitudes ingresadas en una fecha</h5>
+         <canvas id="grafico10" width="600" height="200"></canvas>
+     </div> 
+ </div>
  </div>
 </div>
 </div>
-
 <?php
   $hoy = date('Y-m-j');
   $a = "'";

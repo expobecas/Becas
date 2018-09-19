@@ -7,37 +7,32 @@
       <div class="row">
          <div class="input-field col s8 l5">
          <?php
-           Page::showSelect("Detalle", "detalle", $becas->getDetalle(), $becas->getDetalles());                                     
+           Page::showSelect("Codigo del estudiante", "detalle", $becas->getDetalle(), $becas->getDetalles());                                     
          ?>
    </div>
           <div class="input-field col s10 l5">
          <?php
-           Page::showSelect("Patrocinador", "patrocinadores",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
+           Page::showSelect("Patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
          ?>
          </div>
 
-        <div class="row">
          <div class="input-field col s10 l5">
-            <input id="monto" type="text" class="validate" name='monto'>
-            <label for="monto">Monto</label>
-         </div>
-         <div class="input-field col s10 l5">
-            <input id="periodo" type="text" class="validate" name='periodo' >
-            <label for="periodo">Periodo de pago</label>
+         <input id="periodo" type="text" name='periodo' class='validate' value='<?php print($becas->getPeriodo_Pago()) ?>' required/>
+         <label for="periodo">Periodo<i class='material-icons icon-form'>timeline</i></label>
          </div>
       </div>
       <!--SEGUNDA FILA-->
       <div class="row">
          <div class="input-field col s10">
-            <input id="fecha" type="text" class="validate" name='fecha'>
-            <label for="fecha">Fecha</label>
+         <input id="fecha" name='fecha' type="text" class="datepicker" class='validate' value='<?php print($becas->getFecha_inicio()) ?>' required/>
+         <label for="fecha">Fecha<i class='material-icons icon-form'>event</i></label>
          </div>
          
       </div>
       <!--BOTON-->
       <div class="row">
       <div class="col offset-l3 l8">
-         <button class="waves-effect waves-light btn boton-editar2 sg3" type='submit' name='crear'>Modificar</button>
+         <button class="waves-effect waves-light btn boton-editar2 sg2" type='submit' name='actualizar'>Modificar</button>
          <a href="../../dashboard/becas/index.php" class="waves-effect waves-light btn boton-editar2 offset-l8 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>
       </div>

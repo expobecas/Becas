@@ -20,18 +20,19 @@ try
                 $fin = $_POST['end'];
                 
                 $ids_detalle = $citas->getIdDetalles();
-                $ids_detalle = $ids_detalle[0];
+                print_r($ids_detalle);
                 $id_encrypt = $_POST['id_detalle'];
-                $id_detalle = "";
-                $id = "";
-                foreach($ids_detalle as $row)
+                echo $id_encrypt;
+                $i = 0;
+                for($i; $i<count($ids_detalle); $i++)
                 {
-                    $id_detalle = $row[0];
+                    $id_detalle = $ids_detalle[$i][0];
+                    echo 'id: '.$id_detalle;
+
                     if(password_verify($id_detalle, $id_encrypt))
                     {
-                        
                         $id = $id_detalle;
-                        
+                        echo $id;
                     }
                 }
                 if($citas->setIdDetalle($id))

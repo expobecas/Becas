@@ -49,11 +49,8 @@
                <td>$row[grado]</td>
                <td>$row[especialidad]</td>
                <td>
-<<<<<<< HEAD
                <a href='modificar.php?id=$row[id_estudiante]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar y ver más'><img src='../../web/img/admin/icon/edit.png'></a>
                <a href='eliminar.php?id=$row[id_estudiante]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Eliminar'><img src='../../web/img/admin/icon/eraser.png'></a>
-=======
->>>>>>> ceef539181d6eb3dc9ab8418692cfff897a11a1c
                </td>
                </tr>");
                }

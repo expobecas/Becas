@@ -9,11 +9,7 @@ class Database
     private function connect()
     {
         $server = "localhost";
-<<<<<<< HEAD
         $database = "dbecas";
-=======
-        $database = "dbecas3";
->>>>>>> ceef539181d6eb3dc9ab8418692cfff897a11a1c
         $username = "root" /*"Expo_becas"*/;
         $password = ""/*"becasricaldone"*/;
         try

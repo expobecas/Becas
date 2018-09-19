@@ -70,19 +70,19 @@ class Becas extends Validator {
         return $this->monto;
     }
     
-    public function setPeriodo_pago(){
+    public function setPeriodo_Pago($value){
         if($this->validateAlphanumeric($value, 1, 50)){
-            $this->perido_pago = $value;
+            $this->periodo_pago = $value;
             return true;
         }else{
             return false;
         }
     }
-    public function getPeriodo_pago(){
+    public function getPeriodo_Pago(){
         return $this->periodo_pago;
     }
 
-    public function setFecha_inicio(){
+    public function setFecha_inicio($value){
         if($this->validateAlphanumeric($value, 1, 50)){
             $this->fecha_inicio = $value;
             return true;
@@ -150,7 +150,7 @@ class Becas extends Validator {
     }
 
         public function getBecas2(){
-            $sql = "SELECT id_becas, id_detalle, p.nombre_empresa, monto, periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores p USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) "; 
+            $sql = "SELECT id_becas, estudiantes.n_carnet, estudiantes.primer_nombre, estudiantes.primer_apellido, p.nombre_empresa, periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores p USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes USING(id_estudiante) "; 
             $params = array($this->id);
             return Database::getRows($sql, $params);
         }
@@ -161,35 +161,34 @@ class Becas extends Validator {
             return Database::getRows($sql, $params);	
        }
        public function getDetalles(){
-        $sql = "SELECT id_detalle, id_solicitud  FROM detalle_solicitud ";
+        $sql = "SELECT id_detalle, estudiantes.n_carnet FROM detalle_solicitud INNER JOIN solicitud USING (id_solicitud) INNER JOIN estudiantes USING (id_estudiante)";
         $params = array(null);
         return Database::getRows($sql, $params);	
     }
     
         public function readBecas(){
-            $sql = "SELECT id_becas, id_detalle, id_patrocinador ,monto, periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) ";
+            $sql = "SELECT id_becas, id_detalle, id_patrocinador , periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) ";
             $params = array($this->id);
             $becas = Database::getRow($sql, $params);
             if($becas){
                 $this->detalle = $becas['id_detalle'];
                 $this->patrocinador = $becas['id_patrocinador'];
-                $this->monto = $becas['monto'];
-                $this->periodo = $becas['periodo_pago'];
-                $this->fecha = $becas['fecha_ini_beca'];
+                $this->periodo_pago = $becas['periodo_pago'];
+                $this->fecha_inicio = $becas['fecha_ini_beca'];
                 return true;
             }else{
                 return null;
             }
         }
         public function createBecas(){
-            $sql = "INSERT INTO becas (id_detalle, id_patrocinador, monto, periodo_pago, fecha_ini_beca)
-            VALUES (?,?,?,?,?)";
-            $params = array($this->detalle, $this->patrocinador,$this->monto, $this->periodo, $this->fecha);
+            $sql = "INSERT INTO becas (id_detalle, id_patrocinador, periodo_pago, fecha_ini_beca)
+            VALUES (?,?,?,?)";
+            $params = array($this->detalle, $this->patrocinador, $this->periodo_pago, $this->fecha_inicio);
             return Database::executeRow($sql, $params);   
         }
             public function updateBecas(){
-                $sql = "UPDATE becas SET id_detalle= ?, id_patrocinador= ?, monto= ?, periodo_pago= ?, fecha_ini_beca= ? WHERE id_becas = ?";
-                $params = array($this->detalle, $this->patrocinador,$this->monto, $this->periodo,$this->fecha, $this->id);
+                $sql = "UPDATE becas SET id_detalle= ?, id_patrocinador= ?, periodo_pago= ?, fecha_ini_beca= ? WHERE id_becas = ?";
+                $params = array($this->detalle, $this->patrocinador, $this->periodo_pago,$this->fecha_inicio, $this->id);
                 return Database::executeRow($sql, $params);
             
         }

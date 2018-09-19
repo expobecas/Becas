@@ -12,6 +12,7 @@ class Page extends component{
         <head>
             <meta charset='utf-8'>
             <title>$title</title>
+            
             <link type='text/css' rel='stylesheet' href='../../web/css/materialize.min.css'/>
             <link type='text/css' rel='stylesheet' href='../../web/css/material_icons.css'/>
             <link type='text/css' rel='stylesheet' href='../../web/css/style_admin.css'/>
@@ -34,6 +35,7 @@ class Page extends component{
                     <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
                     <li><a href='../../dashboard/becas/index.php' class='white-text'><i class='material-icons white-text'>book</i>Becas</a></li>
                     <li><a href='../../dashboard/citas/index.php' class='white-text'><i class='material-icons white-text'>event_note</i>Citas</a></li>
+                    <li><a href='../../dashboard/pagos/index.php' class='white-text'><i class='material-icons white-text'>drafts</i>Pagos</a></li>
                     <li><a href='../../dashboard/usuarios/index.php' class='white-text'><i class='material-icons white-text'>face</i>Usuarios</a></li>
                     <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>

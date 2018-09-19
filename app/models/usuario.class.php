@@ -314,6 +314,11 @@ class Usuario extends Validator{
         $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $hash, $this->correo);
         return Database::executeRow($sql, $params); 
     }
+    public function searchUsuario($value){
+		$sql = "SELECT u.id_usuario, tipo_usuario.tipo_usuario, u.usuario, u.contraseña, u.correo, u.nombres, u.apellidos FROM usuarios as u INNER JOIN tipo_usuario USING(id_tipo) WHERE tipo_usuario.tipo_usuario LIKE ?% ORDER BY tipo_usuario.tipo_usuario";
+		$params =array("%$value%");
+		return Database::getRows($sql, $params);
+	}
 
     public function createUsuario(){
 		$sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";

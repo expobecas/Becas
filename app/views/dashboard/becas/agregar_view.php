@@ -7,30 +7,25 @@
       <div class="row">
          <div class="input-field col s8 l5">
          <?php
-           Page::showSelect("Detalle", "detalle", $becas->getDetalle(), $becas->getDetalles());                                     
+           Page::showSelect("Codigo del estudiante", "detalle", $becas->getDetalle(), $becas->getDetalles());                                     
          ?>
    </div>
           <div class="input-field col s10 l5">
          <?php
-           Page::showSelect("patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
+           Page::showSelect("Patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
          ?>
          </div>
 
-        <div class="row">
-         <div class="input-field col s10 l5">
-            <input id="monto" type="text" class="validate" name='monto'>
-            <label for="monto">Monto</label>
-         </div>
          <div class="input-field col s10 l5">
             <input id="periodo" type="text" class="validate" name='periodo' >
-            <label for="periodo">Periodo de pago</label>
+            <label for="periodo">Periodo<i class='material-icons icon-form'>timeline</i></label>
          </div>
       </div>
       <!--SEGUNDA FILA-->
       <div class="row">
          <div class="input-field col s10">
-            <input id="fecha" type="text" class="validate" name='fecha'>
-            <label for="fecha">Fecha</label>
+         <input id="fecha" name='fecha' type="text" class="datepicker">
+         <label for="fecha">Fecha<i class='material-icons icon-form'>event</i></label>
          </div>
          
       </div>

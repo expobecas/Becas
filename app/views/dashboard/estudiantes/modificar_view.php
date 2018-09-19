@@ -1,7 +1,7 @@
 <!--FORMULARIO PARA EDICIÓN DE PERFIL-->
 <div class="row">
    <form class="col s12 l7 offset-l4 white edit_form" method='POST' autocomplete="off">
-      <p class="titulo-EP"><strong>Agregar estudiante</strong></p>
+      <p class="titulo-EP"><strong>Modificar estudiante</strong></p>
          <div class="input-field col s4 l6">
             <input id="nombre1" type="text" name='nombre1' class='validate' value='<?php print($estudiantes->getNombre1()) ?>' required/>
             <label for="nombre">Primer nombre<i class='material-icons icon-form'>person_pin</i></label>
@@ -31,7 +31,7 @@
          </div>
          <div class='input-field col s12 m6'>
             <i class='material-icons prefix'>security</i>
-            <input id='clave2' type='password' name='clave2' class='validate'/>
+            <input id="clave2" type="password" name='clave2' class='validate' value='<?php print($estudiantes->getContraseña()) ?>' required/>
             <label for='clave2'>Confirmar contraseña</label>
         </div>
         <div class="input-field col s4 l6">
@@ -53,7 +53,7 @@
       <!--BOTON-->
       <div class="row">
       <div class="col offset-l7 l11">
-         <button class="waves-effect waves-light btn boton-editar2 sg2" type='submit' name='crear'> Agregar</button>
+         <button class="waves-effect waves-light btn boton-editar2 sg2" type='submit' name='actualizar'>Modificar</button>
          <a href="../../dashboard/estudiantes/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
       </div>
       </div>

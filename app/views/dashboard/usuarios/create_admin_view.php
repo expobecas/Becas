@@ -32,7 +32,12 @@
             <input id="contraseña_c" type="password" name='contraseña_c' class='validate' required/>
             <label for="contraseña_c" >Confirmar contraseña</label>
         </div>
-    </div>
+    </div>  
+   <!-- <div class='row'>
+            <div class="col offset-l4">
+            <div class="g-recaptcha" data-sitekey="6LdE7WsUAAAAAIv1BL90xxbe3aQVol_6CmD3Mp1n"></div>
+            </div>
+            </div>-->
     <div class="center">
         <button class="waves-effect waves-light btn sg2" type='submit' name='crear'>Agregar</button>
     </div>

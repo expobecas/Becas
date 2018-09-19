@@ -307,11 +307,14 @@ class Usuario extends Validator{
         return Database::getRows($sql, $params);
     }
 
+
     public function createAdmin()
     {
+        $hoy = date("Y-m-j");
+        $hora = date('H:i:s');
         $hash = password_hash($this->clave, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo) VALUES (?, ?, ?, ?, ?, ?)";
-        $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $hash, $this->correo);
+        $sql = "INSERT INTO usuarios(nombres, apellidos, id_tipo, usuario, contraseña, correo, fecha_creacion, fecha_contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = array($this->nombres, $this->apellidos, $this->tipo, $this->usuario, $hash, $this->correo, $hoy, $hoy.' '.$hora);
         return Database::executeRow($sql, $params); 
     }
 

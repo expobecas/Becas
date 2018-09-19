@@ -314,6 +314,12 @@ class Estudiantes extends Validator{
         $params = array(null);
         return Database::getRows($sql, $params);
     }
+
+    public function updateEstudiantes(){
+		$sql = "UPDATE estudiantes SET primer_nombre= ?, segundo_nombre= ?, primer_apellido= ?, segundo_apellido= ?, usuario= ?, n_carnet= ?, grado= ?, especialidad= ? WHERE id_estudiante = ?";
+		$params = array($this->nombre1, $this->nombre2,$this->apellido1, $this->apellido2, $this->usuario, $this->num_carnet, $this->grado, $this->especialidad, $this->id);
+		return Database::executeRow($sql, $params);
+	}
     public function createEstudiante(){
         $hash = password_hash($this->contraseña, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO estudiantes(primer_nombre, segundo_nombre , primer_apellido, segundo_apellido, usuario, contraseña, n_carnet, grado, especialidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

@@ -15,21 +15,13 @@
             <input id="apellido1" type="text" name='apellido1' class='validate' value='<?php print($estudiantes->getApellido1()) ?>' required/>
             <label for="apellido1">Primer apellido<i class='material-icons icon-form'>person_pin</i></label>
          </div>
-<<<<<<< HEAD
          <div class="input-field col s4 l6">
-=======
-         <div class="input-field col s6 l6">
->>>>>>> ceef539181d6eb3dc9ab8418692cfff897a11a1c
             <input id="apellido2" type="text" name='apellido2' class='validate' value='<?php print($estudiantes->getApellido2()) ?>' required/>
             <label for="apellido2">Segundo apellido<i class='material-icons icon-form'>person_pin</i></label>
          </div>
       </div>
       <div class="row">
-<<<<<<< HEAD
          <div class="input-field col s4 l6">
-=======
-         <div class="input-field col s12 l6">
->>>>>>> ceef539181d6eb3dc9ab8418692cfff897a11a1c
             <input id="usuario" type="text" name='usuario' class='validate' value='<?php print($estudiantes->getUsuario()) ?>' required/>
             <label for="usuairo">Usuario<i class='material-icons icon-form'>insert_emoticon</i></label>
             </div>

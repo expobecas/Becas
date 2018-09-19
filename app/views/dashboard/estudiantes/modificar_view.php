@@ -25,15 +25,6 @@
             <input id="usuario" type="text" name='usuario' class='validate' value='<?php print($estudiantes->getUsuario()) ?>' required/>
             <label for="usuairo">Usuario<i class='material-icons icon-form'>insert_emoticon</i></label>
             </div>
-         <div class="input-field col s4 l6">
-            <input id="clave1" type="password" name='clave1' class='validate' value='<?php print($estudiantes->getContraseña()) ?>' required/>
-            <label for="clave1">Contraseña<i class='material-icons icon-form'>https</i></label>
-         </div>
-         <div class='input-field col s12 m6'>
-            <i class='material-icons prefix'>security</i>
-            <input id="clave2" type="password" name='clave2' class='validate' value='<?php print($estudiantes->getContraseña()) ?>' required/>
-            <label for='clave2'>Confirmar contraseña</label>
-        </div>
         <div class="input-field col s4 l6">
             <input id="carnet" type="text" name='carnet' class='validate' value='<?php print($estudiantes->getNum_carnet()) ?>' required/>
             <label for="carnet">Carnet del estudiante<i class='material-icons icon-form'>contacts</i></label>

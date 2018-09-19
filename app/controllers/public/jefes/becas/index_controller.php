@@ -2,7 +2,7 @@
 require_once("../../../app/models/becas.class.php");
 try{
     $becas = new Becas;
-    $data = $becas->getBecas();
+    $data = $becas->getBecas2();
     /*VISTA GENERAL DE SOLICITUDES*/
     if($data){
         require_once("../../../app/views/public/jefes/becas/index_view.php");

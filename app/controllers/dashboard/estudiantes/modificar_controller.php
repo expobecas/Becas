@@ -14,11 +14,11 @@ try{
                                     if($estudiantes->setUsuario($_POST['usuario'])){
                                                  if($estudiantes->setNum_carnet($_POST['carnet'])){
                                                     $verificacion_carnet = $estudiantes->verificacion_carnet();
-                                                    if(!$verificacion_carnet) {
+                                                
                                                         if($estudiantes->setGrado($_POST['grado'])){
                                                             if($estudiantes->setEspecialidad($_POST['especialidad'])){
                                         if($estudiantes->updateEstudiantes()){
-                                            Page::showMessage(1, "Beca modificada", "index.php");
+                                            Page::showMessage(1, "Información modificada", "index.php");
                                         }
                                         else{
                                             throw new Exception(Database::getException());
@@ -28,9 +28,6 @@ try{
                                     }
                                         }else{
                                         throw new Exception("Grado incorrecto");
-                                    }
-                                    }else{
-                                        throw new Exception("Carnet duplicado");
                                     }
                                     }else{
                                         throw new Exception("Carnet incorrecta");

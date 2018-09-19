@@ -1,6 +1,7 @@
 <?php
 
 require_once('../../app/models/usuario.class.php');
+require_once ("../../app/libraries/recaptcha-1.0.0/php/recaptchalib.php");
 try
 {
     $usuario = new Usuario;
@@ -43,6 +44,12 @@ try
                                     $usuario->setTipo(1);
                                     if($usuario->setClave($_POST['contraseña']))
                                     {
+                                        $response_recaptcha = $_POST['g-recaptcha-response'];
+																if (isset($response_recaptcha) && $response_recaptcha) {	
+																	$secret = "6LdE7WsUAAAAAPMBlXANwFIK4CWyeg_kW2i-zWD7"; //CLAVE SECRETA QUE DA EL SITIO DE CAPTCHA
+																	$ip = $_SERVER['REMOTE_ADDR'];
+																	$validation_server = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response_recaptcha&remoteip=$ip");
+																	if ($validation_server != null) {
                                         if($usuario->createAdmin())
                                         {
                                             Page::showMessage(1, 'El administrador se ha creado', '../ingresar/acceder.php');
@@ -52,6 +59,14 @@ try
                                             echo Database::getException();
                                             throw new Exception(Database::getException());
                                         }
+                                    }
+                                    else {
+                                        throw new Exception("NO");
+                                    }
+                                }
+                                else {
+                                    throw new Exception("Debe de confirmar que no es un robot");
+                                }
                                     }
                                     else
                                     {

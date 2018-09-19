@@ -91,7 +91,7 @@ class Page extends component{
             <script type='text/javascript' src='../../web/js/stadistics.js'></script>
             ");
         }
-        if($filename == "casos.php")
+        if($filename == "casos.php" || $filename == "create_caso.php")
         {
             print("<script type='text/javascript' src='../../web/js/js_casos.js'></script>");
         }

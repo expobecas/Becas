@@ -12,13 +12,12 @@ try{
                             if($estudiantes->setApellido1($_POST['apellido1'])){
                                 if($estudiantes->setApellido2($_POST['apellido2'])){
                                     if($estudiantes->setUsuario($_POST['usuario'])){
-                                        if($estudiantes->setContraseña($_POST['clave1'])){
                                                  if($estudiantes->setNum_carnet($_POST['carnet'])){
                                                     $verificacion_carnet = $estudiantes->verificacion_carnet();
                                                     if(!$verificacion_carnet) {
                                                         if($estudiantes->setGrado($_POST['grado'])){
                                                             if($estudiantes->setEspecialidad($_POST['especialidad'])){
-                                        if($estudiantes->updateBecas()){
+                                        if($estudiantes->updateEstudiantes()){
                                             Page::showMessage(1, "Beca modificada", "index.php");
                                         }
                                         else{
@@ -37,9 +36,6 @@ try{
                                         throw new Exception("Carnet incorrecta");
                                     }
                                     }else{
-                                        throw new Exception("Contraseña incorrecta");
-                                    }
-                                    }else{
                                         throw new Exception("Usuario incorrecto");
                                     }
                                     }else{
@@ -54,9 +50,6 @@ try{
                         }else{
                             throw new Exception("Primer nombre incorrectos");
                         }
-                    }else{
-                        throw new Exception("Sucedio un error");
-                    }
                 }
             }else{
                 throw new Exception("Read usuario");
@@ -65,6 +58,7 @@ try{
                 throw new Exception("Tomar id");
             }
         }
+    }
 catch (Exception $error){
 Page::showMessage(2, $error->getMessage(), null);
 }

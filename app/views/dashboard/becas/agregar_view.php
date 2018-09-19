@@ -15,19 +15,19 @@
            Page::showSelect("Patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
          ?>
          </div>
-
+         <div class="row">
          <div class="input-field col s10 l5">
             <input id="periodo" type="text" class="validate" name='periodo' >
             <label for="periodo">Periodo<i class='material-icons icon-form'>timeline</i></label>
          </div>
       </div>
       <!--SEGUNDA FILA-->
-      <div class="row">
+      
          <div class="input-field col s10">
          <input id="fecha" name='fecha' type="text" class="datepicker">
          <label for="fecha">Fecha<i class='material-icons icon-form'>event</i></label>
          </div>
-         
+         </div>
       </div>
       <!--BOTON-->
       <div class="row">

@@ -51,11 +51,11 @@ try
                             {
                                 if($_POST['accion'] == 'aprobar')
                                 {
-                                    $detalle_solicitud->setIdEstado(3);
+                                    $detalle_solicitud->setIdEstado(1);
                                 }
                                 if($_POST['accion'] == 'rechazar')
                                 {
-                                    $detalle_solicitud->setIdEstado(2);
+                                    $detalle_solicitud->setIdEstado(3);
                                 }
                                 if($detalle_solicitud->updateDetalleSolicitud())
                                 {

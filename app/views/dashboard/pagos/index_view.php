@@ -8,9 +8,14 @@
 </div>
 <!--BOTONES-->
 <div class="row">
-<div class="col offset-l10">
-      <a class="waves-effect waves-light btn s-general sg3" href="agregar.php">Agregar</a>
-   </div>
+    <div class="col offset-l7 offset-s3 offset-m2">
+        <div class="col">
+            <a class="waves-effect waves-light btn s-general sg3 tooltipped"  data-tooltip='Agregar pagos' data-position='bottom' href="agregar.php">Agregar pagos &nbsp</a>
+        </div>
+        <div class="col">
+            <a class="waves-effect waves-light btn s-general sg1 tooltipped "  target="_blank" href="../../app/views/dashboard/pagos/reporte_pagos.php" data-tooltip='Reporte de pagos' data-position='bottom'>Reporte de pagos</a>
+        </div>
+    </div>
 </div>
 <!--TABLA SOLICITUDES GENERALES-->
 

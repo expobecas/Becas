@@ -2,6 +2,7 @@
 require_once('../../../../app/helpers/validator.class.php');
 require_once('../../../../app/models/database.class.php');
 require_once('../../../../app/models/usuario.class.php');
+require_once('../../../../app/models/categorias.class.php');
 require_once('../../../../app/libraries/fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -10,7 +11,7 @@ class PDF extends FPDF
 function Header()
 {   
     //Posiciones x, y - Tamaño width y heigh
-    $this->Rect(15,10,185, 30);
+    $this->Rect(15,10,175, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
     $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
     // Arial bold 15
@@ -26,7 +27,7 @@ function Header()
 
     $this->Ln(6);
     $this->SetFont('Arial','',11);
-    $this->Cell(198,18,utf8_decode('"Usuarios en el sistema"'),0,0,'C');
+    $this->Cell(198,18,utf8_decode('"Patrocinadores por tipo especifico"'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
 }
@@ -48,7 +49,7 @@ session_start();
 $usuarios = new Usuario;
 
 // Creación del objeto de la clase heredada
-$pdf = new PDF('P','mm','letter'); //Pagina tamaño papel bond
+$pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->setMargins(15,15,15);
@@ -69,6 +70,7 @@ $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
 $pdf->Cell(25,18,$_SESSION['usuario'],0,0,'C');
 
+
 //Fecha
 $pdf->setX(127);
 $pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
@@ -78,113 +80,49 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
+$pdf->Cell(10,30,utf8_decode('Nombre: '),0,0,'C');
+$pdf->Cell(30,30,$usuarios->getNombres().' '.$usuarios->getApellidos(),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
 $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
-//FORMATO DE HORA G = 24 HORAS - I = MINUTOS - A = AM O PM
 $pdf->Cell(10, 18, $hora->format('G:i a'), 0, 0,'C');
 
-/////////////////////////////////////////////////////////////////////////
+$pdf->ln(10);
+$query = "SELECT id_tipo, tipo_usuario FROM tipo_usuario WHERE id_tipo BETWEEN 1 and 4  ";
+    $params = array(null);
+    $titulo = Database::getRows($query, $params);
 
-////////////////////////////////////////////////////////////////////////
+	foreach($titulo as $tipo)
+	{
+        $pdf->ln(10);
+        $pdf->Cell(185,10,utf8_decode("Tipo: ".$tipo['tipo_usuario']),1,1,'C');
 
-//Becas correspondientes
-$pdf->SetFont('Times','B',12);
-$pdf->Ln(17);
+        $query = "SELECT id_usuario, nombres, apellidos, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)  WHERE tipo_usuario.id_tipo = $tipo[id_tipo] ORDER BY id_tipo";
+        $params = array(null);
+        $productos = Database::getRows($query, $params);
 
-$pdf->SetX(15);
-$pdf->Cell(30, 10, 'Usuarios existentes', 0, 0);
-$pdf->SetX(51);
-$pdf->SetFont('Times','',8);
-$pdf->Cell(30, 10, utf8_decode('(ordenados alfabéticamente según el tipo)'), 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(15); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
- $pdf->SetTextColor(0, 0, 0);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Tipo', 1, 0, 'C', 1);
-$pdf->Cell(35, 6, 'Nombres', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Apellidos', 1, 0, 'C', 1);
-$pdf->Cell(35, 6, 'Usuario', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Correo', 1, 0, 'C', 1);
-$pdf->Ln(6);
+        $pdf->Cell(36,6,'Nombres',1,0,'C');
+        $pdf->Cell(36,6,'Apellidos',1,0,'C');
+        $pdf->Cell(35,6,'Tipo',1,0,'C');
+        $pdf->Cell(36,6,'Usuario',1,0,'C');
+        $pdf->Cell(42,6,'Correo',1,1,'C');
 
-$datos = $usuarios->getTipoUsuario();
-foreach ($datos as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 8);
-    $pdf->SetX(15);
-    $pdf->SetFillColor(255, 132, 124);
-    $pdf->Cell(35, 6, $row['tipo_usuario'], 1, 0, 'C',1);
-    $pdf->SetFont('Times', '', 7);
-    $pdf->Cell(35, 6, $row['nombres'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['apellidos'], 1, 0, 'C');
-    $pdf->SetFillColor(153, 184, 152);
-    $pdf->Cell(35, 6, $row['usuario'], 1, 0, 'C',1);
-    $pdf->Cell(40, 6, $row['correo'], 1, 0, 'C');
 
-    $pdf->Ln();
-}
-/*
-$pdf->Ln(10);
+        if($productos){
+            foreach($productos as $tipos)
+            {
+                $pdf->Cell(36,6,utf8_decode($tipos['nombres']),1,0,'C');  
+                $pdf->Cell(36,6,utf8_decode($tipos['apellidos']),1,0,'C'); 
+                $pdf->Cell(35,6,utf8_decode($tipos['tipo_usuario']),1,0,'C'); 
+                $pdf->Cell(36,6,utf8_decode($tipos['usuario']),1,0,'C'); 
+                $pdf->Cell(42,6,utf8_decode($tipos['correo']),1,1,'C');  
 
-$pdf->SetX(53);
-$pdf->Cell(30, 10, 'Usuarios empresa', 0, 0);
-$pdf->Ln(10);
-$pdf->SetX(53); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombres', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Apellidos', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Usuario', 1, 0, 'C', 1);
-$pdf->Ln(6);
-
-$datos2 = $usuarios->getTipoUsuario2();
-foreach ($datos2 as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(53);
-   
-    $pdf->Cell(35, 6, $row['nombres'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['apellidos'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['usuario'], 1, 0, 'C');
-    $pdf->Ln();
-
-}
-
-$pdf->Ln(14);
-
-$pdf->SetX(53);
-$pdf->SetTextColor(0, 0, 0);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->Cell(30, 10, 'Usuarios jefes', 0, 0, 'C');
-$pdf->Ln(10);
-$pdf->SetX(53); //Movimiento de posición en X
-$pdf->SetFillColor(99, 99, 99);
-$pdf->SetFont('Times', 'B', 11);
-$pdf->SetTextColor(250, 251, 251);
-$pdf->Cell(35, 6, 'Nombres', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Apellidos', 1, 0, 'C', 1);
-$pdf->Cell(40, 6, 'Usuario', 1, 0, 'C', 1);
-$pdf->Ln(6);
-
-$datos2 = $usuarios->getTipoUsuario3();
-foreach ($datos2 as $row) {
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Times', '', 11);
-    $pdf->SetX(53);
-   
-    $pdf->Cell(35, 6, $row['nombres'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['apellidos'], 1, 0, 'C');
-    $pdf->Cell(40, 6, $row['usuario'], 1, 0, 'C');
-    $pdf->Ln();
-
-}*/
-
-$pdf->Output();
+            }
+        }else{
+            $pdf->Cell(185,6,'No hay Usuarios',1,1,'C');
+        }
+    }
+	$pdf->Output();
 ?>

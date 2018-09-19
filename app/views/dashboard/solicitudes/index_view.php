@@ -34,28 +34,29 @@ require_once("opciones_view.php");
                   </tr>
                   </thead>
                   <tbody>
-                  <?php 
-            foreach($data as $row)
-            {
-            $id_detalle = $row['id_detalle'];
-            $id_detalle = password_hash($id_detalle, PASSWORD_DEFAULT);
-            print("
-            <tr>
-            <td>$row[id_solicitud]</td>
-            <td>$row[primer_nombre]</td>
-            <td>$row[primer_apellido]</td>
-            <td>$row[n_carnet]</td>
-            <td>$row[grado]</td>
-            <td>$row[especialidad]</td>
-            <td>$row[encargado]</td>
-            <td>$row[tel_fijo]</td>
-            <td>$row[fecha]</td>
-            <td>
-            <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
-            </td>
-            </tr>");
-            }
-                  ?>
+                   <?php 
+               foreach($data as $row)
+               {
+                  $id_detalle = $row['id_detalle'];
+                  $id_detalle = password_hash($id_detalle, PASSWORD_DEFAULT);
+                  print("
+                  <tr>
+                  <td>$row[id_solicitud]</td>
+                  <td>$row[primer_nombre]</td>
+                  <td>$row[primer_apellido]</td>
+                  <td>$row[n_carnet]</td>
+                  <td>$row[grado]</td>
+                  <td>$row[especialidad]</td>
+                  <td>$row[encargado]</td>
+                  <td>$row[tel_fijo]</td>
+                  <td>
+                  <a href='detalle_solicitud.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+                  <a href='../citas/index.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Cita'><img src='../../web/img/admin/icon/folder.png'></a>
+                  <a href='../casos/create_caso.php?id=$id_detalle' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Agregar Caso'><img src='../../web/img/admin/icon/folder.png'></a>
+                  </td>
+                  </tr>");
+               }
+            ?>
                   </tbody>
             </table>
       </div>

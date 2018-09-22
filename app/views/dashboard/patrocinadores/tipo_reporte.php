@@ -51,7 +51,7 @@ $usuarios = new Usuario;
 $solicitud = new Patrocinadores;
 
 // Creación del objeto de la clase heredada
-$pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
+$pdf = new PDF('L','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->setMargins(15,15,15);

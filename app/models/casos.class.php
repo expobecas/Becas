@@ -128,5 +128,17 @@ class Casos extends Validator
         $params = array($this->id_caso);
         return Database::executeRow($sql, $params);
     }
+
+    public function reporteCasos()
+    {
+        $sql = "SELECT c.descripcion, c.id_caso, es.primer_nombre, es.segundo_nombre, es.primer_apellido, es.segundo_apellido, es.especialidad, es.grado, es.n_carnet 
+        FROM casos c INNER JOIN citas ct ON c.id_cita = ct.id 
+        INNER JOIN detalle_solicitud ds ON ct.id_detalle = ds.id_detalle 
+        INNER JOIN solicitud s ON ds.id_solicitud = s.id_solicitud 
+        INNER JOIN estudiantes es ON s.id_estudiante = es.id_estudiante 
+        WHERE c.id_caso = ?";
+        $params = array($this->id_caso);
+        return Database::getRow($sql, $params);
+    }
 }
 ?>

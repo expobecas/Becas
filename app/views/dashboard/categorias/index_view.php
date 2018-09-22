@@ -6,6 +6,23 @@
       </h5>
     </div>
 </div>
+<<<<<<< HEAD
+<!--TABLA SOLICITUDES GENERALES-->
+<div id="#categorias" class="row">
+<div class="tabla">
+<div class="row">
+      <div class="col white offset-l3 l4 offset-m1 m10 s12">
+            <div class="col titulo-font">
+                  <h5>Categorías</h5>
+                  <p>Categorías que pueden poseer los patrocinadores.</p>
+            </div>
+      </div>
+      <div class="col offset-l3 white l4 offset-m1 m10 s12">
+      <table class="white highlight bordered tb-sol text-tbody responsive-table">
+         <thead class="color-thead">
+            <tr>
+               <th>Categoria</th>
+=======
 <!--TABLA CATEGORÍA DE USUARIOS-->
 <div id="tipo">
     <div class="row">
@@ -19,6 +36,7 @@
                     <thead class="color-thead">
                         <tr>
                         <th>Categoria</th>
+>>>>>>> 2eedd04272866f363f87d073c41d83548cda0aef
                <th>Acción</th>
                         </tr>
                     </thead>
@@ -36,6 +54,13 @@
                }
             ?>
          </tbody>
+<<<<<<< HEAD
+      </table>
+</div>
+<div class="col l3 offset-l1">
+<?php require_once("../../app/controllers/dashboard/categorias/agregar_controller.php");?>
+</div> 
+=======
                     </tbody>
                 </table>
             </div>
@@ -46,5 +71,6 @@
             </div>
         </div>
     </div>
+>>>>>>> 2eedd04272866f363f87d073c41d83548cda0aef
 </div>
 

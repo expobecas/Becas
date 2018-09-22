@@ -10,13 +10,13 @@
 <div id="#categorias" class="row">
 <div class="tabla">
 <div class="row">
-      <div class="col white offset-l3 l8 offset-m1 m10 s12">
+      <div class="col white offset-l3 l4 offset-m1 m10 s12">
             <div class="col titulo-font">
                   <h5>Categorías</h5>
                   <p>Categorías que pueden poseer los patrocinadores.</p>
             </div>
       </div>
-      <div class="col offset-l3 white l8 offset-m1 m10 s12">
+      <div class="col offset-l3 white l4 offset-m1 m10 s12">
       <table class="white highlight bordered tb-sol text-tbody responsive-table">
          <thead class="color-thead">
             <tr>
@@ -39,8 +39,9 @@
             ?>
          </tbody>
       </table>
-   </div>
 </div>
-<?php require_once("../../app/controllers/dashboard/categorias/agregar_controller.php");?> 
+<div class="col l3 offset-l1">
+<?php require_once("../../app/controllers/dashboard/categorias/agregar_controller.php");?>
+</div> 
 </div>
 </div>

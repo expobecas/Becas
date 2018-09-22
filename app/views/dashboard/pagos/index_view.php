@@ -55,3 +55,4 @@
    </div>
 </div>
 </div>
+<?php require_once("../../app/controllers/dashboard/tipo_pago/index_controller.php"); ?>

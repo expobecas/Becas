@@ -14,6 +14,7 @@ $(document).ready(function(){
     $('#madre').mask('00000000');
     $('#hijo').mask('00000000');
     $('#año').mask('0000');
+    $('#telefono').mask('00000000');
 
     $('#tel_trabajo').mask('00000000');
 
@@ -198,3 +199,26 @@ function soloLetras(e) {
     if(letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
 };
+function soloNumeros(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = "0123456789";
+    especiales = [8,37, 39, 46];
+
+    tecla_especial = false 
+        for (var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+} 
+
+var prueba = document.getElementById('like');
+
+$("#like").click(function () {
+prueba.style.color = "red";
+})

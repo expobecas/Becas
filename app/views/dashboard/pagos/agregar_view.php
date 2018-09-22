@@ -16,7 +16,7 @@
             <?php Page::showSelect("Patrocinador", "tipo", $pagos->getId_patrocinador(), $pagos->getPatrocinadores());?>
          </div>
          <div class="input-field col s4 l6">
-            <input id="monto" type="text" name='monto' class='validate' value='<?php print($pagos->getMonto()) ?>' required/>
+            <input id="monto" type="text" name='monto' class='validate' onkeypress = 'return soloNumeros(event)'  value='<?php print($pagos->getMonto()) ?>' required/>
             <label for="monto">Monto<i class='material-icons icon-form'>drafts</i></label>
          </div>
       </div>

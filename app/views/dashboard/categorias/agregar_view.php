@@ -1,5 +1,5 @@
-<div class="row">
-    <form method="POST" class="col s12 offset-l1 l3 m10 offset-m1 white" autocomplete="off">
+
+    <form method="POST" class="white" autocomplete="off">
     <div class="row">
     <div class="col titulo-font">
       <h5>Agregar categoría</h5>
@@ -16,4 +16,3 @@
         </div>
       </div>
     </form>
-  </div>

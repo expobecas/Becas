@@ -11,9 +11,9 @@ class PDF extends FPDF
 function Header()
 {   
     //Posiciones x, y - Tamaño width y heigh
-    $this->Rect(15,10,175, 30);
+    $this->Rect(25,10,250, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',22,13,24);
+    $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',75,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha
@@ -27,7 +27,7 @@ function Header()
 
     $this->Ln(6);
     $this->SetFont('Arial','',11);
-    $this->Cell(198,18,utf8_decode('"Patrocinadores por tipo especifico"'),0,0,'C');
+    $this->Cell(198,18,utf8_decode('"Usuarios por tipo especifico"'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
 }
@@ -49,7 +49,7 @@ session_start();
 $usuarios = new Usuario;
 
 // Creación del objeto de la clase heredada
-$pdf = new PDF('P','mm','A4'); //Pagina tamaño papel bond
+$pdf = new PDF('L','mm','A4'); //Pagina tamaño papel bond
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->setMargins(15,15,15);

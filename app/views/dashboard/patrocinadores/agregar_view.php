@@ -46,8 +46,8 @@
             <label for="grado">Dirección</label>
          </div>
          <div class="input-field col s6">
-            <input id="especialidad" type="text" class="validate" name='telefono'  value="<?php print($patrocinadores->getTelefono());?>">
-            <label for="especialidad">Teléfono</label>
+            <input id="telefono" type="text" class="validate" name='telefono'  value="<?php print($patrocinadores->getTelefono());?>">
+            <label for="telefono">Teléfono</label>
          </div>
       </div>
    </div>

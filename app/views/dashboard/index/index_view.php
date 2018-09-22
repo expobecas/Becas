@@ -38,7 +38,7 @@
      </div>
  <!--Gráfica4-->    
      <div class="col s12 m4 l4 white titulo-font">
-         <h5>Cantidad de becas por patrocinador</h5>
+         <h5>Becas ingresadas</h5>
          <canvas id="grafico7" width="340" height="200"></canvas>
      </div>  
 </div>

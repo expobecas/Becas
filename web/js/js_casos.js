@@ -59,6 +59,14 @@ $(document).ready(function(){
                 if(id_caso != '')
                 {
                     window.open('../../app/views/dashboard/casos/reporte_create.php?id='+id_caso+'', '_blank');
+                    swal({
+                        title: 'Éxito',
+                        text: 'Se realizó el caso correctamente',
+                        icon: 'success',
+                        button: 'Aceptar',
+                        closeOnClickOutside: false, 
+                        closeOnEsc: false
+                      }).then(value=>{location.href = '../../dashboard/solicitudes/index.php'})
                 }
             }
         });

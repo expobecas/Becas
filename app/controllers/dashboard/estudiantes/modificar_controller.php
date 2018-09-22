@@ -13,10 +13,15 @@ try{
                                 if($estudiantes->setApellido2($_POST['apellido2'])){
                                     if($estudiantes->setUsuario($_POST['usuario'])){
                                                  if($estudiantes->setNum_carnet($_POST['carnet'])){
+<<<<<<< HEAD
+                                                    $verificacion_carnet = $estudiantes->verificacion_carnet();
+                                                
+=======
+>>>>>>> 778dc428ae0bc66347867e890d386729a0cab3a5
                                                         if($estudiantes->setGrado($_POST['grado'])){
                                                             if($estudiantes->setEspecialidad($_POST['especialidad'])){
                                         if($estudiantes->updateEstudiantes()){
-                                            Page::showMessage(1, "Beca modificada", "index.php");
+                                            Page::showMessage(1, "Información modificada", "index.php");
                                         }
                                         else{
                                             throw new Exception(Database::getException());

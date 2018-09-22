@@ -1,11 +1,12 @@
 <!--TÍTULO-->
 <div class="row">
-   <div class="col offset-l3 titulo-font">
-      <h5>
-         Categorías
+    <div class="col offset-l3 titulo-font">
+        <h5>
+         Categoría
       </h5>
-   </div>
+    </div>
 </div>
+<<<<<<< HEAD
 <!--TABLA SOLICITUDES GENERALES-->
 <div id="#categorias" class="row">
 <div class="tabla">
@@ -21,11 +22,26 @@
          <thead class="color-thead">
             <tr>
                <th>Categoria</th>
+=======
+<!--TABLA CATEGORÍA DE USUARIOS-->
+<div id="tipo">
+    <div class="row">
+        <div class="tabla">
+            <div class="col offset-l3 l4 m12 white">
+                <div class="titulo-font">
+                <h5>Categorías</h5>
+                  <p>Categorías que pueden poseer los patrocinadores.</p>
+                </div>
+                <table class="white highlight bordered tb-sol text-tbody responsive-table">
+                    <thead class="color-thead">
+                        <tr>
+                        <th>Categoria</th>
+>>>>>>> 2eedd04272866f363f87d073c41d83548cda0aef
                <th>Acción</th>
-            </tr>
-         </thead>
-         <tbody>
-         <?php 
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
                foreach($data as $row){
                print("
                <tr>
@@ -38,10 +54,23 @@
                }
             ?>
          </tbody>
+<<<<<<< HEAD
       </table>
 </div>
 <div class="col l3 offset-l1">
 <?php require_once("../../app/controllers/dashboard/categorias/agregar_controller.php");?>
 </div> 
+=======
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l3 offset-l1 s12 m12 white">
+            <?php require_once("../../app/controllers/dashboard/categorias/agregar_controller.php");?> 
+            </div>
+        </div>
+    </div>
+>>>>>>> 2eedd04272866f363f87d073c41d83548cda0aef
 </div>
-</div>
+

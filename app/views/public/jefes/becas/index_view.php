@@ -6,6 +6,15 @@
       </h4>
    </div>
 </div>
+<!--BOTONES-->
+<div class="row">
+    <div class="col offset-l9 offset-s3 offset-m2">
+        <div class="col">
+            <a class="waves-effect waves-light btn s-general sg1 tooltipped "  target="_blank" href="../../app/views/dashboard/becas/reporte_becas.php" data-tooltip='Reporte de becas' data-position='bottom'>Reporte de becas</a>
+        </div>
+    </div>
+</div>
+
 <!--TABLA SOLICITUDES GENERALES-->
 
 <div class="row">
@@ -17,16 +26,12 @@
       <table class="white highlight bordered tb-sol text-tbody">
          <thead class="color-thead">
             <tr>
-               <th>Carnet</th>
-               <th>Nombres</th>
-               <th></th>
-               <th>Apellidos</th>
-               <th></th>
-               <th>Grado</th>
-               <th>Monto</th>
-               <th>Periodo de pago</th>
-               <th>Estado</th>
-               <th>Acción</th>
+               <th>CODIGO DEL ESTUDIANTE</th>
+               <th>PRIMER NOMBRE</th>
+               <th>PRIMER APELLIDO</th>
+               <th>PATROCINADOR</th>
+               <th>PERIODO DE PAGO</th>
+               <th>FECHA</th>
             </tr>
          </thead>
          <tbody>
@@ -36,16 +41,10 @@
                <tr>
                <td>$row[n_carnet]</td>
                <td>$row[primer_nombre]</td>
-               <td>$row[segundo_nombre]</td>
                <td>$row[primer_apellido]</td>
-               <td>$row[segundo_apellido]</td>
-               <td>$row[grado]</td>
-               <td>$row[monto]</td>
+               <td>$row[nombre_empresa]</td>
                <td>$row[periodo_pago]</td>
-               <td>$row[estado_solicitud]</td>
-               <td>
-               <a href='../../../app/views/public/jefes/reportes/becas.php?id=$row[id_becas]' target='_blank' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Más información'><img src='../../../web/img/jefes/icon/clipboard.png'></a>
-               </td>
+               <td>$row[fecha_ini_beca]</td>
                </tr>");
                }
             ?>
@@ -53,4 +52,4 @@
       </table>
    </div>
 </div>
-</div>  
+</div>

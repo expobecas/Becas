@@ -55,7 +55,7 @@ try{
                                     $_SESSION['id_usuario'] = $usuarios->getId();
                                     $_SESSION['usuario'] = $usuarios->getUsuario();
                                     $_SESSION['id_tipo'] = $usuarios->getTipo();
-                                    $_SESSION['fecha_creacion'] = $usuarios->getFechaContraseña();
+                                    $_SESSION['fecha_creacion'] = $usuarios->getFechaCreacion();
                             
                                     $fechainicio = $_SESSION['fecha_creacion'];
 							        $fechaLimite = strtotime('+90 day', strtotime($fechainicio));

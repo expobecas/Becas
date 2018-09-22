@@ -5,62 +5,117 @@ try{
     if(isset($_POST['actualizar'])){  
         $usuario = new Usuario;
         $_POST = $usuario->validateForm($_POST);
-        if($usuario->setId($_SESSION['id_usuario'])){ 
-            if($_POST['contraactual'] == $_POST['contraactual2']){
-                if($usuario->setClave($_POST['contraactual'])){
-                    if($usuario->checkClave()){
+        if($usuario->setId($_SESSION['id_usuario']))
+        { 
+            if($_POST['contraactual'] == $_POST['contraactual2'])
+            {
+                if($usuario->setClave($_POST['contraactual']))
+                {
+                    if($usuario->checkClave())
+                    {
                         $contra = $_POST['contranueva'];
-                        if($_POST['contraactual'] != $_POST['contranueva']){
-                            if($_POST['contranueva'] != $usuario->getUsuario()){
-                                if($_POST['contranueva'] == $_POST['contranueva2']){
+                        if($_POST['contraactual'] != $_POST['contranueva'])
+                        {
+                            if($_POST['contranueva'] != $usuario->getUsuario())
+                            {
+                                if($_POST['contranueva'] == $_POST['contranueva2'])
+                                {
                                     //STRLEN <- MIDE LA LONGITUD DE UN STRING
-                                    if(strlen($contra) >= 8){
+                                    if(strlen($contra) >= 8)
+                                    {
                                         //PREG_MATCH <- HACE UNA COMPARACIÓN
-                                        if(preg_match('`[a-z]`', $contra)){
-                                            if(preg_match('`[A-Z]`', $contra)){
-                                                if(preg_match('`[0-9]`', $contra)){
+                                        if(preg_match('`[a-z]`', $contra))
+                                        {
+                                            if(preg_match('`[A-Z]`', $contra))
+                                            {
+                                                if(preg_match('`[0-9]`', $contra))
+                                                {
                                                     $especiales = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
-                                                  if(preg_match($especiales, $contra)){
-                                                    if($usuario->setClave($_POST['contranueva'])){
-                                                        if($usuario->changePassword()){
-                                                            $usuario->FechaContraseña();
-                                                            if($usuario->logOut()){
-                                                                if($usuario->SesionUnica2()){
-                                                                    Page::showMessage(1,"Exito, clave actualizada", "../../dashboard/ingresar/acceder.php");
+                                                  if(preg_match($especiales, $contra))
+                                                  {
+                                                    if($usuario->setClave($_POST['contranueva']))
+                                                    {
+                                                        if($usuario->changePassword())
+                                                        {
+                                                            if($usuario->FechaContraseña())
+                                                            {
+                                                                $usuario->setEstadoSesion(0);
+                                                                if($usuario->updateEstadoSesion())
+                                                                {
+                                                                    $usuario->setEstado(0);
+                                                                    if($usuario->updateEstado()){
+                                                                        Page::showMessage(1,"Exito, clave actualizada", "../../dashboard/ingresar/acceder.php");
+                                                                        $usuario->logOut(); 
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        throw new Exception(Database::getException());
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    throw new Exception(Database::getException());
                                                                 }
                                                             }
-                                                        }else{
+                                                            else
+                                                            {
+                                                                throw new Exception(Database::getException);
+                                                            }
+                                                            
+                                                        }
+                                                        else
+                                                        {
                                                             throw new Exception(Database::getException());
                                                             Page::showMessage(1, "Fallo");
                                                         }
-                                                    }else{
+                                                    }
+                                                    else
+                                                    {
                                                         throw new Exception("Contraseña inválida");
                                                     }
-                                                  }else{
+                                                  }
+                                                  else
+                                                  {
                                                     throw new Exception("La contraseña debe tener al menos un caracter especial");
                                                   }
-                                                }else{
+                                                }
+                                                else
+                                                {
                                                     throw new Exception("La contraseña debe tener al menos un caracter númerico");
                                                 }
-                                            }else{
+                                            }
+                                            else
+                                            {
                                                 throw new Exception("La contraseña debe tener por lo menos una letra mayúscula");
                                             }
-                                        }else{
+                                        }
+                                        else
+                                        {
                                             throw new Exception("la contraseña debe tener al menos un caracter alfanúmerico");
                                         }
-                                    }else{
+                                    }
+                                    else
+                                    {
                                         throw new Exception("La contraseña debe ser igual o mayor a 8 caracteres");
                                     }
-                                }else{
+                                }
+                                else
+                                {
                                     throw new Exception("Las nuevas claves no coinciden");
                                 }
-                            }else{
+                            }
+                            else
+                            {
                                 throw new Exception("La contraseña no puede ser igual a su usuario");
                             }
-                        }else{
+                        }
+                        else
+                        {
                             throw new Exception("Esta clave ha sido utlizada anteriormente, escriba una nueva");
                         }
-                    }else{
+                    }
+                    else
+                    {
                         throw new Exception("Contraseña incorrecta, intente de nuevo");
                     }
                 }else{

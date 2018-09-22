@@ -242,7 +242,7 @@ class Patrocinadores extends Validator{
 
     //CONSULTAS PARA REPORTES
     public function BecasCorrespondientes(){
-        $sql = "SELECT n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, monto, periodo_pago,  estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE becas.id_patrocinador = ?";
+        $sql = "SELECT n_carnet, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, grado, periodo_pago,  estado_solicitud FROM detalle_solicitud INNER JOIN solicitud USING(id_solicitud) INNER JOIN estado_solicitud USING(id_estado) INNER JOIN becas ON detalle_solicitud.id_detalle = becas.id_detalle INNER JOIN estudiantes ON solicitud.id_estudiante = estudiantes.id_estudiante WHERE becas.id_patrocinador = ?";
         $params = array($this->id_patrocinador);
         return Database::getRows($sql, $params);
     }

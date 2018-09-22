@@ -178,7 +178,7 @@ class Usuario extends Validator{
 
     //VERIFICACIÓN
     public function checkUsuario(){
-        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion, correo, fecha_creacion FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion, correo, fecha_creacion, nombres FROM usuarios WHERE usuario = ?";
         $params = array($this->usuario);
         $data =Database::getRow($sql, $params);
         if($data){
@@ -254,6 +254,7 @@ class Usuario extends Validator{
         $intentos = 0;
         $sql = "UPDATE usuarios SET intentos = ? WHERE id_usuario = ?";
         $params = array($intentos, $this->id);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -261,6 +262,7 @@ class Usuario extends Validator{
     {
         $sql = "UPDATE usuarios SET estado = ? WHERE id_usuario = ?";
         $params = array($this->estado, $this->id);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -326,6 +328,14 @@ class Usuario extends Validator{
         return Database::getRows($sql, $params);
     }
 
+    public function FechaContraseña()
+    {
+        $hoy = date('y-m-d');
+        $sql = "UPDATE usuarios SET fecha_creacion = ? WHERE id_usuario = ?";
+        $params = array($hoy, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
 
     public function createAdmin()
     {
@@ -352,6 +362,7 @@ class Usuario extends Validator{
         $hash = password_hash($this->clave, PASSWORD_DEFAULT);
         $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario	 = ?";
         $params = array($hash, $this->id);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
     public function updateUsuario(){
@@ -378,7 +389,7 @@ public function getTipoUsuario(){
 }
     //CONSULTAS PARA REPORTES
     public function getInformacion(){
-        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario, nombres, apellidos FROM usuarios WHERE id_usuario = ?";
+        $sql = "SELECT id_usuario, nombres, apellidos, id_tipo, usuario FROM usuarios WHERE id_usuario = ?";
         $params = array($this->id);
         $usuario = Database::getRows($sql, $params);
         if($usuario){

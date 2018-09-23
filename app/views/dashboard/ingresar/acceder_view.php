@@ -3,7 +3,7 @@
     <form method='post' class="col s12 m8 l4 push-l4 cuadrado push-m2 z-depth-5  ingresar_form "  autocomplete="off">
     <!--<h5 class="white-text">Acceder</h5>-->
       <div class="row">
-      <img class="logo" src="../../web/img/login/logo_ricaldone.png" alt="logo">
+      <img class="logo" src="../../web/icons/logo.png" alt="logo">
         <div class="input-field col s12">
           <input id='usuario' type="text" name='usuario' class="validate" value='<?php print($usuarios->getUsuario())?>' required>
           <label for='usuario'>Usuario</label>

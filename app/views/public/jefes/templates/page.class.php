@@ -29,6 +29,7 @@ class Page extends component{
             <li><a href='../../../public/jefes/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
             <li><a href='../../../public/jefes/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder_shared</i>Solicitudes</a></li>
             <li><a href='../../../public/jefes/becas/index.php' class='white-text'><i class='material-icons white-text'>assignment</i>Becas</a></li>
+            <li><a href='../../../public/jefes/casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
             <li><a href='../../../public/jefes/patrocinador/index.php' class='white-text'><i class='material-icons white-text'>how_to_reg</i>Patrocinadores</a></li>
             <li><a href='../../../public/jefes/index/contraseña.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar clave</a></li>
             <li><a href='../../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>

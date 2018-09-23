@@ -80,10 +80,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" type="submit" id="modificar_caso" class="waves-effect waves-light btn btn-small">Modificar</a>
-        <a href="#!" type="submit" id="eliminar_caso" class="waves-effect waves-light btn btn-small red">Eliminar</a>
-        <a href="#!" type="submit" id="guardar" class="waves-effect waves-light btn btn-small">Guardar cambios</a>
-        <a href="#!" type="submit" id="cancelar_cambios" class="waves-effect waves-light btn btn-small grey">Cancelar cambios</a>
         <a href="#!" id="cancelar" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cancelar</a>
     </div>
 </div>
@@ -110,7 +106,7 @@
                                 <th>Periodo</th>
                                 <th>Descripcion</th>
                                 <th>Soluciones o acuerdos</th>
-                                <th class="botones_table">Acciones</th>
+                                <!--<th class="botones_table">Acciones</th>-->
                             </tr>
                         </thead>
                         <tbody id="seguimientos">
@@ -141,10 +137,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a id="crear_seguimiento" class="waves-effect waves-light btn btn-small">Crear Seguimiento</a>
-        <a id="guardar_seguimiento" class="waves-effect waves-light btn btn-small blue">Guardar</a>
         <a id="reporte" class="waves-effect waves-light btn btn-small">Generar Reporte</a>
-        <a id="cancelar_seguimiento" class="waves-effect waves-light btn btn-small grey">Cancelar</a>
         <a id="cerrar" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cerrar</a>
     </div>
 </div>

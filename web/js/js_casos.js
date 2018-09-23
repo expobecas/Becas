@@ -181,6 +181,8 @@ $(document).ready(function(){
                             '<td>'+fecha[0]+'</td>',
                             '<td>',
                             '<a class="ver tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalle del caso"><img src="../../web/img/admin/icon/ver.png"></a>',
+                            '</td>',
+                            '<td>',
                             '<a class="seguimiento tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Seguimientos del caso"><img src="../../web/img/admin/icon/ver.png"></a>',
                             '</td>',
                             '<td class="descripcion">'+casos[i].descripcion+'</td>',
@@ -296,7 +298,7 @@ $(document).ready(function(){
                             '<td class="celda">'+seguimientos[i].descripcion+'</td>',
                             '<td class="celda">'+seguimientos[i].soluciones+'</td>',
                             '<td>',
-                            '<a class="ver tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalle del caso"><img src="../../web/img/admin/icon/ver.png"></a>',
+                            //'<a class="ver tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalle del caso"><img src="../../web/img/admin/icon/ver.png"></a>',
                             '</td>',
                             '</tr>'
                         );
@@ -379,7 +381,7 @@ $(document).ready(function(){
             alumno = $(this).parent().parent().children('td:eq(1)').text();
             fecha = $(this).parent().parent().children('td:eq(2)').text();
             estado = $(this).parent().parent().children('td:eq(3)').text();
-            descripcion = $(this).parent().parent().children('td:eq(6)').text();
+            descripcion = $(this).parent().parent().children('td:eq(7)').text();
 
             //Se le da los valores a los inputs
             $('#id').val(id_caso);

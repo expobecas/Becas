@@ -115,3 +115,36 @@ ul#slide-out li a {
 .text-tbody{
     font-size: 13.3px;
 }
+
+/*CASOS*/
+.botones_table
+{
+    width: 100px;
+}
+
+.negrita
+{
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.celda
+{
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.linea
+{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.fijar
+{
+    display: block;
+    position: sticky;
+    background:white;
+    z-index: 4;
+    top: -4%;
+}

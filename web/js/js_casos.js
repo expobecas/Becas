@@ -328,7 +328,7 @@ $(document).ready(function(){
 
                     }
                     $('.tooltipped').tooltip({delay: 50});
-                    cmbPeriodos();
+                    
 
                 }
                 else
@@ -337,6 +337,7 @@ $(document).ready(function(){
                     fila = fila.concat('<tr> <td colspan="4"> <h5 class="center">No ha realizado seguimientos para este caso</h5> </td> </tr>');
                     $('#seguimientos').append(fila);
                 }
+                cmbPeriodos();
             }
         });
     }

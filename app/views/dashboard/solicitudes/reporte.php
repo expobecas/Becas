@@ -318,7 +318,25 @@ function Footer()
         $pdf->Ln(17);
         $pdf->SetFont('Arial','B',11);
         $pdf->Cell(250,6,utf8_decode('11. CUADRO No. 1'),0,0,'');
+        $pdf->setX(52);
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(50,6,utf8_decode('Personas que integran su grupo familiar.'),0,0,'');
         
+        $pdf->Ln(10);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Cell(10,6,utf8_decode('No.'),1,0,'C',1);
+        $pdf->Cell(51,6,utf8_decode('Nombre'),1,0,'C',1);
+        $pdf->Cell(32,6,utf8_decode('Parentesco'),1,0,'C',1);
+        $pdf->Cell(12,6,utf8_decode('Edad'),1,0,'C',1);
+        $pdf->Cell(42,6,utf8_decode('Profesion/ocupación'),1,0,'C',1);
+        $pdf->Cell(40,6,utf8_decode('Lugar de trabajo'),1,0,'C',1);
+        $pdf->Cell(24,6,utf8_decode('Tel. Trabajo'),1,0,'C',1);
+        $pdf->Cell(38,6,utf8_decode('Salario mensual'),1,1,'C',1);
+        //ULTIMA FILA
+        $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
+        $pdf->Cell(106,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
+        $pdf->Cell(38,6,utf8_decode('$'),1,0,'L',1);
 
         $pdf->Output();
 ?>

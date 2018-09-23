@@ -16,11 +16,10 @@
          ?>
          </div>
          <div class="row">
-         <div class="input-field col s10 l5">
-            <input id="periodo" type="text" class="validate" name='periodo' >
-            <label for="periodo">Periodo<i class='material-icons icon-form'>timeline</i></label>
-         </div>
-      </div>
+         <div class="input-field col s8 l5">
+         <?php
+           Page::showSelect("Periodo de pago", "periodo", $becas->getPeriodo_pago(), $becas->getPeriodo());                                     
+         ?>
       <!--SEGUNDA FILA-->
       
          <div class="input-field col s10">

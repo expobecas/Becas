@@ -13,21 +13,21 @@ function Header()
     //Posiciones x, y - Tamaño width y heigh
     $this->Rect(25,10,250, 30);
     //URL-POSICION X - PISICION Y - TAMAÑO
-    $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',75,13,24);
+    $this->Image('../../../../web/img/reportes/logo_ricaldone.jpg',30,13,24);
     // Arial bold 15
     $this->SetFont('Arial','',10);
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Cell(38,14,utf8_decode('Instituto Técnico Ricaldone'),0,0,'C');
+    $this->Cell(120,14,utf8_decode('Instituto Técnico Ricaldone'),0,0,'C');
     $this->Ln(6);
 
     $this->SetFont('Arial','B',10);
-    $this->Cell(197,16,utf8_decode('Departamento de Trabajo Social'),0,0,'C');
+    $this->Cell(280,14,utf8_decode('Departamento de Trabajo Social'),0,0,'C');
 
     $this->Ln(6);
     $this->SetFont('Arial','',11);
-    $this->Cell(198,18,utf8_decode('"Usuarios por tipo especifico"'),0,0,'C');
+    $this->Cell(280,18,utf8_decode('"Usuarios por tipo especifico"'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
 }
@@ -61,63 +61,64 @@ $fecha = new DateTime('now', new DateTimeZone('America/El_Salvador'));
 
 //Información general del usuario en sesión 
 $pdf->SetFont('Times','B',12);
-$pdf->Cell(77,18,utf8_decode('Información del usuario en sesión:'),0,0,'C');
+$pdf->Cell(100,18,utf8_decode('Información del usuario en sesión:'),0,0,'C');
 $pdf->Ln(7);
 $pdf->SetFont('Times','',12);
 $pdf->setX(25);
 //Usuario
-$pdf->setX(25);
+$pdf->setX(30);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
 $pdf->Cell(25,18,$_SESSION['usuario'],0,0,'C');
 
 
 //Fecha
 $pdf->setX(127);
-$pdf->Cell(10,18,utf8_decode('Fecha de expedición:'),0,0,'C');
+$pdf->Cell(30,18,utf8_decode('Fecha de expedición:'),0,0,'C');
 $pdf->SetX(154);
 $pdf->SetFont('Times','B',12);
-$pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
+$pdf->Cell(30, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre: '),0,0,'C');
-$pdf->Cell(30,30,$usuarios->getNombres().' '.$usuarios->getApellidos(),0,0,'C');
 $pdf->setX(114);
-$pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
+$pdf->Cell(30,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
 $pdf->SetX(128);
 $pdf->SetFont('Times','B',12);
-$pdf->Cell(10, 18, $hora->format('G:i a'), 0, 0,'C');
+$pdf->Cell(30, 18, $hora->format('G:i a'), 0, 0,'C');
 
 $pdf->ln(10);
+
 $query = "SELECT id_tipo, tipo_usuario FROM tipo_usuario WHERE id_tipo BETWEEN 1 and 4  ";
     $params = array(null);
     $titulo = Database::getRows($query, $params);
 
 	foreach($titulo as $tipo)
 	{
-        $pdf->ln(10);
-        $pdf->Cell(185,10,utf8_decode("Tipo: ".$tipo['tipo_usuario']),1,1,'C');
+        $pdf->ln(11);
+        $pdf->SetX(24);
+        $pdf->Cell(250,10,utf8_decode("Tipo: ".$tipo['tipo_usuario']),1,1,'C');
 
         $query = "SELECT id_usuario, nombres, apellidos, tipo_usuario, usuario, correo FROM usuarios INNER JOIN tipo_usuario USING(id_tipo)  WHERE tipo_usuario.id_tipo = $tipo[id_tipo] ORDER BY id_tipo";
         $params = array(null);
         $productos = Database::getRows($query, $params);
-
-        $pdf->Cell(36,6,'Nombres',1,0,'C');
-        $pdf->Cell(36,6,'Apellidos',1,0,'C');
-        $pdf->Cell(35,6,'Tipo',1,0,'C');
-        $pdf->Cell(36,6,'Usuario',1,0,'C');
-        $pdf->Cell(42,6,'Correo',1,1,'C');
+        $pdf->SetX(24);
+        $pdf->Cell(50,6,'Nombres',1,0,'C');
+        $pdf->Cell(50,6,'Apellidos',1,0,'C');
+        $pdf->Cell(40,6,'Tipo',1,0,'C');
+        $pdf->Cell(50,6,'Usuario',1,0,'C');
+        $pdf->Cell(60,6,'Correo',1,1,'C');
 
 
         if($productos){
             foreach($productos as $tipos)
             {
-                $pdf->Cell(36,6,utf8_decode($tipos['nombres']),1,0,'C');  
-                $pdf->Cell(36,6,utf8_decode($tipos['apellidos']),1,0,'C'); 
-                $pdf->Cell(35,6,utf8_decode($tipos['tipo_usuario']),1,0,'C'); 
-                $pdf->Cell(36,6,utf8_decode($tipos['usuario']),1,0,'C'); 
-                $pdf->Cell(42,6,utf8_decode($tipos['correo']),1,1,'C');  
+                $pdf->SetX(24);
+                $pdf->Cell(50,6,utf8_decode($tipos['nombres']),1,0,'C');  
+                $pdf->Cell(50,6,utf8_decode($tipos['apellidos']),1,0,'C'); 
+                $pdf->Cell(40,6,utf8_decode($tipos['tipo_usuario']),1,0,'C'); 
+                $pdf->Cell(50,6,utf8_decode($tipos['usuario']),1,0,'C'); 
+                $pdf->Cell(60,6,utf8_decode($tipos['correo']),1,1,'C');  
 
             }
         }else{

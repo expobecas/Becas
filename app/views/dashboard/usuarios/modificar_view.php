@@ -23,11 +23,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6 l6 m6">
-                        <input id="nombres" type="text" name='nombres' class='validate' value='<?php print($usuario->getNombres()) ?>' required/>
+                        <input id="nombres" type="text" name='nombres' class='validate' onkeypress = 'return soloLetras(event)' value='<?php print($usuario->getNombres()) ?>' required/>
                         <label for="nombres">Nombres <i class='material-icons icon-form'>person</i></label>
                     </div>
                     <div class="input-field col s6 l6 m6">
-                        <input id="apellidos" type="text" name='apellidos' class='validate' value='<?php print($usuario->getApellidos()) ?>' required/>
+                        <input id="apellidos" type="text" name='apellidos' class='validate' onkeypress = 'return soloLetras(event)' value='<?php print($usuario->getApellidos()) ?>' required/>
                         <label for="apellidos">Apellidos <i class='material-icons icon-form'>person</i></label>
                     </div>
                 </div>

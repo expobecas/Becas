@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col offset-l3">
-            <div id="vista"></div>
+            <div class="row" id="vista"></div>
         </div>
         
     </div>

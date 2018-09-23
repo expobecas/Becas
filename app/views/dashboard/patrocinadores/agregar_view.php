@@ -13,29 +13,29 @@
          ?>
          </div>
          <div class="input-field col s6">
-            <input id="nombre2" type="text" class="validate" name='profesion' value="<?php print($patrocinadores->getProfesion());?>">
+            <input id="nombre2" type="text" class="validate" name='profesion' onkeypress = 'return soloLetras(event)' value="<?php print($patrocinadores->getProfesion());?>">
             <label for="nombre2">Profesion</label>
          </div>
       </div>
       <!--SEGUNDA FILA--> 
       <div class="row">
          <div class="input-field col s6">
-            <input id="usuario" type="text" class="validate" name='cargo'  value="<?php print($patrocinadores->getCargo());?>">
+            <input id="usuario" type="text" class="validate" name='cargo' onkeypress = 'return soloLetras(event)'  value="<?php print($patrocinadores->getCargo());?>">
             <label for="usuario">Cargo</label>    
          </div>
          <div class="input-field col s6">
-            <input id="carnet" type="text" class="validate" name='empresa'  value="<?php print($patrocinadores->getNombre_empresa());?>">
+            <input id="carnet" type="text" class="validate" name='empresa'   value="<?php print($patrocinadores->getNombre_empresa());?>">
             <label for="carnet">Empresa</label>
          </div>
       </div>
             <!--DATOS--> 
             <div class="row">
          <div class="input-field col s6">
-            <input id="nombres" type="text" class="validate" name='nombres'  value="<?php print($patrocinadores->getNombres());?>">
+            <input id="nombres" type="text" class="validate" name='nombres' onkeypress = 'return soloLetras(event)'  value="<?php print($patrocinadores->getNombres());?>">
             <label for="nombres">Nombres</label>    
          </div>
          <div class="input-field col s6">
-            <input id="apellidos" type="text" class="validate" name='apellidos'  value="<?php print($patrocinadores->getApellidos());?>">
+            <input id="apellidos" type="text" class="validate" name='apellidos' onkeypress = 'return soloLetras(event)'  value="<?php print($patrocinadores->getApellidos());?>">
             <label for="apellidos">Apellidos</label>
          </div>
       </div>
@@ -46,7 +46,7 @@
             <label for="grado">Dirección</label>
          </div>
          <div class="input-field col s6">
-            <input id="telefono" type="text" class="validate" name='telefono'  value="<?php print($patrocinadores->getTelefono());?>">
+            <input id="telefono" type="text" class="validate" name='telefono' onkeypress = 'return soloNumeros(event)'  value="<?php print($patrocinadores->getTelefono());?>">
             <label for="telefono">Teléfono</label>
          </div>
       </div>

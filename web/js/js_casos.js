@@ -130,9 +130,9 @@ $(document).ready(function(){
                 
                 reader.onload = function(e)
                 {
-                    $('#vista').append('<img src="'+e.target.result+'" width="200" heigth="250">');
+                    $('#vista').append('<img class="materialboxed" src="'+e.target.result+'" width="200" heigth="250">');
+                    $('.materialboxed').materialbox();
                 }
-                
             }
             else
             {
@@ -140,6 +140,7 @@ $(document).ready(function(){
             }
             reader.readAsDataURL(imagenes[i]);
         }
+        
     });
     /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     -------------------------------------FUNCIONES PARA EL INDEX.PHP DE CASOS--------------------------------------------------------------------------------------------------------------
@@ -398,8 +399,9 @@ $(document).ready(function(){
                     i = 0;
                     for(i; i<imagenes.length; i++)
                     {
-                        $('#vistas').append('<img id="'+imagenes[i].id_img_caso+'" src="../../web/img/casos/'+imagenes[i].imagen_caso+'" width="200" heigth="250">');
+                        $('#vistas').append('<img class="materialboxed" id="'+imagenes[i].id_img_caso+'" src="../../web/img/casos/'+imagenes[i].imagen_caso+'" width="200" heigth="250">');
                     }
+                    $('.materialboxed').materialbox();
                 }
             });
 

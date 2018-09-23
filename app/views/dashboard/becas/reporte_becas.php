@@ -127,7 +127,7 @@ foreach ($datos as $row) {
     $pdf->Cell(30, 6, $row['primer_apellido'], 1, 0, 'C');
     $pdf->SetFillColor(153, 184, 152);
     $pdf->Cell(30, 6, $row['nombre_empresa'], 1, 0, 'C');
-    $pdf->Cell(30, 6, $row['periodo_pago'], 1, 0, 'C');
+    $pdf->Cell(30, 6, $row['periodo'], 1, 0, 'C');
     $pdf->Cell(30, 6, $row['fecha_ini_beca'], 1, 0, 'C',1);
 
     $pdf->Ln();

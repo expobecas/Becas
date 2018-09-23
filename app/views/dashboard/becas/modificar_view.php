@@ -15,19 +15,18 @@
            Page::showSelect("Patrocinador", "patrocinador",  $becas->getPatrocinador(), $becas->getPatrocinadores());                                     
          ?>
          </div>
-
-         <div class="input-field col s10 l5">
-         <input id="periodo" type="text" name='periodo' class='validate' value='<?php print($becas->getPeriodo_Pago()) ?>' required/>
-         <label for="periodo">Periodo<i class='material-icons icon-form'>timeline</i></label>
-         </div>
-      </div>
+         <div class="row">
+         <div class="input-field col s8 l5">
+         <?php
+           Page::showSelect("Periodo de pago", "periodo", $becas->getPeriodo_pago(), $becas->getPeriodo());                                     
+         ?>
       <!--SEGUNDA FILA-->
-      <div class="row">
+      
          <div class="input-field col s10">
-         <input id="fecha" name='fecha' type="text" class="datepicker" class='validate' value='<?php print($becas->getFecha_inicio()) ?>' required/>
+         <input id="fecha" name='fecha' type="text" class="datepicker">
          <label for="fecha">Fecha<i class='material-icons icon-form'>event</i></label>
          </div>
-         
+         </div>
       </div>
       <!--BOTON-->
       <div class="row">

@@ -47,7 +47,7 @@
                <td>$row[primer_nombre]</td>
                <td>$row[primer_apellido]</td>
                <td>$row[nombre_empresa]</td>
-               <td>$row[periodo_pago]</td>
+               <td>$row[periodo]</td>
                <td>$row[fecha_ini_beca]</td>
                <td>
                <a href='modificar.php?id=$row[id_becas]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Editar'><img src='../../web/img/admin/icon/edit.png'></a>
@@ -60,3 +60,4 @@
    </div>
 </div>
 </div>
+<?php require_once("../../app/controllers/dashboard/tipo_pago/index_controller.php"); ?>

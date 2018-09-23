@@ -70,15 +70,15 @@ class Becas extends Validator {
         return $this->monto;
     }
     
-    public function setPeriodo_Pago($value){
-        if($this->validateAlphanumeric($value, 1, 50)){
+    public function setPeriodo_pago($value){
+        if($this->validateId($value)){
             $this->periodo_pago = $value;
             return true;
         }else{
             return false;
         }
     }
-    public function getPeriodo_Pago(){
+    public function getPeriodo_pago(){
         return $this->periodo_pago;
     }
 
@@ -150,7 +150,7 @@ class Becas extends Validator {
     }
 
         public function getBecas2(){
-            $sql = "SELECT id_becas, estudiantes.n_carnet, estudiantes.primer_nombre, estudiantes.primer_apellido, p.nombre_empresa, periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores p USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes USING(id_estudiante) "; 
+            $sql = "SELECT id_becas, estudiantes.n_carnet, estudiantes.primer_nombre, estudiantes.primer_apellido, p.nombre_empresa, periodo_pago.periodo, fecha_ini_beca FROM becas INNER JOIN patrocinadores p USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) INNER JOIN solicitud USING(id_solicitud) INNER JOIN estudiantes USING(id_estudiante) INNER JOIN periodo_pago USING(id_periodo)  "; 
             $params = array($this->id);
             return Database::getRows($sql, $params);
         }
@@ -160,6 +160,12 @@ class Becas extends Validator {
             $params = array(null);
             return Database::getRows($sql, $params);	
        }
+
+       public function getPeriodo(){
+        $sql = "SELECT id_periodo, periodo FROM periodo_pago";
+        $params = array(null);
+        return Database::getRows($sql, $params);	
+   }
        public function getDetalles(){
         $sql = "SELECT id_detalle, estudiantes.n_carnet FROM detalle_solicitud INNER JOIN solicitud USING (id_solicitud) INNER JOIN estudiantes USING (id_estudiante)";
         $params = array(null);
@@ -167,13 +173,13 @@ class Becas extends Validator {
     }
     
         public function readBecas(){
-            $sql = "SELECT id_becas, id_detalle, id_patrocinador , periodo_pago, fecha_ini_beca FROM becas INNER JOIN patrocinadores USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) ";
+            $sql = "SELECT id_becas, id_detalle, id_patrocinador , id_periodo, fecha_ini_beca FROM becas INNER JOIN patrocinadores USING(id_patrocinador) INNER JOIN detalle_solicitud USING(id_detalle) WHERE id_becas = ? ";
             $params = array($this->id);
             $becas = Database::getRow($sql, $params);
             if($becas){
                 $this->detalle = $becas['id_detalle'];
                 $this->patrocinador = $becas['id_patrocinador'];
-                $this->periodo_pago = $becas['periodo_pago'];
+                $this->periodo_pago = $becas['id_periodo'];
                 $this->fecha_inicio = $becas['fecha_ini_beca'];
                 return true;
             }else{
@@ -181,13 +187,13 @@ class Becas extends Validator {
             }
         }
         public function createBecas(){
-            $sql = "INSERT INTO becas (id_detalle, id_patrocinador, periodo_pago, fecha_ini_beca)
+            $sql = "INSERT INTO becas (id_detalle, id_patrocinador, id_periodo, fecha_ini_beca)
             VALUES (?,?,?,?)";
             $params = array($this->detalle, $this->patrocinador, $this->periodo_pago, $this->fecha_inicio);
             return Database::executeRow($sql, $params);   
         }
             public function updateBecas(){
-                $sql = "UPDATE becas SET id_detalle= ?, id_patrocinador= ?, periodo_pago= ?, fecha_ini_beca= ? WHERE id_becas = ?";
+                $sql = "UPDATE becas SET id_detalle= ?, id_patrocinador= ?, id_periodo= ?, fecha_ini_beca= ? WHERE id_becas = ?";
                 $params = array($this->detalle, $this->patrocinador, $this->periodo_pago,$this->fecha_inicio, $this->id);
                 return Database::executeRow($sql, $params);
             

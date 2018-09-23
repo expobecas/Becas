@@ -11,7 +11,7 @@
 >>>>>>> 2eedd04272866f363f87d073c41d83548cda0aef
     <div class="row">
       <div class="input-field col s6 l12">
-      <input name="tipo" id="tipo" type="text" class="validate" required/>
+      <input name="tipo" id="tipo" type="text" class="validate" onkeypress = 'return soloLetras(event)' required/>
         <label for="tipo">Categoría</label>
       </div>
       <div class="row">

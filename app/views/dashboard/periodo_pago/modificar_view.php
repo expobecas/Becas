@@ -13,7 +13,7 @@
         <div class="row">
         <div class="input-field col s6 l12 m12 offset-l3 offset-m3">
         <button class="waves-effect waves-light btn boton-editar2 offset-l4 sg3" type='submit' name='modificar'> Modificar </button>
-        <a href="../../dashboard/usuarios/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
+        <a href="../../dashboard/becas/index.php" class="waves-effect waves-light btn boton-editar2 offset-l4 sg1" type='submit' name='cancelar'> Cancelar </a>
         </div>
       </div>
     </form>

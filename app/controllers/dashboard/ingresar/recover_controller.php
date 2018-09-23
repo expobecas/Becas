@@ -11,7 +11,6 @@ try
     if(isset($_POST['recuperar']))
     {
         $contra = $usuario->generaPass();
-        echo $contra;
         $_POST = $usuario->validateForm($_POST);
         $nombre_usuario = $_POST['usuario'];
         if($usuario->setUsuario($nombre_usuario))

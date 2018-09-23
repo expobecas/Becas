@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col offset-l9 offset-s3 offset-m2">
         <div class="col">
-            <a class="waves-effect waves-light btn s-general sg1 tooltipped "  target="_blank" href="../../app/views/dashboard/becas/reporte_becas.php" data-tooltip='Reporte de becas' data-position='bottom'>Reporte de becas</a>
+            <a class="waves-effect waves-light btn s-general sg1 tooltipped "  target="_blank" href="../../../app/views/dashboard/becas/reporte_becas.php" data-tooltip='Reporte de becas' data-position='bottom'>Reporte de becas</a>
         </div>
     </div>
 </div>

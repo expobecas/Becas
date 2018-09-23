@@ -11,11 +11,11 @@
                             <label for="usuario">Contraseña actual</label>
                             <div class="divider"></div>
                             <div class="input-field col s12 m5 l6">
-                                <input id="contraactual" type="password" class="validate" name="contraactual" oncopy="return false" onpaste="return false">
+                                <input id="contraactual" type="password" class="validate" name="contraactual">
                                 <label for="contraactual">Contraseña <i class='material-icons icon-form'>lock_outline</i></label>
                             </div>
                             <div class="input-field col s12 m6 l6">
-                                <input id="contraactual2" type="password" class="validate" name="contraactual2" oncopy="return false" onpaste="return false">
+                                <input id="contraactual2" type="password" class="validate" name="contraactual2">
                                 <label for="contraactual2">Repita la contraseña <i class='material-icons icon-form'>lock</i></label>
                             </div>
                         </div>

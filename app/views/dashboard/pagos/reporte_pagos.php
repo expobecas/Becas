@@ -66,7 +66,10 @@ $pdf->Cell(77,18,utf8_decode('Información del usuario en sesión:'),0,0,'C');
 $pdf->Ln(7);
 $pdf->SetFont('Arial','',12);
 $pdf->setX(25);
-
+//Usuario
+$pdf->setX(25);
+$pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
+$pdf->Cell(28,18,$_SESSION['usuario'],0,0,'C');
 
 //Fecha
 $pdf->setX(127);
@@ -95,7 +98,7 @@ $pdf->SetFont('Arial','B',12);
 $pdf->Ln(17);
 
 $pdf->SetX(15);
-$pdf->Cell(30, 10, 'Becas existentes', 0, 0);
+$pdf->Cell(30, 10, 'Pagos existentes', 0, 0);
 $pdf->SetX(51);
 $pdf->SetFont('Arial','',8);
 $pdf->Ln(10);

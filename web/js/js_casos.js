@@ -130,9 +130,9 @@ $(document).ready(function(){
                 
                 reader.onload = function(e)
                 {
-                    $('#vista').append('<img src="'+e.target.result+'" width="200" heigth="250">');
+                    $('#vista').append('<img class="materialboxed" src="'+e.target.result+'" width="200" heigth="250">');
+                    $('.materialboxed').materialbox();
                 }
-                
             }
             else
             {
@@ -140,6 +140,7 @@ $(document).ready(function(){
             }
             reader.readAsDataURL(imagenes[i]);
         }
+        
     });
     /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     -------------------------------------FUNCIONES PARA EL INDEX.PHP DE CASOS--------------------------------------------------------------------------------------------------------------
@@ -234,7 +235,7 @@ $(document).ready(function(){
         descripcion_segui = $('#crear_descripcion').val();
         solucion = $('#crear_solucion').val();
 
-        if(periodo != '')
+        if(periodo != null)
         {
             if(descripcion_segui != '')
             {
@@ -328,7 +329,7 @@ $(document).ready(function(){
 
                     }
                     $('.tooltipped').tooltip({delay: 50});
-                    cmbPeriodos();
+                    
 
                 }
                 else
@@ -337,6 +338,7 @@ $(document).ready(function(){
                     fila = fila.concat('<tr> <td colspan="4"> <h5 class="center">No ha realizado seguimientos para este caso</h5> </td> </tr>');
                     $('#seguimientos').append(fila);
                 }
+                cmbPeriodos();
             }
         });
     }
@@ -397,8 +399,9 @@ $(document).ready(function(){
                     i = 0;
                     for(i; i<imagenes.length; i++)
                     {
-                        $('#vistas').append('<img id="'+imagenes[i].id_img_caso+'" src="../../web/img/casos/'+imagenes[i].imagen_caso+'" width="200" heigth="250">');
+                        $('#vistas').append('<img class="materialboxed" id="'+imagenes[i].id_img_caso+'" src="../../web/img/casos/'+imagenes[i].imagen_caso+'" width="200" heigth="250">');
                     }
+                    $('.materialboxed').materialbox();
                 }
             });
 

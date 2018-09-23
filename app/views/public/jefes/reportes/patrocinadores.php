@@ -43,6 +43,7 @@ function Footer()
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
 }
+session_start();
 
 //Llamando los modelos
 $usuarios = new Usuario;
@@ -68,9 +69,7 @@ $pdf->setX(25);
 //Usuario
 $pdf->setX(25);
 $pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
-//$usuarios->setId($_SESSION['id']);
-$usuarios->getInformacion();
-$pdf->Cell(25,18,$usuarios->getId(),0,0,'C');
+$pdf->Cell(34,18,$_SESSION['usuario'],0,0,'C');
 
 //Fecha
 $pdf->setX(127);
@@ -81,7 +80,6 @@ $pdf->Cell(10, 18, $fecha->format('d-m-y'), 0, 0,'C');
 //
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(10,30,utf8_decode('Nombre:'),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora:'),0,0,'C');
 $pdf->Ln(6);
@@ -98,6 +96,8 @@ $pdf->SetFont('Times','B',12);
 $pdf->Cell(60,18,utf8_decode('Información del patrocinador:'),0,0,'C');
 $pdf->Ln(7);
 //LINEAS PARA LLAMAR LA INFORMACIÓN
+$patrocinador->setId_patrocinador($_GET['id']);
+$patrocinador->ReadPatrocinadores();
 
 //PARTE 1
 $pdf->SetFont('Times','',12);
@@ -109,10 +109,10 @@ $pdf->setX(126);
 $pdf->Cell(10,19,utf8_decode('Categoria: '.$patrocinador->getTipo2()),0,0,'C');
 //PARTE 2
 //NOMBRES
-$pdf->setX(39);
+$pdf->setX(34);
 $pdf->Cell(10,31,utf8_decode('Nombres: '.$patrocinador->getNombres()),0,0,'C');
 //APELLIDOS
-$pdf->setX(131);
+$pdf->setX(126);
 $pdf->Cell(10,31,utf8_decode('Apellidos: '.$patrocinador->getApellidos()),0,0,'C');
 $pdf->Ln(12);
 //PARTE 3
@@ -148,7 +148,6 @@ $pdf->Cell(20, 6, 'Codigo', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Nombres', 1, 0, 'C', 1);
 $pdf->Cell(30, 6, 'Apellidos', 1, 0, 'C', 1);
 $pdf->Cell(23, 6, 'Grado', 1, 0, 'C', 1);
-$pdf->Cell(25, 6, 'Monto', 1, 0, 'C', 1);
 $pdf->Cell(25, 6, 'Perido de pago', 1, 0, 'C', 1);
 $pdf->Cell(20, 6, 'Estado', 1, 0, 'C', 1);
 $pdf->Ln(6);
@@ -161,7 +160,6 @@ foreach ($datos as $row) {
     $pdf->Cell(30, 6, utf8_decode($row['primer_nombre']), 1, 0, 'C');
     $pdf->Cell(30, 6, utf8_decode($row['primer_apellido']), 1, 0, 'C');
     $pdf->Cell(23, 6, utf8_decode($row['grado']), 1, 0, 'C');
-    $pdf->Cell(25, 6, utf8_decode($row['monto']), 1, 0, 'C');
     $pdf->Cell(25, 6, utf8_decode($row['periodo_pago']), 1, 0, 'C');
     $pdf->Cell(20, 6, utf8_decode($row['estado_solicitud']), 1, 1, 'C');
 }

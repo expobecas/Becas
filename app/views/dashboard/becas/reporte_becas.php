@@ -66,7 +66,10 @@ $pdf->Cell(77,18,utf8_decode('Información del usuario en sesión:'),0,0,'C');
 $pdf->Ln(7);
 $pdf->SetFont('Arial','',12);
 $pdf->setX(25);
-
+//Usuario
+$pdf->setX(25);
+$pdf->Cell(10,18,utf8_decode('Usuario:'),0,0,'C');
+$pdf->Cell(38,18,$_SESSION['usuario'],0,0,'C');
 
 //Fecha
 $pdf->setX(127);

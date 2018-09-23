@@ -24,11 +24,24 @@ try{
                                                     if($usuario->setClave($_POST['contranueva'])){
                                                         if($usuario->changePassword()){
                                                             $usuario->FechaContraseña();
-                                                            if($usuario->logOut()){
-                                                                if($usuario->SesionUnica2()){
-                                                                    Page::showMessage(1,"Exito, clave actualizada", "../../dashboard/ingresar/acceder.php");
+                                                                $usuario->setEstadoSesion(0);
+                                                                if($usuario->updateEstadoSesion())
+                                                                {
+                                                                    $usuario->setEstado(0);
+                                                                    if($usuario->updateEstado()){
+                                                                        $usuario->logOut(); 
+                                                                        Page::showMessage(1,"Exito, clave actualizada", "../../dashboard/ingresar/acceder.php");
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        throw new Exception(Database::getException());
+                                                                    }
                                                                 }
-                                                            }
+                                                                else
+                                                                {
+                                                                    throw new Exception(Database::getException());
+                                                                }
+                                                                
                                                         }else{
                                                             throw new Exception(Database::getException());
                                                             Page::showMessage(1, "Fallo");

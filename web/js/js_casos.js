@@ -234,7 +234,7 @@ $(document).ready(function(){
         descripcion_segui = $('#crear_descripcion').val();
         solucion = $('#crear_solucion').val();
 
-        if(periodo != '')
+        if(periodo != null)
         {
             if(descripcion_segui != '')
             {

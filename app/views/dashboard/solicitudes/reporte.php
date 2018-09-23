@@ -341,5 +341,89 @@ function Footer()
 
         ////////////////////////////////////////TERCER PAGINA//////////////////////////////////////////////////////////////
         $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
+        //REMESA//
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(14);                                                               
+        $pdf->Cell(10,6,utf8_decode('12. '),0,0,'C');
+        $pdf->SetFont('Arial','B',10);
+        $pdf->setX(61);
+        $pdf->Cell(10,6,utf8_decode('Si recibe remesa familiar, detalle el monto: $_______'),0,0,'C');
+        $pdf->setX(111);
+        $pdf->Cell(10,6,utf8_decode('Cada cuánto lo recibe: _______________'),0,0,'');
+        $pdf->setX(181);
+        $pdf->Cell(10,6,utf8_decode('Quién lo envía (parentesco): _________________'),0,0,'');
+         
+        //CUADRO 2
+        $pdf->Ln(17);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->Cell(250,6,utf8_decode('13. CUADRO No. 2'),0,0,'');
+        $pdf->setX(52);
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(50,6,utf8_decode('Miembros del grupo familiar que están estudiando:'),0,0,'');
+        //CUADRO 2
+        $pdf->Ln(10);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Cell(12,6,utf8_decode('No.'),1,0,'C',1);
+        $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C',1);
+        $pdf->Cell(34,6,utf8_decode('Depende de Ud.'),1,0,'C',1);
+        $pdf->Cell(46,6,utf8_decode('Grado o nivel (ciclo-año)'),1,0,'C',1);
+        $pdf->Cell(56,6,utf8_decode('Institución educativa'),1,0,'C',1);
+        $pdf->Cell(41,6,utf8_decode('Cuota de escolaridad'),1,0,'C',1);
+
+         //ESTADO DE LA CASA//
+        $pdf->Ln(17);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(48);                                                               
+        $pdf->Cell(10,6,utf8_decode('14. La casa en que vive actualmente es:'),0,0,'C');
+        $pdf->Ln(6);
+        $pdf->SetFont('Arial','',10);
+        $pdf->Line(23, 72, 130, 72);//HORIZONTAL
+        $pdf->setX(170);                                                               
+        $pdf->Cell(10,6,utf8_decode('Especifique: ______________________________'),0,0,'C');
+
+        //PAGO DE VIVIENDA//
+        $pdf->Ln(12);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(54);                                                               
+        $pdf->Cell(10,6,utf8_decode('15. ¿Cuánto paga de vivienda mensualmente?'),0,0,'C');
+        $pdf->Line(102, 85, 162, 85);//HORIZONTAL
+
+        //COSTO DE VIVIENDA//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(83);                                                               
+        $pdf->Cell(10,6,utf8_decode('16. Si su grupo familiar tiene casa propia: ¿Cuál es el valor actual de su casa?'),0,0,'C');
+        $pdf->Line(162, 97, 222, 97);//HORIZONTAL
+
+        //VEHÍCULO//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(47);                                                               
+        $pdf->Cell(10,6,utf8_decode('17. ¿Posee vehículo su grupo familiar?'),0,0,'C');
+        $pdf->Line(88, 111, 120, 111);//HORIZONTAL
+
+        //CUADRO 2
+        $pdf->Ln(12);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->setX(100);  
+        $pdf->Cell(56,6,utf8_decode('Tipo de vehículo'),1,0,'C',1);
+        $pdf->Cell(40,6,utf8_decode('Año'),1,0,'C',1);
+        $pdf->Cell(36,6,utf8_decode('Valor actual'),1,0,'C',1);
+
+        //VEHÍCULO//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(61);                                                               
+        $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
+        $pdf->Line(88, 111, 120, 111);//HORIZONTAL
+
         $pdf->Output();
 ?>

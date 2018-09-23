@@ -337,6 +337,9 @@ function Footer()
         $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
         $pdf->Cell(106,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
         $pdf->Cell(38,6,utf8_decode('$'),1,0,'L',1);
+        $pdf->SetTextColor(99, 99, 99);
 
+        ////////////////////////////////////////TERCER PAGINA//////////////////////////////////////////////////////////////
+        $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
         $pdf->Output();
 ?>

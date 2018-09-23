@@ -423,7 +423,10 @@ function Footer()
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
-        $pdf->Line(88, 111, 120, 111);//HORIZONTAL
+        $pdf->Line(24, 141, 120, 141);//HORIZONTAL
+        $pdf->Ln(5);
+        $pdf->setX(162);                                                               
+        $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
 
         $pdf->Output();
 ?>

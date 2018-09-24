@@ -440,5 +440,18 @@ class Solicitud extends Validator
         return Database::getRows($sql, $params);   
 
     }
+
+    /****************************************************************************************************************************************************************************
+     *************************************************************METODOS PARA SCRUD DEL REPORTE DE LA SOLICITUD*****************************************************************
+     ***************************************************************************************************************************************************************************/
+
+    public function getSolicitud()
+    {
+        $sql = "SELECT s.id_solicitud, s.id_estudiante, g.genero, s.religion, s.encargado, s.direccion, s.correo, s.tel_fijo, s.cel_papa, s.cel_mama, s.cel_hijo, s.fecha_nacimiento, s.lugar_nacimiento, s.pais_nacimiento, s.estudios_finan, s.id_institucion_proveniente, s.fecha, s.nombres_responsable, s.apellidos_responsable, es.primer_nombre, es.segundo_nombre, es.primer_apellido, es.segundo_apellido, es.n_carnet, es.grado, es.especialidad 
+        FROM solicitud s INNER JOIN estudiantes es ON s.id_estudiante = es.id_estudiante INNER JOIN genero g ON s.id_genero = g.id_genero 
+        WHERE s.id_solicitud = ? ";
+        $params = array($this->id_solicitud);
+        return Database::getRow($sql, $params);
+    }
 }
 ?>

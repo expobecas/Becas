@@ -335,10 +335,15 @@ function Footer()
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('8. Lugar y fecha de nacimiento:'),0,0,'');
-        $pdf->Line(73, 88, 144, 88);//HORIZONTAL
-        $pdf->setX(146);
-        $pdf->Cell(10,6,utf8_decode('País: __________________'),0,0,'');
-        $pdf->setX(194);
+        $pdf->setX(73);
+        $pdf->Cell(97,6,utf8_decode($datos_solicitud['lugar_nacimiento'].'. '.$datos_solicitud['fecha_nacimiento']),0,0,'C');
+        $pdf->Line(73, 88, 170, 88);//HORIZONTAL
+        $pdf->setX(172);
+        $pdf->Cell(10,6,utf8_decode('País:'),0,0,'');
+        $pdf->setX(182);
+        $pdf->Cell(36,6,utf8_decode($datos_solicitud['pais_nacimiento']),0,0,'C');
+        $pdf->Line(182, 88, 218, 88);//HORIZONTAL
+        $pdf->setX(220);
         $pdf->Cell(10,6,utf8_decode('Edad: _____ años'),0,0,'');
 
         $pdf->Ln(7);

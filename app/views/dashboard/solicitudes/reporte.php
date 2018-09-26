@@ -1,7 +1,22 @@
 <?php
-require_once('../../../../app/helpers/validator.class.php');
 require_once('../../../../app/models/database.class.php');
+require_once('../../../../app/helpers/validator.class.php');
 require_once('../../../../app/libraries/fpdf/fpdf.php');
+
+//MODELOS PARA LLENAR LA SOLICITUD
+require_once('../../../../app/models/solicitud.class.php');
+
+$solicitud = new Solicitud;
+$solicitud->setIdSolicitud($_GET['id_solicitud']);
+$datos_solicitud = $solicitud->getSolicitud();
+
+$año = date('Y');
+$mes = date('m');
+$dia = date('d');
+$fecha = $dia.'/'.$mes.'/'.$año;
+
+$nombre_alumno = $datos_solicitud['primer_nombre'].' '.$datos_solicitud['segundo_nombre'].', '.$datos_solicitud['primer_apellido'].' '.$datos_solicitud['segundo_apellido'];
+$especialidad = $datos_solicitud['grado'].' '.$datos_solicitud['especialidad'];
 
 class PDF extends FPDF
 {
@@ -39,11 +54,11 @@ function Footer()
         // Movernos a la derecha
         $pdf->setX(236);
         // Título
-        $pdf->Cell(10,12,utf8_decode('Año:'),0,0,'C');
+        $pdf->Cell(10,12,utf8_decode('Año: '.$año),0,0,'C');
             // Movernos a la derecha
         $pdf->setX(238);
             // Título
-        $pdf->Cell(10,27,utf8_decode('N°:'),0,0,'C');
+        $pdf->Cell(10,27,utf8_decode('N°: '.$datos_solicitud['id_solicitud']),0,0,'C');
 
         $pdf->Ln(6);
         // Arial bold 15
@@ -69,12 +84,18 @@ function Footer()
         $pdf->setX(39);
         // Título
         $pdf->Cell(10,18,utf8_decode('Nombre:'),0,0,'C');
+        $pdf->setX(54);
+        $pdf->Cell(93,18,utf8_decode($nombre_alumno),0,0,'L');
         $pdf->Ln(6);
         $pdf->setX(34);
         $pdf->Cell(10,18,utf8_decode('Especialidad:'),0,0,'C');
+        $pdf->setX(54);
+        $pdf->Cell(93,18,utf8_decode($especialidad),0,0,'L');
         $pdf->Ln(6);
         $pdf->setX(40);
         $pdf->Cell(10,18,utf8_decode('Código:'),0,0,'C');
+        $pdf->setX(54);
+        $pdf->Cell(32,18,utf8_decode($datos_solicitud['n_carnet']),0,0,'L');
 
         ///////////////////////////INDICACIONES GENERALES//////////////////////////////////////
         $pdf->Ln(8);
@@ -238,57 +259,91 @@ function Footer()
         $pdf->SetTextColor(99, 99, 99);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('1. No. de carnét:'),0,0,'');
+        $pdf->setX(48);
+        $pdf->Cell(52,6,utf8_decode($datos_solicitud['n_carnet']),0,0,'C');
         // POSICIÓN X - INCLINACIÓN EN X D - LONGITUD X - INCLINACIÓN  EN X I
         $pdf->Line(48, 39 , 100, 39);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('2. Nombre de el o la estudiante:'),0,0,'');
+        $pdf->setX(74);
+        $pdf->Cell(125,6,utf8_decode($nombre_alumno),0,0,'C');
         $pdf->Line(74, 46, 200, 46);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('3. Sexo:'),0,0,'');
+        $pdf->setX(33);
+        $pdf->Cell(47,6,utf8_decode($datos_solicitud['genero']),0,0,'C');
         $pdf->Line(34, 53 , 80, 53);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('4. Religión:'),0,0,'');
+        $pdf->setX(39);
+        $pdf->Cell(61,6,utf8_decode($datos_solicitud['religion']),0,0,'C');
         $pdf->Line(39, 60 , 100, 60);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('5. Personas con las que vive:'),0,0,'');
-        $pdf->Line(69, 67, 114, 67);//HORIZONTAL
+        $pdf->setX(69);
+        $pdf->Cell(55,6,utf8_decode($datos_solicitud['encargado']),0,0,'C');
+        $pdf->Line(69, 67, 124, 67);//HORIZONTAL
         $pdf->setX(128);
         $pdf->Cell(10,6,utf8_decode('Especifique: ________________________________'),0,0,'');
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('6. Dirección exacta:'),0,0,'');
+        $pdf->setX(54);
+        $pdf->Cell(126,6,utf8_decode($datos_solicitud['direccion']),0,0,'C');
         $pdf->Line(54, 74, 180, 74);//HORIZONTAL
         $pdf->setX(182);
-        $pdf->Cell(10,6,utf8_decode('Email: ______________________________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Email:'),0,0,'');
+        $pdf->setX(195);
+        $pdf->Cell(65,6,utf8_decode($datos_solicitud['correo']),0,0,'C');
+        $pdf->Line(195, 74, 260, 74);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('7. Télefonos:'),0,0,'');
         $pdf->setX(41);
-        $pdf->Cell(10,6,utf8_decode('Linea fija: _____________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Linea fija:'),0,0,'');
+        $pdf->setX(58);
+        $pdf->Cell(27,6,utf8_decode($datos_solicitud['tel_fijo']),0,0,'C');
+        $pdf->Line(60, 81, 85, 81);//HORIZONTAL
+
         $pdf->setX(86);
-        $pdf->Cell(10,6,utf8_decode('Celular (papá): _____________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Celular (papá):'),0,0,'');
+        $pdf->setX(112);
+        $pdf->Cell(26,6,utf8_decode($datos_solicitud['cel_papa']),0,0,'C');
+        $pdf->Line(112, 81, 138, 81);//HORIZONTAL
+
         $pdf->setX(140);
-        $pdf->Cell(10,6,utf8_decode('Celular (mamá): _____________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Celular (mamá):'),0,0,'');
+        $pdf->setX(168);
+        $pdf->Cell(26,6,utf8_decode($datos_solicitud['cel_mama']),0,0,'C');
+        $pdf->Line(168, 81, 193, 81);//HORIZONTAL
         $pdf->setX(195);
-        $pdf->Cell(10,6,utf8_decode('Celular (hijo/a): ______________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Celular (hijo/a):'),0,0,'');
+        $pdf->setX(222);
+        $pdf->Cell(26,6,utf8_decode($datos_solicitud['cel_hijo']),0,0,'C');
+        $pdf->Line(222, 81, 248, 81);//HORIZONTAL
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('8. Lugar y fecha de nacimiento:'),0,0,'');
-        $pdf->Line(73, 88, 144, 88);//HORIZONTAL
-        $pdf->setX(146);
-        $pdf->Cell(10,6,utf8_decode('País: __________________'),0,0,'');
-        $pdf->setX(194);
+        $pdf->setX(73);
+        $pdf->Cell(97,6,utf8_decode($datos_solicitud['lugar_nacimiento'].'. '.$datos_solicitud['fecha_nacimiento']),0,0,'C');
+        $pdf->Line(73, 88, 170, 88);//HORIZONTAL
+        $pdf->setX(172);
+        $pdf->Cell(10,6,utf8_decode('País:'),0,0,'');
+        $pdf->setX(182);
+        $pdf->Cell(36,6,utf8_decode($datos_solicitud['pais_nacimiento']),0,0,'C');
+        $pdf->Line(182, 88, 218, 88);//HORIZONTAL
+        $pdf->setX(220);
         $pdf->Cell(10,6,utf8_decode('Edad: _____ años'),0,0,'');
 
         $pdf->Ln(7);

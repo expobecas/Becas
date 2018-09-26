@@ -254,7 +254,6 @@ class Usuario extends Validator{
         $intentos = 0;
         $sql = "UPDATE usuarios SET intentos = ? WHERE id_usuario = ?";
         $params = array($intentos, $this->id);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -262,7 +261,6 @@ class Usuario extends Validator{
     {
         $sql = "UPDATE usuarios SET estado = ? WHERE id_usuario = ?";
         $params = array($this->estado, $this->id);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -273,7 +271,6 @@ class Usuario extends Validator{
         $fecha_contraseña = date("Y-m-d H:i:s");
         $sql = "UPDATE usuarios SET intentos = ?, fecha_contraseña = ?, estado = ? WHERE id_usuario = ?";
         $params = array($intentos, $fecha_contraseña, $this->estado, $this->id);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -362,7 +359,6 @@ class Usuario extends Validator{
         $hash = password_hash($this->clave, PASSWORD_DEFAULT);
         $sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario	 = ?";
         $params = array($hash, $this->id);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
     public function updateUsuario(){

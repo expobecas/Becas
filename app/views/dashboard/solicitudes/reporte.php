@@ -409,7 +409,7 @@ function Footer()
         $pdf->Line(88, 111, 120, 111);//HORIZONTAL
 
         //CUADRO 2
-        $pdf->Ln(12);
+        $pdf->Ln(14);
         $pdf->SetFillColor(99, 99, 99);
         $pdf->SetTextColor(255, 255, 255);
         $pdf->setX(100);  
@@ -417,13 +417,13 @@ function Footer()
         $pdf->Cell(40,6,utf8_decode('Año'),1,0,'C',1);
         $pdf->Cell(36,6,utf8_decode('Valor actual'),1,0,'C',1);
 
-        //VEHÍCULO//
-        $pdf->Ln(13);
+        //DEUDAS//
+        $pdf->Ln(14);
         $pdf->SetTextColor(99, 99, 99);
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
-        $pdf->Line(24, 141, 120, 141);//HORIZONTAL
+        $pdf->Line(24, 143, 120, 143);//HORIZONTAL
         $pdf->Ln(5);
         $pdf->setX(162);                                                               
         $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');

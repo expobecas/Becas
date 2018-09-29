@@ -51,7 +51,7 @@ require_once("opciones_view.php");
                   <td>$row[tel_fijo]</td>
                   <td>$row[fecha]</td>
                   <td>
-                  <a href='../../app/views/dashboard/solicitudes/reporte.php' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
+                  <a href='../../app/views/dashboard/solicitudes/reporte.php?id_solicitud=$row[id_solicitud]' class='ver-mas tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver solicitud'><img src='../../web/img/admin/icon/clipboard.png'></a>
                   </td>
                   </tr>");
                }

@@ -5,8 +5,12 @@ require_once('../../../../app/libraries/fpdf/fpdf.php');
 
 //MODELOS PARA LLENAR LA SOLICITUD
 require_once('../../../../app/models/solicitud.class.php');
+require_once('../../../../app/models/integrante_familia.class.php');
+require_once('../../../../app/models/familiares_estudiante.class.php');
 
 $solicitud = new Solicitud;
+$integrante = new Integrante_familia;
+$familiares_estudiante = new Familiares_estudiante;
 $solicitud->setIdSolicitud($_GET['id_solicitud']);
 $datos_solicitud = $solicitud->getSolicitud();
 
@@ -291,8 +295,6 @@ function Footer()
         $pdf->setX(69);
         $pdf->Cell(55,6,utf8_decode($datos_solicitud['encargado']),0,0,'C');
         $pdf->Line(69, 67, 124, 67);//HORIZONTAL
-        $pdf->setX(128);
-        $pdf->Cell(10,6,utf8_decode('Especifique: ________________________________'),0,0,'');
 
         $pdf->Ln(7);
         $pdf->setX(18);
@@ -349,25 +351,41 @@ function Footer()
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('9. Sus estudios son financiados por:'),0,0,'');
+        $pdf->setX(82);
+        $pdf->Cell(43,6,utf8_decode($datos_solicitud['estudios_finan']),0,0,'C');
         $pdf->Line(82, 95, 125, 95);//HORIZONTAL
-        $pdf->setX(128);
-        $pdf->Cell(10,6,utf8_decode('Especifique: ______________________________________________'),0,0,'');
 
         $pdf->Ln(7);
         $pdf->setX(18);
         $pdf->Cell(10,6,utf8_decode('10. Nombre de la institución educativa donde estudió antes de ingresar a la instiución:'),0,0,'');
+        $pdf->setX(165);
+        $pdf->Cell(95,6,utf8_decode($datos_solicitud['nombre_institucion']),0,0,'C');
         $pdf->Line(250, 102, 165, 102);//HORIZONTAL
 
+        $lugar = explode(", ", $datos_solicitud['lugar_institucion']);
         $pdf->Ln(7);
         $pdf->setX(24);
         $pdf->Cell(10,6,utf8_decode('Departamento:'),0,0,'');
+        $pdf->setX(51);
+        $pdf->Cell(49,6,utf8_decode($lugar[0]),0,0,'C');
         $pdf->Line(51, 109, 100, 109);//HORIZONTAL
         $pdf->setX(100);
-        $pdf->Cell(10,6,utf8_decode('País: _________________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('País:'),0,0,'');
+        $pdf->setX(110);
+        $pdf->Cell(34,6,utf8_decode($lugar[1]),0,0,'C');
+        $pdf->Line(110, 109, 144, 109);//HORIZONTAL
         $pdf->setX(145);
-        $pdf->Cell(10,6,utf8_decode('Cuota que pagaba: $________________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Cuota que pagaba: $'),0,0,'');
+        $pdf->setX(181);
+        $pdf->Cell(30,6,utf8_decode($datos_solicitud['cuota_pagada']),0,0,'C');
+        $pdf->Line(181, 109, 211, 109);//HORIZONTAL
         $pdf->setX(213);
-        $pdf->Cell(10,6,utf8_decode('Año: ________________'),0,0,'');
+        $pdf->Cell(10,6,utf8_decode('Año:'),0,0,'');
+        $pdf->setX(222);
+        $pdf->Cell(33,6,utf8_decode($datos_solicitud['año']),0,0,'C');
+        $pdf->Line(222, 109, 255, 109);//HORIZONTAL
+
+
 
         //PRIMER CUADRO//
         $pdf->Ln(17);
@@ -464,7 +482,7 @@ function Footer()
         $pdf->Line(88, 111, 120, 111);//HORIZONTAL
 
         //CUADRO 2
-        $pdf->Ln(14);
+        $pdf->Ln(12);
         $pdf->SetFillColor(99, 99, 99);
         $pdf->SetTextColor(255, 255, 255);
         $pdf->setX(100);  
@@ -472,13 +490,13 @@ function Footer()
         $pdf->Cell(40,6,utf8_decode('Año'),1,0,'C',1);
         $pdf->Cell(36,6,utf8_decode('Valor actual'),1,0,'C',1);
 
-        //DEUDAS//
-        $pdf->Ln(14);
+        //VEHÍCULO//
+        $pdf->Ln(13);
         $pdf->SetTextColor(99, 99, 99);
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
-        $pdf->Line(24, 143, 120, 143);//HORIZONTAL
+        $pdf->Line(24, 141, 120, 141);//HORIZONTAL
         $pdf->Ln(5);
         $pdf->setX(162);                                                               
         $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');

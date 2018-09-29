@@ -442,12 +442,26 @@ $pdf->SetFont('Arial','B',11);
 $pdf->setX(14);                                                               
 $pdf->Cell(10,6,utf8_decode('12. '),0,0,'C');
 $pdf->SetFont('Arial','B',10);
-$pdf->setX(61);
-$pdf->Cell(10,6,utf8_decode('Si recibe remesa familiar, detalle el monto: $_______'),0,0,'C');
-$pdf->setX(111);
-$pdf->Cell(10,6,utf8_decode('Cada cuánto lo recibe: _______________'),0,0,'');
-$pdf->setX(181);
-$pdf->Cell(10,6,utf8_decode('Quién lo envía (parentesco): _________________'),0,0,'');
+$pdf->setX(55);
+$y = $pdf->getY();
+$pdf->Cell(10,6,utf8_decode('Si recibe remesa familiar, detalle el monto: $'),0,0,'C');
+$pdf->setX(98);
+$pdf->Cell(20,6,utf8_decode($datos_familia['monto']),0,0,'C');
+$pdf->Line(98, $y+5, 118, $y+5);//HORIZONTAL
+
+$pdf->setX(119);
+$y = $pdf->getY();
+$pdf->Cell(10,6,utf8_decode('Cada cuánto lo recibe:'),0,0,'');
+$pdf->setX(159);
+$pdf->Cell(24,6,utf8_decode($datos_familia['periodo_recibido']),0,0,'');
+$pdf->Line(159, $y+5, 183, $y+5);//HORIZONTAL
+
+$pdf->setX(185);
+$y = $pdf->getY();
+$pdf->Cell(10,6,utf8_decode('Quién lo envía (parentesco):'),0,0,'');
+$pdf->setX(235);
+$pdf->Cell(30,6,utf8_decode($datos_familia['benefactor']),0,0,'');
+$pdf->Line(235, $y+5, 265, $y+5);//HORIZONTAL
     
 //CUADRO 2
 $pdf->Ln(17);
@@ -566,6 +580,16 @@ if($datos)
         $pdf->Ln(1);
     }
 }
+$deuda = '';
+if($datos_familia['monto_deuda'] != null)
+{
+    $deuda = 'Si';
+}
+else
+{
+    $deuda = 'No';
+}
+
 
 //VEHÍCULO//
 $pdf->Ln(13);
@@ -573,10 +597,14 @@ $pdf->SetTextColor(99, 99, 99);
 $pdf->SetFont('Arial','B',11);
 $pdf->setX(61);                                                               
 $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
+$pdf->setX(116);
+$pdf->Cell(24,6,utf8_decode($deuda),0,0,'C');
 $y = $pdf->getY()+5;
 $pdf->Line(116, $y, 140, $y);//HORIZONTAL
 $pdf->setX(165);                                                               
 $pdf->Cell(10,6,utf8_decode('Monto total mensual: '),0,0,'C');
+$pdf->setX(190);                                                               
+$pdf->Cell(20,6,utf8_decode($datos_familia['monto_deuda']),0,0,'C');
 $y = $pdf->getY()+5;
 $pdf->Line(190, $y, 210, $y);//HORIZONTAL
 
@@ -755,10 +783,10 @@ $pdf->Cell(51,6,utf8_decode('Ingreso mensual'),1,0,'C');
 $pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(+) Ingreso por remesa'),1,0,'C');
-$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->Cell(49,6,utf8_decode('$ '.$datos_familia['monto']),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(-) Gasto mensual'),1,0,'C');
-$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->Cell(49,6,utf8_decode('$ '.$datos_familia['total_gastos']),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(-) Saldo'),1,0,'C');
 $pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
@@ -768,7 +796,7 @@ $pdf->setY(152);
 $pdf->SetFont('Arial','B',11);
 $pdf->SetTextColor(99, 99, 99);
 $pdf->setX(185);                                                            
-$pdf->Cell(10,6,utf8_decode('TOTAL DE GASTOS MENSUALES: $________________'),0,0,'C');
+$pdf->Cell(10,6,utf8_decode('TOTAL DE GASTOS MENSUALES: $ '.$datos_familia['total_gastos']),0,0,'C');
 
 $pdf->Output();
 

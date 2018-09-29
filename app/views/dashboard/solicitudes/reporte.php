@@ -425,8 +425,12 @@ foreach($datos_integrantes as $row)
 
 
 //ULTIMA FILA
+<<<<<<< HEAD
 $pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
+=======
+$pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar: '.$i),1,0,'L',1);
+>>>>>>> 38aaf204813186a8cf74338ac16209647f1cfc5a
 $pdf->Cell(116,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
 $pdf->Cell(28,6,utf8_decode('$'),1,0,'L',1);
 $pdf->SetTextColor(99, 99, 99);
@@ -463,18 +467,32 @@ $pdf->Cell(34,6,utf8_decode('Depende de Ud.'),1,0,'C',1);
 $pdf->Cell(46,6,utf8_decode('Grado o nivel (ciclo-año)'),1,0,'C',1);
 $pdf->Cell(56,6,utf8_decode('Institución educativa'),1,0,'C',1);
 $pdf->Cell(41,6,utf8_decode('Cuota de escolaridad'),1,0,'C',1);
+$pdf->Ln(6);
+
+$i = 0;
+$pdf->SetFont('Arial','',9);
+foreach($datos_integrantes as $row)
+{
+    $pdf->Cell(12,6,utf8_decode('No.'.$i),1,0,'C',1);
+    $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C',1);
+    $pdf->Cell(34,6,utf8_decode($row['depende']),1,0,'C',1);
+    $pdf->Cell(46,6,utf8_decode($row['grado']),1,0,'C',1);
+    $pdf->Cell(56,6,utf8_decode($row['institucion']),1,0,'C',1);
+    $pdf->Cell(41,6,utf8_decode($row['cuota']),1,0,'C',1);
+    $pdf->Ln(6);
+}
 
 //ESTADO DE LA CASA//
 
-$pdf->Ln(17);
+$pdf->Ln(7);
 $pdf->SetTextColor(99, 99, 99);
 $pdf->SetFont('Arial','B',11);
 $pdf->setX(48);                                                               
 $pdf->Cell(10,6,utf8_decode('14. La casa en que vive actualmente es:'),0,0,'C');
-$pdf->Ln(6);
-$pdf->setX(23);
-$pdf->Cell(107,6,utf8_decode($datos_propiedad['tipo_propiedad']),0,0,'C');
-$pdf->Line(23, 72, 130, 72);//HORIZONTAL
+$pdf->setX(92);
+$y = $pdf->getY();
+$pdf->Cell(38,6,utf8_decode($datos_propiedad['tipo_propiedad']),0,0,'C');
+$pdf->Line(92, $y+5, 130, $y+5);//HORIZONTAL
 
 //PAGO DE VIVIENDA//
 $pdf->Ln(12);
@@ -482,9 +500,10 @@ $pdf->SetTextColor(99, 99, 99);
 $pdf->SetFont('Arial','B',11);
 $pdf->setX(54);                                                               
 $pdf->Cell(10,6,utf8_decode('15. ¿Cuánto paga de vivienda mensualmente?'),0,0,'C');
-$pdf->setX(102); 
+$pdf->setX(102);
+$y = $pdf->getY();
 $pdf->Cell(60,6,utf8_decode($datos_propiedad['cuota_mensual']),0,0,'C');
-$pdf->Line(102, 85, 162, 85);//HORIZONTAL
+$pdf->Line(102, $y+5, 162, $y+5);//HORIZONTAL
 
 //COSTO DE VIVIENDA//
 $pdf->Ln(13);
@@ -493,8 +512,9 @@ $pdf->SetFont('Arial','B',11);
 $pdf->setX(83);                                                               
 $pdf->Cell(10,6,utf8_decode('16. Si su grupo familiar tiene casa propia: ¿Cuál es el valor actual de su casa?'),0,0,'C');
 $pdf->setX(162);
+$y = $pdf->getY();
 $pdf->Cell(60,6,utf8_decode($datos_propiedad['valor_casa']),0,0,'C');
-$pdf->Line(162, 97, 222, 97);//HORIZONTAL
+$pdf->Line(162, $y+5, 222, $y+5);//HORIZONTAL
 
 $id = $datos_propiedad['id_propiedad'];
 $propiedad->setIdPropiedad($id);
@@ -515,9 +535,10 @@ $pdf->SetTextColor(99, 99, 99);
 $pdf->SetFont('Arial','B',11);
 $pdf->setX(47);                                                               
 $pdf->Cell(10,6,utf8_decode('17. ¿Posee vehículo su grupo familiar?'),0,0,'C');
-$pdf->setX(88);                                                               
+$pdf->setX(88);
+$y = $pdf->getY();
 $pdf->Cell(32,6,utf8_decode($vehiculo),0,0,'C');
-$pdf->Line(88, 111, 120, 111);//HORIZONTAL
+$pdf->Line(88, $y+5, 120, $y+5);//HORIZONTAL
 
 //CUADRO 2
 $pdf->Ln(12);

@@ -407,6 +407,8 @@ function Footer()
         $pdf->Cell(40,6,utf8_decode('Lugar de trabajo'),1,0,'C',1);
         $pdf->Cell(24,6,utf8_decode('Tel. Trabajo'),1,0,'C',1);
         $pdf->Cell(38,6,utf8_decode('Salario mensual'),1,1,'C',1);
+
+        
         //ULTIMA FILA
         $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
         $pdf->Cell(106,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
@@ -527,13 +529,13 @@ function Footer()
 
         //VEHÍCULO//
         $pdf->Ln(13);
-        $pdf->SetFont('Arial','B',11);
         $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
-        $pdf->Line(24, 145, 120, 145);//HORIZONTAL
-        $pdf->Ln(5);
-        $pdf->setX(162);                                                               
+        $y = $pdf->getY()+5;
+        $pdf->Line(116, $y, 140, $y);//HORIZONTAL
+        $pdf->setX(180);                                                               
         $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
 
          ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////

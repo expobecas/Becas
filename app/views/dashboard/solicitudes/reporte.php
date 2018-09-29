@@ -516,6 +516,7 @@ if($datos)
         $pdf->SetFillColor(255, 255, 255);
         $pdf->SetTextColor(99, 99, 99);
         $pdf->setX(100);
+<<<<<<< HEAD
         $pdf->Cell(56,6,utf8_decode($row['tipo_vehiculo']),1,0,'C',1);
         $pdf->Cell(40,6,utf8_decode($row['año']),1,0,'C',1);
         $pdf->Cell(36,6,utf8_decode($row['valor_actual']),1,0,'C',1);
@@ -699,4 +700,302 @@ $pdf->setX(74.5);
 $pdf->Cell(10,6,utf8_decode('Otros_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
 
 $pdf->Output();
+=======
+        $pdf->Cell(10,6,utf8_decode('País:'),0,0,'');
+        $pdf->setX(110);
+        $pdf->Cell(34,6,utf8_decode($lugar[1]),0,0,'C');
+        $pdf->Line(110, 109, 144, 109);//HORIZONTAL
+        $pdf->setX(145);
+        $pdf->Cell(10,6,utf8_decode('Cuota que pagaba: $'),0,0,'');
+        $pdf->setX(181);
+        $pdf->Cell(30,6,utf8_decode($datos_solicitud['cuota_pagada']),0,0,'C');
+        $pdf->Line(181, 109, 211, 109);//HORIZONTAL
+        $pdf->setX(213);
+        $pdf->Cell(10,6,utf8_decode('Año:'),0,0,'');
+        $pdf->setX(222);
+        $pdf->Cell(33,6,utf8_decode($datos_solicitud['año']),0,0,'C');
+        $pdf->Line(222, 109, 255, 109);//HORIZONTAL
+
+
+
+        //PRIMER CUADRO//
+        $pdf->Ln(17);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->Cell(250,6,utf8_decode('11. CUADRO No. 1'),0,0,'');
+        $pdf->setX(52);
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(50,6,utf8_decode('Personas que integran su grupo familiar.'),0,0,'');
+        
+        $pdf->Ln(10);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Cell(10,6,utf8_decode('No.'),1,0,'C',1);
+        $pdf->Cell(51,6,utf8_decode('Nombre'),1,0,'C',1);
+        $pdf->Cell(32,6,utf8_decode('Parentesco'),1,0,'C',1);
+        $pdf->Cell(12,6,utf8_decode('Edad'),1,0,'C',1);
+        $pdf->Cell(42,6,utf8_decode('Profesion/ocupación'),1,0,'C',1);
+        $pdf->Cell(40,6,utf8_decode('Lugar de trabajo'),1,0,'C',1);
+        $pdf->Cell(24,6,utf8_decode('Tel. Trabajo'),1,0,'C',1);
+        $pdf->Cell(38,6,utf8_decode('Salario mensual'),1,1,'C',1);
+
+        
+        //ULTIMA FILA
+        $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
+        $pdf->Cell(106,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
+        $pdf->Cell(38,6,utf8_decode('$'),1,0,'L',1);
+        $pdf->SetTextColor(99, 99, 99);
+
+        ////////////////////////////////////////TERCER PAGINA//////////////////////////////////////////////////////////////
+        $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
+        //REMESA//
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(14);                                                               
+        $pdf->Cell(10,6,utf8_decode('12. '),0,0,'C');
+        $pdf->SetFont('Arial','B',10);
+        $pdf->setX(61);
+        $pdf->Cell(10,6,utf8_decode('Si recibe remesa familiar, detalle el monto: $_______'),0,0,'C');
+        $pdf->setX(111);
+        $pdf->Cell(10,6,utf8_decode('Cada cuánto lo recibe: _______________'),0,0,'');
+        $pdf->setX(181);
+        $pdf->Cell(10,6,utf8_decode('Quién lo envía (parentesco): _________________'),0,0,'');
+         
+        //CUADRO 2
+        $pdf->Ln(17);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->Cell(250,6,utf8_decode('13. CUADRO No. 2'),0,0,'');
+        $pdf->setX(52);
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(50,6,utf8_decode('Miembros del grupo familiar que están estudiando:'),0,0,'');
+        //CUADRO 2
+        $pdf->Ln(10);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Cell(12,6,utf8_decode('No.'),1,0,'C',1);
+        $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C',1);
+        $pdf->Cell(34,6,utf8_decode('Depende de Ud.'),1,0,'C',1);
+        $pdf->Cell(46,6,utf8_decode('Grado o nivel (ciclo-año)'),1,0,'C',1);
+        $pdf->Cell(56,6,utf8_decode('Institución educativa'),1,0,'C',1);
+        $pdf->Cell(41,6,utf8_decode('Cuota de escolaridad'),1,0,'C',1);
+
+        //ESTADO DE LA CASA//
+        
+        $pdf->Ln(17);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(48);                                                               
+        $pdf->Cell(10,6,utf8_decode('14. La casa en que vive actualmente es:'),0,0,'C');
+        $pdf->Ln(6);
+        $pdf->setX(23);
+        $pdf->Cell(107,6,utf8_decode($datos_propiedad['tipo_propiedad']),0,0,'C');
+        $pdf->Line(23, 72, 130, 72);//HORIZONTAL
+
+        //PAGO DE VIVIENDA//
+        $pdf->Ln(12);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(54);                                                               
+        $pdf->Cell(10,6,utf8_decode('15. ¿Cuánto paga de vivienda mensualmente?'),0,0,'C');
+        $pdf->setX(102); 
+        $pdf->Cell(60,6,utf8_decode($datos_propiedad['cuota_mensual']),0,0,'C');
+        $pdf->Line(102, 85, 162, 85);//HORIZONTAL
+
+        //COSTO DE VIVIENDA//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(83);                                                               
+        $pdf->Cell(10,6,utf8_decode('16. Si su grupo familiar tiene casa propia: ¿Cuál es el valor actual de su casa?'),0,0,'C');
+        $pdf->setX(162);
+        $pdf->Cell(60,6,utf8_decode($datos_propiedad['valor_casa']),0,0,'C');
+        $pdf->Line(162, 97, 222, 97);//HORIZONTAL
+
+        $id = $datos_propiedad['id_propiedad'];
+        $propiedad->setIdPropiedad($id);
+        $datos = $propiedad->getVehiculo();
+        $vehiculo = '';
+        if($datos)
+        {
+            $vehiculo = 'Si';
+        }
+        else
+        {
+            $vehiculo = 'No';
+        }
+
+        //VEHÍCULO//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(47);                                                               
+        $pdf->Cell(10,6,utf8_decode('17. ¿Posee vehículo su grupo familiar?'),0,0,'C');
+        $pdf->setX(88);                                                               
+        $pdf->Cell(32,6,utf8_decode($vehiculo),0,0,'C');
+        $pdf->Line(88, 111, 120, 111);//HORIZONTAL
+
+        //CUADRO 2
+        $pdf->Ln(12);
+        $pdf->SetFillColor(99, 99, 99);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->setX(100);  
+        $pdf->Cell(56,6,utf8_decode('Tipo de vehículo'),1,0,'C',1);
+        $pdf->Cell(40,6,utf8_decode('Año'),1,0,'C',1);
+        $pdf->Cell(36,6,utf8_decode('Valor actual'),1,0,'C',1);
+        $pdf->Ln(5);
+
+        if($datos)
+        {
+            foreach($datos as $row)
+            {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetTextColor(99, 99, 99);
+                $pdf->setX(100);
+                $pdf->Cell(56,6,utf8_decode($row['tipo_vehiculo']),1,0,'C',1);
+                $pdf->Cell(40,6,utf8_decode($row['año']),1,0,'C',1);
+                $pdf->Cell(36,6,utf8_decode($row['valor_actual']),1,0,'C',1);
+                $pdf->Ln(1);
+            }
+        }
+
+        //VEHÍCULO//
+        $pdf->Ln(13);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(61);                                                               
+        $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
+        $y = $pdf->getY()+5;
+        $pdf->Line(116, $y, 140, $y);//HORIZONTAL
+        $pdf->setX(180);                                                               
+        $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
+
+         ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
+         $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
+
+        //GASTOS//
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->SetTextColor(99, 99, 99);
+        $pdf->setX(52);                                                               
+        $pdf->Cell(10,6,utf8_decode('20. Gastos mensuales de su grupo familiar:'),0,0,'C');
+
+        $pdf->Ln(6);
+        $pdf->SetFont('Arial','',10);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('1. Alimentación (gasto mensual promedio)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('2. Alquiler de vivienda o pago de casa en el Banco o en el FSV_ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('3. Servicios generales (total de últimos recibos pagados)._ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.1. Energía eléctrica._ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.2. Energía agua._ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.3. Teléfono._ _ _ _ _ _ _ _ _ _ _ _ _   $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.4. Vigilancia._ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.5. Servicio doméstico._ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.6. Alcaldía._ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('4. Pago de deudas (Préstamos personales, pago de vehículos)._ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('5. Cotizaciones a la AFP, al ISSS o al INPEP (Descuento Mensual)._ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('6. Pago de Seguros:_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.1. Seguro Personal:_ _ _ _ _ _ _ _ _  $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.2. Seguro de vehiculo:_ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.3. Seguro de inmuebles:_ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('7. Transporte (pago de buses/taxi o gasolina mensualmente)._ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('8. Gastos de mantenimiento de vehículos._ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _   $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('9. Salud e Higiene (gasto mensual aproximado)._ _ _ _ _ _ _ _ _ _ _ _ _ _  $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('10. Pagos de cuotas mensuales a asociaciones o clubes sociales._ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(44.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11. Educación (pagos mensuales).'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.1. Pago de colegiaturas._ _ _ _ _ _ _  $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.2. Pago de cuotas universitarias._ _ _ $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.3. Gasto en material de estudio._ _ _  $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('12. Otros pagos o descuentos mensuales._ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _$__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Impuesto sobre renta_ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('IVA_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Tarjetas de crédito_ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Otros_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Output();
+>>>>>>> 1b97651780f7b5293338850937a83f128fd4c65e
 ?>

@@ -573,5 +573,60 @@ function Footer()
         $pdf->Ln(5);
         $pdf->setX(87);                                                               
         $pdf->Cell(10,6,utf8_decode('7. Transporte (pago de buses/taxi o gasolina mensualmente)._ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('8. Gastos de mantenimiento de vehículos._ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _   $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('9. Salud e Higiene (gasto mensual aproximado)._ _ _ _ _ _ _ _ _ _ _ _ _ _  $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('10. Pagos de cuotas mensuales a asociaciones o clubes sociales._ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(44.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11. Educación (pagos mensuales).'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.1. Pago de colegiaturas._ _ _ _ _ _ _  $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.2. Pago de cuotas universitarias._ _ _ $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('11.3. Gasto en material de estudio._ _ _  $__________'),0,0,'C');
+        $pdf->setX(146);                                                               
+        $pdf->Cell(10,6,utf8_decode('$__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('12. Otros pagos o descuentos mensuales._ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _$__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Impuesto sobre renta_ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('IVA_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Tarjetas de crédito_ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(74.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('Otros_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
         $pdf->Output();
 ?>

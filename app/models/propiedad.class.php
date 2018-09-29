@@ -79,7 +79,7 @@ class Propiedad extends Validator
     {
         $sql = "SELECT id_vehiculo, tipo_vehiculo, año, valor_actual FROM vehiculos WHERE id_propiedad = ?";
         $params = array($this->id_propiedad);
-        return Database::getRow($sql, $params);
+        return Database::getRows($sql, $params);
     }
 
     public function createPropiedad()

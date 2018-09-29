@@ -504,5 +504,74 @@ function Footer()
          ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
          $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
 
+        //GASTOS//
+        $pdf->Ln(2);
+        $pdf->SetFont('Arial','B',11);
+        $pdf->setX(52);                                                               
+        $pdf->Cell(10,6,utf8_decode('20. Gastos mensuales de su grupo familiar:'),0,0,'C');
+
+        $pdf->Ln(6);
+        $pdf->SetFont('Arial','',10);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('1. Alimentación (gasto mensual promedio)_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('2. Alquiler de vivienda o pago de casa en el Banco o en el FSV_ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('3. Servicios generales (total de últimos recibos pagados)._ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.1. Energía eléctrica._ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.2. Energía agua._ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.3. Teléfono._ _ _ _ _ _ _ _ _ _ _ _ _   $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.4. Vigilancia._ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.5. Servicio doméstico._ _ _ _ _ _ _ _ $__________'),0,0,'C');
+        
+        $pdf->Ln(5);
+        $pdf->setX(73);                                                               
+        $pdf->Cell(10,6,utf8_decode('3.6. Alcaldía._ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('4. Pago de deudas (Préstamos personales, pago de vehículos)._ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('5. Cotizaciones a la AFP, al ISSS o al INPEP (Descuento Mensual)._ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('6. Pago de Seguros:_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.1. Seguro Personal:_ _ _ _ _ _ _ _ _  $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.2. Seguro de vehiculo:_ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(73.5);                                                               
+        $pdf->Cell(10,6,utf8_decode('6.3. Seguro de inmuebles:_ _ _ _ _ _ _ $__________'),0,0,'C');
+
+        $pdf->Ln(5);
+        $pdf->setX(87);                                                               
+        $pdf->Cell(10,6,utf8_decode('7. Transporte (pago de buses/taxi o gasolina mensualmente)._ _ _ _ _ _ _ $__________'),0,0,'C');
         $pdf->Output();
 ?>

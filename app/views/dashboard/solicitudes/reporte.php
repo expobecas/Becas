@@ -5,22 +5,20 @@ require_once('../../../../app/libraries/fpdf/fpdf.php');
 
 //MODELOS PARA LLENAR LA SOLICITUD
 require_once('../../../../app/models/solicitud.class.php');
-require_once('../../../../app/models/propiedad.class.php');
 require_once('../../../../app/models/integrante_familia.class.php');
 require_once('../../../../app/models/familiares_estudiante.class.php');
 
 $solicitud = new Solicitud;
-$propiedad = new Propiedad;
 $integrante = new Integrante_familia;
 $familiares_estudiante = new Familiares_estudiante;
 $solicitud->setIdSolicitud($_GET['id_solicitud']);
 $datos_solicitud = $solicitud->getSolicitud();
-$datos_propiedad = $solicitud->getPropiedad();
 
 $año = date('Y');
 $mes = date('m');
 $dia = date('d');
 $fecha = $dia.'/'.$mes.'/'.$año;
+
 $nombre_alumno = $datos_solicitud['primer_nombre'].' '.$datos_solicitud['segundo_nombre'].', '.$datos_solicitud['primer_apellido'].' '.$datos_solicitud['segundo_apellido'];
 $especialidad = $datos_solicitud['grado'].' '.$datos_solicitud['especialidad'];
 
@@ -415,8 +413,6 @@ function Footer()
         $pdf->SetTextColor(99, 99, 99);
 
         ////////////////////////////////////////TERCER PAGINA//////////////////////////////////////////////////////////////
-
-        
         $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
         //REMESA//
         $pdf->Ln(2);
@@ -450,16 +446,16 @@ function Footer()
         $pdf->Cell(41,6,utf8_decode('Cuota de escolaridad'),1,0,'C',1);
 
          //ESTADO DE LA CASA//
-        
         $pdf->Ln(17);
         $pdf->SetTextColor(99, 99, 99);
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(48);                                                               
         $pdf->Cell(10,6,utf8_decode('14. La casa en que vive actualmente es:'),0,0,'C');
         $pdf->Ln(6);
-        $pdf->setX(23);
-        $pdf->Cell(107,6,utf8_decode($datos_propiedad['tipo_propiedad']),0,0,'C');
+        $pdf->SetFont('Arial','',10);
         $pdf->Line(23, 72, 130, 72);//HORIZONTAL
+        $pdf->setX(170);                                                               
+        $pdf->Cell(10,6,utf8_decode('Especifique: ______________________________'),0,0,'C');
 
         //PAGO DE VIVIENDA//
         $pdf->Ln(12);
@@ -467,8 +463,6 @@ function Footer()
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(54);                                                               
         $pdf->Cell(10,6,utf8_decode('15. ¿Cuánto paga de vivienda mensualmente?'),0,0,'C');
-        $pdf->setX(102); 
-        $pdf->Cell(60,6,utf8_decode($datos_propiedad['cuota_mensual']),0,0,'C');
         $pdf->Line(102, 85, 162, 85);//HORIZONTAL
 
         //COSTO DE VIVIENDA//
@@ -477,14 +471,7 @@ function Footer()
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(83);                                                               
         $pdf->Cell(10,6,utf8_decode('16. Si su grupo familiar tiene casa propia: ¿Cuál es el valor actual de su casa?'),0,0,'C');
-        $pdf->setX(162);
-        $pdf->Cell(60,6,utf8_decode($datos_propiedad['valor_casa']),0,0,'C');
         $pdf->Line(162, 97, 222, 97);//HORIZONTAL
-
-        $id = $datos_propiedad['id_propiedad'];
-        echo $id;
-
-        $propiedad->setIdPropiedad();
 
         //VEHÍCULO//
         $pdf->Ln(13);

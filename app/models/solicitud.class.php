@@ -453,5 +453,14 @@ class Solicitud extends Validator
         $params = array($this->id_solicitud);
         return Database::getRow($sql, $params);
     }
+
+    public function getPropiedad()
+    {
+        $sql = "SELECT p.id_propiedad, p.tipo_propiedad, p.cuota_mensual, p.valor_casa 
+        FROM propiedad p INNER JOIN intermedia_propiedad inp ON p.id_propiedad = inp.id_propiedad INNER JOIN integrante_familia inf ON inp.id_integrante = inf.id_integrante INNER JOIN solicitud s ON inf.id_solicitud = s.id_solicitud 
+        WHERE s.id_solicitud = ?";
+        $params = array($this->id_solicitud);
+        return Database::getRow($sql, $params);
+    }
 }
 ?>

@@ -75,6 +75,13 @@ class Propiedad extends Validator
         return $this->valor_casa;
     }    
     //Metodos para el mantenimiento SCRUD
+    public function getVehiculo()
+    {
+        $sql = "SELECT id_vehiculo, tipo_vehiculo, año, valor_actual FROM vehiculos WHERE id_propiedad = ?";
+        $params = array($this->id_propiedad);
+        return Database::getRow($sql, $params);
+    }
+
     public function createPropiedad()
     {
         $sql = "INSERT INTO propiedad(tipo_propiedad, cuota_mensual, valor_casa) VALUES(?, ?, ?)";

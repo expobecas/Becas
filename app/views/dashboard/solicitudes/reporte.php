@@ -413,19 +413,21 @@ $i = 0;
 $pdf->SetFont('Arial','',9);
 foreach($datos_integrantes as $row)
 {
+    $pdf->SetTextColor(99, 99, 99);
     $i++;
-    $pdf->Cell(10,6,utf8_decode($i),1,0,'C',1);
-    $pdf->Cell(51,6,utf8_decode($row['nombres'].', '.$row['apellidos']),1,0,'C',1);
-    $pdf->Cell(32,6,utf8_decode($row['parentesco']),1,0,'C',1);
-    $pdf->Cell(22,6,utf8_decode($row['fecha_nacimiento']),1,0,'C',1);
-    $pdf->Cell(42,6,utf8_decode($row['profesion_ocupacion']),1,0,'C',1);
-    $pdf->Cell(40,6,utf8_decode($row['lugar_trabajo']),1,0,'C',1);
-    $pdf->Cell(24,6,utf8_decode($row['tel_trabajo']),1,0,'C',1);
-    $pdf->Cell(28,6,utf8_decode($row['salario']),1,1,'C',1);
+    $pdf->Cell(10,6,utf8_decode($i),1,0,'C');
+    $pdf->Cell(51,6,utf8_decode($row['nombres'].', '.$row['apellidos']),1,0,'C');
+    $pdf->Cell(32,6,utf8_decode($row['parentesco']),1,0,'C');
+    $pdf->Cell(22,6,utf8_decode($row['fecha_nacimiento']),1,0,'C');
+    $pdf->Cell(42,6,utf8_decode($row['profesion_ocupacion']),1,0,'C');
+    $pdf->Cell(40,6,utf8_decode($row['lugar_trabajo']),1,0,'C');
+    $pdf->Cell(24,6,utf8_decode($row['tel_trabajo']),1,0,'C');
+    $pdf->Cell(28,6,utf8_decode($row['salario']),1,1,'C');
 }
 
 
 //ULTIMA FILA
+$pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar: '.$i),1,0,'L',1);
 $pdf->Cell(116,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
 $pdf->Cell(28,6,utf8_decode('$'),1,0,'L',1);
@@ -738,6 +740,32 @@ $pdf->Cell(10,6,utf8_decode('Tarjetas de crédito_ _ _ _ _ _ _ _ _ _ _ _ $______
 $pdf->Ln(5);
 $pdf->setX(74.5);                                                               
 $pdf->Cell(10,6,utf8_decode('Otros_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
+
+$pdf->setY(111);
+$pdf->setX(165);  
+$pdf->SetFillColor(99, 99, 99);
+$pdf->SetTextColor(255, 255, 255);
+$pdf->Cell(100,6,utf8_decode('RESUMEN DE INGRESOS MENOS GASTOS'),1,1,'C',1.1);
+$pdf->setX(165); 
+$pdf->SetTextColor(99, 99, 99);
+$pdf->Cell(51,6,utf8_decode('Ingreso mensual'),1,0,'C');
+$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->setX(165); 
+$pdf->Cell(51,6,utf8_decode('(+) Ingreso por remesa'),1,0,'C');
+$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->setX(165); 
+$pdf->Cell(51,6,utf8_decode('(-) Gasto mensual'),1,0,'C');
+$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->setX(165); 
+$pdf->Cell(51,6,utf8_decode('(-) Saldo'),1,0,'C');
+$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+
+$pdf->Ln(4);
+$pdf->setY(152);  
+$pdf->SetFont('Arial','B',11);
+$pdf->SetTextColor(99, 99, 99);
+$pdf->setX(185);                                                            
+$pdf->Cell(10,6,utf8_decode('TOTAL DE GASTOS MENSUALES: $________________'),0,0,'C');
 
 $pdf->Output();
 

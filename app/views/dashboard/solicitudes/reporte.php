@@ -486,7 +486,7 @@ function Footer()
         }
         else
         {
-            $vehiculo = 'No';
+            $vehiculo = 'N';
         }
 
         //VEHÍCULO//

@@ -425,12 +425,8 @@ foreach($datos_integrantes as $row)
 
 
 //ULTIMA FILA
-<<<<<<< HEAD
 $pdf->SetTextColor(255, 255, 255);
-$pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
-=======
 $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar: '.$i),1,0,'L',1);
->>>>>>> 38aaf204813186a8cf74338ac16209647f1cfc5a
 $pdf->Cell(116,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
 $pdf->Cell(28,6,utf8_decode('$'),1,0,'L',1);
 $pdf->SetTextColor(99, 99, 99);
@@ -473,12 +469,13 @@ $i = 0;
 $pdf->SetFont('Arial','',9);
 foreach($datos_integrantes as $row)
 {
-    $pdf->Cell(12,6,utf8_decode('No.'.$i),1,0,'C',1);
-    $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C',1);
-    $pdf->Cell(34,6,utf8_decode($row['depende']),1,0,'C',1);
-    $pdf->Cell(46,6,utf8_decode($row['grado']),1,0,'C',1);
-    $pdf->Cell(56,6,utf8_decode($row['institucion']),1,0,'C',1);
-    $pdf->Cell(41,6,utf8_decode($row['cuota']),1,0,'C',1);
+    $pdf->SetTextColor(99, 99, 99);
+    $pdf->Cell(12,6,utf8_decode('No.'.$i),1,0,'C');
+    $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C');
+    $pdf->Cell(34,6,utf8_decode($row['depende']),1,0,'C');
+    $pdf->Cell(46,6,utf8_decode($row['grado']),1,0,'C');
+    $pdf->Cell(56,6,utf8_decode($row['institucion']),1,0,'C');
+    $pdf->Cell(41,6,utf8_decode($row['cuota']),1,0,'C');
     $pdf->Ln(6);
 }
 

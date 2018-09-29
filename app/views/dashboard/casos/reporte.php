@@ -76,7 +76,7 @@ $pdf->Cell(10, 18, $Fecha, 0, 0,'C');
 $pdf->setX(25);
 $pdf->SetFont('Times','',12);
 $pdf->Cell(10,30,utf8_decode('Nombre: '),0,0,'C');
-$pdf->Cell(30,30,$usuario->getNombres().' '.$usuario->getApellidos(),0,0,'C');
+$pdf->Cell(58,30,$usuario->getNombres().' '.$usuario->getApellidos(),0,0,'C');
 $pdf->setX(114);
 $pdf->Cell(10,30,utf8_decode('Hora: '),0,0,'C');
 $pdf->Ln(6);

@@ -11,7 +11,7 @@ try
         function create()
         {
             $detalle_solicitud = new Detalle_solicitud;
-            $detalle_solicitud->setIdEstado(1);
+            $detalle_solicitud->setIdEstado(2);
             $detalle_solicitud->setIdSolicitud($_POST['id_solicitud']);
             if($detalle_solicitud->createDetalle())
             {

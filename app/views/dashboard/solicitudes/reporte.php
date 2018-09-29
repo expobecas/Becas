@@ -514,5 +514,8 @@ function Footer()
         $pdf->setX(162);                                                               
         $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
 
+         ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
+         $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
+
         $pdf->Output();
 ?>

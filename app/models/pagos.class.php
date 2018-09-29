@@ -59,7 +59,7 @@ class Pagos extends Validator{
     }
 
     public function setMonto($value){
-        if($this->validateAlphanumeric($value, 1, 50)){
+        if($this->validateMoney($value)){
             $this->monto = $value;
             return true;
         }else{

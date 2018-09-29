@@ -29,7 +29,6 @@ class Page extends component{
                     <li><div class='user-view'>
                       <a href='#!user'><img class='circle' src='../../web/img/admin/icon/man.png'></a>
                       <a href='#!name'><span class='white-text name user-name'>$_SESSION[usuario]</span></a>
-                      <a href='../../dashboard/usuarios/renovar_contrasena.php' class='white-text'>Cambiar contraseña</a>
                     </div></li>
                     <li><a href='../../dashboard/index/index.php' class='white-text'><i class='material-icons white-text'>dashboard</i>Inicio</a></li>
                     <li><a href='../../dashboard/solicitudes/index.php' class='white-text'><i class='material-icons white-text'>folder</i>Solicitudes</a></li>
@@ -40,6 +39,7 @@ class Page extends component{
                     <li><a href='../casos/casos.php' class='white-text'><i class='material-icons white-text'>description</i>Casos</a></li>
                     <li><a href='../../dashboard/patrocinadores/index.php' class='white-text'><i class='material-icons white-text'>assignment_ind</i>Patrocinadores</a></li>
                     <li><a href='../../dashboard/estudiantes/index.php' class='white-text'><i class='material-icons white-text'>group</i>Estudiantes</a></li>
+                    <li><a href='../../dashboard/usuarios/renovar_contrasena.php' class='white-text'><i class='material-icons white-text'>autorenew</i>Cambiar Contraseña</a></li>
                     <li><a href='../../dashboard/ingresar/logout.php' class='white-text'><i class='material-icons white-text'>clear</i>Cerrar Sesión</a></li>
                   </ul> 
                   <a href='#' data-activates='slide-out' class='button-collapse menu-button'><i class='material-icons'>menu</i></a> 

@@ -462,5 +462,13 @@ class Solicitud extends Validator
         $params = array($this->id_solicitud);
         return Database::getRow($sql, $params);
     }
+
+    public function getGrupoFamiliar()
+    {
+        $sql = "SELECT gf.ingreso_familiar, gf.id_gastos, gf.total_gastos, gf.id_solicitud, gf.monto_deuda, rf.monto, rf.periodo_recibido, rf.benefactor FROM grupo_familiar gf INNER JOIN solicitud s ON gf.id_solicitud = s.id_solicitud LEFT JOIN remesas_familiar rf ON gf.id_familia = rf.id_familia WHERE s.id_solicitud = ?";
+        $params = array($this->id_solicitud);
+        return Database::getRow($sql, $params);
+        
+    }
 }
 ?>

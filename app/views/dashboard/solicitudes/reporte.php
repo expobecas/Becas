@@ -14,6 +14,8 @@ $familiares_estudiante = new Familiares_estudiante;
 $solicitud->setIdSolicitud($_GET['id_solicitud']);
 $datos_solicitud = $solicitud->getSolicitud();
 $datos_propiedad = $solicitud->getPropiedad();
+$datos_familia = $solicitud->getGrupoFamiliar();
+print_r($datos_familia);
 
 $integrante->setIdSolicitud($_GET['id_solicitud']);
 $datos_integrantes = $integrante->getintegrantesReporte();
@@ -467,13 +469,17 @@ $i = 0;
 $pdf->SetFont('Arial','',9);
 foreach($datos_integrantes as $row)
 {
-    $pdf->Cell(12,6,utf8_decode('No.'.$i),1,0,'C',1);
-    $pdf->Cell(59,6,utf8_decode('Nombre'),1,0,'C',1);
-    $pdf->Cell(34,6,utf8_decode($row['depende']),1,0,'C',1);
-    $pdf->Cell(46,6,utf8_decode($row['grado']),1,0,'C',1);
-    $pdf->Cell(56,6,utf8_decode($row['institucion']),1,0,'C',1);
-    $pdf->Cell(41,6,utf8_decode($row['cuota']),1,0,'C',1);
-    $pdf->Ln(6);
+    if($row['depende'] != null && $row['grado'] != null && $row['institucion'] != null)
+    {
+        $i++;
+        $pdf->Cell(12,6,utf8_decode($i),1,0,'C',1);
+        $pdf->Cell(59,6,utf8_decode($row['nombres'].', '.$row['apellidos']),1,0,'C',1);
+        $pdf->Cell(34,6,utf8_decode($row['depende']),1,0,'C',1);
+        $pdf->Cell(46,6,utf8_decode($row['grado']),1,0,'C',1);
+        $pdf->Cell(56,6,utf8_decode($row['institucion']),1,0,'C',1);
+        $pdf->Cell(41,6,utf8_decode($row['cuota']),1,0,'C',1);
+        $pdf->Ln(6);
+    }
 }
 
 //ESTADO DE LA CASA//
@@ -567,10 +573,10 @@ $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar
 $y = $pdf->getY()+5;
 $pdf->Line(116, $y, 140, $y);//HORIZONTAL
 $pdf->setX(180);                                                               
-$pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
+$pdf->Cell(10,6,utf8_decode('Monto total mensual: '),0,0,'C');
 
-    ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
-    $pdf->AddPage('L','Letter');//PAGINA AÑADIDA
+////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
+$pdf->AddPage('L','Letter');//PAGINA AÑADIDA
 
 //POLÍTICAS//
 $pdf->Rect(165,18,100, 90);

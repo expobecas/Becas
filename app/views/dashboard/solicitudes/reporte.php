@@ -15,7 +15,6 @@ $solicitud->setIdSolicitud($_GET['id_solicitud']);
 $datos_solicitud = $solicitud->getSolicitud();
 $datos_propiedad = $solicitud->getPropiedad();
 $datos_familia = $solicitud->getGrupoFamiliar();
-print_r($datos_familia);
 
 $integrante->setIdSolicitud($_GET['id_solicitud']);
 $datos_integrantes = $integrante->getintegrantesReporte();
@@ -414,6 +413,7 @@ $pdf->SetFont('Arial','',9);
 foreach($datos_integrantes as $row)
 {
     $pdf->SetTextColor(99, 99, 99);
+    $pdf->SetFillColor(255, 255, 255);
     $i++;
     $pdf->Cell(10,6,utf8_decode($i),1,0,'C');
     $pdf->Cell(51,6,utf8_decode($row['nombres'].', '.$row['apellidos']),1,0,'C');
@@ -428,6 +428,7 @@ foreach($datos_integrantes as $row)
 
 //ULTIMA FILA
 $pdf->SetTextColor(255, 255, 255);
+$pdf->SetFillColor(99, 99, 99);
 $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar: '.$i),1,0,'L',1);
 $pdf->Cell(116,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);
 $pdf->Cell(28,6,utf8_decode('$'),1,0,'L',1);
@@ -574,8 +575,10 @@ $pdf->setX(61);
 $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
 $y = $pdf->getY()+5;
 $pdf->Line(116, $y, 140, $y);//HORIZONTAL
-$pdf->setX(180);                                                               
+$pdf->setX(165);                                                               
 $pdf->Cell(10,6,utf8_decode('Monto total mensual: '),0,0,'C');
+$y = $pdf->getY()+5;
+$pdf->Line(190, $y, 210, $y);//HORIZONTAL
 
 ////////////////////////////////////////CUARTA PAGINA//////////////////////////////////////////////////////////////
 $pdf->AddPage('L','Letter');//PAGINA AÑADIDA

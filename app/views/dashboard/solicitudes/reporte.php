@@ -477,16 +477,18 @@ function Footer()
         $pdf->setX(162);
         $pdf->Cell(60,6,utf8_decode($datos_propiedad['valor_casa']),0,0,'C');
         $pdf->Line(162, 97, 222, 97);//HORIZONTAL
+
         $id = $datos_propiedad['id_propiedad'];
-        $datos = $propiedad->setIdPropiedad();
-        $vehiculo
-        if(!$datos)
+        $propiedad->setIdPropiedad($id);
+        $datos = $propiedad->getVehiculo();
+        $vehiculo = '';
+        if($datos)
         {
             $vehiculo = 'Si';
         }
         else
         {
-            $vehiculo = 'N';
+            $vehiculo = 'No';
         }
 
         //VEHÍCULO//
@@ -495,6 +497,8 @@ function Footer()
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(47);                                                               
         $pdf->Cell(10,6,utf8_decode('17. ¿Posee vehículo su grupo familiar?'),0,0,'C');
+        $pdf->setX(88);                                                               
+        $pdf->Cell(32,6,utf8_decode($vehiculo),0,0,'C');
         $pdf->Line(88, 111, 120, 111);//HORIZONTAL
 
         //CUADRO 2
@@ -505,10 +509,24 @@ function Footer()
         $pdf->Cell(56,6,utf8_decode('Tipo de vehículo'),1,0,'C',1);
         $pdf->Cell(40,6,utf8_decode('Año'),1,0,'C',1);
         $pdf->Cell(36,6,utf8_decode('Valor actual'),1,0,'C',1);
+        $pdf->Ln(5);
+
+        if($datos)
+        {
+            foreach($datos as $row)
+            {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetTextColor(99, 99, 99);
+                $pdf->setX(100);
+                $pdf->Cell(56,6,utf8_decode($row['tipo_vehiculo']),1,0,'C',1);
+                $pdf->Cell(40,6,utf8_decode($row['año']),1,0,'C',1);
+                $pdf->Cell(36,6,utf8_decode($row['valor_actual']),1,0,'C',1);
+                $pdf->Ln(1);
+            }
+        }
 
         //VEHÍCULO//
         $pdf->Ln(13);
-        $pdf->SetTextColor(99, 99, 99);
         $pdf->SetFont('Arial','B',11);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');

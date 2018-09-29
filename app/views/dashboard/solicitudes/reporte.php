@@ -772,6 +772,16 @@ $pdf->Ln(5);
 $pdf->setX(74.5);                                                               
 $pdf->Cell(10,6,utf8_decode('Otros_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ $__________'),0,0,'C');
 
+$remesa = 0;
+if($datos_familia['monto'] != null)
+{
+    $remesa = $datos_familia['monto'];
+}
+$saldo = 0;
+
+$saldo = ($datos_familia['ingreso_familiar'] + $remesa)-$datos_familia['total_gastos'];
+
+
 $pdf->setY(111);
 $pdf->setX(165);  
 $pdf->SetFillColor(99, 99, 99);
@@ -780,16 +790,16 @@ $pdf->Cell(100,6,utf8_decode('RESUMEN DE INGRESOS MENOS GASTOS'),1,1,'C',1.1);
 $pdf->setX(165); 
 $pdf->SetTextColor(99, 99, 99);
 $pdf->Cell(51,6,utf8_decode('Ingreso mensual'),1,0,'C');
-$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->Cell(49,6,utf8_decode('$ '.$datos_familia['ingreso_familiar']),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(+) Ingreso por remesa'),1,0,'C');
-$pdf->Cell(49,6,utf8_decode('$ '.$datos_familia['monto']),1,1,'C');
+$pdf->Cell(49,6,utf8_decode('$ '.$remesa),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(-) Gasto mensual'),1,0,'C');
 $pdf->Cell(49,6,utf8_decode('$ '.$datos_familia['total_gastos']),1,1,'C');
 $pdf->setX(165); 
 $pdf->Cell(51,6,utf8_decode('(-) Saldo'),1,0,'C');
-$pdf->Cell(49,6,utf8_decode('$'),1,1,'C');
+$pdf->Cell(49,6,utf8_decode('$ '.$saldo),1,1,'C');
 
 $pdf->Ln(4);
 $pdf->setY(152);  

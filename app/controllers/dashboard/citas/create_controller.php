@@ -18,21 +18,17 @@ try
                 $colortext = $_POST['textColor'];
                 $inicio = $_POST['start'];
                 $fin = $_POST['end'];
-                
+                $id='';
                 $ids_detalle = $citas->getIdDetalles();
-                print_r($ids_detalle);
                 $id_encrypt = $_POST['id_detalle'];
-                echo $id_encrypt;
                 $i = 0;
                 for($i; $i<count($ids_detalle); $i++)
                 {
                     $id_detalle = $ids_detalle[$i][0];
-                    echo 'id: '.$id_detalle;
 
                     if(password_verify($id_detalle, $id_encrypt))
                     {
                         $id = $id_detalle;
-                        echo $id;
                     }
                 }
                 if($citas->setIdDetalle($id))
@@ -48,12 +44,12 @@ try
                 }
                 else
                 {
-                    echo 'id_error';
+                    echo 1;
                 }
             }
             else
             {
-                echo 'id_error';
+                echo 1;
             }
         }
     }

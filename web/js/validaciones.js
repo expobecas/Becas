@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+    $('#telefono').mask('00000000');                
     $('#cuota').mask("#.##0,00", {reverse: true});
     $('#salario').mask("#.##0,00", {reverse: true});
     $('#cuota_inte').mask("#.##0,00", {reverse: true});
@@ -14,8 +15,7 @@ $(document).ready(function(){
     $('#madre').mask('00000000');
     $('#hijo').mask('00000000');
     $('#año').mask('0000');
-    $('#telefono').mask('00000000');
-
+    
     $('#tel_trabajo').mask('00000000');
 
 });

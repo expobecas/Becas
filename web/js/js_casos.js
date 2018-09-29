@@ -255,6 +255,16 @@ $(document).ready(function(){
                         success: function(datos)
                         {
                             console.log(datos);
+                            CargarTablaSeguimineto()
+                            descripcion_segui = $('#crear_descripcion').val('');
+                            solucion = $('#crear_solucion').val('');
+                            $('#guardar_seguimiento').hide(0);
+                            $('#cancelar_seguimiento').hide(0);
+                            $('#reporte').show(0);
+                            $('#crear_seguimiento').show(0);
+                            $('#cerrar').show(0);
+                            $('#frmmostrar').show(0);
+                            $('#frmcrear').hide(0);
                         }
                     });
                 }

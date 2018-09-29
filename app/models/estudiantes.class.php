@@ -286,7 +286,6 @@ class Estudiantes extends Validator{
         $fecha_contraseña = date("Y-m-d H:i:s");
         $sql = "UPDATE estudiantes SET intentos = ?, fecha_contraseña = ?, estado = ? WHERE id_estudiante = ?";
         $params = array($intentos, $fecha_contraseña, $this->estado, $this->id);
-        print_r($params);
         return Database::executeRow($sql, $params);
     }
 

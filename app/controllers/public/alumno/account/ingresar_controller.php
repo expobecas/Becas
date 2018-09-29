@@ -16,11 +16,9 @@ try{
                 if($alumno->checkAlumno())
                 {
                     $estado_sesion = $alumno->getEstadoSesion();
-                    echo $estado_sesion;
                     if($estado_sesion == 0)
                     {
                         $intentos = $alumno->getIntentos();//Obtengo los datos por medio del get y la  guardo en una variable
-                        echo $intentos;
                         $estado = $alumno->getEstado();//Obtengo los datos por medio del get y la  guardo en una variable
                         $fecha_contra = $alumno->getFechaContraseña();//Obtengo los datos por medio del get y la  guardo en una variable
                         $fecha_contra = DateTime::createFromFormat('Y-m-d H:i:s', $fecha_contra);//convierto y le doy formato de fecha al string

@@ -88,7 +88,7 @@
     </div>
 </div>
 
-<!--SEGUIMIENTOS DEL CASO-->
+<!--SEGUIMIENTOS DE LOS SEGUIMIENTOS-->
 <div id="modalSeguimiento" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4 class="modal-title center" id="titulo">Seguimientos del caso</h4>
@@ -110,7 +110,6 @@
                                 <th>Periodo</th>
                                 <th>Descripcion</th>
                                 <th>Soluciones o acuerdos</th>
-                                <th class="botones_table">Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="seguimientos">
@@ -143,7 +142,6 @@
     <div class="modal-footer">
         <a id="crear_seguimiento" class="waves-effect waves-light btn btn-small">Crear Seguimiento</a>
         <a id="guardar_seguimiento" class="waves-effect waves-light btn btn-small blue">Guardar</a>
-        <a id="reporte" class="waves-effect waves-light btn btn-small">Generar Reporte</a>
         <a id="cancelar_seguimiento" class="waves-effect waves-light btn btn-small grey">Cancelar</a>
         <a id="cerrar" class="modal-action modal-close waves-effect waves-grey btn btn-small grey">Cerrar</a>
     </div>

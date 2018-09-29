@@ -528,9 +528,10 @@ function Footer()
         //VEHÍCULO//
         $pdf->Ln(13);
         $pdf->SetFont('Arial','B',11);
+        $pdf->SetTextColor(99, 99, 99);
         $pdf->setX(61);                                                               
         $pdf->Cell(10,6,utf8_decode('18. ¿Posee deudas actualmente en su grupo familiar?'),0,0,'C');
-        $pdf->Line(24, 141, 120, 141);//HORIZONTAL
+        $pdf->Line(24, 145, 120, 145);//HORIZONTAL
         $pdf->Ln(5);
         $pdf->setX(162);                                                               
         $pdf->Cell(10,6,utf8_decode('Monto total mensual: __________________'),0,0,'C');
@@ -541,6 +542,7 @@ function Footer()
         //GASTOS//
         $pdf->Ln(2);
         $pdf->SetFont('Arial','B',11);
+        $pdf->SetTextColor(99, 99, 99);
         $pdf->setX(52);                                                               
         $pdf->Cell(10,6,utf8_decode('20. Gastos mensuales de su grupo familiar:'),0,0,'C');
 

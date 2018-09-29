@@ -257,7 +257,7 @@ $(document).ready(function(){
             success: function(datos)
             {
                 console.log(datos);
-                if(datos === 'id_error')
+                if(datos == 1)
                 {
                     swal({
                         title: 'Aviso',

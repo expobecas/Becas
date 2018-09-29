@@ -15,6 +15,9 @@ $solicitud->setIdSolicitud($_GET['id_solicitud']);
 $datos_solicitud = $solicitud->getSolicitud();
 $datos_propiedad = $solicitud->getPropiedad();
 
+$integrante->setIdSolicitud($_GET['id_solicitud']);
+$datos_integrantes = $integrante->getintegrantesReporte();
+
 $año = date('Y');
 $mes = date('m');
 $dia = date('d');
@@ -402,13 +405,28 @@ function Footer()
         $pdf->Cell(10,6,utf8_decode('No.'),1,0,'C',1);
         $pdf->Cell(51,6,utf8_decode('Nombre'),1,0,'C',1);
         $pdf->Cell(32,6,utf8_decode('Parentesco'),1,0,'C',1);
-        $pdf->Cell(12,6,utf8_decode('Edad'),1,0,'C',1);
+        $pdf->Cell(22,6,utf8_decode('Edad'),1,0,'C',1);
         $pdf->Cell(42,6,utf8_decode('Profesion/ocupación'),1,0,'C',1);
         $pdf->Cell(40,6,utf8_decode('Lugar de trabajo'),1,0,'C',1);
         $pdf->Cell(24,6,utf8_decode('Tel. Trabajo'),1,0,'C',1);
-        $pdf->Cell(38,6,utf8_decode('Salario mensual'),1,1,'C',1);
+        $pdf->Cell(28,6,utf8_decode('Salario mensual'),1,1,'C',1);
 
-        
+        $i = 0;
+        $pdf->SetFont('Arial','',9);
+        foreach($datos_integrantes as $row)
+        {
+            $i++;
+            $pdf->Cell(10,6,utf8_decode($i),1,0,'C',1);
+            $pdf->Cell(51,6,utf8_decode($row['nombres'].', '.$row['apellidos']),1,0,'C',1);
+            $pdf->Cell(32,6,utf8_decode($row['parentesco']),1,0,'C',1);
+            $pdf->Cell(22,6,utf8_decode($row['fecha_nacimiento']),1,0,'C',1);
+            $pdf->Cell(42,6,utf8_decode($row['profesion_ocupacion']),1,0,'C',1);
+            $pdf->Cell(40,6,utf8_decode($row['lugar_trabajo']),1,0,'C',1);
+            $pdf->Cell(24,6,utf8_decode($row['tel_trabajo']),1,0,'C',1);
+            $pdf->Cell(28,6,utf8_decode($row['salario']),1,1,'C',1);
+        }
+
+
         //ULTIMA FILA
         $pdf->Cell(105,6,utf8_decode('Total de miembros del grupo familiar'),1,0,'L',1);
         $pdf->Cell(106,6,utf8_decode('Total de ingresos mensuales del grupo familiar'),1,0,'R',1);

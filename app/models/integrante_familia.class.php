@@ -226,5 +226,17 @@ class Integrante_familia extends Validator
         $params = array($this->id_integrante);
         return Database::executeRow($sql, $params);
     }
+
+    /****************************************************************************************************************************************************************************
+     *************************************************************METODOS PARA SCRUD DEL REPORTE DE LA SOLICITUD*****************************************************************
+     ***************************************************************************************************************************************************************************/
+    public function getintegrantesReporte()
+    {
+        $sql = "SELECT i.id_integrante, i.nombres, i.apellidos, i.parentesco, i.fecha_nacimiento, i.profesion_ocupacion, i.lugar_trabajo, i.tel_trabajo, i.salario, f.depende, f.grado, f.institucion, f.cuota 
+        FROM integrante_familia i LEFT JOIN familiares_estudiante f ON i.id_integrante = f.id_integrante 
+        WHERE i.id_solicitud = ?";
+        $params = array($this->id_solicitud);
+        return Database::getRows($sql, $params);
+    }
 }
 ?>

@@ -55,6 +55,14 @@ try{
                                     $_SESSION['id_usuario'] = $usuarios->getId();
                                     $_SESSION['usuario'] = $usuarios->getUsuario();
                                     $_SESSION['id_tipo'] = $usuarios->getTipo();
+                                    $_SESSION['fecha_contraseña'] = $usuarios->getFechaContraseña();
+                                    $fechainicio = $_SESSION['fecha_contraseña'];
+							        $fechaLimite = strtotime('+90 day', strtotime($fechainicio));
+							        $fechaLimite = date('Y-m-j', $fechaLimite); 
+                                    $hoy = date("Y-m-j");
+                                    if ($hoy >= $fechaLimite) {
+										Page::showMessage(2, "El uso de tu contraseña ha expirado", "cambiar_contrasena.php");
+									} 
                                     if($_SESSION['id_tipo'] == 1)
                                     {
                                         Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");

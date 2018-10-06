@@ -53,15 +53,22 @@ try{
                                 $_SESSION['id_usuario'] = $usuarios->getId();
                                 $_SESSION['usuario'] = $usuarios->getUsuario();
                                 $_SESSION['id_tipo'] = $usuarios->getTipo();
-                                if($_SESSION['id_tipo'] == 1)
+                                $_SESSION['fecha_contraseña'] = $usuarios->getFechaContraseña();
+                                $fechainicial = $_SESSION['fecha_contraseña'];
+                                $fechaLimite = strtotime('+90 day', strtotime($fechainicial));
+                                $fechaLimite = date ('Y-m-j',$fechaLimite);
+                                $hoy = date("Y-m-j");
+                                if ($hoy >= $fechaLimite) {
+                                    Page::showMessage(2, "El uso de tu contraseña ha expirado", "acceder.php");
+                                } else if($_SESSION['id_tipo'] == 1)
                                 {
                                     Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
                                 }
-                                if($_SESSION['id_tipo'] == 3)
+                                else if($_SESSION['id_tipo'] == 3)
                                 {
                                     Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
                                 }
-                                if($_SESSION['id_tipo'] == 2)
+                                else if($_SESSION['id_tipo'] == 2)
                                 {
                                     Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
                                 }

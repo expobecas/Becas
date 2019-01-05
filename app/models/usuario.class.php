@@ -11,6 +11,7 @@ class Usuario extends Validator{
     private $estado_sesion = null;
     private $fecha_contraseña = null;
     private $estado = null;
+    private $fechacreacion = null;
     
     public function setId($value){
         if($this->validateId($value)){
@@ -140,6 +141,22 @@ class Usuario extends Validator{
     {
         return $this->fecha_contraseña;
     }
+    public function setFechaCreacion($value)
+    {
+      if($this->validateAlphanumeric($value, 1, 60))
+      {
+          $this->fechacreacion = $value;
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    }
+    public function getFechaCreacion()
+    {
+        return $this->fechacreacion;
+    }
 
     public function setEstado($value)
     {
@@ -160,7 +177,7 @@ class Usuario extends Validator{
 
     //VERIFICACIÓN
     public function checkUsuario(){
-        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion, correo FROM usuarios WHERE usuario = ?";
+        $sql = "SELECT id_usuario, id_tipo, fecha_contraseña, intentos, estado, estado_sesion, correo, fecha_creacion FROM usuarios WHERE usuario = ?";
         $params = array($this->usuario);
         $data =Database::getRow($sql, $params);
         if($data){
@@ -171,6 +188,7 @@ class Usuario extends Validator{
             $this->estado = $data['estado'];
             $this->estado_sesion = $data['estado_sesion'];
             $this->correo = $data['correo'];
+            $this->fechacreacion = $data['fecha_creacion'];
             return true;
         }else{
             return false;
@@ -404,14 +422,9 @@ public function getTipoUsuario(){
             echo $dato_password;
         }*/
     }
-    public function changePassword(){
-        $hash = password_hash($this->clave, PASSWORD_DEFAULT);
-		$sql = "UPDATE usuarios SET contraseña = ? WHERE id_usuario = ?";
-		$params = array($hash, $this->id);
-		return Database::executeRow($sql, $params);
-    }
+
     public function FechaCreacion(){
-		$sql = "UPDATE usuarios SET fecha_contraseña = ? WHERE id_usuario = ?";
+		$sql = "UPDATE usuarios SET fecha_creacion = ? WHERE id_usuario = ?";
 		$fecha1= date("Y-m-d");
 		$params = array($fecha1,  $this->id);
 		return Database::executeRow($sql, $params);

@@ -33,22 +33,22 @@
 <?php
   $hoy = date('Y-m-j');
   $a = "'";
-  $fechaUsu = "$_SESSION[fecha_contraseña]";
-  $fecha_aviso1 = strtotime('+30 day', strtotime($fechaUsu));
+  $fechainicio = "$_SESSION[fecha_creacion]";
+  $fecha_aviso1 = strtotime('+30 day', strtotime($fechainicio));
   $fecha_aviso1 = date ('Y-m-j',$fecha_aviso1);
-  $fecha_aviso2 = strtotime('+60 day', strtotime($fechaUsu));
+  $fecha_aviso2 = strtotime('+60 day', strtotime($fechainicio));
   $fecha_aviso2 = date ('Y-m-j',$fecha_aviso2);
-  $fecha_aviso3 = strtotime('+86 day', strtotime($fechaUsu));
+  $fecha_aviso3 = strtotime('+86 day', strtotime($fechainicio));
   $fecha_aviso3 = date ('Y-m-j',$fecha_aviso3);
-  $fecha_aviso4 = strtotime('+87 day', strtotime($fechaUsu));
+  $fecha_aviso4 = strtotime('+87 day', strtotime($fechainicio));
   $fecha_aviso4 = date ('Y-m-j',$fecha_aviso4);
-  $fecha_aviso5 = strtotime('+88 day', strtotime($fechaUsu));
+  $fecha_aviso5 = strtotime('+88 day', strtotime($fechainicio));
   $fecha_aviso5 = date ('Y-m-j',$fecha_aviso5);
-  $fecha_aviso6 = strtotime('+89 day', strtotime($fechaUsu));
+  $fecha_aviso6 = strtotime('+89 day', strtotime($fechainicio));
   $fecha_aviso6 = date ('Y-m-j',$fecha_aviso6);
-  $fecha_aviso7 = strtotime('+90 day', strtotime($fechaUsu));
+  $fecha_aviso7 = strtotime('+90 day', strtotime($fechainicio));
   $fecha_aviso7 = date ('Y-m-j',$fecha_aviso7);
-  $fecha_aviso8 = strtotime('+91 day', strtotime($fechaUsu));
+  $fecha_aviso8 = strtotime('+91 day', strtotime($fechainicio));
   $fecha_aviso8 = date ('Y-m-j',$fecha_aviso8);
 
 

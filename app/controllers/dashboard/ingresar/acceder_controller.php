@@ -55,23 +55,24 @@ try{
                                     $_SESSION['id_usuario'] = $usuarios->getId();
                                     $_SESSION['usuario'] = $usuarios->getUsuario();
                                     $_SESSION['id_tipo'] = $usuarios->getTipo();
-                                    $_SESSION['fecha_contraseña'] = $usuarios->getFechaContraseña();
-                                    $fechainicio = $_SESSION['fecha_contraseña'];
+                                    $_SESSION['fecha_creacion'] = $usuarios->getFechaCreacion();
+                            
+                                    $fechainicio = $_SESSION['fecha_creacion'];
 							        $fechaLimite = strtotime('+90 day', strtotime($fechainicio));
 							        $fechaLimite = date('Y-m-j', $fechaLimite); 
                                     $hoy = date("Y-m-j");
                                     if ($hoy >= $fechaLimite) {
-										Page::showMessage(2, "El uso de tu contraseña ha expirado", "cambiar_contrasena.php");
-									} 
+										Page::showMessage(2, "El uso de tu contraseña ha expirado", "../../dashboard/usuarios/cambiar_contrasena.php");
+									} else
                                     if($_SESSION['id_tipo'] == 1)
                                     {
                                         Page::showMessage(1, "Autenticación correcta", "../../dashboard/index/index.php");
-                                    }
-                                    if($_SESSION['id_tipo'] == 3)
+                                    }else
+                                    if($_SESSION['id_tipo'] == 2)
                                     {
                                         Page::showMessage(1, "Autenticación correcta", "../../public/jefes/index/index.php");
-                                    }
-                                    if($_SESSION['id_tipo'] == 2)
+                                    }else
+                                    if($_SESSION['id_tipo'] == 3)
                                     {
                                         Page::showMessage(1, "Autenticación correcta", "../../public/empresa/index/index.php");
                                     }

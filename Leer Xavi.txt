@@ -1,7 +1,0 @@
-Pasar a ajax el slider 
-
-arreglar insert: 
--detalle_solicitud
--grupo_familiar
--remesa_familiar
--img_propiedad

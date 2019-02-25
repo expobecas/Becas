@@ -1,0 +1,9 @@
+Admin y estudiante para los dos son los mismo
+Usuario: XaviCaM
+contraseña: Fernando.99
+
+login alumnos
+http://localhost/Becas/public/alumno/account/ingresar.php
+
+login admin
+http://localhost/Becas/dashboard/ingresar/acceder.php

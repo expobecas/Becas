@@ -479,7 +479,7 @@ function Footer()
         $pdf->Line(162, 97, 222, 97);//HORIZONTAL
         $id = $datos_propiedad['id_propiedad'];
         $datos = $propiedad->setIdPropiedad();
-        $vehiculo
+        $vehiculo;
         if(!$datos)
         {
             $vehiculo = 'Si';

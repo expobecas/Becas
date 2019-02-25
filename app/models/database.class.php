@@ -8,10 +8,10 @@ class Database
 
     private function connect()
     {
-        $server = "localhost";
-        $database = "dbecas";
-        $username = "root" /*"Expo_becas"*/;
-        $password = ""/*"becasricaldone"*/;
+        $server = "localhost"; //Aqui se escribe el nombre del servidor en este caso seria localhost
+        $database = "dbecas"; //Aqui se escribe el nombre de la base de datos
+        $username = "root"; //Aqui se escribe el nombre de usuario en este caso se usara root
+        $password = ""; //Aqui se escribe la contraseña del usuario en el caso que no tenga contraseña se deja vacio
         try
         {
             @self::$connection = new PDO("mysql:host=$server; dbname=$database; charset=utf8", $username, $password);

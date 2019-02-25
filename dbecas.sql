@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `dbecas`
 --
-CREATE DATABASE IF NOT EXISTS `dbecas` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `dbecas`;
+CREATE DATABASE IF NOT EXISTS `dbecas3` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `dbecas3`;
 
 DELIMITER $$
 --

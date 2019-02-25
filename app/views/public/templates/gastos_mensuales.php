@@ -1,27 +1,27 @@
 <div class="row">
     <div class="input-field col s12 m6 l3"> 
         <input id="alimentacion" type="text" name="alimentacion" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getAlimentacion())?>'/>
-        <label for="alimentacion">Alimentacion (Promedio)</label>
+        <label for="alimentacion">Alimentacion (Promedio)<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="casa" type="text" name="casa" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getPagoVivienda())?>'/>
-        <label for="casa">Alquiler de casa o pago al Banco o el FSV</label>
+        <label for="casa">Alquiler de casa o pago al Banco o el FSV<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="energia_electrica" type="text" name="energia_electrica" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getEnergiaElectrica())?>'/>
-        <label for="energia_electrica">Energia electrica</label>
+        <label for="energia_electrica">Energia electrica<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="agua" type="text" name="agua" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getAgua())?>'/>
-        <label for="agua">Agua</label>
+        <label for="agua">Agua<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="telefono" type="text" name="telefono" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getTelefono())?>'/>
-        <label for="telefono">Teléfono</label>
+        <label for="telefono">Teléfono<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -36,7 +36,7 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="alcaldia" type="text" name="alcaldia" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getAlcaldia())?>'/>
-        <label for="alcaldia">Alcaldia</label>
+        <label for="alcaldia">Alcaldia<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -46,7 +46,7 @@
     
     <div class="input-field col s12 m6 l3"> 
         <input id="cotizaciones" type="text" name="cotizaciones" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getCotizacion())?>'/>
-        <label for="cotizaciones">Cotizaciones a la AFP, al ISSS, etc</label>
+        <label for="cotizaciones">Cotizaciones a la AFP, al ISSS, etc<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -66,7 +66,7 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="transporte" type="text" name="transporte" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getTransporte())?>'/>
-        <label for="transporte">Transporte</label>
+        <label for="transporte">Transporte<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -76,7 +76,7 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="salud" type="text" name="salud" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getSalud())?>'/>
-        <label for="salud">Salud e Higiene</label>
+        <label for="salud">Salud e Higiene<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -86,7 +86,7 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="pago_colegiatura" type="text" name="pago_colegiatura" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getPagoColegiatura())?>'/>
-        <label for="pago_colegiatura">Pago de colegiaturas</label>
+        <label for="pago_colegiatura">Pago de colegiaturas<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -96,17 +96,17 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="materiales" type="text" name="materiales" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getGastosMaterialEstudios())?>'/>
-        <label for="materiales">Gastos en material de estudio</label>
+        <label for="materiales">Gastos en material de estudio<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="renta" type="text" name="renta" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getImpuestoRenta())?>'/>
-        <label for="renta">Impuesto sobre la renta</label>
+        <label for="renta">Impuesto sobre la renta<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="iva" type="text" name="iva" class="gastos validate" onkeyup="sumar();" value='<?php print($gastos_mensuales->getIva())?>'/>
-        <label for="iva">IVA</label>
+        <label for="iva">IVA<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 

@@ -1,3 +1,4 @@
+
 //Para saber si esta en la pestaña o no
 var window_focus = true;
 

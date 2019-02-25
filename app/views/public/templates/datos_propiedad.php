@@ -40,17 +40,17 @@
 
         <div class="input-field col s12 m6 l3 ocultar" id="tipo"> 
             <input id="tipo_vehiculo" type="text" name="tipo_vehiculo" class="validate"/>
-            <label for="tipo_vehiculo">Tipo de vehículo</label>
+            <label for="tipo_vehiculo">Tipo de vehículo<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3 ocultar" id="año_vehiculo"> 
             <input id="año" type="text" name="año" class="validate"/>
-            <label for="año">Año del vehiculo</label>
+            <label for="año">Año del vehiculo<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3 ocultar" id="vehiculo"> 
             <input id="valor_vehiculo" type="text" name="valor_vehiculo" class="validate"/>
-            <label for="valor_vehiculo">Valor del vehiculo</label>
+            <label for="valor_vehiculo">Valor del vehiculo<span class="required">*</span></label>
         </div>
 
         <div class="col s12 m6 l3" id="botones_vehiculo">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
         <div class="col s12 m6 l3">
             <img id="imagen_propiedad" class="imagenes_propiedad">
             <div class="file-field input-field">
@@ -90,5 +90,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </form>

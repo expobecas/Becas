@@ -6,27 +6,27 @@
 
         <div class="input-field col s12 m6 l3"> 
             <input id="nombres_inte" type="text" name="nombres_inte" class="validate"/>
-            <label for="nombres_inte">Nombres</label>
+            <label for="nombres_inte">Nombres<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3"> 
             <input id="apellidos_inte" type="text" name="apellidos_inte" class="validate"/>
-            <label for="apellidos_inte">Apellidos</label>
+            <label for="apellidos_inte">Apellidos<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3"> 
             <input id="parentesco" type="text" name="parentesco" class="validate"/>
-            <label for="parentesco">Parentesco</label>
+            <label for="parentesco">Parentesco<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3">
             <input id="fecha_naci_inte" type="text" name="fecha_naci_inte" class="datepicker" required/>
-            <label for="fecha_naci_inte">Fecha de nacimiento</label>
+            <label for="fecha_naci_inte">Fecha de nacimiento<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3"> 
             <input id="profesion" type="text" name="profesion" class="validate"/>
-            <label for="profesion">Profesion u ocupacion</label>
+            <label for="profesion">Profesion u ocupacion<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3"> 
@@ -57,7 +57,7 @@
         </div>
 
         <div class="col s12 m6 l3 ocultar" id="depende">
-            <h6>¿Depende de usted?</h6>
+            <h6>¿Depende de usted?<span class="required">*</span></h6>
             <div>
                 <input name="group2" type="radio" class="depende" id="si2" value="si"/>
                 <label for="si2">Si</label>
@@ -71,13 +71,13 @@
 
         <div class="input-field col s12 m6 l3 ocultar" id="Grado"> 
             <input id="grado" type="text" name="grado" class="validate">
-            <label for="grado">Grado o año(ciclo-año)</label>
+            <label for="grado">Grado o año(ciclo-año)<span class="required">*</span></label>
         </div>
 
 
         <div class="input-field col s12 m6 l3 ocultar" id="Institucion"> 
             <input id="institucion" type="text" name="institucion" class="validate">
-            <label for="institucion">Institución educativa</label>
+            <label for="institucion">Institución educativa<span class="required">*</span></label>
         </div>
 
         <div class="input-field col s12 m6 l3 ocultar" id="Cuota_inte"> 

@@ -1,12 +1,12 @@
 <div class="row">
     <div class="input-field col s12 m6 l3">   
         <input id="nombres_responsable" type="text" name="nombres_responsable" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
-        <label for="nombres_responsable">Nombres del responsable</label>
+        <label for="nombres_responsable">Nombres del responsable<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3">   
         <input id="apellidos_responsable" type="text" name="apellidos_responsable" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
-        <label for="apellidos_responsable">Apellidos del responsable</label>
+        <label for="apellidos_responsable">Apellidos del responsable<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3">
@@ -17,7 +17,7 @@
 
     <div class="input-field col s12 m6 l3">   
         <input id="religion" type="text" name="religion" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getReligion())?>' required/>
-        <label for="religion">Religión</label>
+        <label for="religion">Religión<span class="required">*</span></label>
     </div>
 
      <div class="input-field col s12 m6 l3">
@@ -32,17 +32,17 @@
 
     <div class="input-field col s12 m6 l3 ocultar" id="especificar_familia"> 
         <input id="especificar_fam" type="text" name="especificar_fam" class="validate"/>
-        <label for="especificar_fam">Especificar</label>
+        <label for="especificar_fam">Especificar<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3">   
         <input id="direccion" type="text" name="direccion" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getDireccion())?>' required/>
-        <label for="direccion">Dirección</label>
+        <label for="direccion">Dirección<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3">   
         <input id="correo" type="email" name="correo" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getCorreo())?>' required/>
-        <label for="correo">Correo Electrónico</label>
+        <label for="correo">Correo Electrónico<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
@@ -67,12 +67,12 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="lugar" type="text" name="lugar" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getLugarNacimiento())?>' required/>
-        <label for="lugar">Lugar de nacimiento</label>
+        <label for="lugar">Lugar de nacimiento<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="pais_naci" type="text" name="pais_naci" class="validate" onchange="espacios(event)" value='<?php print($solicitud->getPaisNacimiento())?>' required/>
-        <label for="pais_naci">Pais de nacimiento</label>
+        <label for="pais_naci">Pais de nacimiento<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3">
@@ -97,17 +97,17 @@
 
     <div class="input-field col s12 m6 l3"> 
         <input id="institucion_prov" type="text" name="institucion_prov" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getNombre())?>' required/>
-        <label for="institucion_prov">Nombre de la institucion proveniente</label>
+        <label for="institucion_prov">Nombre de la institucion proveniente<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="departamento" type="text" name="departamento" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getLugar())?>' required/>
-        <label for="departamento">Departamento</label>
+        <label for="departamento">Departamento<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 
         <input id="pais" type="text" name="pais" class="validate" onchange="espacios(event)" value='<?php print($institucion_proveniente->getLugar())?>' />
-        <label for="pais">Pais</label>
+        <label for="pais">Pais<span class="required">*</span></label>
     </div>
 
     <div class="input-field col s12 m6 l3"> 

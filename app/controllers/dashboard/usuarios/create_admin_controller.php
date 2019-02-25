@@ -6,14 +6,14 @@ try
 {
     $usuario = new Usuario;
     $usuarios = $usuario->getUsuarios();
-    if(!$usuarios)
-    {
+    /*if(!$usuarios)
+    {*/
         require_once('../../app/views/dashboard/usuarios/create_admin_view.php');
-    }
+    /*}
     else
     {
         Page::showMessage(2, 'Ya existen usuarios', '../ingresar/acceder.php');
-    }
+    }*/
     if(isset($_POST['crear']))
     {
         $_POST = $usuario->validateForm($_POST);
@@ -45,11 +45,11 @@ try
                                     if($usuario->setClave($_POST['contraseña']))
                                     {
                                         $response_recaptcha = $_POST['g-recaptcha-response'];
-																if (isset($response_recaptcha) && $response_recaptcha) {	
-																	$secret = "6LdE7WsUAAAAAPMBlXANwFIK4CWyeg_kW2i-zWD7"; //CLAVE SECRETA QUE DA EL SITIO DE CAPTCHA
-																	$ip = $_SERVER['REMOTE_ADDR'];
-																	$validation_server = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response_recaptcha&remoteip=$ip");
-																	if ($validation_server != null) {
+                                        if (isset($response_recaptcha) && $response_recaptcha) {	
+                                            $secret = "6LdE7WsUAAAAAPMBlXANwFIK4CWyeg_kW2i-zWD7"; //CLAVE SECRETA QUE DA EL SITIO DE CAPTCHA
+                                            $ip = $_SERVER['REMOTE_ADDR'];
+                                            $validation_server = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response_recaptcha&remoteip=$ip");
+                                            if ($validation_server != null) {
                                         if($usuario->createAdmin())
                                         {
                                             Page::showMessage(1, 'El administrador se ha creado', '../ingresar/acceder.php');

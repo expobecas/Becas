@@ -62,9 +62,9 @@ $(document).ready(function() {
       $('#label_remesa').addClass('active');
       Total();
     });
-
-    
 });
+
+
 function Total()
 {
 
